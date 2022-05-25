@@ -7,6 +7,7 @@ on:
     branches: [ master ]
 
 env:
+  CARGO_PACKAGE: acme
   CARGO_TERM_COLOR: always
 
 jobs:
@@ -17,6 +18,6 @@ jobs:
       - name: Login
         run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
       - name: Test
-        run: cargo test --package acme --verbose
+        run: cargo test --package $CARGO_PACKAGE --verbose
       - name: Build and Push
-        run: cargo publish --package acme --verbose
+        run: cargo publish --package $CARGO_PACKAGE --verbose

@@ -4,14 +4,13 @@ description = "A Rust library created to serve the Scattered-Systems Ecosystem"
 edition = "2021"
 license = "MIT"
 name = "acme"
-repository = "https://github.com/FL03/rustbox.git"
-version = "0.1.0"
+repository = "https://github.com/FL03/acme.git"
+version = "0.1.1"
 
 [lib]
 bench = false
 crate-type = ["cdylib", "rlib"]
 test = true
-name = "acme"
 
 [[test]]
 test = true
