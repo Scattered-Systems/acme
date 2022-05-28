@@ -5,7 +5,7 @@ edition = "2021"
 license = "MIT"
 name = "acme"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.4"
+version = "0.1.5"
 
 [lib]
 bench = false
