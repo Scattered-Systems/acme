@@ -1,3 +1,3 @@
 # acme
 
-Standardizing system management for the Scattered-Systems Ecosystem
+A set of common primitives for Scattered-Systems
