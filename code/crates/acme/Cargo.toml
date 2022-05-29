@@ -4,14 +4,12 @@ description = "A Rust library created to serve the Scattered-Systems Ecosystem"
 edition = "2021"
 license = "MIT"
 name = "acme"
-publish = true
 repository = "https://github.com/FL03/acme.git"
 version = "0.1.5"
 
 [lib]
 bench = false
 crate-type = ["cdylib", "rlib"]
-proc-macros = true
 test = true
 
 [[test]]

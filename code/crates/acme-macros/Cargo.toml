@@ -4,7 +4,6 @@ description = "A Rust library created to serve the Scattered-Systems Ecosystem"
 edition = "2021"
 license = "MIT"
 name = "acme-macros"
-publish = true
 repository = "https://github.com/FL03/acme.git"
 version = "0.1.0"
 

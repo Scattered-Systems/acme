@@ -23,4 +23,7 @@ jobs:
         run: cargo test --workspace --verbose
       - 
         name: Build and Push
-        run: cargo publish -- --workspace --verbose
+        run: cargo publish --package acme
+      - 
+        name: Build and Push
+        run: cargo publish --package acme-macros
