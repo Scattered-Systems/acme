@@ -23,4 +23,4 @@ jobs:
         run: cargo test --workspace --verbose
       - 
         name: Build and Push
-        run: cargo publish --workspace
+        run: cargo publish -- --workspace --verbose
