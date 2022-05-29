@@ -1,25 +1,4 @@
-[package]
-authors = ["FL03 <jo3mccain@icloud.com>"]
-description = "A Rust library created to serve the Scattered-Systems Ecosystem"
-edition = "2021"
-license = "MIT"
-name = "acme"
-repository = "https://github.com/FL03/acme.git"
-version = "0.1.4"
-
-[lib]
-bench = false
-crate-type = ["cdylib", "rlib"]
-test = true
-
-[[test]]
-test = true
-name = "standard"
-path = "tests/standard.rs"
-
-[dependencies]
-bson = { features = ["chrono-0_4", "serde_with"], version = "2.2.0" }
-chrono = "0.4.19"
-rand = "0.8.5"
-serde = { features = ["derive"], version = "1.0.137" }
-serde_json = "1.0.81"
+[workspace]
+members = [
+    "code/crates/*"
+]
