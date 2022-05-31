@@ -1,1 +1,3 @@
-pub mod structs;
+pub mod models;
+pub mod schemas;
+pub mod structures;
