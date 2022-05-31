@@ -2,9 +2,15 @@ name: Rust
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - "*"
+      - "!dev"
+      - "!development"
   pull_request:
-    branches: [ master ]
+    branches:
+      - "*"
+      - "!dev"
+      - "!development"
 
 env:
   CARGO_PACKAGE: acme
@@ -15,15 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - 
-        name: Login
+      - name: Login
         run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - 
-        name: Test
-        run: cargo test --workspace --verbose
-      - 
-        name: Build and Push
-        run: cargo publish --package acme
-      - 
-        name: Build and Push
-        run: cargo publish --package acme-macros
+      - name: Test
+        run: cargo test --workspace
+      - name: Build and Push
+        run: cargo publish --workspace
