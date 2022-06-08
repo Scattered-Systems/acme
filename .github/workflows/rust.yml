@@ -13,17 +13,20 @@ on:
       - "!development"
 
 env:
-  CARGO_PACKAGE: acme
   CARGO_TERM_COLOR: always
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Login
+      -
+       uses: actions/checkout@v3
+      -
+        name: Login
         run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Test
+      -
+        name: Test
         run: cargo test --workspace
-      - name: Build and Push
-        run: cargo publish --workspace
+      -
+        name: Build and Push
+        run: cargo publish -- --workspace
