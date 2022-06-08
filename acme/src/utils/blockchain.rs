@@ -1,8 +1,8 @@
-use chrono;
-use crate::primitives::{Clock, DIFFICULTY_PREFIX};
+use crate::primitives::DIFFICULTY_PREFIX;
 use log::info;
 use serde_json::json;
 use sha2::{Digest, Sha256};
+
 
 pub fn hash_to_binary_representation(hash: &[u8]) -> String {
     let mut res: String = String::default();
@@ -46,9 +46,4 @@ pub fn mine_block(id: u64, timestamp: i64, previous_hash: &str, data: &str) -> (
         }
         nonce += 1;
     }
-}
-
-pub fn timestamp() -> Clock {
-    let current_time: Clock = chrono::Local::now().into();
-    return current_time
 }
