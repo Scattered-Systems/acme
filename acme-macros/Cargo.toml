@@ -5,7 +5,7 @@ edition = "2021"
 license = "MIT"
 name = "acme-macros"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.0"
+version = "0.1.1"
 
 [lib]
 proc-macro = true
