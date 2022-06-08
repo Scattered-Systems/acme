@@ -13,11 +13,11 @@ on:
       - "!development"
 
 env:
-  CARGO_PACKAGE: acme
+  PACKAGE_NAME: acme
   CARGO_TERM_COLOR: always
 
 jobs:
-  acme:
+  build:
     runs-on: ubuntu-latest
     steps:
       -
@@ -30,18 +30,7 @@ jobs:
         run: cargo test --workspace --verbose --color always
       -
         name: Build and Push
-        run: cargo publish --package ${{ CARGO_PACKAGE }} --verbose --color always
-  acme-macros:
-    runs-on: ubuntu-latest
-    steps:
-      -
-       uses: actions/checkout@v3
-      -
-        name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      -
-        name: Test
-        run: cargo test --workspace --verbose --color always
+        run: cargo publish --package $PACKAGE --verbose --color always
       -
         name: Build and Push
-        run: cargo publish --package ${{ CARGO_PACKAGE }}-macros --verbose --color always
+        run: cargo publish --package $PACKAGE-macros --verbose --color always
