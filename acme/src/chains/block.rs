@@ -1,14 +1,18 @@
-use crate::{primitives::{Clock, ObjectId, Transaction}, utils::date::timestamp};
 use log::info;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use sha2::{Digest, Sha256};
 
+use crate::{
+    primitives::{Clock, containers::Transaction, identifiers::ObjectId},
+    utils::date::timestamp,
+};
+
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub enum States {
     Invalid,
     Valid,
-    Validating
+    Validating,
 }
 
 
@@ -16,7 +20,7 @@ pub enum States {
 pub struct Block {
     pub id: ObjectId,
     pub hash: String,
-    pub nonce: String,
+    pub nonce: usize,
     pub previous: String,
     pub state: States,
     pub timestamp: Clock,
@@ -24,7 +28,7 @@ pub struct Block {
 }
 
 impl Block {
-    pub fn new(nonce: String, previous: String, transactions: Vec<Transaction>) -> Self {
+    pub fn new(nonce: usize, previous: String, transactions: Vec<Transaction>) -> Self {
         Self {
             id: ObjectId::new(),
             hash: String::from(""),
