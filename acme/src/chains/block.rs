@@ -1,3 +1,6 @@
+/*
+    Create a fully-equipped block structure with a number of standard functions outlined below...
+ */
 use log::info;
 use serde::{Deserialize, Serialize};
 use serde_json::json;

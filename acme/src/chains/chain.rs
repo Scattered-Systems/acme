@@ -1,15 +1,18 @@
-use crate::chains::block::Block;
-use crate::primitives::Transaction;
+/*
+    Describe the general structure and functionality of a blockchain
+ */
+
+use crate::{chains::block::Block, primitives::containers::Transaction};
 
 #[derive(Clone, Debug)]
 pub struct Chain {
-    blocks: Vec<Block>
+    blocks: Vec<Block>,
 }
 
 impl Chain {
     pub fn new() -> Self {
         let hash = "".to_string();
-        let nonce = "".to_string();
+        let nonce: usize = 98078789;
         let previous = "".to_string();
 
         let mut tmp = Transaction::new();
