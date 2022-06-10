@@ -20,8 +20,9 @@ pub struct Block {
 
 impl Block {
     pub fn new(nonce: usize, previous: String, transactions: Vec<Transaction>) -> Self {
+        let id = ObjectId::new();
         Self {
-            id: ObjectId::new(),
+            id,
             hash: String::from(""),
             nonce,
             previous,
