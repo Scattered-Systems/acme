@@ -14,24 +14,9 @@ use libp2p::{
 };
 
 #[derive(Clone, Debug)]
-pub enum Ops {
-    Activate,
-    Aggregate,
-    Create,
-    Read,
-}
-
-#[derive(Clone, Debug)]
-pub enum NetworkStatus {
-    Valid,
-    Invalid,
-}
-
-#[derive(Clone, Debug)]
 pub struct Peer {
     pub id: PeerId,
-    pub key: identity::Keypair,
-    pub status: NetworkStatus,
+    pub key: identity::Keypair
 }
 
 impl Peer {
@@ -41,16 +26,14 @@ impl Peer {
 
         Self {
             id: id.clone(),
-            key: key.clone(),
-            status: NetworkStatus::Valid
+            key: key.clone()
         }
     }
 
     pub fn from(key: identity::Keypair) -> Self {
         Self {
             id: PeerId::from(key.public().clone()),
-            key: key.clone(),
-            status: NetworkStatus::Valid,
+            key: key.clone()
         }
     }
 
@@ -68,7 +51,7 @@ impl Peer {
             .authenticate(noise::NoiseConfig::xx(self.authorize()).into_authenticated())
             .multiplex(mplex::MplexConfig::new())
             .boxed();
-        return transport.clone()
+        return transport
     }
 }
 

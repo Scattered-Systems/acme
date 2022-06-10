@@ -4,6 +4,7 @@ use serde_json::json;
 use sha2::{Digest, Sha256};
 
 
+// Convert a block hash into a binary representation
 pub fn hash_to_binary_representation(hash: &[u8]) -> String {
     let mut res: String = String::default();
     for c in hash {
@@ -12,10 +13,11 @@ pub fn hash_to_binary_representation(hash: &[u8]) -> String {
     res
 }
 
-pub fn calculate_hash(id: u64, timestamp: i64, previous_hash: &str, data: &str, nonce: u64) -> Vec<u8> {
+// Calculate a hash using Block(id, timestamp, previous, data, nonce)
+pub fn calculate_hash(id: u64, timestamp: i64, previous: &str, data: &str, nonce: u64) -> Vec<u8> {
     let data = json!({
         "id": id,
-        "previous_hash": previous_hash,
+        "previous": previous,
         "data": data,
         "timestamp": timestamp,
         "nonce": nonce
@@ -25,7 +27,7 @@ pub fn calculate_hash(id: u64, timestamp: i64, previous_hash: &str, data: &str, 
     hasher.finalize().as_slice().to_owned()
 }
 
-pub fn mine_block(id: u64, timestamp: i64, previous_hash: &str, data: &str) -> (u64, String) {
+pub fn mine_block(id: u64, timestamp: i64, previous: &str, data: &str) -> (u64, String) {
     info!("mining block...");
     let mut nonce = 0;
 
@@ -33,7 +35,7 @@ pub fn mine_block(id: u64, timestamp: i64, previous_hash: &str, data: &str) -> (
         if nonce % 100000 == 0 {
             info!("nonce: {}", nonce);
         }
-        let hash = calculate_hash(id, timestamp, previous_hash, data, nonce);
+        let hash = calculate_hash(id, timestamp, previous, data, nonce);
         let binary_hash = hash_to_binary_representation(&hash);
         if binary_hash.starts_with(DIFFICULTY_PREFIX) {
             info!(
