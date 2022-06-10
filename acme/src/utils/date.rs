@@ -1,7 +1,7 @@
-use chrono;
-use crate::primitives::Clock;
+use crate::primitives::date::{Local, Stamp};
 
-pub fn timestamp() -> Clock {
-    let current_time: Clock = chrono::Local::now().into();
+
+pub fn timestamp() -> Stamp {
+    let current_time: Stamp = Local::now().into();
     return current_time
 }

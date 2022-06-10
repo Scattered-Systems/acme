@@ -1,4 +1,4 @@
-use crate::primitives::ObjectId;
+use crate::primitives::identifiers::ObjectId;
 use serde::{Deserialize, Serialize};
 
 
