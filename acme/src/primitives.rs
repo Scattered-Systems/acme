@@ -7,7 +7,6 @@ pub mod containers {
 
     pub type Container<T> = Dict<Vec<T>>;
     pub type Dict<T> = HashMap<String, T>;
-    pub type Transaction = Dict<String>;
 }
 
 pub mod date {

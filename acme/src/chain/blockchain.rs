@@ -1,33 +1,31 @@
 /*
     Create a fully-equipped block structure with a number of standard functions outlined below...
  */
-use crate::{
-    primitives::{containers::Transaction, identifiers::ObjectId, date::Stamp},
-    utils::date::timestamp,
-};
+use crate::primitives::date::{Local, Stamp};
 use serde::{Deserialize, Serialize};
+use std::hash::Hash;
 
-
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Hash, Serialize)]
 pub struct Block {
-    pub id: ObjectId,
-    pub hash: String,
-    pub nonce: usize,
-    pub previous: String,
+    pub id: types::BlockId,
+    pub data: types::Data,
+    pub hash: types::BlockHash,
+    pub nonce: types::Nonce,
+    pub previous: types::BlockHash,
     pub timestamp: Stamp,
-    pub transactions: Vec<Transaction>,
 }
 
 impl Block {
-    pub fn new(nonce: usize, previous: String, transactions: Vec<Transaction>) -> Self {
-        let id = ObjectId::new();
+    pub fn new(data: types::Data, nonce: types::Nonce, previous: String) -> Self {
+        let id = types::BlockId::new();
+        let timestamp: Stamp = Local::now().into();
         Self {
             id,
+            data,
             hash: String::from(""),
             nonce,
             previous,
-            timestamp: timestamp(),
-            transactions,
+            timestamp
         }
     }
 }
@@ -37,20 +35,33 @@ pub struct Blockchain {
     blocks: Vec<Block>,
 }
 
+pub mod types {
+    use crate::primitives::{containers::Container, identifiers::ObjectId};
+
+    pub type BlockId = ObjectId;
+    pub type BlockHash = String;
+    pub type Data = String;
+    pub type Nonce = u64;
+    pub type Transaction = Container<String>;
+}
+
 pub mod utils {
-    use crate::primitives::constants::DIFFICULTY_PREFIX;
+    use crate::{
+        chain::blockchain::types,
+        primitives::{constants::DIFFICULTY_PREFIX, date::Stamp}
+    };
     use log::info;
     use serde_json::json;
     use sha2::{Digest, Sha256};
 
     // Cacluate the hash of a Block using standard Block parameters
-    pub fn calculate_hash(id: u64, timestamp: i64, previous_hash: &str, data: &str, nonce: u64) -> Vec<u8> {
+    pub fn calculate_hash(id: types::BlockId, data: types::Data, nonce: types::Nonce, previous: types::BlockHash, timestamp: Stamp) -> Vec<u8> {
         let data = json!({
             "id": id,
-            "previous_hash": previous_hash,
             "data": data,
-            "timestamp": timestamp,
-            "nonce": nonce
+            "nonce": nonce,
+            "previous": previous,
+            "timestamp": timestamp
         });
         let mut hasher = Sha256::new();
         hasher.update(data.to_string().as_bytes());
@@ -67,7 +78,7 @@ pub mod utils {
     }
 
     // Defines the standard method in which blocks are to be mined
-    pub fn mine_block(id: u64, timestamp: i64, previous_hash: &str, data: &str) -> (u64, String) {
+    pub fn mine_block(id: types::BlockId, data: types::Data,  previous: types::BlockHash, timestamp: Stamp) -> (u64, String) {
         info!("mining block...");
         let mut nonce = 0;
 
@@ -75,7 +86,7 @@ pub mod utils {
             if nonce % 100000 == 0 {
                 info!("nonce: {}", nonce);
             }
-            let hash = calculate_hash(id, timestamp, previous_hash, data, nonce);
+            let hash = calculate_hash(id, data.clone(), nonce, previous.clone(), timestamp);
             let binary_hash = hash_to_binary_representation(&hash);
             if binary_hash.starts_with(DIFFICULTY_PREFIX) {
                 info!(
