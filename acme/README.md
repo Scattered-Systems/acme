@@ -4,15 +4,7 @@ Standardizing the Scattered Ecosystem by centralizing common patterns, structure
 
 ## Getting Started
 
-### Clone the Repository
     git clone https://github.com/FL03/acme.git
-
-### Commands
-
-#### _acme_
+    
     cargo build --package acme --release
     cargo test --package acme --test standard
-
-#### _acme-macros_
-    cargo build --package acme-macros --release
-    cargo test --package acme-macros --test standard

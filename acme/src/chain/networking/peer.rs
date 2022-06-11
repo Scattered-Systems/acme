@@ -1,7 +1,12 @@
 use crate::primitives::{
     identifiers::PeerId,
-    keys::KeySet,
+    keys::{AuthDhKeys, DhKeys, KeySet},
     networking::BoxedTransport
+};
+use libp2p::{
+    Transport,
+    core::upgrade,
+    self
 };
 
 #[derive(Clone, Debug)]
@@ -27,17 +32,21 @@ impl Peer {
             key: key.clone()
         }
     }
-}
+    pub fn authenticate(&self) -> AuthDhKeys {
+        let dh_keys = DhKeys::new()
+            .into_authentic(&self.key.clone())
+            .expect("Signing Error: Failed to sign the static DH KeyPair");
+            return dh_keys.clone()
+    }
 
-#[derive(Debug)]
-pub struct Provider {
-    pub transport: BoxedTransport
-}
-
-impl Provider {
-    pub fn new(peer: &Peer) -> Self {
-        let transport = utils::build_transport(peer);
-        Self { transport }
+    pub fn build_transport(&self) -> BoxedTransport {
+        let transport = libp2p::tcp::TokioTcpConfig::new()
+            .nodelay(true)
+            .upgrade(upgrade::Version::V1)
+            .authenticate(libp2p::noise::NoiseConfig::xx(self.authenticate()).into_authenticated())
+            .multiplex(libp2p::mplex::MplexConfig::new())
+            .boxed();
+        return transport
     }
 }
 
@@ -45,30 +54,4 @@ impl std::fmt::Display for Peer {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "Peer(id={})", self.id)
     }
-}
-
-pub mod utils {
-    use crate::{
-        chains::network::Peer,
-        primitives::{keys::{AuthDhKeys, DhKeys}, networking::BoxedTransport}
-    };
-    use libp2p::{Transport, core::upgrade, self};
-
-    pub fn authenticate(peer: &Peer) -> AuthDhKeys {
-        let dh_keys = DhKeys::new()
-            .into_authentic(&peer.key.clone())
-            .expect("Signing Error: Failed to sign the static DH KeyPair");
-            return dh_keys.clone()
-    }
-
-    pub fn build_transport(peer: &Peer) -> BoxedTransport {
-        let transport = libp2p::tcp::TokioTcpConfig::new()
-            .nodelay(true)
-            .upgrade(upgrade::Version::V1)
-            .authenticate(libp2p::noise::NoiseConfig::xx(authenticate(peer)).into_authenticated())
-            .multiplex(libp2p::mplex::MplexConfig::new())
-            .boxed();
-        return transport
-    }
-
 }
