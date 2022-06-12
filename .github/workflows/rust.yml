@@ -21,47 +21,7 @@ jobs:
         run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
       -
         name: Test
-        run: cargo test --package $CARGO_PACKAGE --verbose
+        run: cargo test --workspace
       -
         name: Build and Push
-        run: cargo publish --package $CARGO_PACKAGE --verbose
-  chains:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Test
-        run: cargo test --package $CARGO_PACKAGE-chains --verbose
-      - name: Build and Push
-        run: cargo publish --package $CARGO_PACKAGE-chains --verbose
-  data:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Test
-        run: cargo test --package $CARGO_PACKAGE-data --verbose
-      - name: Build and Push
-        run: cargo publish --package $CARGO_PACKAGE-data --verbose
-  macros:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Test
-        run: cargo test --package $CARGO_PACKAGE-macros --verbose
-      - name: Build and Push
-        run: cargo publish --package $CARGO_PACKAGE-macros --verbose
-  network:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Test
-        run: cargo test --package $CARGO_PACKAGE-network --verbose
-      - name: Build and Push
-        run: cargo publish --package $CARGO_PACKAGE-network --verbose
+        run: cargo publish --

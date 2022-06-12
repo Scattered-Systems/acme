@@ -1,7 +1,7 @@
 [package]
 authors = ["FL03 <jo3mccain@icloud.com>"]
 categories = ["blockchain", "peer-to-peer", "toolkit"]
-description = ""
+description = "acme-data"
 edition = "2021"
 keywords = ["blockchain", "toolkit"]
 license = "MIT"
