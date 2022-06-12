@@ -6,6 +6,7 @@ edition = "2021"
 keywords = ["scsys", "blockchain", "toolkit"]
 license = "MIT"
 name = "acme"
+readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
 version = "0.1.12"
 
