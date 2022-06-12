@@ -1,4 +1,4 @@
-name: Rust (acme)
+name: Rust (acme-macros)
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: ["*", "!dev"]
 
 env:
-  CARGO_PACKAGE: acme
+  CARGO_PACKAGE: acme-macros
   CARGO_TERM_COLOR: always
 
 jobs:

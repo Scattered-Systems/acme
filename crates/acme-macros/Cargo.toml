@@ -1,0 +1,21 @@
+[package]
+authors = ["FL03 <jo3mccain@icloud.com>"]
+categories = ["blockchain", "peer-to-peer", "toolkit"]
+description = ""
+edition = "2021"
+keywords = ["blockchain", "toolkit"]
+name = "acme-macros"
+repository = "https://github.com/FL03/acme.git"
+version = "0.1.2"
+
+[lib]
+bench = false
+proc-macro = true
+test = true
+
+[[test]]
+name = "test"
+path = "tests/test.rs"
+test = true
+
+[dependencies]
