@@ -1,0 +1,18 @@
+[package]
+authors = ["FL03 <jo3mccain@icloud.com>"]
+description = "A Rust library created to serve the Scattered-Systems Ecosystem"
+edition = "2021"
+license = "MIT"
+name = "acme-macros"
+repository = "https://github.com/FL03/acme.git"
+version = "0.1.1"
+
+[lib]
+proc-macro = true
+
+[[test]]
+name = "test"
+path = "tests/test.rs"
+test = true
+
+[dependencies]
