@@ -1,61 +1,30 @@
-/*
-    Create a fully-equipped block structure with a number of standard functions outlined below...
- */
-use crate::primitives::date::{Local, Stamp};
-use serde::{Deserialize, Serialize};
-use std::hash::Hash;
+pub mod blocks;
+pub mod chains;
 
-#[derive(Clone, Debug, Deserialize, Hash, Serialize)]
-pub struct Block {
-    pub id: types::BlockId,
-    pub data: types::Data,
-    pub hash: types::BlockHash,
-    pub nonce: types::Nonce,
-    pub previous: types::BlockHash,
-    pub timestamp: Stamp,
-}
-
-impl Block {
-    pub fn new(data: types::Data, nonce: types::Nonce, previous: String) -> Self {
-        let id = types::BlockId::new();
-        let timestamp: Stamp = Local::now().into();
-        Self {
-            id,
-            data,
-            hash: String::from(""),
-            nonce,
-            previous,
-            timestamp
-        }
-    }
-}
-
-#[derive(Clone, Debug)]
-pub struct Blockchain {
-    blocks: Vec<Block>,
+pub mod constants {
+    pub const DIFFICULTY_PREFIX: &str = "00";
 }
 
 pub mod types {
-    use crate::primitives::{containers::Container, identifiers::ObjectId};
+    use crate::types::ObjectId;
 
+    pub type BlockData = String;
     pub type BlockId = ObjectId;
     pub type BlockHash = String;
-    pub type Data = String;
-    pub type Nonce = u64;
-    pub type Transaction = Container<String>;
+    pub type BlockNonce = u64;
 }
 
 pub mod utils {
-    use crate::{
-        chain::blockchain::types,
-        primitives::{constants::DIFFICULTY_PREFIX, date::Stamp}
-    };
     use log::info;
     use serde_json::json;
     use sha2::{Digest, Sha256};
 
+    use super::constants::DIFFICULTY_PREFIX;
+    use super::types::{BlockData, BlockId, BlockHash, BlockNonce};
+    use crate::types::{TimeStamp, LocalTime};
+
     // Cacluate the hash of a Block using standard Block parameters
-    pub fn calculate_hash(id: types::BlockId, data: types::Data, nonce: types::Nonce, previous: types::BlockHash, timestamp: Stamp) -> Vec<u8> {
+    pub fn calculate_hash(id: BlockId, data: BlockData, nonce: BlockNonce, previous: BlockHash, timestamp: TimeStamp) -> Vec<u8> {
         let data = json!({
             "id": id,
             "data": data,
@@ -68,7 +37,7 @@ pub mod utils {
         hasher.finalize().as_slice().to_owned()
     }
 
-    // Represent a Block hash in the proper format for the binary interface 
+    // Represent a Block hash in the proper format for the binary interface
     pub fn hash_to_binary_representation(hash: &[u8]) -> String {
         let mut res: String = String::default();
         for c in hash {
@@ -78,7 +47,7 @@ pub mod utils {
     }
 
     // Defines the standard method in which blocks are to be mined
-    pub fn mine_block(id: types::BlockId, data: types::Data,  previous: types::BlockHash, timestamp: Stamp) -> (u64, String) {
+    pub fn mine_block(id: BlockId, data: BlockData, nonce: BlockNonce, previous: BlockHash, timestamp: TimeStamp) -> (u64, String) {
         info!("mining block...");
         let mut nonce = 0;
 

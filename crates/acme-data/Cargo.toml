@@ -4,18 +4,14 @@ categories = ["blockchain", "peer-to-peer", "toolkit"]
 description = ""
 edition = "2021"
 keywords = ["blockchain", "toolkit"]
-name = "acme-macros"
-repository = "https://github.com/FL03/acme.git"
-version = "0.1.2"
+name = "acme-data"
+version = "0.1.0"
 
 [lib]
 bench = false
-proc-macro = true
+crate-type = ["cdylib", "rlib"]
 test = true
 
-[[test]]
-name = "test"
-path = "tests/test.rs"
-test = true
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]

@@ -1,11 +1,19 @@
 [package]
 authors = ["FL03 <jo3mccain@icloud.com>"]
-description = "A Rust library created to serve the Scattered-Systems Ecosystem"
+categories = ["blockchain", "peer-to-peer", "toolkit"]
+description = ""
 edition = "2021"
-license = "MIT"
+keywords = ["blockchain", "toolkit"]
 name = "acme-network"
-repository = "https://github.com/FL03/acme.git"
 version = "0.1.0"
+
+[lib]
+bench = false
+crate-type = ["cdylib", "rlib"]
+test = true
+
+[features]
+default = ["libp2p/default", "libp2p/dns-tokio", "libp2p/tcp-tokio"]
 
 [[test]]
 name = "test"
@@ -13,3 +21,7 @@ path = "tests/test.rs"
 test = true
 
 [dependencies]
+libp2p = { features = ["dns-tokio", "tcp-tokio"], version = "0.45.1" }
+log = "0.4.17"
+once_cell = "1.12.0"
+pretty_env_logger = "0.4.0"

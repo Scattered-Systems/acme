@@ -1,8 +1,7 @@
 pub mod models;
-
-pub mod schemas {
-
-}
+pub mod proofs;
+pub mod schemas;
+pub mod structures;
 
 pub mod states {
     pub enum BlockStates {
@@ -19,7 +18,5 @@ pub mod states {
     }
 }
 
-pub mod structures {
 
-}
 

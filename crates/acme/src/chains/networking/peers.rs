@@ -1,8 +1,4 @@
-use crate::primitives::{
-    identifiers::PeerId,
-    keys::{AuthDhKeys, DhKeys, KeySet},
-    networking::BoxedTransport
-};
+use crate::primitives::types::{PeerId, PeerKey};
 use libp2p::{
     Transport,
     core::upgrade,

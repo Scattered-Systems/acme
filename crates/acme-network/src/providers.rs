@@ -1,5 +1,4 @@
-use crate::{chain::networking::peer::Peer, primitives::networking::BoxedTransport};
-
+use crate::{peers::Peer, types::BoxedTransport};
 
 #[derive(Debug)]
 pub struct Provider {
