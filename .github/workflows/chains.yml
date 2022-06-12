@@ -1,4 +1,4 @@
-name: Rust (acme-chains)
+name: Rust (chains)
 
 on:
   push:

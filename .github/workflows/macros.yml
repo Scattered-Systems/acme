@@ -1,4 +1,4 @@
-name: Rust (acme-macros)
+name: Rust (macros)
 
 on:
   push:
