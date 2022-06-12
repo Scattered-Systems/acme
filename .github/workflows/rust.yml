@@ -1,16 +1,10 @@
-name: Rust - Build and Push (Acme)
+name: Rust
 
 on:
   push:
-    branches:
-      - "*"
-      - "!dev"
-      - "!development"
+    branches: ["*", "!dev"]
   pull_request:
-    branches:
-      - "*"
-      - "!dev"
-      - "!development"
+    branches: ["*", "!dev"]
 
 env:
   CARGO_TERM_COLOR: always
@@ -26,7 +20,13 @@ jobs:
         run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
       -
         name: Test
-        run: cargo test --package acme
+        run: cargo test
       -
-        name: Build and Push
+        name: Build and Push (acme)
         run: cargo publish --package acme
+      -
+        name: Build and Push (acme-macros)
+        run: cargo publish --package acme-macros
+      -
+        name: Build and Push (acme-network)
+        run: cargo publish --package acme-network

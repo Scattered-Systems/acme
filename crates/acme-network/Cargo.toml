@@ -3,16 +3,13 @@ authors = ["FL03 <jo3mccain@icloud.com>"]
 description = "A Rust library created to serve the Scattered-Systems Ecosystem"
 edition = "2021"
 license = "MIT"
-name = "acme-macros"
+name = "acme-network"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.1"
-
-[lib]
-proc-macro = true
+version = "0.1.0"
 
 [[test]]
+name = "test"
+path = "tests/test.rs"
 test = true
-name = "standard"
-path = "tests/standard.rs"
 
 [dependencies]
