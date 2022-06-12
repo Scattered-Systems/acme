@@ -7,7 +7,7 @@ keywords = ["scsys", "blockchain", "toolkit"]
 license = "MIT"
 name = "acme"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.11"
+version = "0.1.12"
 
 [features]
 # Include nothing by default

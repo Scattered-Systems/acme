@@ -1,4 +1,4 @@
-name: Rust
+name: Rust (acme)
 
 on:
   push:
@@ -24,9 +24,3 @@ jobs:
       -
         name: Build and Push (acme)
         run: cargo publish --package acme
-      -
-        name: Build and Push (acme-macros)
-        run: cargo publish --package acme-macros
-      -
-        name: Build and Push (acme-network)
-        run: cargo publish --package acme-network

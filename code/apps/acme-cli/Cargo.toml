@@ -1,0 +1,9 @@
+[package]
+authors = ["FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)"]
+categories = ["cli", "networking", "toolkit"]
+edition = "2021"
+name = "acme-cli"
+version = "0.1.0"
+
+
+[dependencies]

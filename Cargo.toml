@@ -1,5 +1,5 @@
 [workspace]
 members = [
-    "app",
-    "crates/*"
+    "code/apps/acme-cli",
+    "code/crates/*"
 ]

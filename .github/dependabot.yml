@@ -1,25 +1,25 @@
 version: 2
 updates:
   - package-ecosystem: cargo
-    directory: "app"
+    directory: "code/apps/acme-cli"
     schedule:
       interval: daily
       time: "10:00"
     open-pull-requests-limit: 10
   - package-ecosystem: cargo
-    directory: "crates/acme"
+    directory: "code/crates/acme"
     schedule:
       interval: daily
       time: "10:00"
     open-pull-requests-limit: 10
   - package-ecosystem: cargo
-    directory: "crates/acme-macros"
+    directory: "code/crates/acme-macros"
     schedule:
       interval: daily
       time: "10:00"
     open-pull-requests-limit: 10
   - package-ecosystem: cargo
-    directory: "crates/acme-network"
+    directory: "code/crates/acme-network"
     schedule:
       interval: daily
       time: "10:00"

@@ -1,24 +1,36 @@
 /*
     Create a fully-equipped block structure with a number of standard functions outlined below...
  */
-use crate::primitives::date::{Local, Stamp};
+use crate::chain::types::{BlockData, BlockId, BlockHash, BlockNonce};
+use crate::primitives::types::{LocalTime, TimeStamp, DynamicError};
 use serde::{Deserialize, Serialize};
 use std::hash::Hash;
 
+pub trait SubSpace {
+    type Alien;
+    type Cache;
+    type Client;
+    type Database;
+
+    fn new() -> Self;
+    fn setup(&mut self) -> Self;
+    async fn run(&mut self) -> Result<(), DynamicError>;
+}
+
 #[derive(Clone, Debug, Deserialize, Hash, Serialize)]
 pub struct Block {
-    pub id: types::BlockId,
-    pub data: types::Data,
-    pub hash: types::BlockHash,
-    pub nonce: types::Nonce,
-    pub previous: types::BlockHash,
-    pub timestamp: Stamp,
+    pub id: BlockId,
+    pub data: BlockData,
+    pub hash: BlockHash,
+    pub nonce: BlockNonce,
+    pub previous: BlockHash,
+    pub timestamp: TimeStamp,
 }
 
 impl Block {
-    pub fn new(data: types::Data, nonce: types::Nonce, previous: String) -> Self {
-        let id = types::BlockId::new();
-        let timestamp: Stamp = Local::now().into();
+    pub fn new(data: BlockData, nonce: BlockNonce, previous: BlockHash) -> Self {
+        let id = BlockId::new();
+        let timestamp: TimeStamp = LocalTime::now().into();
         Self {
             id,
             data,
@@ -35,27 +47,16 @@ pub struct Blockchain {
     blocks: Vec<Block>,
 }
 
-pub mod types {
-    use crate::primitives::{containers::Container, identifiers::ObjectId};
-
-    pub type BlockId = ObjectId;
-    pub type BlockHash = String;
-    pub type Data = String;
-    pub type Nonce = u64;
-    pub type Transaction = Container<String>;
-}
-
 pub mod utils {
-    use crate::{
-        chain::blockchain::types,
-        primitives::{constants::DIFFICULTY_PREFIX, date::Stamp}
-    };
     use log::info;
     use serde_json::json;
     use sha2::{Digest, Sha256};
 
+    use crate::primitives::constants::DIFFICULTY_PREFIX;
+    use crate::primitives::types::{BlockData, BlockId, BlockHash, BlockNonce, TimeStamp, LocalTime};
+
     // Cacluate the hash of a Block using standard Block parameters
-    pub fn calculate_hash(id: types::BlockId, data: types::Data, nonce: types::Nonce, previous: types::BlockHash, timestamp: Stamp) -> Vec<u8> {
+    pub fn calculate_hash(id: BlockId, data: BlockData, nonce: BlockNonce, previous: BlockHash, timestamp: TimeStamp) -> Vec<u8> {
         let data = json!({
             "id": id,
             "data": data,
@@ -78,7 +79,7 @@ pub mod utils {
     }
 
     // Defines the standard method in which blocks are to be mined
-    pub fn mine_block(id: types::BlockId, data: types::Data,  previous: types::BlockHash, timestamp: Stamp) -> (u64, String) {
+    pub fn mine_block(id: BlockId, data: BlockData, nonce: BlockNonce, previous: BlockHash, timestamp: TimeStamp) -> (u64, String) {
         info!("mining block...");
         let mut nonce = 0;
 
