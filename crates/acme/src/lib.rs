@@ -1,7 +1,6 @@
 pub mod actors;
 pub mod chains;
 pub mod controllers;
-pub mod data;
 pub mod utils;
 
 pub mod types {
