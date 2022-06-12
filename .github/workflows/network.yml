@@ -1,4 +1,4 @@
-name: Rust (acme-network)
+name: Rust (network)
 
 on:
   push:

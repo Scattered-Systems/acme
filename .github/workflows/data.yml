@@ -1,4 +1,4 @@
-name: Rust (acme-data)
+name: Rust (data)
 
 on:
   push:

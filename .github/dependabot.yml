@@ -13,13 +13,25 @@ updates:
       time: "10:00"
     open-pull-requests-limit: 10
   - package-ecosystem: cargo
-    directory: "crates/acme-macros"
+    directory: "crates/chains"
     schedule:
       interval: daily
       time: "10:00"
     open-pull-requests-limit: 10
   - package-ecosystem: cargo
-    directory: "crates/acme-network"
+    directory: "crates/data"
+    schedule:
+      interval: daily
+      time: "10:00"
+    open-pull-requests-limit: 10
+  - package-ecosystem: cargo
+    directory: "crates/macros"
+    schedule:
+      interval: daily
+      time: "10:00"
+    open-pull-requests-limit: 10
+  - package-ecosystem: cargo
+    directory: "crates/network"
     schedule:
       interval: daily
       time: "10:00"
