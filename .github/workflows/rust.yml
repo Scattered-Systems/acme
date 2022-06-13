@@ -1,4 +1,4 @@
-name: Rust (acme)
+name: Rust
 
 on:
   push:
@@ -20,6 +20,6 @@ jobs:
       - name: Test
         run: cargo test --workspace
       - name: Package
-        run: cargo package
+        run: cargo package --verbose
       - name: Build and Push
-        run: cargo publish --
+        run: cargo publish -- --verbose
