@@ -19,9 +19,11 @@ pub mod utils {
     use serde_json::json;
     use sha2::{Digest, Sha256};
 
-    use super::constants::DIFFICULTY_PREFIX;
-    use super::types::{BlockData, BlockId, BlockHash, BlockNonce};
-    use crate::types::{TimeStamp, LocalTime};
+    use super::{
+        constants::DIFFICULTY_PREFIX,
+        types::{BlockData, BlockId, BlockHash, BlockNonce}
+    };
+    use crate::types::TimeStamp;
 
     // Cacluate the hash of a Block using standard Block parameters
     pub fn calculate_hash(id: BlockId, data: BlockData, nonce: BlockNonce, previous: BlockHash, timestamp: TimeStamp) -> Vec<u8> {

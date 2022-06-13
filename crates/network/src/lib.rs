@@ -2,6 +2,7 @@ pub mod behaviours;
 pub mod nodes;
 pub mod peers;
 pub mod providers;
+pub mod utils;
 
 pub mod types {
     use libp2p::{core::{muxing::StreamMuxerBox, transport::Boxed}, self};
