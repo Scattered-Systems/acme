@@ -20,6 +20,6 @@ jobs:
       - name: Test
         run: cargo test --workspace
       - name: Package
-        run: cargo package --verbose
+        run: cargo package
       - name: Build and Push
-        run: cargo publish -- --verbose
+        run: cargo publish --
