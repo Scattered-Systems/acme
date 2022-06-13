@@ -3,20 +3,17 @@
  */
 use super::blocks::Block;
 use serde::{Deserialize, Serialize};
-use std::hash::Hash;
 
-
-pub trait Chain {
-    type Block;
+pub trait Chain<T> {
     type Blocks;
 
-    fn setup(&mut self) -> Self;
+    fn setup(&mut self, settings: T) -> Self;
     fn connect() -> Result<(), crate::types::BoxedError>;
+    fn get(&self) -> Self;
 }
 
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Blockchain {
     blocks: Vec<Block>,
 }
-

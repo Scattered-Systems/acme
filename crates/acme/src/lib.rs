@@ -1,10 +1,8 @@
 pub mod actors;
-pub mod chains;
 pub mod controllers;
 pub mod utils;
 
 pub mod types {
-    use crate::chains::types::*;
     use bson;
     use chrono;
     use libp2p::{self, core::{muxing::StreamMuxerBox, transport::Boxed}};
