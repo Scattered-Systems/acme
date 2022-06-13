@@ -8,7 +8,7 @@ name = "acme-network"
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.0"
+version = "0.1.1"
 
 [lib]
 bench = false
