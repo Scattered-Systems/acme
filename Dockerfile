@@ -1,6 +1,4 @@
-FROM jo3mccain/crust as builder
-
-RUN rustup default stable
+FROM jo3mccain/rusty:latest as builder
 
 ADD . /project
 WORKDIR /project

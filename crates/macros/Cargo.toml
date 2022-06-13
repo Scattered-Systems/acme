@@ -1,13 +1,12 @@
 [package]
 authors = ["FL03 <jo3mccain@icloud.com>"]
-categories = ["blockchain", "peer-to-peer", "toolkit"]
-description = "acme-macros"
+description = "Procedural macros created to support Acme, an all-in-one blockchain toolkit"
 edition = "2021"
 keywords = ["blockchain", "toolkit"]
 name = "acme-macros"
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/FL03/acme.git"
+repository = "https://github.com/FL03/acme/crates/macros"
 version = "0.1.2"
 
 [lib]

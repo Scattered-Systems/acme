@@ -1,13 +1,12 @@
 [package]
 authors = ["FL03 <jo3mccain@icloud.com>"]
-categories = ["blockchain", "peer-to-peer", "toolkit"]
-description = "acme-data"
+description = "Core package of Acme, an all-in-one developer toolkit targetting decentralized environments"
 edition = "2021"
 keywords = ["blockchain", "toolkit"]
 license = "MIT"
-name = "acme-data"
+name = "acme-core"
 readme = "README.md"
-repository = "https://github.com/FL03/acme.git"
+repository = "https://github.com/FL03/acme/crates/core"
 version = "0.1.0"
 
 [lib]
