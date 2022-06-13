@@ -11,7 +11,6 @@ pub mod types {
 
     use std::collections::HashMap;
 
-
     // Containers
     pub type Container<T> = Dict<Vec<T>>;
     pub type Dict<T> = HashMap<String, T>;
