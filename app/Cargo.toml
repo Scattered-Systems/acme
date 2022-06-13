@@ -5,6 +5,7 @@ description = ""
 edition = "2021"
 keywords = ["blockchain", "toolkit"]
 name = "app"
+publish = false
 version = "0.1.0"
 
 [[bin]]
