@@ -1,30 +1,8 @@
-pub mod models;
-pub mod proofs;
-pub mod schemas;
-pub mod structures;
-
-pub mod states {
-    pub enum BlockStates {
-        Invalid,
-        Valid,
-        Validating
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn it_works() {
+        let result = 2 + 2;
+        assert_eq!(result, 4);
     }
-
-    pub enum ChainStates {
-        Initializing,
-        Initialized,
-        Terminating,
-        Terminated
-    }
-}
-
-pub mod types {
-    use bson;
-    use chrono;
-
-    pub type DateTime = chrono::DateTime<LocalTime>;
-    pub type LocalTime = chrono::Local;
-    pub type TimeStamp = bson::DateTime;
-
-    pub type ObjectId = bson::oid::ObjectId;
 }
