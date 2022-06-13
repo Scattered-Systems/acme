@@ -10,9 +10,10 @@ repository = "https://github.com/FL03/acme.git"
 version = "0.1.13"
 
 [features]
-default = []
-full = ["data", "macros", "network"]
-data = []
+core = ["acme-core"]
+default = ["core"]
+full = ["core", "data", "macros", "network"]
+data = ["acme-data"]
 macros = ["acme-macros"]
 network= ["acme-network"]
 
@@ -45,6 +46,14 @@ sha2 = "0.10.2"
 tokio = { features = ["full"], version = "1.19.2" }
 tracing = "0.1.34"
 tracing-subscriber = "0.3.11"
+
+[dependencies.acme-core]
+optional = false
+version = "0.1.0"
+
+[dependencies.acme-data]
+optional = true
+version = "0.1.1"
 
 [dependencies.acme-macros]
 optional = true
