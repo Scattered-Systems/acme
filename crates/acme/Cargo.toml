@@ -11,7 +11,7 @@ version = "0.1.15"
 
 [features]
 core = ["acme-core"]
-default = ["core"]
+default = ["core", "libp2p/default"]
 full = ["core", "data", "macros", "network"]
 data = ["acme-data"]
 macros = ["acme-macros"]
@@ -33,7 +33,7 @@ chrono = "0.4.19"
 config = "0.13.1"
 futures = "0.3.21"
 glob = "0.3.0"
-libp2p = { features = ["dns-tokio", "tcp-tokio"], version = "0.45.1" }
+libp2p = "0.45.1"
 
 [dependencies.acme-core]
 optional = true
