@@ -2,21 +2,7 @@ use config::{Config, ConfigError, Environment, File};
 use glob::glob;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct Logger {
-    pub level: String,
-}
-
-#[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct Server {
-    pub port: u16,
-}
-
-impl std::fmt::Display for Server {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "View the app locally at http://localhost:{}", self.port)
-    }
-}
+use crate::actors::{Logger, Server};
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Settings {
@@ -45,5 +31,11 @@ impl Settings {
                 .set_override("server.port", port)?;
         }
         builder.build()?.try_deserialize()
+    }
+}
+
+impl std::fmt::Display for Settings {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Message: Successfully setup the application")
     }
 }
