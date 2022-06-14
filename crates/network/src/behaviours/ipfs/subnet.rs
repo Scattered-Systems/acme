@@ -1,21 +1,21 @@
 use libp2p::{
     gossipsub::{Gossipsub, GossipsubEvent},
     identify::{Identify, IdentifyEvent},
-    NetworkBehaviour,
     ping,
-    swarm::NetworkBehaviourEventProcess,
 };
+
+use crate::{NetworkBehaviour, NetworkBehaviourEventProcess};
 
 #[derive(NetworkBehaviour)]
 #[behaviour(event_process = true)]
-struct Privnet {
+pub struct Subnet {
     pub gossipsub: Gossipsub,
     pub identify: Identify,
     pub ping: ping::Behaviour,
 }
 
 // Define the network's identification behaviour
-impl NetworkBehaviourEventProcess<IdentifyEvent> for Privnet {
+impl NetworkBehaviourEventProcess<IdentifyEvent> for Subnet {
     // Called when `identify` produces an event.
     fn inject_event(&mut self, event: IdentifyEvent) {
         println!("identify: {:?}", event);
@@ -23,7 +23,7 @@ impl NetworkBehaviourEventProcess<IdentifyEvent> for Privnet {
 }
 
 // Implement the network's Gossipsub Behaviour
-impl NetworkBehaviourEventProcess<GossipsubEvent> for Privnet {
+impl NetworkBehaviourEventProcess<GossipsubEvent> for Subnet {
     fn inject_event(&mut self, event: GossipsubEvent) {
         match event {
             GossipsubEvent::Message {
@@ -42,7 +42,7 @@ impl NetworkBehaviourEventProcess<GossipsubEvent> for Privnet {
 }
 
 // Define the network's ping behaviour
-impl NetworkBehaviourEventProcess<ping::Event> for Privnet {
+impl NetworkBehaviourEventProcess<ping::Event> for Subnet {
     // Called when `ping` produces an event.
     fn inject_event(&mut self, event: ping::Event) {
         match event {

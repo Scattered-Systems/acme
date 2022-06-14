@@ -1,6 +1,7 @@
+pub use crate::blockchain::utils::*;
 use crate::types::{LocalTime, TimeStamp};
 
 pub fn timestamp() -> TimeStamp {
     let current_time: TimeStamp = LocalTime::now().into();
-    return current_time
+    return current_time;
 }

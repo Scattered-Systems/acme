@@ -1,19 +1,17 @@
-use libp2p::{
+use crate::{
     kad::{AddProviderOk, KademliaEvent, PeerRecord, PutRecordOk, QueryResult, Record},
-    mdns::{Mdns, MdnsEvent},
+    NetworkBehaviour,
+    NetworkBehaviourEventProcess,
+    types::Kad,
 };
-
-use crate::{NetworkBehaviour, NetworkBehaviourEventProcess, types::Kad};
 
 #[derive(NetworkBehaviour)]
 #[behaviour(event_process = true)]
-pub struct DistKV {
+pub struct Mainnet {
     pub kademlia: Kad,
-    pub mdns: Mdns,
 }
 
-// Implement a custom process for Kademlia Event's
-impl NetworkBehaviourEventProcess<KademliaEvent> for DistKV {
+impl NetworkBehaviourEventProcess<KademliaEvent> for Mainnet {
     fn inject_event(&mut self, message: KademliaEvent) {
         match message {
             KademliaEvent::OutboundQueryCompleted { result, .. } => match result {
@@ -66,16 +64,6 @@ impl NetworkBehaviourEventProcess<KademliaEvent> for DistKV {
                 _ => {}
             },
             _ => {}
-        }
-    }
-}
-
-impl NetworkBehaviourEventProcess<MdnsEvent> for DistKV {
-    fn inject_event(&mut self, event: MdnsEvent) {
-        if let MdnsEvent::Discovered(list) = event {
-            for (peer_id, multiaddr) in list {
-                self.kademlia.add_address(&peer_id, multiaddr);
-            }
         }
     }
 }
