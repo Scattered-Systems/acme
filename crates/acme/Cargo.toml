@@ -11,7 +11,7 @@ version = "0.1.17" # TODO - Current Release v0.1.16
 
 [features]
 core = ["acme-core"]
-default = ["core", "libp2p/default"]
+default = ["core"]
 full = ["core", "data", "macros", "network"]
 data = ["acme-data"]
 macros = ["acme-macros"]
@@ -37,16 +37,16 @@ libp2p = "0.45.1"
 
 [dependencies.acme-core]
 optional = true
-version = "0.1.3"
+version = "0.1.5"
 
 [dependencies.acme-data]
 optional = true
-version = "0.1.3"
+version = "0.1.5"
 
 [dependencies.acme-macros]
 optional = true
-version = "0.1.3"
+version = "0.1.5"
 
 [dependencies.acme-network]
 optional = true
-version = "0.1.3"
+version = "0.1.5"
