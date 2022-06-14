@@ -1,13 +1,10 @@
 [workspace]
-default-members = [
-    "crates/acme",  
-    "crates/core", 
-    "crates/data", 
-    "crates/macros", 
-    "crates/network"
-]
 members = [
     "apps/api",
     "apps/cli",
-    "crates/*"
+    "crates/acme",
+    "crates/core",
+    "crates/data",
+    "crates/macros",
+    "crates/network"
 ]

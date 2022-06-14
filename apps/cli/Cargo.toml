@@ -3,7 +3,11 @@ authors = ["FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)"]
 description = ""
 edition = "2021"
 keywords = ["blockchain", "toolkit"]
+license = "MIT"
 name = "acme-cli"
+publish = false
+readme = "README.md"
+repository = "https://github.com/fl03/acme.git"
 version = "0.1.0"
 
 [dependencies]
