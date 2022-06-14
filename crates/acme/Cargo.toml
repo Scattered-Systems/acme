@@ -7,7 +7,7 @@ license = "MIT"
 name = "acme"
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.16"
+version = "0.1.17" # TODO - Update package version with each merge or commit to master
 
 [features]
 core = ["acme-core"]
@@ -15,7 +15,7 @@ default = ["core", "libp2p/default"]
 full = ["core", "data", "macros", "network"]
 data = ["acme-data"]
 macros = ["acme-macros"]
-network= ["acme-network"]
+network = ["acme-network"]
 
 [lib]
 bench = false

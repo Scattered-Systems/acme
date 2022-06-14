@@ -1,13 +1,26 @@
+#[doc(inline)]
+#[cfg(feature = "default")]
+pub use acme_core;
+#[doc(inline)]
+#[cfg(feature = "data")]
+pub use acme_data;
+#[doc(inline)]
+#[cfg(feature = "macros")]
+pub use acme_macros;
+#[doc(inline)]
+#[cfg(feature = "network")]
+pub use acme_network;
+
 pub mod actors;
 pub mod controllers;
 pub mod utils;
 
 pub mod types {
+    use std::collections::HashMap;
+
     use bson;
     use chrono;
     use libp2p::{self, core::{muxing::StreamMuxerBox, transport::Boxed}};
-
-    use std::collections::HashMap;
 
     // Containers
     pub type Container<T> = Dict<Vec<T>>;
