@@ -8,7 +8,7 @@ RUN cargo build --release
 
 FROM debian:buster-slim
 
-COPY --from=builder /bin/target/release/acme-cli /bin/acme-cli
+COPY --from=builder /bin/target/release/acme-api /bin/acme-api
 
 ENV DEV_MODE=false \
     SERVER_PORT=9999
