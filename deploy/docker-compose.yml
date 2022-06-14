@@ -1,5 +1,16 @@
 version: "3.9"
 services:
+  app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: $PROJECT_SLUG
+    ports:
+      - "9999:9999"
+    restart: always
+    volumes:
+      - /data/app:/data/app
+
   cache:
     container_name: cache
     image: redis
@@ -7,8 +18,8 @@ services:
       - "6379:6379"
     restart: always
 
-  cluster:
-    container_name: cluster
+  cluster-master:
+    container_name: cluster-master
     image: ipfs/ipfs-cluster
     depends_on:
       - ipfs-master
@@ -23,7 +34,7 @@ services:
       - "9094:9094"
       - "9096:9096"
     volumes:
-      - ./artifacts/docker/data/clusters/0:/data/ipfs-cluster
+      - /data/clusters/master:/data/ipfs-cluster
 
   ipfs-master:
     container_name: ipfs-master
@@ -33,7 +44,7 @@ services:
       - "5001:5001"
       - "8080:8080"
     volumes:
-      - ./artifacts/docker/data/anchors/0:/data/ipfs
+      - /data/ipfs/master:/data/ipfs
+
 volumes:
   data:
-    driver: local
