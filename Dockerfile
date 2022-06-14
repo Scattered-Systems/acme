@@ -4,14 +4,14 @@ ADD . /project
 WORKDIR /project
 
 COPY . .
-RUN cargo build --release --package app
+RUN cargo build --release --package acme-cli
 
 FROM debian:buster-slim
 
-COPY --from=builder /project/target/release/app /project/app
+COPY --from=builder /project/target/release/acme-cli /project/acme-cli
 
 ENV DEV_MODE=false \
     PORT=9999
 
 EXPOSE ${PORT}
-CMD ["./project/app"]
+CMD ["./project/acme-cli"]

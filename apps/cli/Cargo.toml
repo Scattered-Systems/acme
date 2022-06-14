@@ -3,17 +3,11 @@ authors = ["FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)"]
 description = ""
 edition = "2021"
 keywords = ["blockchain", "toolkit"]
-name = "app"
-publish = false
+name = "acme-cli"
 version = "0.1.0"
 
-[[bin]]
-bench = false
-name = "app"
-path = "src/main.rs"
-test = false
-
 [dependencies]
+acme = { features = ["full"], version = "0.1.16" }
 clap = "3.1.18"
 config = "0.13.1"
 tokio = { features = ["full"], version = "1.19.2" }
