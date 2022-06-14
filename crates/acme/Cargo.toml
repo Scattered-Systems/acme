@@ -37,16 +37,20 @@ libp2p = "0.45.1"
 
 [dependencies.acme-core]
 optional = true
+path = "../core"
 version = "0.1.5"
 
 [dependencies.acme-data]
 optional = true
+path = "../data"
 version = "0.1.5"
 
 [dependencies.acme-macros]
 optional = true
+path = "../macros"
 version = "0.1.5"
 
 [dependencies.acme-network]
 optional = true
-version = "0.1.5"
+path = "../network"
+version = "0.1.4"

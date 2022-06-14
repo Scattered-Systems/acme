@@ -8,6 +8,7 @@ fn basic() {
 #[test]
 fn test_timestamp() {
     use acme::types::{LocalTime, TimeStamp};
+
     let timestamp: TimeStamp = LocalTime::now().into();
     assert_eq!(&timestamp, &timestamp)
 }
