@@ -1,0 +1,24 @@
+[package]
+authors = ["FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)"]
+description = ""
+edition = "2021"
+keywords = ["blockchain", "toolkit"]
+name = "acme-api"
+readme = "README.md"
+repository = "https://github.com/fl03/acme.git"
+version = "0.1.0"
+
+[dependencies]
+acme = { features = ["full"], version = "0.1.16" }
+axum = { features = ["headers"], version = "0.5.7" }
+config = "0.13.1"
+futures = "0.3.21"
+glob = "0.3.0"
+hyper = { features = ["full"], version = "0.14.19" }
+serde = { features = ["derive"], version = "1.0.137" }
+serde_json = "1.0.81"
+tokio = { features = ["full"], version = "1.19.2" }
+tower = "0.4.12"
+tower-http = { features = ["compression-br", "propagate-header", "sensitive-headers", "trace"], version = "0.3.4" }
+tracing = "0.1.35"
+tracing-subscriber = "0.3.11"
