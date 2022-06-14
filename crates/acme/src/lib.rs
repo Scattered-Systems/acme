@@ -10,9 +10,8 @@ pub use acme_macros;
 #[doc(inline)]
 #[cfg(feature = "network")]
 pub use acme_network;
-
 pub use primitives::*;
 
-mod primitives;
+pub mod primitives;
 pub mod utils;
 
