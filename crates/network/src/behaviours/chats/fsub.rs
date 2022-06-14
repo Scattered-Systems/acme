@@ -1,18 +1,18 @@
 use libp2p::{
     floodsub::{Floodsub, FloodsubEvent},
     mdns::{Mdns, MdnsEvent},
-    NetworkBehaviour,
-    swarm::NetworkBehaviourEventProcess,
 };
+
+use crate::{NetworkBehaviour, NetworkBehaviourEventProcess};
 
 #[derive(NetworkBehaviour)]
 #[behaviour(event_process = true)]
-pub struct FloodsubMdnsBehaviour {
+pub struct FSub {
     pub floodsub: Floodsub,
     pub mdns: Mdns,
 }
 
-impl NetworkBehaviourEventProcess<FloodsubEvent> for FloodsubMdnsBehaviour {
+impl NetworkBehaviourEventProcess<FloodsubEvent> for FSub {
     fn inject_event(&mut self, message: FloodsubEvent) {
         if let FloodsubEvent::Message(msg) = message {
             println!("Received: '{:?}' from {:?}", String::from_utf8_lossy(&msg.data), msg.source);
@@ -20,7 +20,7 @@ impl NetworkBehaviourEventProcess<FloodsubEvent> for FloodsubMdnsBehaviour {
     }
 }
 
-impl NetworkBehaviourEventProcess<MdnsEvent> for FloodsubMdnsBehaviour {
+impl NetworkBehaviourEventProcess<MdnsEvent> for FSub {
     fn inject_event(&mut self, event: MdnsEvent) {
         match event {
             MdnsEvent::Discovered(list) => {

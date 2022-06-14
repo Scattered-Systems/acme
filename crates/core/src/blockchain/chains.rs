@@ -1,19 +1,33 @@
 /*
     Create a fully-equipped block structure with a number of standard functions outlined below...
  */
-use super::blocks::Block;
 use serde::{Deserialize, Serialize};
 
-pub trait Chain<T> {
-    type Blocks;
+use crate::types::BoxedError;
 
-    fn setup(&mut self, settings: T) -> Self;
-    fn connect() -> Result<(), crate::types::BoxedError>;
-    fn get(&self) -> Self;
+use super::Block;
+
+pub trait ChainSpec {
+    type Configuration;
+
+    fn setup() -> Self;
+    fn connect() -> Result<(), BoxedError>;
 }
 
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct Blockchain {
+pub struct Chain {
     blocks: Vec<Block>,
+}
+
+impl ChainSpec for Chain {
+    type Configuration = ();
+
+    fn setup() -> Self {
+        todo!()
+    }
+
+    fn connect() -> Result<(), BoxedError> {
+        todo!()
+    }
 }

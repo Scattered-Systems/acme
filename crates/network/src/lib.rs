@@ -1,17 +1,18 @@
-pub mod behaviours;
-pub mod nodes;
-pub mod peers;
-pub mod providers;
-pub mod utils;
+// Import from library
+pub use libp2p::{
+    kad,
+    NetworkBehaviour,
+    swarm::{NetworkBehaviourEventProcess, Swarm, SwarmBuilder, SwarmEvent},
+    Transport,
+};
 
-pub mod types {
-    use libp2p::{core::{muxing::StreamMuxerBox, transport::Boxed}, self};
+pub use actors::{Node, Peer, Provider};
+pub use primitives::constants;
+pub use primitives::types;
 
-    pub type AuthNoiseKey = libp2p::noise::AuthenticKeypair<CryptoSpec>; // Authenticated DH Keys
-    pub type BoxedTransport = Boxed<(PeerId, StreamMuxerBox)>; // Transport Instances
-    pub type CryptoSpec = libp2p::noise::X25519Spec; // Standard Network Encryption
-    pub type NetworkAddress = libp2p::Multiaddr; // Wrapper for libp2p::Multiaddr
-    pub type NoiseKey = libp2p::noise::Keypair<CryptoSpec>;
-    pub type PeerId = libp2p::PeerId; // Wrapper for libp2p::PeerId
-    pub type PeerKey = libp2p::identity::Keypair;
-}
+mod actors;
+mod behaviours;
+mod crypto;
+mod primitives;
+mod utils;
+

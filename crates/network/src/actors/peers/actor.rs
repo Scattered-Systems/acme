@@ -1,14 +1,13 @@
-use crate::types::*;
-use libp2p::{
-    Transport,
-    core::upgrade,
-    self
-};
+use libp2p::{self, core::upgrade};
+
+use crate::{Transport, types::{AuthNoiseKey, BoxedTransport, NoiseKey, PeerId, PeerKey}};
+
+pub use super::specs::Peer as PeerSpec;
 
 #[derive(Clone, Debug)]
 pub struct Peer {
     pub id: PeerId,
-    pub key: PeerKey
+    pub key: PeerKey,
 }
 
 impl Peer {
@@ -18,21 +17,22 @@ impl Peer {
 
         Self {
             id: id.clone(),
-            key: key.clone()
+            key: key.clone(),
         }
     }
 
     pub fn from(key: PeerKey) -> Self {
         Self {
             id: PeerId::from(key.public().clone()),
-            key: key.clone()
+            key: key.clone(),
         }
     }
+
     pub fn authenticate(&self) -> AuthNoiseKey {
         let dh_keys = NoiseKey::new()
             .into_authentic(&self.key.clone())
             .expect("Signing Error: Failed to sign the static DH KeyPair");
-            return dh_keys.clone()
+        return dh_keys.clone();
     }
 
     pub fn build_transport(&self) -> BoxedTransport {
@@ -42,7 +42,13 @@ impl Peer {
             .authenticate(libp2p::noise::NoiseConfig::xx(self.authenticate()).into_authenticated())
             .multiplex(libp2p::mplex::MplexConfig::new())
             .boxed();
-        return transport
+        return transport;
+    }
+}
+
+impl PeerSpec for Peer {
+    fn setup() -> Self {
+        todo!()
     }
 }
 

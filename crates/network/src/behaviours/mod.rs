@@ -1,3 +1,8 @@
-pub mod chats;
-pub mod ipfs;
-pub mod storage;
+pub use primitives::*;
+
+mod chats;
+mod ipfs;
+mod primitives;
+mod storage;
+pub mod utils;
+

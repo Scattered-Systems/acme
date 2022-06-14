@@ -7,7 +7,7 @@ license = "MIT"
 name = "acme-data"
 readme = "README.md"
 repository = "https://github.com/FL03/acme/crates/data"
-version = "0.1.4"
+version = "0.1.5" # TODO - Current Release v0.1.4
 
 [lib]
 bench = false
@@ -20,6 +20,7 @@ path = "tests/test.rs"
 test = true
 
 [dependencies]
+acme-core = "0.1.4"
 bson = "2.3.0"
 chrono = "0.4.19"
 serde = { features = ["derive"], version = "1.0.137" }

@@ -1,3 +1,6 @@
+pub use blocks::Block;
+pub use chains::*;
+
 pub mod blocks;
 pub mod chains;
 
@@ -19,11 +22,12 @@ pub mod utils {
     use serde_json::json;
     use sha2::{Digest, Sha256};
 
+    use crate::types::TimeStamp;
+
     use super::{
         constants::DIFFICULTY_PREFIX,
-        types::{BlockData, BlockId, BlockHash, BlockNonce}
+        types::{BlockData, BlockHash, BlockId, BlockNonce},
     };
-    use crate::types::TimeStamp;
 
     // Cacluate the hash of a Block using standard Block parameters
     pub fn calculate_hash(id: BlockId, data: BlockData, nonce: BlockNonce, previous: BlockHash, timestamp: TimeStamp) -> Vec<u8> {
