@@ -46,7 +46,7 @@ jobs:
           context: apps/api
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/acme:api
-  acme-cli:
+  cli:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

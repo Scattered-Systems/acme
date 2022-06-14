@@ -1,8 +1,23 @@
 version: 2.1
-orbs: 
-  rust: circleci/rust@1.6.0
+jobs:
+  test-arm:
+    machine:
+      image: ubuntu-2004:202101-01
+    resource_class: arm.medium
+    environment:
+      RUST_STABLE: stable
+    steps:
+      - checkout
+      - run:
+          name: Install Rust
+          command: |
+            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup.sh
+            chmod +x rustup.sh
+            ./rustup.sh -y --default-toolchain $RUST_STABLE
+            source "$HOME"/.cargo/env
+      - run: cargo test --all-features -p acme
+
 workflows:
-  production:
+  ci:
     jobs:
-      - rust/lint-test-build:
-          release: true
+      - test-arm
