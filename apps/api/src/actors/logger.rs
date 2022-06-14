@@ -3,7 +3,9 @@ use serde::{Deserialize, Serialize};
 use crate::settings::Settings;
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct Logger;
+pub struct Logger {
+    pub level: String,
+}
 
 impl Logger {
     pub fn setup(settings: &Settings) {

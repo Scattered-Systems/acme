@@ -18,6 +18,15 @@ pub mod utils;
 pub mod types {
     use std::collections::HashMap;
 
+    #[doc(inline)]
+    #[cfg(feature = "default")]
+    pub use acme_core::types::*;
+    #[doc(inline)]
+    #[cfg(feature = "data")]
+    pub use acme_data::types::*;
+    #[doc(inline)]
+    #[cfg(feature = "network")]
+    pub use acme_network::types::*;
     use bson;
     use chrono;
     use libp2p::{self, core::{muxing::StreamMuxerBox, transport::Boxed}};

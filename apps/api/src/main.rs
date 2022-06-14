@@ -1,7 +1,6 @@
+pub mod actors;
 pub mod application;
-pub mod context;
 pub mod endpoints;
-pub mod logger;
 pub mod settings;
 
 #[tokio::main]

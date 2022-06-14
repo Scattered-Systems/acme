@@ -10,8 +10,25 @@ readme = "README.md"
 repository = "https://github.com/fl03/acme.git"
 version = "0.1.0"
 
+[features]
+default = ["networking"]
+
+networking = [
+    "axum/default",
+    "axum/headers",
+    "hyper/full",
+    "tokio/full",
+    "tower/default",
+    "tower-http/compression-br",
+    "tower-http/propagate-header",
+    "tower-http/sensitive-headers",
+    "tower-http/trace"
+]
+
+
 [dependencies]
 acme = { features = ["full"], version = "0.1.16" }
+async-trait = "0.1.56"
 axum = { features = ["headers"], version = "0.5.7" }
 config = "0.13.1"
 futures = "0.3.21"
