@@ -8,5 +8,4 @@ WORKDIR /app
 
 COPY . .
 RUN cargo test --workspace
-RUN cargo publish --
 RUN cargo build --release
