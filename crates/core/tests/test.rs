@@ -7,6 +7,6 @@ fn basic() {
 
 #[test]
 fn test_timestamp() {
-    let ts: acme_core::TimeStamp = acme_core::utils::timestamp();
+    let ts: acme_core::TimeStamp = acme_core::timestamp();
     assert_eq!(&ts, &ts)
 }

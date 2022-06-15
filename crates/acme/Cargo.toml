@@ -28,7 +28,23 @@ path = "tests/test.rs"
 test = true
 
 [dependencies]
-acme-core = { optional = true, path = "../core" }
-acme-data = { optional = true, path = "../data" }
-acme-macros = { optional = true, path = "../macros" }
-acme-network = { optional = true, path = "../network" }
+
+[dependencies.acme-core]
+optional = true
+path = "../core"
+version = "0.1.5"
+
+[dependencies.acme-data]
+optional = true
+path = "../data"
+version = "0.1.5"
+
+[dependencies.acme-macros]
+optional = true
+path = "../macros"
+version = "0.1.5"
+
+[dependencies.acme-network]
+optional = true
+path = "../network"
+version = "0.1.5"

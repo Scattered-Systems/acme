@@ -5,19 +5,19 @@
     Overview
 
  */
-pub use blockchain::*;
-pub use constants::*;
-pub use types::*;
-
-pub mod blockchain;
+pub mod actors;
 pub mod controllers;
 pub mod contexts;
 
-pub mod constants {
+pub use constants::*;
+pub use types::*;
+pub use utils::*;
+
+mod constants {
     pub const DIFFICULTY_PREFIX: &str = "00";
 }
 
-pub mod types {
+mod types {
     use bson;
     use chrono;
 
@@ -34,7 +34,7 @@ pub mod types {
     pub type TimeStamp = bson::DateTime;
 }
 
-pub mod utils {
+mod utils {
     use crate::types::{LocalTime, TimeStamp};
 
     pub fn timestamp() -> TimeStamp {

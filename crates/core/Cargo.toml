@@ -12,6 +12,9 @@ bench = false
 crate-type = ["cdylib", "rlib"]
 test = true
 
+[features]
+default = []
+
 [[test]]
 name = "test"
 path = "tests/test.rs"
