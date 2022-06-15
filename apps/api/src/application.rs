@@ -18,9 +18,7 @@ use crate::actors::{Context, Logger};
 pub trait Api {
     type Configuration;
 
-    async fn client() -> Result<(), BoxedError>;
-    async fn configure() -> Result<(), BoxedError>;
-    async fn server();
+    async fn configure(&self) -> Result<Self::Configuration, BoxedError>;
     async fn run() -> Result<(), BoxedError>;
 }
 
