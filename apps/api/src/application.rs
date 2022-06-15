@@ -15,17 +15,18 @@ use crate::{endpoints, settings::Settings};
 use crate::actors::{Context, Logger};
 
 #[async_trait]
-pub trait App {
-    fn setup() -> Self;
-    async fn client(&self) -> Result<axum::Router, BoxedError>;
-    async fn server(&self) -> Result<(), BoxedError>;
-    async fn run(&self) -> Result<(), BoxedError>;
+pub trait Api {
+    type Configuration;
+
+    async fn client() -> Result<(), BoxedError>;
+    async fn configure() -> Result<(), BoxedError>;
+    async fn server();
+    async fn run() -> Result<(), BoxedError>;
 }
 
 #[derive(Clone, Debug)]
 pub struct Application {
-    pub address: SocketAddr,
-    pub context: Context,
+    pub context: Context
 }
 
 impl Application {
@@ -45,11 +46,10 @@ impl Application {
         let address: SocketAddr = SocketAddr::from((host, port));
         let context = Context::new(settings.clone());
         Self {
-            address,
-            context,
+            context: Context::new(settings.clone())
         }
     }
-    pub async fn client(&self) -> Result<axum::Router, BoxedError> {
+    pub async fn client(&self) -> axum::Router {
         let client = axum::Router::new()
             .merge(endpoints::base_router())
             .layer(
@@ -71,32 +71,27 @@ impl Application {
             .layer(
                 axum::Extension(self.context.clone())
             );
-
-        Ok(
-            client
-        )
+        return client
     }
 
-    pub async fn server(&self) -> Result<(), BoxedError> {
-        let client = self.client().await?;
-        let server = axum::Server::bind(&self.address)
-            .serve(
-                client.into_make_service()
-            )
+    pub async fn server(&self) {
+        let host = [0, 0, 0, 0];
+        let port = self.context.settings.server.port.clone();
+        let address = SocketAddr::from((host, port));
+
+        println!("View the application locally at http://localhost:{}", &port);
+
+        let server = axum::Server::bind(&address)
+            .serve(self.client().await.into_make_service())
             .await
             .expect("Config Error: Failed to start the server...");
-        Ok(
-            server
-        )
     }
 
     pub async fn run(&self) -> Result<Self, BoxedError> {
-        self.server().await?;
-        println!("{}", self.context.settings.server);
+        self.server().await;
         Ok(
             Self {
-                address: self.address.clone(),
-                context: self.context.clone(),
+                context: self.context.clone()
             }
         )
     }

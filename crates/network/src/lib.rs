@@ -14,5 +14,4 @@ mod actors;
 mod behaviours;
 mod crypto;
 mod primitives;
-mod utils;
-
+pub mod utils;
