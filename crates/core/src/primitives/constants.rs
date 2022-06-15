@@ -1,2 +1,3 @@
-pub use crate::blockchain::constants::*;
 
+
+pub const DIFFICULTY_PREFIX: &str = "00";

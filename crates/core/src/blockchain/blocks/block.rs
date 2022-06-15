@@ -1,6 +1,17 @@
-use super::types::*;
-use crate::types::{LocalTime, TimeStamp};
+/*
+
+
+
+    Module Requirements:
+        - Describe the operations that may be applied to a block
+        -
+ */
 use serde::{Deserialize, Serialize};
+
+use crate::{
+    types::{BlockData, BlockHash, BlockId, BlockNonce, LocalTime, TimeStamp},
+    utils::timestamp,
+};
 
 #[derive(Clone, Debug, Deserialize, Hash, Serialize)]
 pub struct Block {
