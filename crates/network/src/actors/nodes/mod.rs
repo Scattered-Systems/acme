@@ -31,8 +31,3 @@ pub trait NodeSpecification {
 pub struct Node {
     pub appellation: String
 }
-
-
-pub mod utils {
-
-}

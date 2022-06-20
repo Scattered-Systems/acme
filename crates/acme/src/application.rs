@@ -16,6 +16,7 @@ pub struct Commands {
     pub count: u8,
 }
 
+#[derive(Clone, Debug)]
 pub struct Application;
 
 impl CLI for Application {
