@@ -6,9 +6,10 @@
         - Describe the operations that may be applied to a block
         -
  */
-use crate::{BlockData, BlockHash, BlockId, BlockNonce, TimeStamp};
-use crate::utils::timestamp;
 use serde::{Deserialize, Serialize};
+
+use crate::{BlockData, BlockHash, BlockId, BlockNonce, TimeStamp};
+use crate::timestamp;
 
 // TODO - Finish implementing the block specification
 pub trait BlockSpec {

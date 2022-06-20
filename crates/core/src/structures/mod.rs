@@ -1,6 +1,6 @@
-mod merkle;
-
 pub use merkle::*;
+
+mod merkle;
 
 pub mod constants {}
 

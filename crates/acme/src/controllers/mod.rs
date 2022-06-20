@@ -1,4 +1,4 @@
-use config::{Config, ConfigBuilder, ConfigError, builder::DefaultState};
+use config::{builder::DefaultState, Config, ConfigBuilder, ConfigError};
 
 pub trait ConfiguratorSpec {
     type Actor;

@@ -4,11 +4,11 @@
         Scaffold the framework for the implementation of highly optimized, zk-Knowledge blockchains
         that remain EVM compatible
  */
-mod blocks;
-mod chains;
-
 pub use blocks::*;
 pub use chains::*;
+
+mod blocks;
+mod chains;
 
 pub const DIFFICULTY_PREFIX: &str = "00";
 
@@ -24,8 +24,8 @@ pub mod utils {
     use sha2::{Digest, Sha256};
 
     use crate::TimeStamp;
-    use super::{DIFFICULTY_PREFIX, BlockData, BlockId, BlockNonce, BlockHash};
 
+    use super::{BlockData, BlockHash, BlockId, BlockNonce, DIFFICULTY_PREFIX};
 
     // Calculate the hash of a Block using standard Block parameters
     pub fn calculate_hash(id: BlockId, data: BlockData, nonce: BlockNonce, previous: BlockHash, timestamp: TimeStamp) -> Vec<u8> {
