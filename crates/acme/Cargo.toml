@@ -54,17 +54,17 @@ tracing-subscriber = "0.3.11"
 [dependencies.acme-core]
 optional = true
 path = "../core"
-version = "0.1.8"
+version = "0.1.9"
 
 [dependencies.acme-macros]
 optional = true
 path = "../macros"
-version = "0.1.8"
+version = "0.1.9"
 
 [dependencies.acme-network]
 optional = true
 path = "../network"
-version = "0.1.8"
+version = "0.1.9"
 
 [net]
 git-fetch-with-cli = true
