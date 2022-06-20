@@ -7,10 +7,10 @@
             - Generally describe the fundamental actors that are being leveraged throughout
  */
 
-pub use blockchain::*;
+pub use chains::*;
 pub use loggers::*;
 
-mod blockchain;
+mod chains;
 mod loggers;
 
 pub trait Actor {

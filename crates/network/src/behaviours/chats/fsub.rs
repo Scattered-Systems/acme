@@ -1,9 +1,9 @@
 use libp2p::{
     floodsub::{Floodsub, FloodsubEvent},
     mdns::{Mdns, MdnsEvent},
+    NetworkBehaviour,
+    swarm::NetworkBehaviourEventProcess,
 };
-
-use crate::{NetworkBehaviour, NetworkBehaviourEventProcess};
 
 #[derive(NetworkBehaviour)]
 #[behaviour(event_process = true)]

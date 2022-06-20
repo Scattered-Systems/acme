@@ -2,9 +2,9 @@ name: Rust
 
 on:
   push:
-    branches: ["*", "!dev"]
+    branches: [ "master", "latest" ]
   pull_request:
-    branches: ["*", "!dev"]
+    branches: [ "master", "latest" ]
 
 env:
   PROJECT_SLUG: acme
