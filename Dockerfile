@@ -18,4 +18,5 @@ COPY --from=builder /project/target/release/acme-cli /acme-cli
 EXPOSE ${PORT}/tcp
 EXPOSE ${PORT}/udp
 
+
 ENTRYPOINT ["./acme-cli"]
