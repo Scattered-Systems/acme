@@ -3,6 +3,7 @@
     Creator: FL03 <jo3mccain@icloud.com>
     Description:
  */
+
 #[doc(inline)]
 #[cfg(feature = "core")]
 pub use acme_core::*;
@@ -12,15 +13,26 @@ pub use acme_macros::*;
 #[doc(inline)]
 #[cfg(feature = "network")]
 pub use acme_network::*;
+#[doc(inline)]
+#[cfg(feature = "default")]
 pub use actors::*;
+#[doc(inline)]
+#[cfg(feature = "default")]
+pub use application::*;
+#[doc(inline)]
+#[cfg(feature = "default")]
 pub use common::*;
+#[doc(inline)]
+#[cfg(feature = "default")]
 pub use controllers::*;
+#[doc(inline)]
+#[cfg(feature = "default")]
 pub use utils::*;
 
 pub mod application;
 pub mod actors;
 pub mod controllers;
-pub mod utils;
+mod utils;
 
 mod common {
     use bson;

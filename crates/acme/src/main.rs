@@ -6,7 +6,7 @@
         for building scalable, user-centric dApps.
  */
 
-use acme::application::{Application, CLI};
+use acme::{Application, CLI};
 
 fn main() {
     let args = Application::commands(&Application);
