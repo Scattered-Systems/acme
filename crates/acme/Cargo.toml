@@ -15,12 +15,19 @@ name = "acme-bin"
 path = "src/main.rs"
 test = false
 
+
 [features]
 core = ["acme-core"]
 default = ["core"]
 full = ["core", "macros", "network"]
 macros = ["acme-macros"]
 network = ["acme-network"]
+
+[[bin]]
+bench = false
+name = "app"
+path = "src/main.rs"
+test = false
 
 [lib]
 bench = false
@@ -48,6 +55,7 @@ tokio = { features = ["full"], version = "1.19.2" }
 tower = "0.4.13"
 tracing = "0.1.35"
 tracing-subscriber = "0.3.11"
+
 
 [dependencies.acme-core]
 optional = true
