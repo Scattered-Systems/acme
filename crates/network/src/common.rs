@@ -1,20 +1,12 @@
 pub use constants::*;
 pub use types::*;
 
-mod constants {
-    pub use crate::actors::constants::*;
-    pub use crate::behaviours::constants::*;
-    pub use crate::crypto::constants::*;
-}
+mod constants {}
 
 mod types {
     use libp2p::{self, core::{muxing::StreamMuxerBox, transport::Boxed}};
 
     pub use libp2p::PeerId;
-
-    pub use crate::actors::constants::*;
-    pub use crate::behaviours::types::*;
-    pub use crate::crypto::types::*;
 
     // Authenticated DH Keys
     pub type AuthNoiseKey = libp2p::noise::AuthenticKeypair<CryptoSpec>;
@@ -22,6 +14,7 @@ mod types {
     pub type BoxedTransport = Boxed<(PeerId, StreamMuxerBox)>;
     // Standard Network Encryption Specification
     pub type CryptoSpec = libp2p::noise::X25519Spec;
+    pub type Kad = libp2p::kad::Kademlia<libp2p::kad::store::MemoryStore>;
     // Wrapper for Multiaddr
     pub type NetworkAddress = libp2p::Multiaddr;
     // Wrapper for Noise Keypair

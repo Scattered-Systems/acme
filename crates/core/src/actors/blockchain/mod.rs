@@ -10,13 +10,22 @@ mod chains;
 pub use blocks::*;
 pub use chains::*;
 
+pub const DIFFICULTY_PREFIX: &str = "00";
+
+pub type BlockData = String;
+pub type BlockId = crate::ObjectId;
+pub type BlockHash = String;
+pub type BlockNonce = u64;
+
 
 pub mod utils {
     use log::info;
     use serde_json::json;
     use sha2::{Digest, Sha256};
 
-    use crate::{DIFFICULTY_PREFIX, BlockData, BlockHash, BlockId, BlockNonce, TimeStamp};
+    use crate::TimeStamp;
+    use super::{DIFFICULTY_PREFIX, BlockData, BlockId, BlockNonce, BlockHash};
+
 
     // Calculate the hash of a Block using standard Block parameters
     pub fn calculate_hash(id: BlockId, data: BlockData, nonce: BlockNonce, previous: BlockHash, timestamp: TimeStamp) -> Vec<u8> {
