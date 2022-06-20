@@ -7,7 +7,7 @@ license = "MIT"
 name = "acme"
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.20" # TODO - Current Release v0.1.19
+version = "0.1.21" # TODO - Current Release v0.1.20
 
 [features]
 core = ["acme-core"]
@@ -16,6 +16,12 @@ full = ["core", "data", "macros", "network"]
 data = ["acme-data"]
 macros = ["acme-macros"]
 network = ["acme-network"]
+
+[[bin]]
+bench = false
+name = "app"
+path = "src/main.rs"
+test = false
 
 [lib]
 bench = false
@@ -26,26 +32,28 @@ test = true
 
 
 [dependencies]
+clap = { features = ["derive"], version = "3.2.5" }
+
 
 [dependencies.acme-core]
 optional = true
 path = "../core"
-version = "0.1.6"
+version = "0.1.7"
 
 [dependencies.acme-data]
 optional = true
 path = "../data"
-version = "0.1.6"
+version = "0.1.7"
 
 [dependencies.acme-macros]
 optional = true
 path = "../macros"
-version = "0.1.6"
+version = "0.1.7"
 
 [dependencies.acme-network]
 optional = true
 path = "../network"
-version = "0.1.6"
+version = "0.1.7"
 
 [[test]]
 name = "test"
