@@ -1,10 +1,10 @@
 use libp2p::{
     gossipsub::{Gossipsub, GossipsubEvent},
     identify::{Identify, IdentifyEvent},
+    NetworkBehaviour,
     ping,
+    swarm::NetworkBehaviourEventProcess,
 };
-
-use crate::{NetworkBehaviour, NetworkBehaviourEventProcess};
 
 #[derive(NetworkBehaviour)]
 #[behaviour(event_process = true)]

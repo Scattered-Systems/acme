@@ -1,9 +1,10 @@
-use crate::{
+use libp2p::{
     kad::{AddProviderOk, KademliaEvent, PeerRecord, PutRecordOk, QueryResult, Record},
     NetworkBehaviour,
-    NetworkBehaviourEventProcess,
-    Kad,
+    swarm::NetworkBehaviourEventProcess,
 };
+
+use crate::Kad;
 
 #[derive(NetworkBehaviour)]
 #[behaviour(event_process = true)]

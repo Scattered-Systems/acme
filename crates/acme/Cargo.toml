@@ -11,7 +11,7 @@ version = "0.1.22" # TODO - Current Release v0.1.21
 
 [[bin]]
 bench = false
-name = "acme-bin"
+name = "acme-cli"
 path = "src/main.rs"
 test = false
 
@@ -52,17 +52,14 @@ tracing-subscriber = "0.3.11"
 
 [dependencies.acme-core]
 optional = true
-path = "../core"
 version = "0.1.7"
 
 [dependencies.acme-macros]
 optional = true
-path = "../macros"
 version = "0.1.7"
 
 [dependencies.acme-network]
 optional = true
-path = "../network"
 version = "0.1.7"
 
 [[test]]

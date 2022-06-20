@@ -3,9 +3,9 @@
     Module: Peers
 
  */
-use libp2p::{self, core::upgrade};
+use libp2p::{self, core::upgrade, Transport};
 
-use crate::{Transport, AuthNoiseKey, BoxedTransport, NoiseKey, PeerId, PeerKey};
+use crate::{AuthNoiseKey, BoxedTransport, NoiseKey, PeerId, PeerKey};
 
 pub trait PeerSpecification {
     type Client;

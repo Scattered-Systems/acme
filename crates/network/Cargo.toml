@@ -16,6 +16,7 @@ test = true
 
 [features]
 default = [
+    "async",
     "p2p"
 ]
 async = ["tokio/full"]
@@ -27,7 +28,6 @@ path = "tests/test.rs"
 test = true
 
 [dependencies]
-acme-core = "0.1.4"
 hyper = { features = ["full"], version = "0.14.19" }
 libp2p = { features = ["dns-tokio", "tcp-tokio"], version = "0.45.1" }
 log = "0.4.17"

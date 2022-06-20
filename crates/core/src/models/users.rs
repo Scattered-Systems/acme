@@ -1,6 +1,5 @@
+use bson::oid::ObjectId;
 use serde::{Deserialize, Serialize};
-
-use crate::ObjectId;
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Name {
