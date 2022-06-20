@@ -14,9 +14,12 @@ pub struct Commands {
 
     #[clap(short, long, value_parser, default_value_t = 1)]
     pub count: u8,
+
+    #[clap(long, short, value_parser, default_value = false)]
+    pub scaffold: String
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct Application;
 
 impl CLI for Application {
