@@ -66,6 +66,9 @@ optional = true
 path = "../network"
 version = "0.1.8"
 
+[net]
+git-fetch-with-cli = true
+
 [package.metadata.docs.rs]
 all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
