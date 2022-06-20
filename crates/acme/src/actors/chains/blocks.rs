@@ -1,29 +1,26 @@
 /*
-
-
-
-    Module Requirements:
-        - Describe the operations that may be applied to a block
-        -
+    Appellation: blocks
+    Creator:
+    Concepts:
+    Description:
  */
 use serde::{Deserialize, Serialize};
 
 use crate::{BlockData, BlockHash, BlockId, BlockNonce, TimeStamp};
 use crate::timestamp;
 
-// TODO - Finish implementing the block specification
 pub trait BlockSpec {
-    type Index;
     type Data;
+    type Index;
     type Hash;
     type Nonce;
     type Timestamp;
+    type Transaction;
 
-    fn calculate_hash(&self) -> Vec<u8>;
-    fn create(&self, data: Self::Data, nonce: Self::Nonce, previous: Self::Hash) -> Self;
-    fn describe(&self);
-
-    fn fetch(&self, index: Self::Index) -> Self;
+    fn actor(&self) -> Self::Hash; // Caclulate the block hash
+    fn consensus(&self) -> Self; // Implement the block's consensus mechanism
+    fn constructor(&self, data: Self::Data, nonce: Self::Nonce, previous: Self::Hash) -> Self;
+    fn descriptor(&self, id: Self::Index) -> Self; // Fetch a block
 }
 
 #[derive(Clone, Debug, Deserialize, Hash, Serialize)]
