@@ -15,19 +15,12 @@ name = "acme-bin"
 path = "src/main.rs"
 test = false
 
-
 [features]
 core = ["acme-core"]
 default = ["core"]
 full = ["core", "macros", "network"]
 macros = ["acme-macros"]
 network = ["acme-network"]
-
-[[bin]]
-bench = false
-name = "app"
-path = "src/main.rs"
-test = false
 
 [lib]
 bench = false
