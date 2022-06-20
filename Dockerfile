@@ -9,8 +9,7 @@ RUN cargo test --workspace
 
 FROM builder-base as builder
 
-RUN cargo build --release -p app && \
-    cargo package -p acme --features full && \
+RUN cargo build --release -p acme && \
     cargo publish --
 
 FROM debian:buster-slim as application
@@ -18,7 +17,7 @@ FROM debian:buster-slim as application
 ENV DEV_MODE = false \
     PORT = 9090
 
-COPY --from=builder /bin/target/release/app /bin/app
+COPY --from=builder /bin/target/release/acme-bin /bin/acme-bin
 
 EXPOSE ${SERVER_PORT}
 ENTRYPOINT ["./app"]

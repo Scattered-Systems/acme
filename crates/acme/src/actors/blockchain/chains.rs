@@ -1,17 +1,19 @@
-use super::Block;
+use serde::{Deserialize, Serialize};
+
 use crate::errors::BoxedError;
 
-use serde::{Deserialize, Serialize};
+use super::Block;
 
 pub enum ChainStates {
     Appending,
     Computing,
     Connecting,
-    Determining
+    Determining,
 }
 
 pub trait ChainSpecification {
-    type Appellation; // Define the Chain's name
+    type Appellation;
+    // Define the Chain's name
     type Conduct; // Define the standard behaviour for the Chain
     type Configuration; // Type of configuration for the Chain
     type Data; // Define the standard data structure to be use throughout the Chain
