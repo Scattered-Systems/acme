@@ -12,10 +12,12 @@ RUN cargo build --release -p acme
 
 FROM debian:buster-slim as application
 
-ENV DEV_MODE = false \
-    PORT = 9090
+ENV DEV_MODE=false \
+    PORT=8080
 
 COPY --from=builder /bin/target/release/acme-bin /bin/acme-bin
 
-EXPOSE ${SERVER_PORT}
-ENTRYPOINT ["./app"]
+EXPOSE ${PORT}/tcp
+EXPOSE ${PORT}/udp
+
+ENTRYPOINT ["./acme-bin"]
