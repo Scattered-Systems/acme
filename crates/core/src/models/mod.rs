@@ -24,9 +24,3 @@ pub trait Model {
     type Context;
     type Database;
 }
-
-pub mod constants {}
-
-pub mod types {}
-
-pub mod utils {}

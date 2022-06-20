@@ -23,7 +23,22 @@ pub trait ChainSpecification {
 }
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
-pub struct Chain {
+pub struct Blockchain {
     blocks: Vec<Block>,
+}
+
+impl ChainSpecification for Blockchain {
+    type Appellation = String;
+    type Conduct = ();
+    type Configuration = ();
+    type Data = ();
+
+    fn activate(appellation: Self::Appellation, configuration: Self::Configuration) -> Self {
+        todo!()
+    }
+
+    fn client(&mut self) -> Result<(), BoxedError> {
+        todo!()
+    }
 }
 

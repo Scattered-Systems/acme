@@ -3,7 +3,7 @@
     Module:
 
  */
-use crate::{BoxedTransport, actors::Peer};
+use crate::{actors::Peer, BoxedTransport};
 
 pub trait ProviderSpecification {
     type Actor;
@@ -31,6 +31,3 @@ impl std::fmt::Display for Provider {
         write!(f, "Provider(peers=[{}])", self.peer)
     }
 }
-
-
-pub mod utils {}

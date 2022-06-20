@@ -61,5 +61,3 @@ impl std::fmt::Display for Peer {
         write!(f, "Peer(id={})", self.id)
     }
 }
-
-pub mod utils {}
