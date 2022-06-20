@@ -35,10 +35,8 @@ pub mod controllers;
 mod utils;
 
 mod common {
-    use bson;
     pub use bson::DateTime as TimeStamp;
     pub use bson::oid::ObjectId;
-    use chrono;
     pub use chrono::Local as LocalTime;
 
     pub const DIFFICULTY_PREFIX: &str = "00";
@@ -47,6 +45,9 @@ mod common {
     pub type BlockId = ObjectId;
     pub type BlockHash = String;
     pub type BlockNonce = u64;
+
+    pub type Container<T = String> = Dictionary<Vec<T>>;
+    pub type Dictionary<T = String> = std::collections::HashMap<String, T>;
 
     pub enum Dates {
         Datetime(chrono::DateTime<chrono::Local>),
@@ -63,7 +64,8 @@ pub mod errors {
     pub use config::ConfigError;
 
     pub enum Errors {
-        Default(BoxedError)
+        AsyncError,
+        BoxedError,
     }
 
     pub type AsyncError = Box<dyn Error + Send + Sync + 'static>;
