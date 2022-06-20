@@ -1,4 +1,3 @@
-# TODO - Deconstruct the environment into seperate build-stages for external targetting
 FROM jo3mccain/rusty as builder-base
 
 ADD . /project
@@ -9,8 +8,7 @@ RUN cargo test --workspace
 
 FROM builder-base as builder
 
-RUN cargo build --release -p acme && \
-    cargo publish --
+RUN cargo build --release -p acme
 
 FROM debian:buster-slim as application
 
