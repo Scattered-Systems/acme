@@ -1,23 +1,21 @@
-FROM jo3mccain/rusty as builder-base
+FROM jo3mccain/rusty as builder
 
 ADD . /project
 WORKDIR /project
 
 COPY . .
-RUN cargo test --workspace
-
-FROM builder-base as builder
-
-RUN cargo build --release -p acme
+RUN cargo test -p acme --all-features && \
+    cargo package -p acme --all-features && \
+    cargo build --release -p acme
 
 FROM debian:buster-slim as application
 
 ENV DEV_MODE=false \
     PORT=8080
 
-COPY --from=builder /bin/target/release/acme-bin /bin/acme-bin
+COPY --from=builder /project/target/release/acme-cli /acme-cli
 
 EXPOSE ${PORT}/tcp
 EXPOSE ${PORT}/udp
 
-ENTRYPOINT ["./acme-bin"]
+ENTRYPOINT ["./acme-cli"]
