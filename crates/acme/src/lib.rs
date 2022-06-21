@@ -1,8 +1,19 @@
 /*
     Appellation: acme
+    Context: Library
     Creator: FL03 <jo3mccain@icloud.com>
     Description:
  */
+pub mod actors;
+pub mod application;
+pub mod controllers;
+pub mod utils;
+
+pub use actors::*;
+pub use application::*;
+pub use common::*;
+pub use controllers::*;
+pub use utils::*;
 
 #[doc(inline)]
 #[cfg(feature = "core")]
@@ -13,28 +24,8 @@ pub use acme_macros::*;
 #[doc(inline)]
 #[cfg(feature = "network")]
 pub use acme_network::*;
-#[doc(inline)]
-#[cfg(feature = "default")]
-pub use actors::*;
-#[doc(inline)]
-#[cfg(feature = "default")]
-pub use application::*;
-#[doc(inline)]
-#[cfg(feature = "default")]
-pub use common::*;
-#[doc(inline)]
-#[cfg(feature = "default")]
-pub use controllers::*;
-#[doc(inline)]
-#[cfg(feature = "default")]
-pub use utils::*;
 
-pub mod application;
-pub mod actors;
-pub mod controllers;
-mod utils;
-
-mod common {
+pub mod common {
     pub use bson::DateTime as TimeStamp;
     pub use bson::oid::ObjectId;
     pub use chrono::Local as LocalTime;
