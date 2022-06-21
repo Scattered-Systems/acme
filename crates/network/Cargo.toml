@@ -1,8 +1,8 @@
 [package]
-authors = ["FL03 <jo3mccain@icloud.com>"]
-description = "Designed around libp2p and tokio"
+authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
+description = "acme-network is a featured package of acme, designed around libp2p and tokio in support of SCSYS."
 edition = "2021"
-keywords = ["blockchain", "toolkit"]
+keywords = ["asynchronous", "blockchain", "peer-to-peer", "scsys"]
 name = "acme-network"
 license = "MIT"
 readme = "README.md"

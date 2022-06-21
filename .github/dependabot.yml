@@ -9,6 +9,10 @@ updates:
     schedule:
       interval: daily
   - package-ecosystem: cargo
+    directory: "crates/derive"
+    schedule:
+      interval: daily
+  - package-ecosystem: cargo
     directory: "crates/macros"
     schedule:
       interval: daily

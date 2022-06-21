@@ -4,12 +4,12 @@ use libp2p::{
     swarm::NetworkBehaviourEventProcess,
 };
 
-use crate::Kad;
+use crate::KademliaMS;
 
 #[derive(NetworkBehaviour)]
 #[behaviour(event_process = true)]
 pub struct Mainnet {
-    pub kademlia: Kad,
+    pub kademlia: KademliaMS,
 }
 
 impl NetworkBehaviourEventProcess<KademliaEvent> for Mainnet {
