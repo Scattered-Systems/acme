@@ -1,63 +1,24 @@
 /*
-    Author: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
-    Module: Peers
-
+    Appellation: Peers
+    Context: Module
+    Creator: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
+    Description:
  */
-use libp2p::{self, core::upgrade, Transport};
+mod peer;
+pub use peer::*;
 
-use crate::{AuthNoiseKey, BoxedTransport, NoiseKey, PeerId, PeerKey};
 
-pub trait PeerSpecification {
-    type Client;
+pub type PeerError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
-    fn create(&self) -> Self;
+pub trait PeerSpec {
+    type Appellation;
+    type Configuration;
+    type Container;
+    type Data;
 
+    fn actor(&self) -> Result<Self::Container, PeerError>;
+    fn configure(&self, configuration: Self::Configuration) -> Self;
+    fn constructor(configuration: Self::Configuration) -> Self;
+    fn datastore(data: Self::Data) -> Result<Self::Container, PeerError>;
 }
 
-#[derive(Clone, Debug)]
-pub struct Peer {
-    pub id: PeerId,
-    pub key: PeerKey,
-}
-
-impl Peer {
-    pub fn new() -> Self {
-        let key = PeerKey::generate_ed25519();
-        let id = PeerId::from(key.public().clone());
-
-        Self {
-            id: id.clone(),
-            key: key.clone(),
-        }
-    }
-
-    pub fn from(key: PeerKey) -> Self {
-        Self {
-            id: PeerId::from(key.public().clone()),
-            key: key.clone(),
-        }
-    }
-
-    pub fn authenticate(&self) -> AuthNoiseKey {
-        let dh_keys = NoiseKey::new()
-            .into_authentic(&self.key.clone())
-            .expect("Signing Error: Failed to sign the static DH KeyPair");
-        return dh_keys.clone();
-    }
-
-    pub fn build_transport(&self) -> BoxedTransport {
-        let transport = libp2p::tcp::TokioTcpConfig::new()
-            .nodelay(true)
-            .upgrade(upgrade::Version::V1)
-            .authenticate(libp2p::noise::NoiseConfig::xx(self.authenticate()).into_authenticated())
-            .multiplex(libp2p::mplex::MplexConfig::new())
-            .boxed();
-        return transport;
-    }
-}
-
-impl std::fmt::Display for Peer {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Peer(id={})", self.id)
-    }
-}

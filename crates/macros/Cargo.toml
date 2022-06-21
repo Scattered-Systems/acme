@@ -1,12 +1,12 @@
 [package]
-authors = ["FL03 <jo3mccain@icloud.com>"]
+authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
 description = "Procedural macros created to support Acme, an all-in-one blockchain toolkit"
 edition = "2021"
-keywords = ["scsys"]
+keywords = ["blockchain", "proc-macros", "scsys"]
 name = "acme-macros"
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/FL03/acme/crates/macros"
+repository = "https://github.com/FL03/acme"
 version = "0.1.10" # TODO - Current Release v0.1.10
 
 [lib]
@@ -16,6 +16,7 @@ test = true
 
 [features]
 default = []
+
 
 [[test]]
 name = "test"

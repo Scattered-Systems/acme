@@ -1,8 +1,3 @@
 [workspace]
 default-members = ["crates/acme"]
-members = [
-    "crates/acme",
-    "crates/core",
-    "crates/macros",
-    "crates/network"
-]
+members = ["crates/*"]

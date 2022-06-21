@@ -4,16 +4,16 @@
     Context:
     Description:
  */
+pub mod actors;
+pub mod behaviours;
+pub mod consensus;
+pub mod contracts;
 
 pub use actors::*;
 pub use behaviours::*;
 pub use consensus::*;
 pub use constants::*;
 pub use types::*;
-
-pub mod actors;
-pub mod behaviours;
-pub mod consensus;
 
 mod constants {}
 
@@ -28,7 +28,7 @@ mod types {
     pub type AuthNoiseKey = libp2p::noise::AuthenticKeypair<CryptoSpec>;
     // Boxed Transport
     pub type BoxedTransport = Boxed<(PeerId, StreamMuxerBox)>;
-    pub type Kad = libp2p::kad::Kademlia<libp2p::kad::store::MemoryStore>;
+    pub type KademliaMS = libp2p::kad::Kademlia<libp2p::kad::store::MemoryStore>;
     // Wrapper for Noise Keypair
     pub type NoiseKey = libp2p::noise::Keypair<CryptoSpec>;
 }

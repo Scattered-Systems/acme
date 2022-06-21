@@ -1,9 +1,12 @@
 /*
-    Author: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
-    Module:
+    Appellation: Nodes
+    Context: Module
+    Creator: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
+    Description:
 
  */
-
+mod node;
+pub use node::*;
 
 pub enum Nodes {
     Full,
@@ -15,7 +18,7 @@ pub enum NodeStates {
     Controlling
 }
 
-pub trait NodeSpecification {
+pub trait NodeSpec {
     type Appellation;
     type Client;
     type Configuration;
@@ -24,10 +27,6 @@ pub trait NodeSpecification {
     fn activate(appellation: Self::Appellation) -> Self;
     fn configure(configuration: Self::Configuration) -> Self;
     fn connect(&mut self) -> Self::Client;
-    fn destroy(&mut self) -> Self::Data;
+    fn describe(&mut self) -> Self::Data;
 }
 
-#[derive(Clone, Debug)]
-pub struct Node {
-    pub appellation: String
-}

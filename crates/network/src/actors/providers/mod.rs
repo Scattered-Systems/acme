@@ -1,33 +1,21 @@
 /*
-    Author: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
-    Module:
+    Appellation: Providers
+    Context: Module
+    Creator: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
+    Description:
 
  */
-use crate::{actors::Peer, BoxedTransport};
+mod provider;
+pub use provider::*;
 
-pub trait ProviderSpecification {
+pub trait ProviderSpec {
     type Actor;
-    type Client;
-    type Conduit;
+    type Configuration;
+    type Context;
     type Data;
 
-    fn activate(&self) -> Self;
+    fn authenticate(&self) -> Self;
+    fn configure(&self, context: Self::Context) -> Self::Context;
+    fn constructor(actor: Self::Actor) -> Self;
 }
 
-#[derive(Debug)]
-pub struct Provider {
-    pub peer: Peer,
-    pub transport: BoxedTransport,
-}
-
-impl Provider {
-    pub fn new(peer: &Peer) -> Self {
-        Self { peer: peer.clone(), transport: Peer::build_transport(&peer) }
-    }
-}
-
-impl std::fmt::Display for Provider {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Provider(peers=[{}])", self.peer)
-    }
-}

@@ -22,6 +22,18 @@ jobs:
         run: cargo test -p acme-core
       - name: Build and Push
         run: cargo publish -p acme-core
+  acme-derive:
+    env:
+      CARGO_PKG_NAME: acme-derive
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login
+        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Test
+        run: cargo test -p $CARGO_PKG_NAME -v --color $CARGO_TERM_COLOR
+      - name: Build and Push
+        run: cargo publish -p $CARGO_PKG_NAME --all-features
   acme-macros:
     runs-on: ubuntu-latest
     steps:
