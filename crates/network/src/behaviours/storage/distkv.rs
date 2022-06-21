@@ -5,12 +5,12 @@ use libp2p::{
     swarm::NetworkBehaviourEventProcess,
 };
 
-use crate::Kad;
+use crate::KademliaMS;
 
 #[derive(NetworkBehaviour)]
 #[behaviour(event_process = true)]
 pub struct DistKV {
-    pub kademlia: Kad,
+    pub kademlia: KademliaMS,
     pub mdns: Mdns,
 }
 

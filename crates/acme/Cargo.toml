@@ -1,8 +1,8 @@
 [package]
-authors = ["FL03 <jo3mccain@icloud.com>"]
+authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
 description = "A Rust library created to serve the Scattered-Systems Ecosystem"
 edition = "2021"
-keywords = ["scsys", "blockchain", "toolkit"]
+keywords = ["blockchain", "cli", "cryptography", "scsys"]
 license = "MIT"
 name = "acme"
 readme = "README.md"
@@ -18,7 +18,8 @@ test = false
 [features]
 core = ["acme-core"]
 default = ["core"]
-full = ["core", "macros", "network"]
+derive = ["acme-derive"]
+full = ["default", "derive", "macros", "network"]
 macros = ["acme-macros"]
 network = ["acme-network"]
 
@@ -51,10 +52,17 @@ tower = "0.4.13"
 tracing = "0.1.35"
 tracing-subscriber = "0.3.11"
 
+# acme featured dependencies
+# TODO - Update the versioning for acme's featured dependencies
 [dependencies.acme-core]
 optional = true
 path = "../core"
 version = "0.1.10"
+
+[dependencies.acme-derive]
+optional = true
+path = "../derive"
+version = "0.1.0"
 
 [dependencies.acme-macros]
 optional = true
