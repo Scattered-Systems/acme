@@ -10,10 +10,8 @@ repository = "https://github.com/FL03/acme.git"
 version = "0.1.25" # TODO - Current Release v0.1.24
 
 [[bin]]
-bench = false
 name = "acme-cli"
-path = "src/main.rs"
-test = false
+path = "bin/main.rs"
 
 [features]
 core = ["acme-core"]
@@ -73,9 +71,6 @@ version = "0.1.10"
 optional = true
 path = "../network"
 version = "0.1.10"
-
-[net]
-git-fetch-with-cli = true
 
 [package.metadata.docs.rs]
 all-features = true
