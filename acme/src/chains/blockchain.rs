@@ -10,20 +10,6 @@ pub enum ChainStates {
     Determining,
 }
 
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
-pub struct ChainAppellation {
-    pub name: String,
-    pub slug: String
-}
-
-impl ChainAppellation {
-    pub fn constructor(name: String) -> Self {
-
-        Self {
-            name: name.clone(), slug: name.to_lowercase().clone()
-        }
-    }
-}
 
 pub trait ChainSpec {
     type Appellation; // Define the Chain's name
