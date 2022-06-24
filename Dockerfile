@@ -4,9 +4,8 @@ ADD . /project
 WORKDIR /project
 
 COPY . .
-RUN cargo test -p acme --all-features && \
-    cargo package -p acme --all-features && \
-    cargo build --release -p acme
+RUN cargo test --all-features && \
+    cargo build --release --workspace
 
 FROM debian:buster-slim as application
 
