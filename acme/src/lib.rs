@@ -5,12 +5,10 @@
     Description:
  */
 pub mod actors;
-pub mod application;
 pub mod controllers;
 pub mod utils;
 
 pub use actors::*;
-pub use application::*;
 pub use common::*;
 pub use controllers::*;
 pub use utils::*;
