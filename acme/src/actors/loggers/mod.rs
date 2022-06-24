@@ -1,6 +1,6 @@
-pub use logger::*;
+pub(crate) mod logger;
 
-pub mod logger;
+pub use super::loggers::*;
 
 pub enum Loggers {
     Debug,

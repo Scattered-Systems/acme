@@ -4,14 +4,20 @@
     Creator: FL03 <jo3mccain@icloud.com>
     Description:
  */
-pub mod actors;
-pub mod controllers;
-pub mod utils;
+pub(crate) mod actors;
+pub(crate) mod chains;
+pub(crate) mod controllers;
+pub(crate) mod utils;
 
-pub use actors::*;
-pub use common::*;
-pub use controllers::*;
-pub use utils::*;
+pub use crate::{
+    actors::*,
+    chains::*,
+    common::*,
+    controllers::*,
+    errors::*,
+    utils::*
+};
+
 
 #[doc(inline)]
 #[cfg(feature = "core")]
@@ -23,7 +29,7 @@ pub use acme_macros::*;
 #[cfg(feature = "network")]
 pub use acme_network::*;
 
-pub mod common {
+pub(crate) mod common {
     pub use bson::DateTime as TimeStamp;
     pub use bson::oid::ObjectId;
     pub use chrono::Local as LocalTime;
@@ -47,7 +53,7 @@ pub mod common {
     pub type DateTime = chrono::DateTime<LocalTime>;
 }
 
-pub mod errors {
+pub(crate) mod errors {
     use std::error::Error;
 
     pub use config::ConfigError;
