@@ -17,3 +17,8 @@ use proc_macro::TokenStream;
 pub fn derive_sample_function(_item: TokenStream) -> TokenStream {
     "fn sample() -> u16 { 18 }".parse().unwrap()
 }
+
+#[proc_macro_derive(Block)]
+pub fn derive_block(_item: Tokenstream) -> TokenStream {
+    "".parse().unwrap()
+}
