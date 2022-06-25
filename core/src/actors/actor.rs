@@ -8,12 +8,12 @@
 
 pub trait ActorSpec {
     type Actor;
-    type Client;
-    type Configuration;
+    type Config;
+    type Context;
     type Data;
 
-    fn authenticate(&self, client: Self::Client) -> Self::Client;
-    fn configure(&self, configuration: Self::Configuration) -> Self::Configuration;
-    fn constructor(&self) -> Self::Actor;
-    fn datastream(&self, destination: String) -> Self::Data;
+    fn actor() -> Self::Actor;
+    fn configure(&self) -> Result<Self::Config, config::ConfigError>;
+    fn context(&self) -> Self::Context;
+    fn data(&self) -> Self::Data;
 }

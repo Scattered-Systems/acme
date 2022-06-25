@@ -20,7 +20,7 @@ fn get_arguments() {
 fn main() -> Result<(), acme::BoxedError> {
     let app = Application::new("acme");
     let commands = app.constructor();
-    let args = get_arguments();
+    get_arguments();
     println!("Welcome to acme");
     println!("{:#?}", commands);
     Ok(())

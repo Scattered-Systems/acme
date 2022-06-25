@@ -27,8 +27,8 @@ pub enum Computations {
 pub struct Commands {
     #[clap(subcommand)]
     pub actions: Actions,
-    #[clap(long)]
-    pub client: String,
+    #[clap(default_value = "mainnet", long)]
+    pub chain: String,
     #[clap(default_value = "private", long, short, value_parser)]
     pub context: String,
 }

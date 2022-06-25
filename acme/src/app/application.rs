@@ -6,14 +6,9 @@
         ... Summary ...
  */
 use clap::Parser;
-use config::ConfigError;
 use serde::{Deserialize, Serialize};
 
 use crate::{Appellation, CLI};
-
-pub struct AppData {
-    pub version: String,
-}
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub struct Application {
