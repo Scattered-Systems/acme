@@ -5,8 +5,14 @@
     Description:
         ... Summary ...
  */
-pub use config::ConfigError as ConfigurationError;
+pub use crate::app::configuration::{
+    account::*,
+    appellation::*,
+};
 
-mod error;
+mod account;
+mod appellation;
 
-pub type BoxedError = Box<dyn std::error::Error + Send + Sync + 'static>;
+pub enum Settings {
+    Application,
+}

@@ -5,8 +5,11 @@
     Description:
         ... Summary ...
  */
-pub use config::ConfigError as ConfigurationError;
+pub use crate::controllers::{
+    context::*,
+    controller::*,
+};
 
-mod error;
+mod context;
+mod controller;
 
-pub type BoxedError = Box<dyn std::error::Error + Send + Sync + 'static>;

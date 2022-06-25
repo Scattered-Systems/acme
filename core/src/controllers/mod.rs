@@ -1,5 +1,7 @@
 use config::ConfigError;
 
+mod controller;
+
 pub trait ConfiguratorSpec {
     type Actor;
     type Context;

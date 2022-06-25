@@ -1,17 +1,11 @@
 /*
-    Appellation: app
+    Appellation: appellation
     Context:
     Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
     Description:
         ... Summary ...
  */
-use clap::Parser;
 use serde::{Deserialize, Serialize};
-
-pub trait CLI {
-    type Arguments;
-    fn constructor(&self) -> Self::Arguments;
-}
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub struct Appellation {
@@ -38,33 +32,5 @@ impl Appellation {
 impl std::fmt::Display for Appellation {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "Appellation(name={}, slug={})", self.name, self.slug)
-    }
-}
-
-
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
-pub struct Application {
-    pub appellation: Appellation,
-}
-
-impl Application {
-    pub fn new(appellation: Appellation) -> Self {
-        Self {
-            appellation
-        }
-    }
-}
-
-impl CLI for Application {
-    type Arguments = crate::commands::Commands;
-
-    fn constructor(&self) -> Self::Arguments {
-        return Self::Arguments::parse();
-    }
-}
-
-impl std::fmt::Display for Application {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Application(appellation={})", self.appellation)
     }
 }

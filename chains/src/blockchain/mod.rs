@@ -9,6 +9,8 @@ pub use chain::*;
 
 mod chain;
 
+pub type ChainError = Box<dyn std::error::Error + Send + Sync + 'static>;
+
 pub enum ChainStates {
     Appending,
     Computing,
@@ -18,15 +20,10 @@ pub enum ChainStates {
 
 
 pub trait ChainSpec {
-    type Appellation;
-    // Define the Chain's name
-    type Configuration;
-    // Type of configuration for the Chain
-    type Context;
-    // Define the
-    type Data; // Define the standard data structure to be use throughout the Chain
+    type Actor;
+    type Client;
+    type Config;
+    type Data;
 
-    fn activate(appellation: Self::Appellation, configuration: Self::Configuration) -> Self;
-    fn chain(&self) -> Result<(), crate::errors::BoxedError>;
-    fn constructor(&self) -> Self;
+    fn constructor(&self, pattern: String) -> Result<Self, ChainError> where Self: Sized;
 }

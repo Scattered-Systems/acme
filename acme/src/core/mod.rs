@@ -5,8 +5,7 @@
     Description:
         ... Summary ...
  */
-pub use config::ConfigError as ConfigurationError;
+pub use commands::*;
 
-mod error;
+mod commands;
 
-pub type BoxedError = Box<dyn std::error::Error + Send + Sync + 'static>;
