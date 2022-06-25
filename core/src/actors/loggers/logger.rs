@@ -6,7 +6,7 @@ pub struct Logger {
 }
 
 impl Logger {
-    pub fn constructor(configuration: Box<dyn crate::ConfiguratorSpec>) {
+    pub fn setup() -> Self {
         todo!()
     }
 }
