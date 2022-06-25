@@ -5,7 +5,3 @@
     Description:
         ... Summary ...
  */
-
-pub struct StandardError {
-    pub data: crate::Container,
-}
