@@ -10,6 +10,7 @@ job("Docker: Build and Push") {
     docker {
         build {
             context: "."
+            customPlatform = "linux/arm"
             file: "./Dockerfile"
             labels["vendor"] = "scattered-systems"
         }
