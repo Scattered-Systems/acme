@@ -11,7 +11,7 @@ version = "0.1.26" # TODO - Current Release v0.1.25
 
 [[bin]]
 name = "acme-cli"
-path = "bin/main.rs"
+path = "src/main.rs"
 
 [features]
 core = ["acme-core"]
@@ -25,6 +25,8 @@ network = ["acme-network"]
 [lib]
 bench = false
 crate-type = ["cdylib", "rlib"]
+name = "acme"
+path = "lib/lib.rs"
 test = true
 
 [[test]]

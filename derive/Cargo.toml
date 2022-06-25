@@ -19,6 +19,3 @@ path = "tests/test.rs"
 test = true
 
 [dependencies]
-
-[dev-dependencies.acme-core]
-path = "../core"
