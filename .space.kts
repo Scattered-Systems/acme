@@ -1,7 +1,6 @@
 job("Docker: Build and Push") {
     startOn {
         gitPush {
-            enabled: true,
             branchFilters {
                 +"refs/head/latest"
             }
@@ -12,7 +11,7 @@ job("Docker: Build and Push") {
         build {
             context: ".",
             file: "./Dockerfile",
-            args["HTTP_PROXY"] = "http://0.0.0.0:8888"
+            args["HTTP_PROXY"] = "http://0.0.0.0:9090",
             labels["vendor"] = "scattered-systems"
         }
 
