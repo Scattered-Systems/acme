@@ -5,10 +5,11 @@
     Description:
 
  */
+pub use crate::actors::{
+    actor::*,
+    loggers::*,
+};
+
 pub(crate) mod loggers;
 pub(crate) mod actor;
 
-pub use crate::actors::{
-    actor::*,
-    loggers::*
-};

@@ -4,8 +4,9 @@ default-members = [
 ]
 
 members = [
-    "acme", 
+    "acme",
     "core",
+    "data",
     "derive",
     "macros",
     "network"
