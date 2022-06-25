@@ -50,27 +50,25 @@ tower = "0.4.13"
 tracing = "0.1.35"
 tracing-subscriber = "0.3.11"
 
-# acme featured dependencies
-# TODO - Update the versioning for acme's featured dependencies
 [dependencies.acme-core]
 optional = true
 path = "../core"
-version = "0.1.10"
+version = ">=0.1.10"
 
 [dependencies.acme-derive]
 optional = true
 path = "../derive"
-version = "0.1.0"
+version = ">=0.1.0"
 
 [dependencies.acme-macros]
 optional = true
 path = "../macros"
-version = "0.1.10"
+version = ">=0.1.10"
 
 [dependencies.acme-network]
 optional = true
 path = "../network"
-version = "0.1.10"
+version = ">=0.1.10"
 
 [package.metadata.docs.rs]
 all-features = true
