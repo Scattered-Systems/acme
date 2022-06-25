@@ -5,7 +5,8 @@ WORKDIR /project
 
 COPY . .
 RUN cargo test --all-features && \
-    cargo build --release --workspace
+    cargo package --all-features --allow-dirty && \
+    cargo build --release
 
 FROM debian:buster-slim as application
 
@@ -14,8 +15,9 @@ ENV DEV_MODE=false \
 
 COPY --from=builder /project/target/release/acme-cli /acme-cli
 
-EXPOSE ${PORT}/tcp
-EXPOSE ${PORT}/udp
-
+EXPOSE 7545/tcp
+EXPOSE 8545/tcp
+EXPOSE 9090/tcp
+EXPOSE 9090/udp
 
 ENTRYPOINT ["./acme-cli"]

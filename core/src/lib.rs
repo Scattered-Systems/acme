@@ -3,13 +3,14 @@
     Crafter:
     Description:
  */
+pub(crate) mod models;
+pub(crate) mod proofs;
+pub(crate) mod schemas;
+pub(crate) mod structures;
 
-pub use models::*;
-pub use proofs::*;
-pub use schemas::*;
-pub use structures::*;
-
-pub mod models;
-pub mod proofs;
-pub mod schemas;
-pub mod structures;
+pub use crate::{
+    models::*,
+    proofs::*,
+    schemas::*,
+    structures::*
+};
