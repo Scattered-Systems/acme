@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "master", "latest" ]
   pull_request:
-    branches: [ "master", "latest" ]
+    branches: [ "latest" ]
 
 env:
   PROJECT_SLUG: acme
