@@ -8,7 +8,6 @@
  */
 pub use crate::{
     actors::*,
-    chains::*,
     common::*,
     controllers::*,
     errors::*,
@@ -16,7 +15,6 @@ pub use crate::{
 };
 
 pub(crate) mod actors;
-pub(crate) mod chains;
 pub(crate) mod common;
 pub(crate) mod controllers;
 pub(crate) mod errors;

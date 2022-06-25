@@ -5,6 +5,9 @@
     Description:
  */
 #[doc(inline)]
+#[cfg(feature = "chains")]
+pub use acme_chains::*;
+#[doc(inline)]
 #[cfg(feature = "core")]
 pub use acme_core::*;
 #[doc(inline)]

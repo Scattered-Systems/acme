@@ -8,8 +8,6 @@
 use clap::Parser;
 use serde::{Deserialize, Serialize};
 
-use acme::TimeStamp;
-
 pub trait CLI {
     type Args;
     fn constructor(&self) -> Self::Args;
