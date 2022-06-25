@@ -5,10 +5,6 @@
     Description:
         ... Summary ...
  */
-use std::error::Error;
-
-pub use crate::errors::{error::*};
-
 mod error;
 
-pub type BoxedError = Box<dyn Error + Send + Sync + 'static>;
+pub type BoxedError = Box<dyn std::error::Error + Send + Sync + 'static>;

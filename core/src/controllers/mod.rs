@@ -1,4 +1,4 @@
-use config::{builder::DefaultState, Config, ConfigBuilder, ConfigError};
+use config::ConfigError;
 
 pub trait ConfiguratorSpec {
     type Actor;
@@ -6,7 +6,7 @@ pub trait ConfiguratorSpec {
     type Container;
     type Data;
 
-    fn builder(pattern: String) -> Result<ConfigBuilder<DefaultState>, ConfigError>;
+    fn constructor(pattern: String) -> Result<Self, ConfigError> where Self: Sized;
 }
 
 pub trait ControllerSpec {
