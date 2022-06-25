@@ -2,23 +2,78 @@ name: Rust
 
 on:
   push:
-    branches: [ "master", "latest" ]
+    branches: [ "latest", "master" ]
   pull_request:
     branches: [ "latest" ]
 
-env:
-  CARGO_TERM_COLOR: always
-
 jobs:
-  acme:
-    env:
-      CARGO_PKG_NAME: acme
+  crate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Login
         run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
       - name: Test
-        run: cargo test -p $CARGO_PKG_NAME -v --color $CARGO_TERM_COLOR --all-features
+        run: cargo test --all-features --verbose
       - name: Build and Push
-        run: cargo publish -p $CARGO_PKG_NAME --all-features
+        run: cargo publish --all-features --verbose
+  core:
+    env:
+      CARGO_PKG_NAME: acme-core
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login
+        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Test
+        run: cargo test -p $CARGO_PKG_NAME --verbose
+      - name: Build and Push
+        run: cargo publish -p $CARGO_PKG_NAME --verbose
+  data:
+    env:
+      CARGO_PKG_NAME: acme-data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login
+        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Test
+        run: cargo test -p $CARGO_PKG_NAME --verbose
+      - name: Build and Push
+        run: cargo publish -p $CARGO_PKG_NAME --verbose
+  derive:
+    env:
+      CARGO_PKG_NAME: acme-derive
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login
+        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Test
+        run: cargo test -p $CARGO_PKG_NAME --verbose
+      - name: Build and Push
+        run: cargo publish -p $CARGO_PKG_NAME --verbose
+  macros:
+    env:
+      CARGO_PKG_NAME: acme-macros
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login
+        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Test
+        run: cargo test -p $CARGO_PKG_NAME --verbose
+      - name: Build and Push
+        run: cargo publish -p $CARGO_PKG_NAME --verbose
+  network:
+    env:
+      CARGO_PKG_NAME: acme-network
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login
+        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Test
+        run: cargo test -p $CARGO_PKG_NAME --verbose
+      - name: Build and Push
+        run: cargo publish -p $CARGO_PKG_NAME --verbose
