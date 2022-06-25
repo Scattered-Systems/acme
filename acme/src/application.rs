@@ -9,8 +9,8 @@ use clap::Parser;
 use serde::{Deserialize, Serialize};
 
 pub trait CLI {
-    type Args;
-    fn constructor(&self) -> Self::Args;
+    type Arguments;
+    fn constructor(&self) -> Self::Arguments;
 }
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
@@ -56,10 +56,10 @@ impl Application {
 }
 
 impl CLI for Application {
-    type Args = crate::Commands;
+    type Arguments = crate::commands::Commands;
 
-    fn constructor(&self) -> Self::Args {
-        return Self::Args::parse();
+    fn constructor(&self) -> Self::Arguments {
+        return Self::Arguments::parse();
     }
 }
 

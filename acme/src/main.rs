@@ -5,9 +5,9 @@
         Initial efforts are being placed towards designing a project management suite of utilities
         for building scalable, user-centric dApps.
  */
-pub use crate::{app::*, commands::*, controller::*};
+pub use crate::{application::*, commands::*, controller::*};
 
-mod app;
+mod application;
 mod commands;
 mod controller;
 
