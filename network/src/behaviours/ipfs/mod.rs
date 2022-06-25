@@ -1,9 +1,11 @@
-pub use subnet::Subnet;
+pub use crate::behaviours::ipfs::{
+    mainnet::*,
+    subnet::*,
+    utils::*,
+};
 
-mod mainnet;
-// TODO - Implement a standard IPFS Node
+pub(crate) mod mainnet;
 mod subnet;
-
 
 pub mod utils {
     use std::{env, error::Error, fs, path::Path, str::FromStr};

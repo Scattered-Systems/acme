@@ -4,21 +4,18 @@
     Creator: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
     Description:
  */
-mod peer;
 pub use peer::*;
 
+mod peer;
 
 pub type PeerError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
-pub trait PeerSpec {
-    type Appellation;
+pub trait PeerSpec<E> {
+    type Actor;
+    type Conduit;
     type Configuration;
-    type Container;
     type Data;
 
-    fn actor(&self) -> Result<Self::Container, PeerError>;
-    fn configure(&self, configuration: Self::Configuration) -> Self;
-    fn constructor(configuration: Self::Configuration) -> Self;
-    fn datastore(data: Self::Data) -> Result<Self::Container, PeerError>;
+    fn configure(&self, configuration: Self::Configuration) -> Result<Self, E> where Self: Sized;
 }
 
