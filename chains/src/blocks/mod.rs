@@ -24,7 +24,8 @@ pub trait BlockSpec {
     fn consensus(&self) -> Self;
     // Implement the block's consensus mechanism
     fn constructor(&self, data: Self::Data, nonce: Self::Nonce, previous: Self::Hash) -> Self;
-    fn descriptor(&self, id: Self::Index) -> Self; // Fetch a block
+    // Fetch a block
+    fn validator(&self) -> Self::Nonce;
 }
 
 pub type BlockData = String;

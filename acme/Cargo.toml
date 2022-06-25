@@ -7,7 +7,7 @@ license = "MIT"
 name = "acme"
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.27" # TODO - Current Release v0.1.25
+version = "0.1.27" # TODO - Update crate version
 
 [[bin]]
 name = "acme-cli"
