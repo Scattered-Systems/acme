@@ -2,7 +2,7 @@
 authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
 description = "Core package of Acme, an all-in-one developer toolkit targetting decentralized environments"
 edition = "2021"
-keywords = ["blockchain", "toolkit"]
+keywords = ["blockchain", "scsys", "toolkit"]
 license = "MIT"
 name = "acme-core"
 readme = "README.md"

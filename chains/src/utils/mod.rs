@@ -11,5 +11,5 @@ pub use blockchain::*;
 mod blockchain;
 
 pub fn timestamp() -> crate::Timestamp {
-    return chrono::Local::now().into();
+    chrono::Local::now().into()
 }
