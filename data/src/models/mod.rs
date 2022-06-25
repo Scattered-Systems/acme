@@ -2,11 +2,13 @@ pub use crate::models::{
     accounts::*,
     tokens::*,
     users::*,
+    wallet::*
 };
 
 mod accounts;
 mod tokens;
 mod users;
+mod wallet;
 
 pub enum DatabaseClassifications {
     Centralized,
@@ -21,9 +23,12 @@ pub enum DatabaseStyles {
     SQL,
 }
 
-pub trait Model {
-    type Appellation;
-    type Connection;
+pub trait ModelSpec {
+    type Actor;
+    type Client;
     type Context;
-    type Database;
+    type Data;
+
+    fn configure(&self, context: Self::Context) -> Self::Actor;
+    fn constructor(&self, data: Self::Data) -> Self;
 }
