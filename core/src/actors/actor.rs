@@ -7,8 +7,13 @@
  */
 
 pub trait ActorSpec {
-    type App;
+    type Actor;
     type Client;
-    type Context;
+    type Configuration;
     type Data;
+
+    fn authenticate(&self, client: Self::Client) -> Self::Client;
+    fn configure(&self, configuration: Self::Configuration) -> Self::Configuration;
+    fn constructor(&self) -> Self::Actor;
+    fn datastream(&self, destination: String) -> Self::Data;
 }
