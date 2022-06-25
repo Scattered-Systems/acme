@@ -2,7 +2,7 @@ job("Docker: Build and Push") {
     startOn {
         gitPush {
             branchFilter {
-                +"refs/head/master"
+                +"refs/heads/master"
             }
         }
     }
@@ -10,6 +10,7 @@ job("Docker: Build and Push") {
     docker {
         build {
             context: "."
+            customPlatform = "linux/arm"
             file: "./Dockerfile"
             labels["vendor"] = "scattered-systems"
         }
