@@ -1,7 +1,7 @@
 job("Docker: Build and Push") {
     startOn {
         gitPush {
-            branchFilters {
+            branchFilter {
                 +"refs/head/master"
             }
         }
