@@ -7,14 +7,12 @@ pub struct Node<T = std::collections::HashMap<String, Vec<String>>> {
 }
 
 impl NodeSpec for Node {
-    type Appellation = ();
+    type Appellation = String;
     type Client = ();
     type Configuration = ();
     type Data = ();
 
-    fn activate(appellation: Self::Appellation) -> Self {
-        todo!()
-    }
+    fn activate(appellation: Self::Appellation) -> Self { todo!() }
 
     fn configure(configuration: Self::Configuration) -> Self {
         todo!()
