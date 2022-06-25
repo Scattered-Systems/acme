@@ -9,9 +9,8 @@ job("Docker: Build and Push") {
 
     docker {
         build {
-            context: ".",
-            file: "./Dockerfile",
-            args["HTTP_PROXY"] = "http://0.0.0.0:9090",
+            context: "."
+            file: "./Dockerfile"
             labels["vendor"] = "scattered-systems"
         }
 

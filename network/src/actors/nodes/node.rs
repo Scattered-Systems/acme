@@ -1,28 +1,20 @@
-use super::NodeSpec;
 
 #[derive(Clone, Debug)]
-pub struct Node<T = std::collections::HashMap<String, Vec<String>>> {
-    pub appellation: String,
-    pub context: T
+pub struct Node {
+    pub peer: crate::Peer,
 }
 
-impl NodeSpec for Node {
-    type Appellation = String;
-    type Client = ();
-    type Configuration = ();
-    type Data = ();
-
-    fn activate(appellation: Self::Appellation) -> Self { todo!() }
-
-    fn configure(configuration: Self::Configuration) -> Self {
-        todo!()
+impl Node {
+    pub fn new() -> Self {
+        let peer = crate::Peer::new();
+        Self {
+            peer: peer.clone()
+        }
     }
+}
 
-    fn connect(&mut self) -> Self::Client {
-        todo!()
-    }
-
-    fn describe(&mut self) -> Self::Data {
-        todo!()
+impl std::fmt::Display for Node {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Node(peer(id={}))", self.peer.id)
     }
 }

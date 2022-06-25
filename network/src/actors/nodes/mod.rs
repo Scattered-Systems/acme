@@ -5,28 +5,30 @@
     Description:
 
  */
-mod node;
 pub use node::*;
+
+mod node;
+
+pub type NodeError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
 pub enum Nodes {
     Full,
-    Light
+    Light,
 }
 
 pub enum NodeStates {
     Computing,
-    Controlling
+    Controlling,
 }
 
 pub trait NodeSpec {
-    type Appellation;
+    type Account;
     type Client;
     type Configuration;
     type Data;
 
-    fn activate(appellation: Self::Appellation) -> Self;
-    fn configure(configuration: Self::Configuration) -> Self;
-    fn connect(&mut self) -> Self::Client;
-    fn describe(&mut self) -> Self::Data;
+    fn constructor(
+        &self,
+        configuration: Self::Configuration,
+    ) -> Result<Self, NodeError> where Self: Sized;
 }
-
