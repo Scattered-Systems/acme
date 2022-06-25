@@ -1,18 +1,17 @@
 [package]
 authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
-description = "Procedural macros created to support Acme, an all-in-one blockchain toolkit"
+description = "Core package of Acme, an all-in-one developer toolkit targetting decentralized environments"
 edition = "2021"
-keywords = ["blockchain", "proc-macros", "scsys"]
-name = "acme-macros"
+keywords = ["blockchain", "toolkit"]
 license = "MIT"
+name = "acme-data"
 repository = "https://github.com/FL03/acme"
 version = "0.1.12" # TODO - Current Release v0.1.11
 
 [lib]
 bench = false
-proc-macro = true
+crate-type = ["cdylib", "rlib"]
 test = true
-
 
 [[test]]
 name = "test"
@@ -20,3 +19,7 @@ path = "tests/test.rs"
 test = true
 
 [dependencies]
+bson = "2.3.0"
+chrono = "0.4.19"
+serde = { features = ["derive"], version = "1.0.137" }
+serde_json = "1.0.81"

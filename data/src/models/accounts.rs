@@ -1,5 +1,3 @@
-
-
 // Create an account specification
 pub trait AccountSpecs {
     type Address;

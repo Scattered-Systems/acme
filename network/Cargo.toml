@@ -5,9 +5,8 @@ edition = "2021"
 keywords = ["asynchronous", "blockchain", "peer-to-peer", "scsys"]
 name = "acme-network"
 license = "MIT"
-readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.11" # TODO - Current Release v0.1.9
+version = "0.1.12" # TODO - Current Release v0.1.11
 
 [lib]
 bench = false

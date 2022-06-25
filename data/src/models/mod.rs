@@ -1,9 +1,12 @@
-pub use tokens::*;
-pub use users::*;
+pub use crate::models::{
+    accounts::*,
+    tokens::*,
+    users::*,
+};
 
-pub mod accounts;
-pub mod tokens;
-pub mod users;
+mod accounts;
+mod tokens;
+mod users;
 
 pub enum DatabaseClassifications {
     Centralized,

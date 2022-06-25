@@ -1,16 +1,24 @@
 /*
     Appellation: acme-core
-    Crafter:
+    Context: library
+    Creator:
     Description:
+        Core feature library for acme, an all-in-one blockchain toolkit for building optimized
+        EVM compatible apps and chains.
  */
-pub(crate) mod models;
-pub(crate) mod proofs;
-pub(crate) mod schemas;
-pub(crate) mod structures;
-
 pub use crate::{
-    models::*,
-    proofs::*,
-    schemas::*,
-    structures::*
+    actors::*,
+    chains::*,
+    common::*,
+    controllers::*,
+    errors::*,
+    utils::*,
 };
+
+pub(crate) mod actors;
+pub(crate) mod chains;
+pub(crate) mod common;
+pub(crate) mod controllers;
+pub(crate) mod errors;
+pub(crate) mod utils;
+

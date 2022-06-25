@@ -11,11 +11,12 @@ version = "0.1.26" # TODO - Current Release v0.1.25
 
 [[bin]]
 name = "acme-cli"
-path = "bin/main.rs"
+path = "src/main.rs"
 
 [features]
 core = ["acme-core"]
-default = ["core"]
+data = ["acme-data"]
+default = ["core", "data"]
 derive = ["acme-derive"]
 full = ["default", "derive", "macros", "network"]
 macros = ["acme-macros"]
@@ -24,6 +25,8 @@ network = ["acme-network"]
 [lib]
 bench = false
 crate-type = ["cdylib", "rlib"]
+name = "acme"
+path = "lib/lib.rs"
 test = true
 
 [[test]]
@@ -32,19 +35,11 @@ path = "tests/test.rs"
 test = true
 
 [dependencies]
-blake2 = "0.10.4"
 bson = { features = ["chrono-0_4", "serde_with"], version = "2.3.0" }
 chrono = "0.4.19"
 clap = { features = ["derive"], version = "3.2.5" }
 config = "0.13.1"
-hex = "0.4.3"
-hyper = { features = ["full"], version = "0.14.19" }
-libp2p = { features = ["dns-tokio"], version = "0.45.1" }
-log = "0.4.17"
-once_cell = "1.12.0"
 serde = { features = ["derive"], version = "1.0.137" }
-serde_json = "1.0.81"
-sha2 = "0.10.2"
 tokio = { features = ["full"], version = "1.19.2" }
 tower = "0.4.13"
 tracing = "0.1.35"
@@ -53,6 +48,11 @@ tracing-subscriber = "0.3.11"
 [dependencies.acme-core]
 optional = true
 path = "../core"
+version = ">=0.1.10"
+
+[dependencies.acme-data]
+optional = true
+path = "../data"
 version = ">=0.1.10"
 
 [dependencies.acme-derive]

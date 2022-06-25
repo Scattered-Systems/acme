@@ -1,12 +1,11 @@
 /*
-    Appellation: standard
+    Appellation: error
     Context:
     Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
     Description:
         ... Summary ...
  */
 
-#[derive(Clone, Debug)]
-pub struct StandardBehaviour {
-    pub peer: crate::Peer,
+pub struct StandardError {
+    pub data: crate::Container,
 }
