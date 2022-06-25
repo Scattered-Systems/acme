@@ -5,11 +5,13 @@
     Description:
         ... Summary ...
  */
+use config::ConfigError;
 use serde::{Deserialize, Serialize};
 
 pub trait Configurator {
-    type Configuration;
+    type Config;
 
+    fn configure(&self) -> Result<Self::Config, config::ConfigError>;
     fn constructor(&self) -> Result<Self, config::ConfigError> where Self: Sized;
 }
 
@@ -25,7 +27,11 @@ pub struct Controller {
 }
 
 impl Configurator for Controller {
-    type Configuration = Configuration;
+    type Config = Configuration;
+
+    fn configure(&self) -> Result<Self::Config, ConfigError> {
+        todo!()
+    }
 
     fn constructor(&self) -> Result<Self, config::ConfigError> where Self: Sized {
         let appellation = crate::Appellation::from("Acme");

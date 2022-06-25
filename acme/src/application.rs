@@ -6,11 +6,19 @@
         ... Summary ...
  */
 use clap::Parser;
+use config::ConfigError;
 use serde::{Deserialize, Serialize};
 
+use crate::Configuration;
+
+pub type AppError = Box<dyn std::error::Error + Send + Sync + 'static>;
+
 pub trait CLI {
-    type Arguments;
-    fn constructor(&self) -> Self::Arguments;
+    type Args;
+    type Config;
+
+    fn configure(&self, pattern: String) -> Result<Self::Config, config::ConfigError>;
+    fn constructor(&self) -> Self::Args;
 }
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
@@ -56,10 +64,15 @@ impl Application {
 }
 
 impl CLI for Application {
-    type Arguments = crate::commands::Commands;
+    type Args = crate::commands::Commands;
+    type Config = Configuration;
 
-    fn constructor(&self) -> Self::Arguments {
-        return Self::Arguments::parse();
+    fn configure(&self, pattern: String) -> Result<Self::Config, ConfigError> {
+        todo!()
+    }
+
+    fn constructor(&self) -> Self::Args {
+        return Self::Args::parse();
     }
 }
 
