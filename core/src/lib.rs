@@ -7,14 +7,12 @@
         EVM compatible apps and chains.
  */
 pub use crate::{
-    actors::*,
     common::*,
     controllers::*,
     errors::*,
     utils::*,
 };
 
-mod actors;
 mod common;
 mod controllers;
 mod errors;
