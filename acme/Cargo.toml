@@ -1,17 +1,23 @@
 [package]
 authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
-description = "A Rust library created to serve the Scattered-Systems Ecosystem"
+description = "Acme was created to be an all-in-one blockchain toolkit in support of the Scattered-Systems ecosystem"
 edition = "2021"
 keywords = ["blockchain", "scsys", "toolkit"]
 license = "MIT"
 name = "acme"
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.28" # TODO - Update crargo package version
+version = "0.1.29" # TODO - Update cargo package version
 
 [[bin]]
+bench = false
 name = "acme-cli"
-path = "src/main.rs"
+test = false
+
+[lib]
+bench = false
+crate-type = ["cdylib", "rlib"]
+test = true
 
 [features]
 chains = ["acme-chains"]
@@ -22,13 +28,6 @@ derive = ["acme-derive"]
 full = ["default", "derive", "macros", "network"]
 macros = ["acme-macros"]
 network = ["acme-network"]
-
-[lib]
-bench = false
-crate-type = ["cdylib", "rlib"]
-name = "acme"
-path = "lib/lib.rs"
-test = true
 
 [[test]]
 name = "test"

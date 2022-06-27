@@ -20,10 +20,11 @@ mod common {
     pub use types::*;
 
     mod types {
-        use bson::DateTime as Timestamp;
-        use bson::oid::ObjectId;
+        pub use bson::DateTime as Timestamp;
+        pub use chrono::Local as Localtime;
 
         pub type AccessGrant = [String; 12];
         pub type Container<T = Vec<String>> = std::collections::HashMap<String, T>;
+        pub type ContentId = bson::oid::ObjectId;
     }
 }

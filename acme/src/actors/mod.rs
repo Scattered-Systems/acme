@@ -8,7 +8,16 @@
 pub use crate::actors::{
     actor::*,
     loggers::*,
+    specifications::*,
 };
 
 pub(crate) mod loggers;
 pub(crate) mod actor;
+
+mod specifications {
+    pub trait CLI {
+        type Commands;
+
+        fn commands(&self) -> Self::Commands;
+    }
+}

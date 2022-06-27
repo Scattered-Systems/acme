@@ -7,7 +7,7 @@ license = "MIT"
 name = "acme-core"
 readme = "README.md"
 repository = "https://github.com/FL03/acme"
-version = "0.1.13" # TODO - Update cargo package version
+version = "0.1.14" # TODO - Update cargo package version
 
 [lib]
 bench = false
@@ -25,6 +25,7 @@ bson = { features = ["chrono-0_4", "serde_with"], version = "2.3.0" }
 chrono = "0.4.19"
 clap = { features = ["derive"], version = "3.2.5" }
 config = "0.13.1"
+glob = "0.3.0"
 hex = "0.4.3"
 hyper = { features = ["full"], version = "0.14.19" }
 libp2p = { features = ["dns-tokio"], version = "0.45.1" }
