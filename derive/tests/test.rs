@@ -1,10 +1,6 @@
 #[cfg(test)]
 mod basics {
-    #[test]
-    fn compiles() {
-        let f = |x: f32, y: f32| x.powf(y);
-        assert_eq!(f(2.0, 3.0), 8.0)
-    }
+    use acme_derive::*;
 
     #[test]
     fn derive_sample_function() {
@@ -15,6 +11,17 @@ mod basics {
 
         let res = sample();
         assert_eq!(res, 18u16)
+    }
+
+    #[test]
+    fn test_derive_description() {
+        #[derive(Describe)]
+        struct Apps {
+            name: String,
+            slug: String,
+        }
+
+        assert_eq!(Apps::describe(), "Apps is a struct with these named fields: name, slug.")
     }
 }
 
