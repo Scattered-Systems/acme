@@ -37,12 +37,6 @@ mod tests {
     use super::*;
 
     #[test]
-    fn simple() {
-        let f = |x: usize| x.pow(x.try_into().unwrap());
-        assert_eq!(f(2), 4)
-    }
-
-    #[test]
     fn test_chain_genesis() {
         let mut chain = Chain::new();
         let blockchain = Chain::constructor(&mut chain);
