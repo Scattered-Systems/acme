@@ -22,12 +22,12 @@ pub struct Block {
 impl Block {
     pub fn new(data: BlockData, id: BlockId, previous: BlockHash) -> Self {
         let timestamp = crate::utils::timestamp();
-        let (nonce, hash) = construct_block(data.clone(), id, previous.clone(), timestamp.clone());
+        let (nonce, hash) = create_block(data.clone(), id, previous.clone(), timestamp.clone());
 
         Self { id, data, hash, nonce, previous, timestamp }
     }
-    pub fn consensus() -> Self {
-        todo!()
+    pub fn consensus(&self, data: BlockData, id: BlockId, previous: BlockHash, timestamp: BlockTime) -> (BlockNonce, BlockHash) {
+        create_block(data, id, previous, timestamp)
     }
 }
 
@@ -84,7 +84,7 @@ pub fn determine_chain_validity(chain: &[Block]) -> bool {
     true
 }
 
-pub fn construct_block(data: BlockData, id: BlockId, previous: BlockHash, timestamp: BlockTime) -> (BlockNonce, BlockHash) {
+pub fn create_block(data: BlockData, id: BlockId, previous: BlockHash, timestamp: BlockTime) -> (BlockNonce, BlockHash) {
     log::info!("Creating a new block...");
     let mut nonce = 0;
     loop {

@@ -5,7 +5,7 @@
     Description:
         ... Summary ...
  */
-pub use crate::blocks::block::*;
+pub use block::*;
 
 mod block;
 

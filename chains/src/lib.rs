@@ -1,14 +1,14 @@
+mod blockchain;
+mod consensus;
+mod utils;
+
 pub use crate::{
     blockchain::*,
-    blocks::*,
-    common::*
+    common::*,
+    consensus::*,
+    errors::*,
+    utils::*,
 };
-
-pub mod blockchain;
-pub mod blocks;
-pub mod consensus;
-pub mod contracts;
-pub mod utils;
 
 pub mod errors {
     use std::error::Error;
