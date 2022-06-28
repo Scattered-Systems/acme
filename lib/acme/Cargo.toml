@@ -9,16 +9,6 @@ readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
 version = "0.1.30" # TODO - Update cargo package version
 
-[[bin]]
-bench = false
-name = "acme-cli"
-test = false
-
-[lib]
-bench = false
-crate-type = ["cdylib", "rlib"]
-test = true
-
 [features]
 chains = ["acme-chains"]
 core = ["acme-core"]
@@ -28,6 +18,11 @@ derive = ["acme-derive"]
 full = ["default", "derive", "macros", "network"]
 macros = ["acme-macros"]
 network = ["acme-network"]
+
+[lib]
+bench = false
+crate-type = ["cdylib", "rlib"]
+test = true
 
 [[test]]
 name = "test"
