@@ -12,7 +12,7 @@ pub type Blockchain = Vec<Block>;
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub struct Chain {
-    pub blockchain: Vec<Block>,
+    pub blockchain: Blockchain,
 }
 
 impl Chain {
@@ -22,7 +22,7 @@ impl Chain {
         }
     }
 
-    pub fn constructor(&mut self) -> Vec<Block> {
+    pub fn constructor(&mut self) -> Blockchain {
         let id = 0;
         let data = "".to_string();
         let previous_hash = "genesis".to_string();
