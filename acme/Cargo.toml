@@ -7,7 +7,7 @@ license = "MIT"
 name = "acme"
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.29" # TODO - Update cargo package version
+version = "0.1.30" # TODO - Update cargo package version
 
 [[bin]]
 bench = false
@@ -43,32 +43,32 @@ serde = { features = ["derive"], version = "1.0.137" }
 [dependencies.acme-chains]
 optional = true
 path = "../chains"
-version = ">=0.1.0"
+version = ">=0.1.4"
 
 [dependencies.acme-core]
 optional = true
 path = "../core"
-version = ">=0.1.10"
+version = ">=0.1.14"
 
 [dependencies.acme-data]
 optional = true
 path = "../data"
-version = ">=0.1.10"
+version = ">=0.1.13"
 
 [dependencies.acme-derive]
 optional = true
 path = "../derive"
-version = ">=0.1.0"
+version = ">=0.1.13"
 
 [dependencies.acme-macros]
 optional = true
 path = "../macros"
-version = ">=0.1.10"
+version = ">=0.1.13"
 
 [dependencies.acme-network]
 optional = true
 path = "../network"
-version = ">=0.1.10"
+version = ">=0.1.13"
 
 [package.metadata.docs.rs]
 all-features = true
