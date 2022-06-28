@@ -6,7 +6,7 @@
         ... Summary ...
  */
 use serde::{Deserialize, Serialize};
-use crate::{BlockData, BlockHash, BlockId, BlockNonce, BlockTime};
+use crate::{BlockData, BlockHash, BlockId, BlockNonce, BlockTime, create_block};
 
 #[derive(Clone, Debug, Deserialize, Hash, PartialEq, Serialize)]
 pub struct Block {
@@ -19,43 +19,28 @@ pub struct Block {
 }
 
 impl Block {
-    pub fn new(data: BlockData, id: BlockId, previous: BlockHash) -> Self {
-        let timestamp = crate::utils::timestamp();
-        let (nonce, hash) = create_block(data.clone(), id, previous.clone(), timestamp.clone());
-
-        Self { id, data, hash, nonce, previous, timestamp }
+    pub fn new(id: BlockId, data: BlockData, previous: BlockHash) -> Self {
+        Block::constructor(id, data, previous)
     }
-    pub fn consensus(&self, data: BlockData, id: BlockId, previous: BlockHash, timestamp: BlockTime) -> (BlockNonce, BlockHash) {
+    pub fn consensus(
+        data: BlockData,
+        id: BlockId,
+        previous: BlockHash,
+        timestamp: BlockTime,
+    ) -> (BlockNonce, BlockHash) {
         create_block(data, id, previous, timestamp)
     }
-}
-
-
-pub fn create_block(data: BlockData, id: BlockId, previous: BlockHash, timestamp: BlockTime) -> (BlockNonce, BlockHash) {
-    log::info!("Creating a new block...");
-    let mut nonce = 0;
-    loop {
-        if nonce % 100000 == 0 {
-            log::info!("nonce: {}", nonce);
-        }
-        let hash = crate::calculate_block_hash(
-            data.clone(),
+    pub fn constructor(id: BlockId, data: BlockData, previous: BlockHash) -> Self {
+        let timestamp = crate::Timestamp::utc();
+        let (nonce, hash) = Block::consensus(data.clone(), id, previous.clone(), timestamp);
+        Self {
             id,
+            data,
+            hash,
             nonce,
-            previous.clone(),
-            timestamp.clone(),
-        );
-        let binary_hash = crate::compute_hash_binary_repr(&hash);
-        if binary_hash.starts_with(crate::DIFFICULTY_PREFIX) {
-            log::info!(
-                "mined! nonce: {}, hash: {}, binary hash: {}",
-                nonce,
-                hex::encode(&hash),
-                binary_hash
-            );
-            return (nonce, hex::encode(hash));
+            previous,
+            timestamp,
         }
-        nonce += 1;
     }
 }
 
@@ -68,8 +53,7 @@ mod tests {
         let id = 0;
         let previous_hash = "".to_string();
         let data = "".to_string();
-        let block = Block::new(data.clone(), id, previous_hash.clone());
-        println!("{:#?}", &block);
+        let block = Block::new(id, data.clone(), previous_hash.clone());
         assert_eq!(&block, &block)
     }
 }

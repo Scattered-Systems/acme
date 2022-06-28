@@ -7,8 +7,8 @@
  */
 use crate::{DIFFICULTY_PREFIX, Block, calculate_block_hash, compute_hash_binary_repr};
 
-pub fn determine_block_validity(block: &Block, previous_block: &Block) -> bool {
-    if block.previous != previous_block.hash {
+pub fn determine_block_validity(block: &Block, pblock: &Block) -> bool {
+    if block.previous != pblock.hash {
         log::warn!("block with id: {} has wrong previous hash", block.id);
         return false;
     } else if !compute_hash_binary_repr(
@@ -18,10 +18,10 @@ pub fn determine_block_validity(block: &Block, previous_block: &Block) -> bool {
     {
         log::warn!("block with id: {} has invalid difficulty", block.id);
         return false;
-    } else if block.id != previous_block.id + 1 {
+    } else if block.id != pblock.id + 1 {
         log::warn!(
             "block with id: {} is not the next block after the latest: {}",
-            block.id, previous_block.id
+            block.id, pblock.id
         );
         return false;
     } else if hex::encode(

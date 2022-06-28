@@ -10,20 +10,26 @@ pub use crate::{
     utils::*,
 };
 
-pub mod errors {
+mod errors {
     use std::error::Error;
 
-    pub type BoxedError = Box<dyn Error + Send + Sync + 'static>;
+
+    pub type ChainError = Box<dyn Error + Send + Sync + 'static>;
 }
 
 mod common {
+    pub use constants::*;
     pub use types::*;
+
+    pub mod constants {
+        pub const DIFFICULTY_PREFIX: &str = "00";
+    }
 
     pub mod types {
         pub type BlockData = String;
         pub type BlockId = u64;
         pub type BlockHash = String;
         pub type BlockNonce = u64;
-        pub type BlockTime = bson::DateTime;
+        pub type BlockTime = i64;
     }
 }
