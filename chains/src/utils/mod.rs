@@ -10,6 +10,6 @@ pub use blockchain::*;
 
 mod blockchain;
 
-pub fn timestamp() -> crate::Timestamp {
+pub fn timestamp() -> bson::DateTime {
     chrono::Local::now().into()
 }

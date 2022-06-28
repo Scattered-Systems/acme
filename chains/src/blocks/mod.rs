@@ -28,9 +28,3 @@ pub trait BlockSpec {
     // Describes the creation of a block
     fn constructor(&self, data: Self::Data, nonce: Self::Nonce, previous: Self::Hash) -> Self;
 }
-
-pub type BlockData = String;
-pub type BlockHash = String;
-pub type BlockId = bson::oid::ObjectId;
-pub type BlockNonce = u64;
-pub type Timestamp = bson::DateTime;

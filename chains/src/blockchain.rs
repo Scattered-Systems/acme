@@ -12,8 +12,19 @@ pub type Blockchain = Vec<Block>;
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
 pub struct Chain {
-    pub blockchain: Blockchain,
-    pub network: String,
+    pub chain: Vec<Block>,
+}
+
+impl Chain {
+    pub fn new() -> Self {
+        Self {
+            chain: Vec::new()
+        }
+    }
+
+    pub fn constructor(&self) -> Self {
+        todo!()
+    }
 }
 
 

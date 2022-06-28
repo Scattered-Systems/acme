@@ -7,12 +7,12 @@ use crate::{
     BlockHash,
     BlockId,
     BlockNonce,
-    blocks::DIFFICULTY_PREFIX,
-    Timestamp,
+    DIFFICULTY_PREFIX,
+    BlockTime,
 };
 
 // Calculate the hash of a Block using standard Block parameters
-pub fn calculate_hash(id: BlockId, data: BlockData, nonce: BlockNonce, previous: BlockHash, timestamp: Timestamp) -> Vec<u8> {
+pub fn calculate_hash(id: BlockId, data: BlockData, nonce: BlockNonce, previous: BlockHash, timestamp: BlockTime) -> Vec<u8> {
     let data = json!({
         "id": id,
         "data": data,
@@ -35,7 +35,7 @@ pub fn hash_to_binary_representation(hash: &[u8]) -> String {
 }
 
 // Defines the standard method in which blocks are to be mined
-pub fn mine_block(id: BlockId, data: BlockData, previous: BlockHash, timestamp: Timestamp) -> (u64, String) {
+pub fn mine_block(id: BlockId, data: BlockData, previous: BlockHash, timestamp: BlockTime) -> (u64, String) {
     info!("mining block...");
     let mut nonce = 0;
 
