@@ -1,29 +1,13 @@
 /*
     Appellation: mod
     Context:
-    Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
+    Creator: FL03 <jo3mccain@icloud.com>
     Description:
         ... Summary ...
  */
-pub use chain::*;
+mod blocks;
+mod chains;
 
-mod chain;
+pub use crate::blockchain::{blocks::*, chains::*};
 
-pub type ChainError = Box<dyn std::error::Error + Send + Sync + 'static>;
-
-pub enum ChainStates {
-    Appending,
-    Computing,
-    Connecting,
-    Determining,
-}
-
-
-pub trait ChainSpec {
-    type Actor;
-    type Client;
-    type Config;
-    type Data;
-
-    fn constructor(&self, pattern: String) -> Result<Self, ChainError> where Self: Sized;
-}
+pub type Blockchain = Vec<Block>;

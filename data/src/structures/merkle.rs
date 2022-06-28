@@ -1,17 +1,8 @@
-pub struct MerkleTree<L> {
-    pub leaves: Vec<L>,
-}
+pub struct MerkleNode;
 
-pub trait MerkleSpecification {
-    type Data;
-    type Hash;
-    type Leaf;
-    type Node;
+pub struct MerkleLeaf;
 
-    fn generate(&self) -> Self;
-    fn create_leaf(&self, data: Self::Data) -> Self::Leaf;
-}
-
-pub trait LeafSpec {
-    type Data;
+pub struct MerkleTree {
+    pub leaves: Vec<MerkleLeaf>,
+    pub nodes: MerkleNode,
 }
