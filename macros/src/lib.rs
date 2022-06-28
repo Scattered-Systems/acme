@@ -7,3 +7,12 @@
         the Scattered-Systems ecosystem
  */
 extern crate proc_macro;
+
+use proc_macro::TokenStream;
+
+
+#[proc_macro_attribute]
+pub fn simple_attr(attr: TokenStream, input: TokenStream) -> TokenStream {
+    "".parse().unwrap()
+}
+

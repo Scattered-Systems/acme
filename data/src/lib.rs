@@ -1,15 +1,9 @@
 /*
-    Appellation: acme-core
-    Crafter:
-    Description:
- */
-pub use crate::{
-    common::*,
-    models::*,
-    proofs::*,
-    schemas::*,
-    structures::*,
-};
+   Appellation: acme-core
+   Crafter:
+   Description:
+*/
+pub use crate::{common::*, models::*, proofs::*, schemas::*, structures::*};
 
 pub(crate) mod models;
 pub(crate) mod proofs;
@@ -17,7 +11,10 @@ pub(crate) mod schemas;
 pub(crate) mod structures;
 
 mod common {
+    pub use constants::*;
     pub use types::*;
+
+    mod constants {}
 
     mod types {
         pub use bson::DateTime as Timestamp;

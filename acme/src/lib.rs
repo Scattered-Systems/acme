@@ -1,18 +1,18 @@
 /*
-    Appellation: acme
-    Context: Library
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
- */
+   Appellation: acme
+   Context: Library
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+*/
 #[doc(inline)]
 #[cfg(feature = "chains")]
-pub use acme_chains::*;
+pub use acme_chains as chains;
 #[doc(inline)]
 #[cfg(feature = "core")]
 pub use acme_core::*;
 #[doc(inline)]
 #[cfg(feature = "data")]
-pub use acme_data::*;
+pub use acme_data as data;
 #[doc(inline)]
 #[cfg(feature = "derive")]
 pub use acme_derive::*;
@@ -21,4 +21,4 @@ pub use acme_derive::*;
 pub use acme_macros::*;
 #[doc(inline)]
 #[cfg(feature = "network")]
-pub use acme_network::*;
+pub use acme_network as net;

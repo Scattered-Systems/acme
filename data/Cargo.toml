@@ -20,7 +20,11 @@ path = "tests/test.rs"
 test = true
 
 [dependencies]
-bson = "2.3.0"
-chrono = "0.4.19"
-serde = { features = ["derive"], version = "1.0.137" }
+async-trait = "0.1.56"
+bson = { features = ["chrono-0_4", "serde_with"], version = ">=2.3.0" }
+chrono = ">=0.4.19"
+serde = { features = ["derive"], version = ">=1.0.137" }
 serde_json = "1.0.81"
+
+[dev-dependencies.acme]
+path = "../acme"
