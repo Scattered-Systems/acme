@@ -1,19 +1,17 @@
 /*
-    Appellation: validators
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
-use crate::{DIFFICULTY_PREFIX, Block, calculate_block_hash, compute_hash_binary_repr};
+   Appellation: validators
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
+use crate::{calculate_block_hash, compute_hash_binary_repr, Block, DIFFICULTY_PREFIX};
 
 pub fn determine_block_validity(block: &Block, pblock: &Block) -> bool {
     if block.previous != pblock.hash {
         log::warn!("block with id: {} has wrong previous hash", block.id);
         return false;
-    } else if !compute_hash_binary_repr(
-        &hex::decode(&block.hash).expect("can decode from hex"),
-    )
+    } else if !compute_hash_binary_repr(&hex::decode(&block.hash).expect("can decode from hex"))
         .starts_with(DIFFICULTY_PREFIX)
     {
         log::warn!("block with id: {} has invalid difficulty", block.id);
@@ -21,18 +19,17 @@ pub fn determine_block_validity(block: &Block, pblock: &Block) -> bool {
     } else if block.id != pblock.id + 1 {
         log::warn!(
             "block with id: {} is not the next block after the latest: {}",
-            block.id, pblock.id
+            block.id,
+            pblock.id
         );
         return false;
-    } else if hex::encode(
-        calculate_block_hash(
-            block.data.clone(),
-            block.id,
-            block.nonce,
-            block.previous.clone(),
-            block.timestamp.clone(),
-        )
-    ) != block.hash
+    } else if hex::encode(calculate_block_hash(
+        block.id,
+        block.data.clone(),
+        block.nonce,
+        block.previous.clone(),
+        block.timestamp,
+    )) != block.hash
     {
         log::warn!("block with id: {} has invalid hash", block.id);
         return false;

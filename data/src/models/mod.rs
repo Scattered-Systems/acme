@@ -1,34 +1,25 @@
-pub use crate::models::{
-    accounts::*,
-    tokens::*,
-    users::*,
-    wallet::*
-};
+pub use crate::models::{accounts::*, tokens::*, users::*, wallet::*};
 
 mod accounts;
 mod tokens;
 mod users;
 mod wallet;
 
-pub enum DatabaseClassifications {
-    Centralized,
-    Decentralized,
-    Distributed,
-    SelfHosted,
-}
-
-pub enum DatabaseStyles {
-    Object,
-    NoSQL,
-    SQL,
-}
-
-pub trait ModelSpec {
+pub trait AsyncModel {
     type Actor;
     type Client;
-    type Context;
+    type Config;
     type Data;
 
-    fn configure(&self, context: Self::Context) -> Self::Actor;
-    fn constructor(&self, data: Self::Data) -> Self;
+    fn controller(config: Self::Config);
+    fn constructor(&self) -> Result<Self, Box<dyn std::error::Error>>
+    where
+        Self: Sized;
+}
+
+pub trait StandardModel {
+    type Actor;
+    type Client;
+    type Config;
+    type Data;
 }

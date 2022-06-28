@@ -1,11 +1,11 @@
 /*
-    Appellation: hashing
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
-use crate::{BlockData, BlockId, BlockHash, BlockNonce, BlockTime};
+   Appellation: hashing
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
+use crate::{BlockData, BlockHash, BlockId, BlockNonce, BlockTime};
 
 use sha2::Digest;
 
@@ -17,31 +17,24 @@ pub fn compute_hash_binary_repr(hash: &[u8]) -> String {
     res
 }
 
-pub fn calculate_block_hash(data: BlockData, id: BlockId, nonce: BlockNonce, previous: BlockHash, timestamp: BlockTime) -> Vec<u8> {
+pub fn calculate_block_hash(
+    id: BlockId,
+    data: BlockData,
+    nonce: BlockNonce,
+    previous: BlockHash,
+    timestamp: BlockTime,
+) -> Vec<u8> {
     let cache = serde_json::json!(
         {
+            "id": id,
             "data": data.clone(),
-            "id": id.clone(),
-            "nonce": nonce.clone(),
+            "nonce": nonce,
             "previous": previous.clone(),
-            "timestamp": timestamp.clone()
+            "timestamp": timestamp
         }
     );
     let mut hasher = sha2::Sha256::new();
     hasher.update(cache.to_string().as_bytes());
-    hasher.finalize().as_slice().to_owned()
-}
-
-pub fn compute_hash(id: BlockId, timestamp: BlockTime, previous: BlockHash, data: BlockData, nonce: BlockNonce) -> Vec<u8> {
-    let data = serde_json::json!({
-        "id": id,
-        "previous": previous,
-        "data": data,
-        "timestamp": timestamp,
-        "nonce": nonce
-    });
-    let mut hasher = sha2::Sha256::new();
-    hasher.update(data.to_string().as_bytes());
     hasher.finalize().as_slice().to_owned()
 }
 

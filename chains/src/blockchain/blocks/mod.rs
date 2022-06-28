@@ -1,10 +1,10 @@
 /*
-    Appellation: blocks
-    Context: module
-    Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
-    Description:
-        ... Summary ...
- */
+   Appellation: blocks
+   Context: module
+   Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
+   Description:
+       ... Summary ...
+*/
 pub use block::*;
 
 mod block;
@@ -43,13 +43,8 @@ pub fn create_block(
         if nonce % 100000 == 0 {
             log::info!("nonce: {}", nonce);
         }
-        let hash = crate::calculate_block_hash(
-            data.clone(),
-            id,
-            nonce,
-            previous.clone(),
-            timestamp.clone(),
-        );
+        let hash =
+            crate::calculate_block_hash(id, data.clone(), nonce, previous.clone(), timestamp);
         let binary_hash = crate::compute_hash_binary_repr(&hash);
         if binary_hash.starts_with(crate::DIFFICULTY_PREFIX) {
             log::info!(
