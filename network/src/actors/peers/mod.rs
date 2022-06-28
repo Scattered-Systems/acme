@@ -10,12 +10,11 @@ mod peer;
 
 pub type PeerError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
-pub trait PeerSpec<E> {
+pub trait PeerSpec {
     type Actor;
-    type Conduit;
-    type Configuration;
+    type Config;
     type Data;
-
-    fn configure(&self, configuration: Self::Configuration) -> Result<Self, E> where Self: Sized;
+    fn configure(config: Self::Config) -> Result<Self::Config, config::ConfigError>;
+    fn new() -> Self;
 }
 

@@ -6,9 +6,8 @@ pub struct Node {
 
 impl Node {
     pub fn new() -> Self {
-        let peer = crate::Peer::new();
         Self {
-            peer: peer.clone()
+            peer: crate::Peer::new()
         }
     }
 }

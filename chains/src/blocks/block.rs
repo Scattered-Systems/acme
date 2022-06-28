@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::{BlockData, BlockHash, BlockId, BlockNonce, Timestamp};
 
-#[derive(Clone, Debug, Deserialize, Hash, Serialize)]
+#[derive(Clone, Debug, Deserialize, Hash, PartialEq, Serialize)]
 pub struct Block {
     pub id: BlockId,
     pub data: BlockData,
@@ -28,7 +28,6 @@ impl Block {
 
         Self { id, data, hash, nonce, previous, timestamp }
     }
-
     pub fn consensus() -> Self {
         todo!()
     }

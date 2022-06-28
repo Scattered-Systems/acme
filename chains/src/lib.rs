@@ -1,4 +1,4 @@
-pub use bson::{DateTime as Timestamp, oid::ObjectId as BlockId};
+pub use bson::{DateTime as BlockTimestamp, oid::ObjectId as BlockId};
 
 pub use crate::{
     blockchain::*,

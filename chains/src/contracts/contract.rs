@@ -6,3 +6,10 @@
         ... Summary ...
  */
 
+
+pub trait Contract {
+    type Chain;
+    type Data;
+
+    fn compute(&self, data: Self::Data) -> Self;
+}

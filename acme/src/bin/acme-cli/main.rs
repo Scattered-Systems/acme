@@ -5,8 +5,8 @@
     Description:
         ... Summary ...
  */
-use acme::actors::CLI;
-use clap::{Subcommand, Parser};
+use acme::CLI;
+use clap::Parser;
 use serde::{Deserialize, Serialize};
 
 #[derive(clap::Args, Clone, Debug, Deserialize, PartialEq, Serialize)]
@@ -15,7 +15,7 @@ pub struct App {
     update: i8,
 }
 
-#[derive(Clone, Debug, Deserialize, PartialEq, Serialize, Subcommand)]
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize, clap::Subcommand)]
 pub enum Contexts {
     Block {
         #[clap(long, required = false, short, parse(from_occurrences))]
@@ -38,7 +38,7 @@ pub enum Contexts {
 }
 
 
-#[derive(Clone, Debug, Deserialize, Parser, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, clap::Parser, PartialEq, Serialize)]
 #[clap(about, version)]
 pub struct Opts<S: clap::Subcommand = Contexts> {
     #[clap(flatten)]
