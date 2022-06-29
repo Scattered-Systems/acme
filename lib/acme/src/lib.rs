@@ -22,3 +22,23 @@ pub use acme_macros::*;
 #[doc(inline)]
 #[cfg(feature = "network")]
 pub use acme_network as net;
+
+pub trait Interface {
+    type Actor;
+    type Client;
+    type Context;
+    type Data;
+
+    fn authenticate(&self, actor: Self::Actor) -> bool;
+    fn constructor(&self, data: Self::Data) -> Self;
+}
+
+pub struct Session {
+    pub timestamp: i64,
+}
+
+pub struct AppController {
+    mode: String,
+    name: String,
+    session: String,
+}

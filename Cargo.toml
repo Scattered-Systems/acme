@@ -1,16 +1,18 @@
 [workspace]
 default-members = [
-    "acme"
+    "bin/cli", "lib/acme"
 ]
 
 members = [
-    "acme",
-    "chains",
-    "core",
-    "data",
-    "derive",
-    "macros",
-    "network"
+    "bin/api",
+    "bin/cli",
+    "lib/acme",
+    "lib/chains",
+    "lib/core",
+    "lib/data",
+    "lib/derive",
+    "lib/macros",
+    "lib/network"
 ]
 
 [profile.dev]
