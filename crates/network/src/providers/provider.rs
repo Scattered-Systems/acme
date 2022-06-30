@@ -1,19 +1,16 @@
-use crate::{BoxedTransport, Peer};
+use crate::BoxedTransport;
 
 #[derive(Debug)]
 pub struct Provider {
-    pub peer: Peer,
     pub transport: BoxedTransport,
 }
 
 impl Provider {
-    pub fn new(peer: &Peer) -> Self {
-        Self { peer: peer.clone(), transport: Peer::build_transport(&peer) }
+    pub fn new(transport: BoxedTransport) -> Self {
+        Self { transport }
     }
-}
 
-impl std::fmt::Display for Provider {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Provider(peers=[{}])", self.peer)
+    pub fn from(peer: crate::Peer) -> Self {
+        Self::new(crate::create_tokio_tcp_transport(peer.authenticate()))
     }
 }

@@ -5,17 +5,34 @@
     Description:
 
  */
-mod provider;
+use libp2p::{Transport, core::upgrade};
+
 pub use provider::*;
+
+mod provider;
+
+#[derive(Clone, Debug)]
+pub enum Providers {
+    Controller {
+        peers: Vec<crate::Peer>
+    }
+}
 
 pub trait ProviderSpec {
     type Actor;
-    type Configuration;
+    type Config;
     type Context;
     type Data;
 
-    fn authenticate(&self) -> Self;
-    fn configure(&self, context: Self::Context) -> Self::Context;
-    fn constructor(actor: Self::Actor) -> Self;
+    fn new(config: Self::Config) -> Self;
+    fn from(config: Self::Config) -> Self;
 }
 
+pub fn create_tokio_tcp_transport(dh_keys: crate::AuthNoiseKey) -> crate::BoxedTransport {
+    libp2p::tcp::TokioTcpConfig::new()
+        .nodelay(true)
+        .upgrade(upgrade::Version::V1)
+        .authenticate(libp2p::noise::NoiseConfig::xx(dh_keys).into_authenticated())
+        .multiplex(libp2p::mplex::MplexConfig::new())
+        .boxed()
+}

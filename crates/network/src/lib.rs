@@ -22,7 +22,7 @@ mod nodes;
 mod peers;
 mod providers;
 
-pub mod common {
+mod common {
     pub use types::*;
 
     mod types {

@@ -4,11 +4,8 @@
     Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
     Description:
  */
-mod contract;
 
-pub use contract::*;
-
-
+ #[derive(Clone, Debug, Hash, PartialEq)]
 pub enum ContractStates {
     Aborted,
     Executed,
