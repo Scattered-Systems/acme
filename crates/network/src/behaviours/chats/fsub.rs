@@ -1,8 +1,8 @@
 use libp2p::{
     floodsub::{Floodsub, FloodsubEvent},
     mdns::{Mdns, MdnsEvent},
-    NetworkBehaviour,
     swarm::NetworkBehaviourEventProcess,
+    NetworkBehaviour,
 };
 
 #[derive(NetworkBehaviour)]
@@ -15,7 +15,11 @@ pub struct FSub {
 impl NetworkBehaviourEventProcess<FloodsubEvent> for FSub {
     fn inject_event(&mut self, message: FloodsubEvent) {
         if let FloodsubEvent::Message(msg) = message {
-            println!("Received: '{:?}' from {:?}", String::from_utf8_lossy(&msg.data), msg.source);
+            println!(
+                "Received: '{:?}' from {:?}",
+                String::from_utf8_lossy(&msg.data),
+                msg.source
+            );
         }
     }
 }

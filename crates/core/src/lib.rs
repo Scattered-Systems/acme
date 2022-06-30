@@ -1,11 +1,11 @@
 /*
-    Appellation: acme-core
-    Context: library
-    Creator:
-    Description:
-        Core feature library for acme, an all-in-one blockchain toolkit for building optimized
-        EVM compatible apps and chains.
- */
+   Appellation: acme-core
+   Context: library
+   Creator:
+   Description:
+       Core feature library for acme, an all-in-one blockchain toolkit for building optimized
+       EVM compatible apps and chains.
+*/
 mod actors;
 mod apps;
 mod configure;
@@ -16,22 +16,15 @@ mod errors;
 mod utils;
 
 pub use crate::{
-    actors::*,
-    apps::*,
-    common::*,
-    configure::*,
-    connect::*,
-    controllers::*,
-    errors::*,
-    utils::*,
+    actors::*, apps::*, common::*, configure::*, connect::*, controllers::*, errors::*, utils::*,
 };
 
 mod common {
     pub use types::*;
 
     mod types {
-        pub use bson::DateTime;
         pub use bson::oid::ObjectId;
+        pub use bson::DateTime;
         pub use chrono::{Local, Utc};
 
         pub type Container<T = String> = Dictionary<Vec<T>>;

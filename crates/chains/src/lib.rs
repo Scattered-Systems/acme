@@ -3,18 +3,10 @@ mod blockchain;
 mod consensus;
 mod utils;
 
-pub use crate::{
-    accounts::*,
-    blockchain::*,
-    common::*,
-    consensus::*,
-    errors::*,
-    utils::*,
-};
+pub use crate::{accounts::*, blockchain::*, common::*, consensus::*, errors::*, utils::*};
 
 mod errors {
     use std::error::Error;
-
 
     pub type ChainError = Box<dyn Error + Send + Sync + 'static>;
 }

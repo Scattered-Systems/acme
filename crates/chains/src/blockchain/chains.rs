@@ -1,10 +1,10 @@
 /*
-    Appellation: chains
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: chains
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 use crate::Block;
 use serde::{Deserialize, Serialize};
 
@@ -18,7 +18,7 @@ pub struct Chain {
 impl Chain {
     pub fn new() -> Self {
         Self {
-            blockchain: Vec::new()
+            blockchain: Vec::new(),
         }
     }
 

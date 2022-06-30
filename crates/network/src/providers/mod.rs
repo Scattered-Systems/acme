@@ -1,11 +1,11 @@
 /*
-    Appellation: Providers
-    Context: Module
-    Creator: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
-    Description:
+   Appellation: Providers
+   Context: Module
+   Creator: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
+   Description:
 
- */
-use libp2p::{Transport, core::upgrade};
+*/
+use libp2p::{core::upgrade, Transport};
 
 pub use provider::*;
 
@@ -13,9 +13,7 @@ mod provider;
 
 #[derive(Clone, Debug)]
 pub enum Providers {
-    Controller {
-        peers: Vec<crate::Peer>
-    }
+    Controller { peers: Vec<crate::Peer> },
 }
 
 pub trait ProviderSpec {

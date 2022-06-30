@@ -1,8 +1,8 @@
 use libp2p::{
     kad::{AddProviderOk, KademliaEvent, PeerRecord, PutRecordOk, QueryResult, Record},
     mdns::{Mdns, MdnsEvent},
-    NetworkBehaviour,
     swarm::NetworkBehaviourEventProcess,
+    NetworkBehaviour,
 };
 
 use crate::KademliaMS;

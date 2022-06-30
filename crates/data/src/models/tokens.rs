@@ -2,9 +2,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, Hash, Serialize)]
 pub enum Tokens {
-    Auth(String)
+    Auth(String),
 }
-
 
 #[derive(Clone, Debug, Deserialize, Hash, Serialize)]
 pub struct Token {

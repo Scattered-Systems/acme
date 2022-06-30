@@ -1,10 +1,10 @@
 /*
-    Appellation: contexts
-    Context: module
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: contexts
+   Context: module
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 mod context;
 mod loggers;
 

@@ -1,14 +1,13 @@
 /*
-    Appellation: apps
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: apps
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 
 pub struct AppContext {
     pub name: String,
-
 }
 
 pub trait Interface {
@@ -20,7 +19,6 @@ pub trait Interface {
     fn authenticate(&self, actor: Self::Actor) -> bool;
     fn constructor(&self, data: Self::Data) -> Self;
 }
-
 
 #[cfg(test)]
 mod tests {

@@ -1,10 +1,10 @@
 /*
-    Appellation: Nodes
-    Context: Module
-    Creator: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
-    Description:
+   Appellation: Nodes
+   Context: Module
+   Creator: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
+   Description:
 
- */
+*/
 pub use node::*;
 
 mod node;
@@ -27,8 +27,7 @@ pub trait NodeSpec {
     type Config;
     type Data;
 
-    fn constructor(
-        &self,
-        configuration: Self::Config,
-    ) -> Result<Self, NodeError> where Self: Sized;
+    fn constructor(&self, configuration: Self::Config) -> Result<Self, NodeError>
+    where
+        Self: Sized;
 }

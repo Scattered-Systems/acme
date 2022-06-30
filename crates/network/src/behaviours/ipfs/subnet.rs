@@ -1,9 +1,17 @@
+/*
+    Appellation: mainnet
+    Context: behaviours::ipfs
+    Description:
+        Implement the network behaviours that enables apps to connect to the ipfs mainnet
+
+*/
+
 use libp2p::{
     gossipsub::{Gossipsub, GossipsubEvent},
     identify::{Identify, IdentifyEvent},
-    NetworkBehaviour,
     ping,
     swarm::NetworkBehaviourEventProcess,
+    NetworkBehaviour,
 };
 
 #[derive(NetworkBehaviour)]

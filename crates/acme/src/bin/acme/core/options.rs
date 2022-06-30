@@ -1,10 +1,10 @@
 /*
-    Appellation: options
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: options
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 #[derive(clap::Subcommand, Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub enum Contexts {
     Block {
@@ -15,15 +15,21 @@ pub enum Contexts {
     },
     Chain {
         #[clap(long, required = false, short, parse(from_occurrences))]
-        scaffold: i8
+        scaffold: i8,
     },
     Cluster {
-        #[clap(default_value = "", forbid_empty_values = false, long, short, value_parser)]
-        secret: String
+        #[clap(
+            default_value = "",
+            forbid_empty_values = false,
+            long,
+            short,
+            value_parser
+        )]
+        secret: String,
     },
     Wallet {
         #[clap(default_value = "", long, short, value_parser)]
-        account: String
+        account: String,
     },
 }
 
@@ -38,7 +44,6 @@ pub struct DataArgs {
 pub struct Opts<S: clap::Subcommand = Contexts> {
     #[clap(subcommand)]
     pub context: S,
-
 }
 
 #[cfg(test)]

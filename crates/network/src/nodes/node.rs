@@ -1,9 +1,7 @@
 use crate::Peer;
 
 pub enum Chassis {
-    Node {
-        network: String
-    }
+    Node { network: String },
 }
 
 #[derive(Clone, Debug)]
@@ -19,6 +17,6 @@ impl Node {
 
 impl std::fmt::Display for Node {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Node()", )
+        write!(f, "Node()",)
     }
 }

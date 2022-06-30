@@ -1,14 +1,14 @@
 /*
-    Appellation: acme-derive
-    Context: Library
-    Creator: FL03 <jo3mccain@icloud.com> (pzzld.eth)
-    Description:
-        This library is dedicated towards creating derive macros for the acme in support of the
-        Scattered-Systems ecosystem.
+   Appellation: acme-derive
+   Context: Library
+   Creator: FL03 <jo3mccain@icloud.com> (pzzld.eth)
+   Description:
+       This library is dedicated towards creating derive macros for the acme in support of the
+       Scattered-Systems ecosystem.
 
-        Goals:
-            *
- */
+       Goals:
+           *
+*/
 extern crate proc_macro;
 
 use proc_macro::TokenStream;
@@ -35,10 +35,7 @@ pub fn describe(input: TokenStream) -> TokenStream {
             }
             syn::Fields::Unnamed(syn::FieldsUnnamed { unnamed, .. }) => {
                 let num_fields = unnamed.iter().count();
-                format!(
-                    "a struct with {} unnamed fields",
-                    num_fields
-                )
+                format!("a struct with {} unnamed fields", num_fields)
             }
             syn::Fields::Unit => format!("a unit struct"),
         },
@@ -46,11 +43,15 @@ pub fn describe(input: TokenStream) -> TokenStream {
             let vs = variants.iter().map(|v| &v.ident);
             format!("an enum with these variants: {}", quote::quote! {#(#vs),*})
         }
-        syn::Data::Union(
-            syn::DataUnion { fields: syn::FieldsNamed { named, .. }, .. }
-        ) => {
+        syn::Data::Union(syn::DataUnion {
+            fields: syn::FieldsNamed { named, .. },
+            ..
+        }) => {
             let idents = named.iter().map(|f| &f.ident);
-            format!("a union with these named fields: {}", quote::quote! {#(#idents),*})
+            format!(
+                "a union with these named fields: {}",
+                quote::quote! {#(#idents),*}
+            )
         }
     };
 

@@ -11,10 +11,7 @@ mod subnet;
 mod utils {
     use std::{env, error::Error, fs, path::Path, str::FromStr};
 
-    use libp2p::{
-        Multiaddr,
-        multiaddr::Protocol,
-    };
+    use libp2p::{multiaddr::Protocol, Multiaddr};
 
     pub fn get_ipfs_path() -> Box<Path> {
         env::var("IPFS_PATH")

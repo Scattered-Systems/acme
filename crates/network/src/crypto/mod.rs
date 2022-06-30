@@ -1,11 +1,11 @@
 /*
-    Appellation: Contracts
-    Context: Module
-    Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
-    Description:
- */
+   Appellation: Contracts
+   Context: Module
+   Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
+   Description:
+*/
 
- #[derive(Clone, Debug, Hash, PartialEq)]
+#[derive(Clone, Debug, Hash, PartialEq)]
 pub enum ContractStates {
     Aborted,
     Executed,

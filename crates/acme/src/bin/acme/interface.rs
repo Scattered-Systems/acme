@@ -1,10 +1,10 @@
 /*
-    Appellation: interface
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: interface
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 use clap::Parser;
 
 pub enum Apps {
@@ -12,7 +12,6 @@ pub enum Apps {
     Cli,
     Gui,
 }
-
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct App {
@@ -24,16 +23,13 @@ impl App {
     pub fn configure(&self) -> acme_sdk::Config {
         let configuration = match acme_sdk::Config::new() {
             Ok(v) => v,
-            Err(e) => panic!("Configuration Error: {}", e)
+            Err(e) => panic!("Configuration Error: {}", e),
         };
         return configuration.clone();
     }
 
     pub fn new(development: bool, name: String) -> Self {
-        Self {
-            development,
-            name,
-        }
+        Self { development, name }
     }
 }
 

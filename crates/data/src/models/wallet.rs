@@ -1,10 +1,10 @@
 /*
-    Appellation: wallet
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
-    Description:
-        ... Summary ...
- */
+   Appellation: wallet
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
+   Description:
+       ... Summary ...
+*/
 use bson::oid::ObjectId;
 
 type Secret = Vec<String>;
@@ -26,7 +26,13 @@ pub struct Account {
 
 impl Account {
     pub fn new(address: String, alias: String, key: String, secret: Secret, token: String) -> Self {
-        Self { address, alias, key, secret, token }
+        Self {
+            address,
+            alias,
+            key,
+            secret,
+            token,
+        }
     }
     pub fn from(address: &str, alias: &str, key: &str, token: &str) -> Self {
         Self::new(
@@ -45,7 +51,13 @@ pub struct Wallet {
 }
 
 impl Wallet {
-    pub fn setup(address: String, alias: String, key: String, secret: Secret, token: String) -> Self {
+    pub fn setup(
+        address: String,
+        alias: String,
+        key: String,
+        secret: Secret,
+        token: String,
+    ) -> Self {
         todo!()
     }
     pub fn new() -> Self {

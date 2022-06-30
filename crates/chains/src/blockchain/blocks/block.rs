@@ -1,12 +1,12 @@
 /*
-    Appellation: block
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
-    Description:
-        ... Summary ...
- */
+   Appellation: block
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
+   Description:
+       ... Summary ...
+*/
+use crate::{create_block, BlockData, BlockHash, BlockId, BlockNonce, BlockTime};
 use serde::{Deserialize, Serialize};
-use crate::{BlockData, BlockHash, BlockId, BlockNonce, BlockTime, create_block};
 
 #[derive(Clone, Debug, Deserialize, Hash, PartialEq, Serialize)]
 pub struct Block {

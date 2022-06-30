@@ -1,10 +1,10 @@
 /*
-    Appellation: mod
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: mod
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 mod endpoints;
 
 pub use endpoints::*;
@@ -17,5 +17,7 @@ pub trait API {
     type Context;
     type Data;
     async fn configure(config: Self::Config) -> Result<Self::Config, config::ConfigError>;
-    async fn new() -> Result<Self, APIResultError> where Self: Sized;
+    async fn new() -> Result<Self, APIResultError>
+    where
+        Self: Sized;
 }
