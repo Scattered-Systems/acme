@@ -28,11 +28,6 @@ bench = false
 crate-type = ["cdylib", "rlib"]
 test = true
 
-[[test]]
-name = "test"
-path = "tests/test.rs"
-test = true
-
 [dependencies]
 async-trait = "0.1.56"
 bson = { optional = true, features = ["chrono-0_4", "serde_with"], version = ">=2.3.0" }

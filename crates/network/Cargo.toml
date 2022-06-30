@@ -7,15 +7,10 @@ license = "MIT"
 name = "acme-network"
 readme = "README.md"
 repository = "https://github.com/FL03/acme"
-version = "0.1.14" # TODO - Update cargo package version
+version = "0.1.15" # TODO - Update cargo package version
 
 [lib]
 crate-type = ["cdylib", "rlib"]
-test = true
-
-[[test]]
-name = "test"
-path = "tests/test.rs"
 test = true
 
 [dependencies]
