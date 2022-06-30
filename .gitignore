@@ -1,48 +1,36 @@
-# Environments
-/**/.idea
-/**/.vscode/
+# Files
+**/*.config.*
+!**/default.config.*
 
-# Files and File Extensions
-/**/config/local.*
+**/*.env
+**/*.env.*
+!**/*.env.example
 
-*.bk
-*.bk.*
+**/*.lock
+**/*.lock.*
+**/*-lock.json
 
-*.db
-*.db.*
+**/*.log
+**/.log.*
 
-*.lock
-*.lock.*
-*-lock.*
+**/*.rs
+**/*.rs.*
 
-*.log
-*.log.*
+**/*.whl
+**/*.whl.*
 
-*.env
-*.env.*
-!*.env.example
+**/*.zip
+**/*.zip.*
 
-*.whl
-*.whl.*
-
-*.zip
-*.zip.*
-
-
-# Nodejs
-/**/build/
-/**/node_modules/
-
-# Python
-/**/__pycache__/
-/**/dist/
-/**/venv/
-
-# Rust
-/**/debug/
-/**/target/
-
-# Svelte
-/**/.DS_STORE/
-/**/__sapper__/
-/**/.svelte-kit/
+# Folders
+**/__pycache__/
+**/__sapper__/
+**/.DS_STORE/
+**/.docker/data/
+**/.idea/
+**/.svlete-kit/
+**/.vscode/
+**/debug/
+**/node_modules/
+**/target/
+**/venv/
