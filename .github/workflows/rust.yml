@@ -27,65 +27,59 @@ jobs:
     needs: [ login, test ]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Publish
-        run: cargo publish --all-features --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
+        run: cargo publish -p $CRATE_NAME --all-features --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
   chains:
     env:
-      CARGO_PKG_NAME: acme-chains
+      CRATE_NAME: acme-chains
+    needs: [ login, test ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Build and Push
-        run: cargo publish --package $CARGO_PKG_NAME --verbose
+      - name: Publish
+        run: cargo publish -p $CRATE_NAME --all-features --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
   core:
     env:
-      CARGO_PKG_NAME: acme-core
+      CRATE_NAME: acme-core
+    needs: [ login, test ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Build and Push
-        run: cargo publish --package $CARGO_PKG_NAME --verbose
+      - name: Publish
+        run: cargo publish -p $CRATE_NAME --all-features --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
   data:
     env:
-      CARGO_PKG_NAME: acme-data
+      CRATE_NAME: acme-data
+    needs: [ login, test ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Build and Push
-        run: cargo publish --package $CARGO_PKG_NAME --verbose
+      - name: Publish
+        run: cargo publish -p $CRATE_NAME --all-features --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
   derive:
     env:
-      CARGO_PKG_NAME: acme-derive
+      CRATE_NAME: acme-derive
+    needs: [ login, test ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Build and Push
-        run: cargo publish --package $CARGO_PKG_NAME --verbose
+      - name: Publish
+        run: cargo publish -p $CRATE_NAME --all-features --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
   macros:
     env:
-      CARGO_PKG_NAME: acme-macros
+      CRATE_NAME: acme-macros
+    needs: [ login, test ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Build and Push
-        run: cargo publish --package $CARGO_PKG_NAME --verbose
+      - name: Publish
+        run: cargo publish -p $CRATE_NAME --all-features --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
   network:
     env:
-      CARGO_PKG_NAME: acme-network
+      CRATE_NAME: acme-network
+    needs: [ login, test ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
-      - name: Build and Push
-        run: cargo publish --package $CARGO_PKG_NAME --verbose
+      - name: Publish
+        run: cargo publish -p $CRATE_NAME --all-features --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
