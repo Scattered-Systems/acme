@@ -13,22 +13,9 @@ version = "0.1.30" # TODO - Update cargo package version
 chains = ["acme-chains"]
 core = ["acme-core"]
 data = ["acme-data"]
-default = [
-    "chains",
-    "core",
-    "data",
-    "bson/chrono-0_4",
-    "serde/derive"
-]
+default = ["chains", "core", "data", "bson/chrono-0_4", "serde/derive"]
 derive = ["acme-derive"]
-full = [
-    "chains",
-    "core",
-    "data",
-    "derive",
-    "macros",
-    "network"
-]
+full = ["chains", "core", "data", "derive", "macros", "network"]
 macros = ["acme-macros"]
 network = ["acme-network"]
 
