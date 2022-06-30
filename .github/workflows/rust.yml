@@ -7,23 +7,26 @@ on:
     branches: [ "latest" ]
 
 jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login
+        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Test Workspace
         run: cargo test --workspace --verbose --color always
-
   crate:
     env:
-      CARGO_PKG_NAME: acme
+      CRATE_NAME: acme
+    needs: [ login, test ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Login
-        run: cargo login ${{ secrets.CARGO_REGISTRY_TOKEN }}
       - name: Build and Push
-        run: cargo publish --package $CARGO_PKG_NAME --all-features --verbose
+        run: cargo publish -p $CRATE_NAME --all-features -v --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
   chains:
     env:
       CARGO_PKG_NAME: acme-chains
