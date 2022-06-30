@@ -1,19 +1,7 @@
 [workspace]
-default-members = [
-    "bin/cli", "lib/acme"
-]
+default-members = ["crates/acme"]
 
-members = [
-    "bin/api",
-    "bin/cli",
-    "lib/acme",
-    "lib/chains",
-    "lib/core",
-    "lib/data",
-    "lib/derive",
-    "lib/macros",
-    "lib/network"
-]
+members = ["crates/*"]
 
 [profile.dev]
 opt-level = 0

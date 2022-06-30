@@ -1,16 +1,18 @@
 FROM jo3mccain/rusty as builder
 
+ENV CRATE_NAME=acme-cli
+
 ADD . /project
 WORKDIR /project
 
 COPY . .
-RUN cargo test --all-features --workspace && \
-    cargo build --release
+RUN cargo build --release --package ${CRATE_NAME}
 
 FROM debian:buster-slim as application
 
-ENV DEV_MODE=false
+ENV CRATE_NAME=acme-cli \
+    DEV_MODE=false
 
-COPY --from=builder /project/target/release/acme-cli /acme-cli
+COPY --from=builder /project/target/release/${CRATE_NAME} /${CRATE_NAME}
 
-ENTRYPOINT ["./acme-cli"]
+ENTRYPOINT ["./${CRATE_NAME}"]

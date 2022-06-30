@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+cargo fmt && cargo build --release
