@@ -13,6 +13,6 @@ FROM debian:buster-slim as application
 ENV CRATE_NAME=acme-cli \
     DEV_MODE=false
 
-COPY --from=builder /project/target/release/${CRATE_NAME} /${CRATE_NAME}
+COPY --from=builder /project/target/release/$CRATE_NAME /$CRATE_NAME
 
 ENTRYPOINT ["./${CRATE_NAME}"]
