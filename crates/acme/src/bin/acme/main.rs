@@ -5,7 +5,7 @@
     Description:
         ... Summary ...
  */
-pub use acme::CLI;
+pub use acme_sdk::CLI;
 pub use crate::{api::*, core::*, interface::*};
 
 mod api;

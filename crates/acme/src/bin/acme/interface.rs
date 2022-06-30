@@ -21,8 +21,8 @@ pub struct App {
 }
 
 impl App {
-    pub fn configure(&self) -> acme::Config {
-        let configuration = match acme::Config::new() {
+    pub fn configure(&self) -> acme_sdk::Config {
+        let configuration = match acme_sdk::Config::new() {
             Ok(v) => v,
             Err(e) => panic!("Configuration Error: {}", e)
         };
