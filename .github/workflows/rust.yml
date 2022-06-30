@@ -2,9 +2,11 @@ name: Rust
 
 on:
   push:
-    branches: [ "latest", "master" ]
+    branches: [ "master" ]
+    tags: [ "latest" ]
   pull_request:
-    branches: [ "latest" ]
+    branches: [ "master" ]
+    tags: [ "latest" ]
 
 jobs:
   login:
@@ -25,8 +27,8 @@ jobs:
     needs: [ login, test ]
     runs-on: ubuntu-latest
     steps:
-      - name: Build and Push
-        run: cargo publish -p $CRATE_NAME --all-features -v --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Publish
+        run: cargo publish --all-features --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
   chains:
     env:
       CARGO_PKG_NAME: acme-chains

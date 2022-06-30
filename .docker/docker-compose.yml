@@ -1,15 +1,16 @@
 version: "3.9"
 services:
-  api:
+  app:
     build:
-      context: ../apps/api
+      context: ..
       dockerfile: Dockerfile
-    container_name: $PROJECT_SLUG-api
+    container_name: app
     ports:
-      - "8888:8888"
+      - "5432:5432"
+      - "9094:9094"
     restart: always
     volumes:
-      - /app:/app
+      - ..:/app
       - /data/apps:/data
 
   cache:
@@ -48,5 +49,5 @@ services:
       - /data/ipfs/master:/data/ipfs
 
 volumes:
-  apps:
+  app:
   data:
