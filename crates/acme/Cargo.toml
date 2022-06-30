@@ -7,13 +7,17 @@ license = "MIT"
 name = "acme"
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.30" # TODO - Update cargo package version
+version = "0.1.31" # TODO - Update cargo package version
 
 [features]
 chains = ["acme-chains"]
 core = ["acme-core"]
 data = ["acme-data"]
-default = ["chains", "core", "data", "bson/chrono-0_4", "serde/derive"]
+default = [
+    "chains",
+    "core",
+    "data",
+]
 derive = ["acme-derive"]
 full = ["chains", "core", "data", "derive", "macros", "network"]
 macros = ["acme-macros"]
@@ -31,11 +35,17 @@ test = true
 
 [dependencies]
 async-trait = "0.1.56"
+axum = { optional = true, features = ["headers"], version = "0.5.10" }
 bson = { features = ["chrono-0_4", "serde_with"], version = "2.3.0" }
 chrono = "0.4.19"
 clap = "3.2.7"
+config = "0.13.1"
+glob = { optional = true, version = "0.3.0" }
 serde = { features = ["derive"], version = "1.0.137" }
 serde_json = "1.0.81"
+tokio = { optional = true, features = ["full"], version = "1.19.2" }
+tracing = "0.1.35"
+tracing-subscriber = "0.3.12"
 
 # Featured Crates
 acme-chains = { optional = true, path = "../chains", version = ">=0.1.5" }
