@@ -1,8 +1,10 @@
+mod accounts;
 mod blockchain;
 mod consensus;
 mod utils;
 
 pub use crate::{
+    accounts::*,
     blockchain::*,
     common::*,
     consensus::*,
