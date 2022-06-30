@@ -5,8 +5,6 @@
     Description:
         ... Summary ...
  */
-use clap::{Parser};
-
 #[derive(clap::Subcommand, Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub enum Contexts {
     Block {
