@@ -1,9 +1,7 @@
-pub use crate::models::{accounts::*, tokens::*, users::*, wallet::*};
+pub use crate::models::{tokens::*, users::*};
 
-mod accounts;
 mod tokens;
 mod users;
-mod wallet;
 
 pub trait AsyncModel {
     type Actor;

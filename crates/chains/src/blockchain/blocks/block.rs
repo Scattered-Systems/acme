@@ -1,9 +1,9 @@
 /*
    Appellation: block
-   Context:
-   Creator: FL03 <jo3mccain@icloud.com> (https://pzzld.eth.link/)
+   Context: module
+   Creator: FL03 <jo3mccain@icloud.com>
    Description:
-       ... Summary ...
+       Implement the standard block structure
 */
 use crate::{create_block, BlockData, BlockHash, BlockId, BlockNonce, BlockTime};
 use serde::{Deserialize, Serialize};
