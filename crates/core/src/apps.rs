@@ -21,11 +21,6 @@ pub trait Interface {
     fn constructor(&self, data: Self::Data) -> Self;
 }
 
-pub trait CLI {
-    type Commands;
-
-    fn call(&self) -> Self::Commands;
-}
 
 #[cfg(test)]
 mod tests {

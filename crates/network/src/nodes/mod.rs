@@ -9,7 +9,7 @@ pub use node::*;
 
 mod node;
 
-pub type NodeError = Box<dyn std::error::Error + Send + Sync + 'static>;
+type NodeError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
 pub enum Nodes {
     Full,
@@ -24,11 +24,11 @@ pub enum NodeStates {
 pub trait NodeSpec {
     type Account;
     type Client;
-    type Configuration;
+    type Config;
     type Data;
 
     fn constructor(
         &self,
-        configuration: Self::Configuration,
+        configuration: Self::Config,
     ) -> Result<Self, NodeError> where Self: Sized;
 }

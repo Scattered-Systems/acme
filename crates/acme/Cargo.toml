@@ -19,7 +19,7 @@ default = [
     "data",
 ]
 derive = ["acme-derive"]
-full = ["chains", "core", "data", "derive", "macros", "network"]
+full = ["default", "derive", "macros", "network"]
 macros = ["acme-macros"]
 network = ["acme-network"]
 

@@ -5,15 +5,19 @@
     Description:
  */
 pub use crate::{
-    actors::*,
     behaviours::*,
     common::*,
-    contracts::*,
+    crypto::*,
+    nodes::*,
+    peers::*,
+    providers::*,
 };
 
-mod actors;
 mod behaviours;
-mod contracts;
+mod crypto;
+mod nodes;
+mod peers;
+mod providers;
 
 pub mod common {
     pub use types::*;

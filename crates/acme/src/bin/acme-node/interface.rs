@@ -14,7 +14,7 @@ pub enum Apps {
 }
 
 
-#[derive(Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct App {
     pub development: bool,
     pub name: String,
