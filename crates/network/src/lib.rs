@@ -1,19 +1,26 @@
 /*
     Appellation: acme-network
+    Context: library
     Creator: FL03 <jo3mccain@icloud.com>
-    Context:
     Description:
+        This crate was created in support of acme, an all-in-one blockchain toolkit and enables the
+        developer to implement a number of standard networking features for building optimized EVM
+        side-chains.
  */
 pub use crate::{
-    actors::*,
     behaviours::*,
     common::*,
-    contracts::*,
+    crypto::*,
+    nodes::*,
+    peers::*,
+    providers::*,
 };
 
-mod actors;
 mod behaviours;
-mod contracts;
+mod crypto;
+mod nodes;
+mod peers;
+mod providers;
 
 pub mod common {
     pub use types::*;

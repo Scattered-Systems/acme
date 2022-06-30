@@ -5,13 +5,14 @@
     Description:
  */
 mod contract;
+
 pub use contract::*;
 
 
 pub enum ContractStates {
     Aborted,
     Executed,
-    Uploaded
+    Uploaded,
 }
 
 pub trait Contract {

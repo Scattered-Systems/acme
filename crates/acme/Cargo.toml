@@ -4,7 +4,7 @@ description = "Acme was created to be an all-in-one blockchain toolkit in suppor
 edition = "2021"
 keywords = ["blockchain", "scsys", "toolkit"]
 license = "MIT"
-name = "acme"
+name = "acme-sdk"
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
 version = "0.1.31" # TODO - Update cargo package version
@@ -19,18 +19,17 @@ default = [
     "data",
 ]
 derive = ["acme-derive"]
-full = ["chains", "core", "data", "derive", "macros", "network"]
+full = ["default", "derive", "macros", "network"]
 macros = ["acme-macros"]
 network = ["acme-network"]
+
+
+[[bin]]
+name = "acme"
 
 [lib]
 bench = false
 crate-type = ["cdylib", "rlib"]
-test = true
-
-[[test]]
-name = "test"
-path = "tests/test.rs"
 test = true
 
 [dependencies]
