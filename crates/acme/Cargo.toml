@@ -11,6 +11,9 @@ readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
 version = "0.1.33" # TODO - Update cargo package version
 
+[features]
+default = ["acme-sdk/full"]
+
 [lib]
 crate-type = ["cdylib", "rlib"]
 name = "acme"
@@ -18,7 +21,6 @@ test = true
 
 [dependencies]
 async-trait = "0.1.56"
-acme-sdk = { features = ["full"], path = "../sdk", version = "0.1.0" }
 axum = { features = ["headers"], version = "0.5.10" }
 bson = { features = ["chrono-0_4", "serde_with"], version = "2.3.0" }
 chrono = "0.4.19"
@@ -30,3 +32,9 @@ serde_json = "1.0.81"
 tokio = { features = ["full"], version = "1.19.2" }
 tracing = "0.1.35"
 tracing-subscriber = "0.3.11"
+
+[dependencies.acme-sdk]
+features = ["full"]
+optional = true
+path = "../sdk"
+version = ">=0.1.1"
