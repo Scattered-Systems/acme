@@ -41,7 +41,7 @@ impl App {
 }
 
 impl CLI for App {
-    type Commands = crate::Opts<crate::Contexts>;
+    type Commands = crate::Opts;
 
     fn call(&self) -> Self::Commands {
         Self::Commands::parse()

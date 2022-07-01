@@ -5,12 +5,19 @@
    Description:
        ... Summary ...
 */
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub enum AppStates {
+    Start(String),
+    Terminate(String),
+    Transition(String),
+}
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn simple() {
-        let f = |x: usize| x.pow(x.try_into().unwrap());
-        assert_eq!(f(2), 4)
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub enum Contexts {
+    Application {
+        address: String,
+        mode: String,
+        name: String,
+        state: AppStates,
     }
 }
