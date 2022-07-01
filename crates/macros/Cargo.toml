@@ -7,7 +7,7 @@ license = "MIT"
 name = "acme-macros"
 readme = "README.md"
 repository = "https://github.com/FL03/acme"
-version = "0.1.15" # TODO - Update cargo package version
+version = "0.1.16" # TODO - Update cargo package version
 
 [lib]
 proc-macro = true
