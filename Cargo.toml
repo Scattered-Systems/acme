@@ -1,7 +1,16 @@
 [workspace]
 default-members = ["crates/acme", "crates/sdk"]
 
-members = ["crates/*"]
+members = [
+    "crates/acme",
+    "crates/chains",
+    "crates/core",
+    "crates/data",
+    "crates/derive",
+    "crates/macros",
+    "crates/network",
+    "crates/sdk"
+]
 
 [profile.dev]
 opt-level = 0
