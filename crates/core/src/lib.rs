@@ -13,7 +13,6 @@ pub use crate::{
 mod actors;
 mod apps;
 mod connections;
-mod contexts;
 mod controllers;
 mod errors;
 
