@@ -1,13 +1,10 @@
 /*
-   Appellation: acme
+   Appellation: acme-sdk
    Context: Library
    Creator: FL03 <jo3mccain@icloud.com>
    Description:
+
 */
-pub use interfaces::*;
-
-mod interfaces;
-
 #[doc(inline)]
 #[cfg(feature = "chains")]
 pub use acme_chains::*;

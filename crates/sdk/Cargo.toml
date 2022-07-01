@@ -1,0 +1,45 @@
+[package]
+authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
+description = "Acme was created to be an all-in-one blockchain toolkit in support of the Scattered-Systems ecosystem"
+edition = "2021"
+keywords = ["blockchain", "scsys", "toolkit"]
+license = "MIT"
+name = "acme-sdk"
+readme = "README.md"
+repository = "https://github.com/FL03/acme.git"
+version = "0.1.0" # TODO - Update cargo package version
+
+[features]
+chains = ["acme-chains"]
+core = ["acme-core"]
+data = ["acme-data"]
+default = [
+    "chains",
+    "core",
+    "data",
+]
+derive = ["acme-derive"]
+full = ["default", "derive", "macros", "network"]
+macros = ["acme-macros"]
+network = ["acme-network"]
+
+[lib]
+bench = false
+crate-type = ["cdylib", "rlib"]
+test = true
+
+[dependencies]
+
+
+# Featured Crates
+acme-chains = { optional = true, path = "../chains", version = ">=0.1.5" }
+acme-core = { optional = true, path = "../core", version = ">=0.1.14" }
+acme-data = { optional = true, path = "../data", version = ">=0.1.14" }
+acme-derive = { optional = true, path = "../derive", version = ">=0.1.14" }
+acme-macros = { optional = true, path = "../macros", version = ">=0.1.14" }
+acme-network = { optional = true, path = "../network", version = ">=0.1.14" }
+
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]

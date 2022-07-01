@@ -24,3 +24,7 @@ updates:
     directory: /crates/network
     schedule:
       interval: daily
+  - package-ecosystem: cargo
+    directory: /crates/sdk
+    schedule:
+      interval: daily

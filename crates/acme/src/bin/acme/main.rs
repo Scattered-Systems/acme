@@ -1,12 +1,11 @@
 /*
-   Appellation: acme-cli
+   Appellation: acme
    Context:
    Creator: FL03 <jo3mccain@icloud.com>
    Description:
        ... Summary ...
 */
 pub use crate::{api::*, core::*, interface::*};
-pub use acme_sdk::CLI;
 
 mod api;
 mod core;
