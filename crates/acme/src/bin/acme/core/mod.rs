@@ -5,8 +5,9 @@
    Description:
        ... Summary ...
 */
+
+mod config;
 mod context;
 mod options;
-mod settings;
 
-pub use crate::core::{context::*, options::*, settings::*};
+pub use crate::core::{config::*, context::*, options::*};

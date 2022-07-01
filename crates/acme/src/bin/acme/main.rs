@@ -5,14 +5,12 @@
    Description:
        ... Summary ...
 */
-pub use crate::{api::*, core::*, interface::*};
+pub use crate::{core::*, interface::*};
 
-mod api;
 mod core;
 mod interface;
 
 fn main() {
     let app = App::new(false, "acme".to_string());
-    println!("{:#?}", &app.configure());
     println!("{:#?}", &app.call())
 }

@@ -35,20 +35,12 @@ pub struct App {
 }
 
 impl App {
-    pub fn configure(&self) -> acme_sdk::Config {
-        let configuration = match acme_sdk::Config::new() {
-            Ok(v) => v,
-            Err(e) => panic!("Configuration Error: {}", e),
-        };
-        return configuration.clone();
-    }
-
     pub fn new(development: bool, name: String) -> Self {
         Self { development, name }
     }
 }
 
-impl crate::CLI for App {
+impl CLI for App {
     type Commands = crate::Opts<crate::Contexts>;
 
     fn call(&self) -> Self::Commands {

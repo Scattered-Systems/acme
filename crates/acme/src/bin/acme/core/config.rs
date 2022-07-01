@@ -6,6 +6,14 @@
        ... Summary ...
 */
 
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub enum Settings {
+    Application {
+        development: bool,
+        name: String,
+    }
+}
+
 #[cfg(test)]
 mod tests {
     #[test]
