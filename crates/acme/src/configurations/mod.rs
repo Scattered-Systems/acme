@@ -1,10 +1,10 @@
 /*
-    Appellation: mod
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: mod
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 pub use crate::configurations::{standard::*, utils::*};
 
 mod standard;
@@ -59,13 +59,16 @@ impl std::fmt::Display for LoggerSettings {
 
 impl std::fmt::Display for Settings {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Settings(application={}, logger={})", self.application, self.logger)
+        write!(
+            f,
+            "Settings(application={}, logger={})",
+            self.application, self.logger
+        )
     }
 }
 
-
 mod utils {
-    use config::{ConfigBuilder, builder::DefaultState};
+    use config::{builder::DefaultState, ConfigBuilder};
 
     pub type ConfigBuilderDS = ConfigBuilder<DefaultState>;
 
@@ -74,12 +77,16 @@ mod utils {
         builder
     }
 
-    pub fn collect_config_files(builder: ConfigBuilderDS, pattern: &str, required: bool) -> ConfigBuilderDS {
+    pub fn collect_config_files(
+        builder: ConfigBuilderDS,
+        pattern: &str,
+        required: bool,
+    ) -> ConfigBuilderDS {
         builder.add_source(
             glob::glob(pattern)
                 .unwrap()
                 .map(|path| config::File::from(path.unwrap()).required(required))
-                .collect::<Vec<_>>()
+                .collect::<Vec<_>>(),
         )
     }
 }

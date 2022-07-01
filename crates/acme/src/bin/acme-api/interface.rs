@@ -1,10 +1,10 @@
 /*
-    Appellation: interface
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: interface
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 use crate::AsyncStdError;
 
 #[async_trait::async_trait]

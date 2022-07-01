@@ -1,14 +1,13 @@
 /*
-   Appellation: settings
+   Appellation: utils
    Context:
    Creator: FL03 <jo3mccain@icloud.com>
    Description:
        ... Summary ...
 */
 
-#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
-pub enum Settings {
-    Application { development: bool, name: String },
+pub fn create_project(addr: String) -> String {
+    todo!()
 }
 
 #[cfg(test)]

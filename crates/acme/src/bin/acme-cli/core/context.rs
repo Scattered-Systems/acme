@@ -19,5 +19,5 @@ pub enum Contexts {
         mode: String,
         name: String,
         state: AppStates,
-    }
+    },
 }

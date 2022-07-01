@@ -1,5 +1,6 @@
 [package]
 authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
+categories = []
 description = "Acme was created to be an all-in-one blockchain toolkit in support of the Scattered-Systems ecosystem"
 edition = "2021"
 keywords = ["blockchain", "scsys", "toolkit"]

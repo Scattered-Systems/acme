@@ -29,7 +29,10 @@ crate-type = ["cdylib", "rlib"]
 test = true
 
 [dependencies]
-
+bson = { features = ["chrono-0_4", "serde_with"], version = "2.3.0" }
+chrono = "0.4.19"
+serde = { features = ["derive"], version = "1.0.137" }
+tokio = { features = ["full"], version = "1.19.2" }
 
 # Featured Crates
 acme-chains = { optional = true, path = "../chains", version = ">=0.1.5" }

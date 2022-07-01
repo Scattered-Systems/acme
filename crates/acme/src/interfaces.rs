@@ -1,10 +1,10 @@
 /*
-    Appellation: interfaces
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: interfaces
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 
 pub trait Interfacable {
     type Actor;
@@ -22,12 +22,10 @@ pub struct Client {
     pub data: Vec<String>,
 }
 
-
 pub enum Interfaces {
     Application,
     Client,
 }
-
 
 #[cfg(test)]
 mod tests {
