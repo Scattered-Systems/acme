@@ -7,7 +7,7 @@ license = "MIT"
 name = "acme-sdk"
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.1" # TODO - Update cargo package version
+version = "0.1.2" # TODO - Update cargo package version
 
 [features]
 chains = ["acme-chains"]
@@ -35,12 +35,12 @@ serde = { features = ["derive"], version = "1.0.137" }
 tokio = { features = ["full"], version = "1.19.2" }
 
 # Featured Crates
-acme-chains = { optional = true, path = "../chains", version = ">=0.1.5" }
-acme-core = { optional = true, path = "../core", version = ">=0.1.14" }
-acme-data = { optional = true, path = "../data", version = ">=0.1.14" }
-acme-derive = { optional = true, path = "../derive", version = ">=0.1.14" }
-acme-macros = { optional = true, path = "../macros", version = ">=0.1.14" }
-acme-network = { optional = true, path = "../network", version = ">=0.1.14" }
+acme-chains = { optional = true, path = "../chains", version = ">=0.1.16" }
+acme-core = { optional = true, path = "../core", version = ">=0.1.16" }
+acme-data = { optional = true, path = "../data", version = ">=0.1.16" }
+acme-derive = { optional = true, path = "../derive", version = ">=0.1.16" }
+acme-macros = { optional = true, path = "../macros", version = ">=0.1.16" }
+acme-network = { optional = true, path = "../network", version = ">=0.1.16" }
 
 
 [package.metadata.docs.rs]
