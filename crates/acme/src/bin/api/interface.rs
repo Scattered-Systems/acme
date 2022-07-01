@@ -5,12 +5,7 @@
     Description:
         ... Summary ...
  */
-
-mod endpoints;
-
-pub use endpoints::*;
-
-type APIResultError = Box<dyn std::error::Error + Send + Sync + 'static>;
+use crate::AsyncStdError;
 
 #[async_trait::async_trait]
 pub trait API {
@@ -18,7 +13,7 @@ pub trait API {
     type Context;
     type Data;
     async fn configure(config: Self::Config) -> Result<Self::Config, config::ConfigError>;
-    async fn new() -> Result<Self, APIResultError>
-    where
-        Self: Sized;
+    async fn new() -> Result<Self, AsyncStdError>
+        where
+            Self: Sized;
 }

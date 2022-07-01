@@ -8,7 +8,7 @@ name = "acme"
 publish = true
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.31" # TODO - Update cargo package version
+version = "0.1.32" # TODO - Update cargo package version
 
 [[bin]]
 name = "acme"
@@ -20,7 +20,7 @@ test = false
 
 [dependencies]
 async-trait = "0.1.56"
-acme-sdk = { path = "../sdk", version = "0.1.0" }
+acme-sdk = { features = ["full"], path = "../sdk", version = "0.1.0" }
 axum = { features = ["headers"], version = "0.5.10" }
 bson = { features = ["chrono-0_4", "serde_with"], version = "2.3.0" }
 chrono = "0.4.19"
