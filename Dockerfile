@@ -15,4 +15,4 @@ ENV CRATE_NAME=acme \
 
 COPY --from=builder /project/target/release/$CRATE_NAME /$CRATE_NAME
 
-ENTRYPOINT ["./$CRATE_NAME"]
+ENTRYPOINT ["./${CRATE_NAME}"]
