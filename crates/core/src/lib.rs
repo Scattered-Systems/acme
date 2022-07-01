@@ -6,18 +6,18 @@
        Core feature library for acme, an all-in-one blockchain toolkit for building optimized
        EVM compatible apps and chains.
 */
+pub use crate::{
+    actors::*, apps::*, common::*, configure::*, connections::*, controllers::*, errors::*, utils::*,
+};
+
 mod actors;
 mod apps;
 mod configure;
-mod connect;
+mod connections;
 mod contexts;
 mod controllers;
 mod errors;
 mod utils;
-
-pub use crate::{
-    actors::*, apps::*, common::*, configure::*, connect::*, controllers::*, errors::*, utils::*,
-};
 
 mod common {
     pub use types::*;
