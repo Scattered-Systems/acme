@@ -7,12 +7,28 @@
  */
 
 
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub enum StandardConfigurations {
+    Application {
+        mode: String,
+        name: String,
+    },
+    Database {
+        name: String,
+        uri: String,
+    },
+    Logger {
+        level: String
+    },
+}
+
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
-    fn simple() {
-        let f = |x: usize| x.pow(x.try_into().unwrap());
-        assert_eq!(f(2), 4)
+    fn test_config() {
+        let app = StandardConfigurations::Application { mode: "".to_string(), name: "".to_string() };
     }
 }

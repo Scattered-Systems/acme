@@ -1,12 +1,10 @@
 FROM jo3mccain/rusty as builder
 
-ENV CARGO_TERM_COLOR=always
-
 ADD . /project
 WORKDIR /project
 
 COPY . .
-RUN cargo build --release --quiet --color ${CARGO_TERM_COLOR}
+RUN cargo build --release --quiet
 
 FROM debian:buster-slim as cli
 
@@ -24,3 +22,4 @@ EXPOSE $SERVER_PORT/tcp
 EXPOSE $SERVER_PORT/udp
 
 ENTRYPOINT ["./acme-cli"]
+CMD ["./acme-api"]
