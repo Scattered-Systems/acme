@@ -6,7 +6,7 @@ ADD . /project
 WORKDIR /project
 
 COPY . .
-RUN cargo build --release --quiet --color $CARGO_TERM_COLOR
+RUN cargo build --release --quiet --color ${CARGO_TERM_COLOR}
 
 FROM debian:buster-slim as application
 
