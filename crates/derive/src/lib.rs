@@ -20,6 +20,11 @@ pub fn derive_sample_function(_item: TokenStream) -> TokenStream {
     "fn sample() -> u16 { 18 }".parse().unwrap()
 }
 
+#[proc_macro_derive(Constructor)]
+pub fn constructor(input: TokenStream) -> TokenStream {
+    todo!()
+}
+
 #[proc_macro_derive(Describe)]
 pub fn describe(input: TokenStream) -> TokenStream {
     let syn::DeriveInput { ident, data, .. } = syn::parse_macro_input!(input);

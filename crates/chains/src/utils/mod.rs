@@ -16,19 +16,17 @@ pub struct Timestamp;
 
 impl Timestamp {
     pub fn local() -> crate::BlockTime {
-        chrono::Local::now().timestamp()
+        block_ts_local()
     }
     pub fn utc() -> crate::BlockTime {
-        chrono::Utc::now().timestamp()
+        block_ts_utc()
     }
-}
-
-pub fn block_ts_utc() -> crate::BlockTime {
-    let ts = chrono::Utc::now();
-    ts.timestamp()
 }
 
 pub fn block_ts_local() -> crate::BlockTime {
-    let ts = chrono::Local::now();
-    ts.timestamp()
+    chrono::Local::now().timestamp()
+}
+
+pub fn block_ts_utc() -> crate::BlockTime {
+    chrono::Utc::now().timestamp()
 }

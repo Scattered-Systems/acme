@@ -15,11 +15,11 @@ mod common {
     pub use constants::*;
     pub use types::*;
 
-    pub mod constants {
+    mod constants {
         pub const DIFFICULTY_PREFIX: &str = "00";
     }
 
-    pub mod types {
+    mod types {
         pub type BlockData = String;
         pub type BlockId = u64;
         pub type BlockHash = String;

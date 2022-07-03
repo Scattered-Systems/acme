@@ -13,10 +13,10 @@ mod provider;
 
 #[derive(Clone, Debug)]
 pub enum Providers {
-    Controller { peers: Vec<crate::Peer> },
+    WebSocket
 }
 
-pub trait ProviderSpec {
+pub trait ProviderSpec: Sized {
     type Actor;
     type Config;
     type Context;
