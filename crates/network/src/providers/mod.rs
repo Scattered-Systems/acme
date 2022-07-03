@@ -13,7 +13,7 @@ mod provider;
 
 #[derive(Clone, Debug)]
 pub enum Providers {
-    WebSocket
+    WebSocket,
 }
 
 pub trait ProviderSpec: Sized {
