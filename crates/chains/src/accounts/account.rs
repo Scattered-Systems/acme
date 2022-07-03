@@ -15,7 +15,11 @@ pub struct Account {
 
 impl Account {
     pub fn constructor(address: String, username: String, password: String) -> Self {
-        Self { address, username, password }
+        Self {
+            address,
+            username,
+            password,
+        }
     }
 }
 

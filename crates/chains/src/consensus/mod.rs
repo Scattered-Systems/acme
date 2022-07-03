@@ -6,7 +6,6 @@
        ... Summary ...
 */
 
-
 pub enum ConsensusMechanisms {
     PoS,
     PoW,

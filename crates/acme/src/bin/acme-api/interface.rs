@@ -14,6 +14,6 @@ pub trait API {
     type Data;
     async fn configure(config: Self::Config) -> Result<Self::Config, config::ConfigError>;
     async fn new() -> Result<Self, AsyncStdError>
-        where
-            Self: Sized;
+    where
+        Self: Sized;
 }
