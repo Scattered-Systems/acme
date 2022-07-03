@@ -9,37 +9,20 @@
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Account {
     pub address: String,
-    pub alias: String,
-    pub key: String,
-    pub secret: String,
-    pub token: String,
+    pub username: String,
+    pub password: String,
 }
 
 impl Account {
-    pub fn new(address: String, alias: String, key: String, secret: String, token: String) -> Self {
-        Self {
-            address,
-            alias,
-            key,
-            secret,
-            token,
-        }
-    }
-    pub fn from(address: &str, alias: &str, key: &str, secret: &str, token: &str) -> Self {
-        Self::new(
-            String::from(address),
-            String::from(alias),
-            String::from(key),
-            String::from(secret),
-            String::from(token),
-        )
+    pub fn constructor(address: String, username: String, password: String) -> Self {
+        Self { address, username, password }
     }
 }
 
 #[cfg(test)]
 mod tests {
     #[test]
-    fn simple() {
+    fn test_account() {
         let f = |x: usize| x.pow(x.try_into().unwrap());
         assert_eq!(f(2), 4)
     }

@@ -40,9 +40,16 @@ pub fn calculate_block_hash(
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
-    fn simple() {
-        let f = |x: usize| x.pow(x.try_into().unwrap());
-        assert_eq!(f(2), 4)
+    fn test_block_hash() {
+        let id: BlockId = 10;
+        let data = "test".to_string();
+        let nonce: BlockNonce = 890890;
+        let previous = "previous_hash".to_string();
+        let timestamp: BlockTime = crate::block_ts_utc();
+        let hash = calculate_block_hash(id, data, nonce, previous, timestamp);
+        assert_eq!(&hash, &hash)
     }
 }
