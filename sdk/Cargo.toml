@@ -1,0 +1,48 @@
+[package]
+authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
+description = "Acme was created to be an all-in-one blockchain toolkit in support of the Scattered-Systems ecosystem"
+edition = "2021"
+keywords = ["blockchain", "scsys", "toolkit"]
+license = "MIT"
+name = "acme-sdk"
+readme = "README.md"
+repository = "https://github.com/FL03/acme.git"
+version = "0.1.18" # TODO - Update crate version
+
+[features]
+chains = ["acme-chains"]
+core = ["acme-core"]
+data = ["acme-data"]
+default = [
+    "chains",
+    "core",
+    "data",
+]
+derive = ["acme-derive"]
+full = ["default", "derive", "macros", "network"]
+macros = ["acme-macros"]
+network = ["acme-network"]
+
+[lib]
+bench = false
+crate-type = ["cdylib", "rlib"]
+test = true
+
+[dependencies]
+bson = { features = ["chrono-0_4", "serde_with"], version = "2.3.0" }
+chrono = "0.4.19"
+serde = { features = ["derive"], version = "1.0.137" }
+tokio = { features = ["full"], version = "1.19.2" }
+
+# Featured Crates
+acme-chains = { optional = true, path = "../chains", version = ">=0.1.16" }
+acme-core = { optional = true, path = "../core", version = ">=0.1.16" }
+acme-data = { optional = true, path = "../data", version = ">=0.1.16" }
+acme-derive = { optional = true, path = "../derive", version = ">=0.1.16" }
+acme-macros = { optional = true, path = "../macros", version = ">=0.1.16" }
+acme-network = { optional = true, path = "../network", version = ">=0.1.16" }
+
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
