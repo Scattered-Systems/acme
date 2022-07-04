@@ -1,12 +1,12 @@
 # acme
 
-[![Docker](https://github.com/FL03/acme/actions/workflows/docker.yml/badge.svg)](https://github.com/FL03/acme/actions/workflows/docker.yml)
 [![rust-clippy analyze](https://github.com/FL03/acme/actions/workflows/rust-clippy.yml/badge.svg)](https://github.com/FL03/acme/actions/workflows/rust-clippy.yml)
 
-Standardizing the Scattered Ecosystem by centralizing common patterns, structures, and more. One of the main focuses of
-this library is to establish a core set of networking components to aid in the development of peer to peer applications.
-Additionally, critical infrastructure will be scaffolded to enable EVM blockchains to be created, managed, and deployed
-with ease.
+Welcome to the source code,
+
+Acme was created to support the ongoing efforts of Scattered-Systems by scaffolding the framework for the creation of 
+Ethereum native multi-chains, optimized decentralized ledgers, and elegant dApps while further enabling developers by
+natively supporting a number of external clients to be connected such as an event-monitoring system.
 
 ## Developers
 
