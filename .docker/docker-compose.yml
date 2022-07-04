@@ -9,14 +9,10 @@ services:
       - cache
       - database
     ports:
-      - "5432:5432"
-      - "6379:6379"
-      - "9097:9097"
-      - "9098:9098"
-      - "9099:9099"
+      - "8080:8080"
+      - "9090:9090"
     restart: always
     volumes:
-      - /data/app:/data/app:cached
       - /data:/data
 
   cache:
@@ -29,8 +25,8 @@ services:
   database:
     container_name: database
     environment:
-      POSTGRES_DB: appdata
-      POSTGRES_USER: admin
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: example
     image: postgres
     ports:
