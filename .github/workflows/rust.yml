@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Test Workspace
-        run: cargo --package $CRATE_NAME --all-features --verbose --color always
+        run: cargo test --package $CRATE_NAME --all-features --verbose --color always
   acme:
     env:
       CRATE_NAME: acme
