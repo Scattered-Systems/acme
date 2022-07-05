@@ -10,6 +10,13 @@ pub use utils::*;
 
 mod block;
 
+pub type BoxedBlock = Box<dyn AbstractBlock>;
+
+
+pub trait AbstractBlock<Data = String, Index = u8, Hash = String, Nonce = u8, Ts = i64> {
+    fn constructor(&self, id: Index, hash: Hash, nonce: Nonce, previous: Hash, timestamp: Ts) -> Self where Self: Sized;
+}
+
 pub trait BlockSpec<Dt = String, Id = u8, Hs = Vec<u8>, Nc = u8, Ts = i64> {
     fn constructor(
         &self,

@@ -7,7 +7,7 @@ license = "MIT"
 name = "acme-data"
 readme = "README.md"
 repository = "https://github.com/FL03/acme"
-version = "0.1.18" # TODO - Update crate version
+version = "0.1.35" # TODO - Update cargo package version
 
 [features]
 default = [
