@@ -11,23 +11,11 @@ mod node;
 
 type NodeError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
-pub enum Nodes {
-    Full,
-    Light,
+pub enum NodePartitions {
+
 }
 
-pub enum NodeStates {
-    Computing,
-    Controlling,
-}
-
-pub trait NodeSpec {
-    type Account;
-    type Client;
-    type Config;
-    type Data;
-
-    fn constructor(&self, configuration: Self::Config) -> Result<Self, NodeError>
-    where
-        Self: Sized;
+pub trait NodeSpec<Address, Configuration, Context, Data> {
+    fn authenticate(&self, context: Context) -> bool where Self: Sized;
+    fn configure(&self, configuration: Configuration) -> Result<Self, config::ConfigError> where Self: Sized;
 }

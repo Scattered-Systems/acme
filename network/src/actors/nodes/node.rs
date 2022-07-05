@@ -1,8 +1,5 @@
 use crate::Peer;
 
-pub enum Chassis {
-    Node { network: String },
-}
 
 #[derive(Clone, Debug)]
 pub struct Node {
