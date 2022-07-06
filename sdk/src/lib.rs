@@ -3,10 +3,12 @@
    Context: Library
    Creator: FL03 <jo3mccain@icloud.com>
    Description:
-
+        Welcome to the acme sdk, an all-in-one toolkit enabling developers to create optimized
+        Ethereum Native blockchains. Initially, this was created in an attempt to standardize
+        the on-going efforts of Scattered-Systems and was inspired from pre-existing blockchain
+         frameworks like Ignite CLI for Cosmos and Substrate from Parity for Polkadot.
 */
 pub mod chassis;
-mod utils;
 
 #[doc(inline)]
 #[cfg(feature = "chains")]

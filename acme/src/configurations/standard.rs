@@ -9,12 +9,16 @@
 pub struct AppSettings {
     pub mode: String,
     pub name: String,
-    pub version: String
+    pub version: String,
 }
 
 impl AppSettings {
     pub fn constructor(mode: String, name: String, version: String) -> Self {
-        Self { mode, name, version }
+        Self {
+            mode,
+            name,
+            version,
+        }
     }
     pub fn new(mode: String, name: String, version: String) -> Self {
         Self::constructor(mode, name, version)
@@ -39,6 +43,9 @@ mod tests {
     fn test_config() {
         let a = AppSettings::from("dev", "acme", "0.1.0");
         let app_settings = StandardConfigurations::Application(a.clone());
-        assert_eq!(app_settings.clone(), StandardConfigurations::Application(a.clone()))
+        assert_eq!(
+            app_settings.clone(),
+            StandardConfigurations::Application(a.clone())
+        )
     }
 }

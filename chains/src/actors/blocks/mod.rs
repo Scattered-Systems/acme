@@ -12,9 +12,17 @@ mod block;
 
 pub type BoxedBlock = Box<dyn AbstractBlock>;
 
-
 pub trait AbstractBlock<Data = String, Index = u8, Hash = String, Nonce = u8, Ts = i64> {
-    fn constructor(&self, id: Index, hash: Hash, nonce: Nonce, previous: Hash, timestamp: Ts) -> Self where Self: Sized;
+    fn constructor(
+        &self,
+        id: Index,
+        hash: Hash,
+        nonce: Nonce,
+        previous: Hash,
+        timestamp: Ts,
+    ) -> Self
+        where
+            Self: Sized;
 }
 
 pub trait BlockSpec<Dt = String, Id = u8, Hs = Vec<u8>, Nc = u8, Ts = i64> {
@@ -42,12 +50,15 @@ pub trait BlockSpec<Dt = String, Id = u8, Hs = Vec<u8>, Nc = u8, Ts = i64> {
 }
 
 mod utils {
-    use crate::{DIFFICULTY_PREFIX, BData, BHash, BId, BNonce, BTStamp};
+    use crate::{BData, BHash, BId, BNonce, BTStamp, DIFFICULTY_PREFIX};
     use log;
     use sha2::Digest;
 
     pub fn create_block(
-        data: BData, id: BId, previous: BHash, timestamp: BTStamp
+        data: BData,
+        id: BId,
+        previous: BHash,
+        timestamp: BTStamp,
     ) -> (BNonce, BHash) {
         log::info!("Creating a new block...");
         let mut nonce = 0;
@@ -79,7 +90,11 @@ mod utils {
     }
 
     pub fn calculate_block_hash(
-        id: BId, data: BData, nonce: BNonce, previous: BHash, timestamp: BTStamp
+        id: BId,
+        data: BData,
+        nonce: BNonce,
+        previous: BHash,
+        timestamp: BTStamp,
     ) -> Vec<u8> {
         let cache = serde_json::json!(
             {
