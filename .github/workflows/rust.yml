@@ -21,57 +21,74 @@ jobs:
       - name: Test
         run: cargo test --all-features --verbose --color always
   acme:
+    env:
+      CRATE: acme
     needs: [ login ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Publish
-        run: cargo publish --package acme --all-features --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
+        run: cargo publish --package $CRATE --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --all-features
   chains:
+    env:
+      CRATE: acme-chains
     needs: [ login ]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Publish
-        run: cargo publish --package acme-chains --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
+        run: cargo publish --package $CRATE --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
   core:
+    env:
+      CRATE: acme-core
     needs: [ login ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Publish
-        run: cargo publish --package acme-core--token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
+        run: cargo publish --package $CRATE --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
   data:
+    env:
+      CRATE: acme-data
     needs: [ login ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Publish
-        run: cargo publish --package acme-data --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
+        run: cargo publish --package $CRATE --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
   derive:
+    env:
+      CRATE: acme-derive
     needs: [ login ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Publish
-        run: cargo publish --package acme-derive --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
+        run: cargo publish --package $CRATE --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
   macros:
+    env:
+      CRATE: acme-macros
     needs: [ login ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Publish
-        run: cargo publish --package acme-macros --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
+        run: cargo publish --package $CRATE --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
   network:
+    env:
+      CRATE: acme-network
     needs: [ login ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Publish
-        run: cargo publish --package acme-network --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
+        run: cargo publish --package $CRATE --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
   sdk:
+    env:
+      CRATE: acme-sdk
     needs: [ login, test ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Publish
-        run: cargo publish --package acme-sdk --all-features --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --verbose
+        run: cargo publish --package $CRATE --token ${{ secrets.CARGO_REGISTRY_TOKEN }} --all-features
