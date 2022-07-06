@@ -7,12 +7,7 @@
        developer to implement a number of standard networking features for building optimized EVM
        side-chains.
 */
-pub use crate::{
-    actors::*,
-    controllers::*,
-    core::*,
-    data::*
-};
+pub use crate::{actors::*, controllers::*, core::*, data::*};
 
 mod actors;
 mod controllers;

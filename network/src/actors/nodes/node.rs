@@ -1,6 +1,5 @@
 use crate::Peer;
 
-
 #[derive(Clone, Debug)]
 pub struct Node {
     pub client: Peer,

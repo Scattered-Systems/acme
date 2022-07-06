@@ -19,6 +19,10 @@ impl Wallet {
 
 impl std::fmt::Display for Wallet {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Wallet(assets={:#?}, network={:#?})", self.assets, self.network)
+        write!(
+            f,
+            "Wallet(assets={:#?}, network={:#?})",
+            self.assets, self.network
+        )
     }
 }

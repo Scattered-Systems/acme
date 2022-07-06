@@ -1,10 +1,10 @@
 /*
-    Appellation: mod
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: mod
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 
 pub use utils::*;
 
@@ -16,9 +16,9 @@ mod utils {
             log::warn!("block with id: {} has wrong previous hash", block.id);
             return false;
         } else if !convert_hash_into_binary(
-            &hex::decode(&block.hash)
-                .expect("Decoding Error: failed to decode the BlockHash")
-        ).starts_with(DIFFICULTY_PREFIX.as_ref())
+            &hex::decode(&block.hash).expect("Decoding Error: failed to decode the BlockHash"),
+        )
+            .starts_with(DIFFICULTY_PREFIX.as_ref())
         {
             log::warn!("block with id: {} has invalid difficulty", block.id);
             return false;
@@ -29,15 +29,13 @@ mod utils {
                 pblock.id
             );
             return false;
-        } else if hex::encode(
-            calculate_block_hash(
-                block.id,
-                block.data.clone(),
-                block.nonce,
-                block.previous.clone(),
-                block.timestamp,
-            )
-        ) != block.hash
+        } else if hex::encode(calculate_block_hash(
+            block.id,
+            block.data.clone(),
+            block.nonce,
+            block.previous.clone(),
+            block.timestamp,
+        )) != block.hash
         {
             log::warn!("block with id: {} has invalid hash", block.id);
             return false;
