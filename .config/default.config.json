@@ -3,7 +3,14 @@
     "mode": "development",
     "name": "acme"
   },
+  "database": {
+    "name": "postgres",
+    "uri": "postgres://postgres:example@localhost:5432/postgres"
+  },
   "logger": {
     "level": "debug"
+  },
+  "server": {
+    "port": 8080
   }
 }

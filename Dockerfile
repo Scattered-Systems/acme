@@ -6,7 +6,7 @@ WORKDIR /project
 COPY . .
 RUN cargo build --release --verbose --color always
 
-FROM debian:buster-slim as cli
+FROM debian:buster-slim
 
 ENV DEV_MODE=false \
     CLUSTER_PORT=9090 \
