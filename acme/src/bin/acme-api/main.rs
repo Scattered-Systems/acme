@@ -1,18 +1,22 @@
 /*
-   Appellation: acme-api
+   Appellation: maximus
    Context:
    Creator: FL03 <jo3mccain@icloud.com>
    Description:
        ... Summary ...
 */
-pub use crate::{endpoints::*, interface::*};
+pub use crate::{api::*, clients::*, core::*, data::*};
 
-mod endpoints;
-mod interface;
+mod api;
+mod clients;
+mod core;
+mod data;
 
-type AsyncStdError = Box<dyn std::error::Error + Send + Sync + 'static>;
+pub type AsyncError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
 #[tokio::main]
-async fn main() -> Result<(), AsyncStdError> {
+async fn main() -> Result<(), AsyncError> {
+    Interface::new().await;
+
     Ok(())
 }
