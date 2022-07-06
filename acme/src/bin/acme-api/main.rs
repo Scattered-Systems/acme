@@ -16,7 +16,8 @@ pub type AsyncError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
 #[tokio::main]
 async fn main() -> Result<(), AsyncError> {
-    Interface::new().await;
-
+    let mut interface = Interface::new();
+    println!("{}", &interface);
+    interface.run().await;
     Ok(())
 }

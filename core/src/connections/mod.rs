@@ -6,7 +6,6 @@
        ... Summary ...
 */
 
-use std::fmt::Formatter;
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub enum ConnectionStates {

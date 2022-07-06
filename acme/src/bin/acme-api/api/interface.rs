@@ -5,35 +5,62 @@
    Description:
        ... Summary ...
 */
+pub use utils::*;
 
+use crate::{Configuration, Context, Logger, endpoints};
+use std::net::SocketAddr;
 use tower_http::{
     compression::CompressionLayer, propagate_header::PropagateHeaderLayer,
     sensitive_headers::SetSensitiveHeadersLayer, trace,
 };
 
-pub type AxumServer =
-axum::Server<hyper::server::conn::AddrIncoming, axum::routing::IntoMakeService<axum::Router>>;
-
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Interface {
-    pub address: std::net::SocketAddr,
-    pub context: crate::Context,
+    pub address: SocketAddr,
+    pub context: Context,
 }
 
 impl Interface {
-    pub async fn new() -> Self {
-        let configuration = crate::Configuration::new().ok().unwrap();
+    pub fn new() -> Self {
+        let cnf = Configuration::new().ok().unwrap();
 
-        crate::Logger::setup(&configuration);
+        Logger::setup(&cnf);
 
-        let host = [0, 0, 0, 0];
-        let port = configuration.server.port;
+        let host: [u8; 4] = collect_type(cnf.server.host.clone()).try_into().ok().unwrap();
+        let port = cnf.server.port;
 
-        let address: std::net::SocketAddr = std::net::SocketAddr::from((host, port));
-        let context = crate::Context::new(configuration.clone());
+        let address: SocketAddr = SocketAddr::from((host, port));
+        let context = Context::new(cnf.clone());
 
-        let client = axum::Router::new()
-            .merge(crate::api::endpoints::index::create_route())
+        Self { address, context }
+    }
+
+    pub async fn run(&mut self) {
+        create_server(self.address.clone(), self.context.clone()).await.expect("Server Error")
+    }
+}
+
+impl std::fmt::Display for Interface {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "View the application locally at http://localhost:{}",
+            self.context.configuration.server.port
+        )
+    }
+}
+
+mod utils {
+    use super::*;
+    use axum::{Router, Server, routing::IntoMakeService};
+    use hyper::server::conn::AddrIncoming;
+
+
+    pub type AxumServer = Server<AddrIncoming, IntoMakeService<Router>>;
+
+    pub fn create_server(address: SocketAddr, context: Context) -> AxumServer {
+        let client = Router::new()
+            .merge(endpoints::index::create_route())
             .layer(
                 trace::TraceLayer::new_for_http()
                     .make_span_with(trace::DefaultMakeSpan::new().include_headers(true))
@@ -48,20 +75,14 @@ impl Interface {
                 http::header::HeaderName::from_static("x-request-id"),
             ))
             .layer(axum::Extension(context.clone()));
-
-        println!("{}", &configuration.server);
-
-        axum::Server::bind(&address)
-            .serve(client.into_make_service())
-            .await
-            .expect("Server Error");
-
-        Self { address, context }
+        Server::bind(&address).serve(client.into_make_service())
     }
-}
 
-impl std::fmt::Display for Interface {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Interface()", )
+    pub fn collect_type<T>(string: String) -> Vec<T> where T: Clone + std::str::FromStr, <T as std::str::FromStr>::Err: std::fmt::Debug {
+        let exclude: &[char] = &[' ', ',', '[', ']'];
+        let trimmed: &str = &string.trim_matches(exclude);
+        trimmed.split_whitespace()
+            .map(|i| i.trim_matches(exclude).parse::<T>().unwrap())
+            .collect()
     }
 }

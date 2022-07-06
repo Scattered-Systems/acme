@@ -1,23 +1,23 @@
 /*
    Appellation: Nodes
    Context: Module
-   Creator: Joe McCain III <jo3mccain@gmail.com> (https://pzzld.eth.link/)
+   Creator: FL03 <jo3mccain@icloud.com>
    Description:
-
+        Describes the abstract functionality of nodes and implements a standard interface for
+        flexibility
 */
 pub use node::*;
 
 mod node;
 
-type NodeError = Box<dyn std::error::Error + Send + Sync + 'static>;
-
 pub enum NodePartitions {}
 
-pub trait NodeSpec<Address, Configuration, Context, Data> {
-    fn authenticate(&self, context: Context) -> bool
+/// Outlines the standard interface for creating acme-nodes
+pub trait NodeSpec<Addr, Conf, Cont, Data> {
+    fn authenticate(&self, context: Cont) -> crate::AuthNoiseKey
         where
             Self: Sized;
-    fn configure(&self, configuration: Configuration) -> Result<Self, config::ConfigError>
+    fn configure(&self, configuration: Conf) -> Result<Self, config::ConfigError>
         where
             Self: Sized;
 }

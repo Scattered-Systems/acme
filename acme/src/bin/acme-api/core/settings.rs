@@ -26,7 +26,9 @@ impl Configuration {
                 "database.uri",
                 "postgres://postgres:example@localhost:5432/postgres",
             )?
-            .set_default("logger.level", "info")?;
+            .set_default("logger.level", "info")?
+            .set_default("server.host", "[0, 0, 0, 0]")?
+            .set_default("server.port", 8080)?;
 
         builder = builder.add_source(collect_config_files("**/*.config.*"));
         builder = builder.add_source(config::Environment::default().separator("__"));
@@ -74,6 +76,7 @@ mod components {
 
     #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
     pub struct Server {
+        pub host: String,
         pub port: u16,
     }
 
@@ -91,11 +94,8 @@ mod components {
     impl Logger {
         pub fn setup(configuration: &crate::Configuration) {
             if std::env::var_os("RUST_LOG").is_none() {
-                let app_name = configuration.application.name.as_str();
                 let level = configuration.logger.level.as_str();
-                let env = format!("api={},tower_http={}", app_name, level);
-
-                std::env::set_var("RUST_LOG", env);
+                std::env::set_var("RUST_LOG", level);
             }
 
             tracing_subscriber::fmt::init();
