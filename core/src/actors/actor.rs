@@ -6,8 +6,6 @@
        ...Summary...
 */
 
-type CBuilderDS = config::ConfigBuilder<config::builder::DefaultState>;
-
 pub trait ActorSpec<Addr, Cnf, Cnt, Dt> {
     fn authenticate(&self, address: Addr) -> bool
         where

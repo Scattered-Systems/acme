@@ -6,6 +6,8 @@
        ... Summary ...
 */
 
+use std::fmt::Formatter;
+
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub enum ConnectionStates {
     Authorized { client: String },
@@ -22,9 +24,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn simple() {
+    fn test_connection_states() {
         let data: &str = "test";
-        let mut state = ConnectionStates::authorize(String::from(data));
+        let state = ConnectionStates::authorize(String::from(data));
         assert_eq!(&state, &state)
     }
 }
