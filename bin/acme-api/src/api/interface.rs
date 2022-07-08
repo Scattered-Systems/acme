@@ -7,7 +7,7 @@
 */
 pub use utils::*;
 
-use crate::{Configuration, Context, Logger, endpoints};
+use crate::{endpoints, Configuration, Context, Logger};
 use std::net::SocketAddr;
 use tower_http::{
     compression::CompressionLayer, propagate_header::PropagateHeaderLayer,
@@ -26,7 +26,10 @@ impl Interface {
 
         Logger::setup(&cnf);
 
-        let host: [u8; 4] = collect_type(cnf.server.host.clone()).try_into().ok().unwrap();
+        let host: [u8; 4] = collect_type(cnf.server.host.clone())
+            .try_into()
+            .ok()
+            .unwrap();
         let port = cnf.server.port;
 
         let address: SocketAddr = SocketAddr::from((host, port));
@@ -36,7 +39,9 @@ impl Interface {
     }
 
     pub async fn run(&mut self) {
-        create_server(self.address.clone(), self.context.clone()).await.expect("Server Error")
+        create_server(self.address.clone(), self.context.clone())
+            .await
+            .expect("Server Error")
     }
 }
 
@@ -52,9 +57,8 @@ impl std::fmt::Display for Interface {
 
 mod utils {
     use super::*;
-    use axum::{Router, Server, routing::IntoMakeService};
+    use axum::{routing::IntoMakeService, Router, Server};
     use hyper::server::conn::AddrIncoming;
-
 
     pub type AxumServer = Server<AddrIncoming, IntoMakeService<Router>>;
 
@@ -78,10 +82,15 @@ mod utils {
         Server::bind(&address).serve(client.into_make_service())
     }
 
-    pub fn collect_type<T>(string: String) -> Vec<T> where T: Clone + std::str::FromStr, <T as std::str::FromStr>::Err: std::fmt::Debug {
+    pub fn collect_type<T>(string: String) -> Vec<T>
+        where
+            T: Clone + std::str::FromStr,
+            <T as std::str::FromStr>::Err: std::fmt::Debug,
+    {
         let exclude: &[char] = &[' ', ',', '[', ']'];
         let trimmed: &str = &string.trim_matches(exclude);
-        trimmed.split_whitespace()
+        trimmed
+            .split_whitespace()
             .map(|i| i.trim_matches(exclude).parse::<T>().unwrap())
             .collect()
     }
