@@ -1,0 +1,18 @@
+[package]
+authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
+description = "Derive macros for the acme-cli in support of the Scattered-Systems ecosystem"
+edition = "2021"
+keywords = ["derive", "proc-macro", "scsys"]
+license = "MIT"
+name = "acme-derive"
+readme = "README.md"
+repository = "https://github.com/FL03/acme"
+version = "0.1.36" # TODO - Update cargo package version
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = ">=1.0.40"
+quote = ">=1.0.20"
+syn = { features = ["full"], version = ">=1.0.98" }

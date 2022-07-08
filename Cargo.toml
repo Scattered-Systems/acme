@@ -1,15 +1,15 @@
 [workspace]
-default-members = ["acme", "sdk"]
+default-members = [
+    "lib/acme",
+    "bin/acme-api"
+]
 
 members = [
-    "acme",
-    "chains",
-    "core",
-    "data",
-    "derive",
-    "macros",
-    "network",
-    "sdk"
+    "bin/acme-api",
+    "bin/acme-cli",
+    "lib/acme",
+    "lib/derive",
+    "lib/macros"
 ]
 
 [profile.dev]
@@ -25,7 +25,7 @@ codegen-units = 256
 rpath = false
 
 [profile.release]
-opt-level = 3
+opt-level = "s"
 debug = false
 split-debuginfo = '...'  # Platform-specific.
 debug-assertions = false

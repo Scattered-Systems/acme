@@ -1,30 +1,30 @@
 version: 2
 updates:
-  - package-ecosystem: cargo
-    directory: /acme
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
       interval: daily
   - package-ecosystem: cargo
-    directory: /core
+    directory: /
     schedule:
       interval: daily
   - package-ecosystem: cargo
-    directory: /data
+    directory: /bin/acme-api
     schedule:
       interval: daily
   - package-ecosystem: cargo
-    directory: /derive
+    directory: /bin/acme-cli
     schedule:
       interval: daily
   - package-ecosystem: cargo
-    directory: /macros
+    directory: /lib/acme
     schedule:
       interval: daily
   - package-ecosystem: cargo
-    directory: /network
+    directory: /lib/derive
     schedule:
       interval: daily
   - package-ecosystem: cargo
-    directory: /sdk
+    directory: /lib/macros
     schedule:
       interval: daily
