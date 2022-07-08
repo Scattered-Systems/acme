@@ -4,7 +4,7 @@
 
 **/*.env
 **/*.env.*
-!**/*.env.example
+!*.env.example
 
 **/*.lock
 **/*.lock.*
