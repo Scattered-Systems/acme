@@ -4,7 +4,7 @@ ADD . /project
 WORKDIR /project
 
 COPY . .
-RUN cargo build --release --verbose --color always
+RUN cargo build --workspace --release --verbose --color always
 
 FROM debian:buster-slim
 
