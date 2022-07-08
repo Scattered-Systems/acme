@@ -29,7 +29,7 @@ tower-http = { features = ["compression-br", "propagate-header", "sensitive-head
 tracing = "0.1.35"
 tracing-subscriber = "0.3.14"
 
-[dependencies.acme-sdk]
+[dependencies.acme]
 features = ["full"]
 optional = true
-version = ">=0.1.35"
+version = ">=0.1.36"
