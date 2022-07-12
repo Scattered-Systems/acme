@@ -1,10 +1,10 @@
 /*
-    Appellation: core
-    Context: module
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: core
+   Context: module
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 pub use common::*;
 
 pub mod configurations;
@@ -19,7 +19,6 @@ mod common {
 
         pub type LocalTime = chrono::Local;
         pub type Dict<T = Vec<String>> = HashMap<String, T>;
-
 
         pub enum Ids {
             Alien(String),
