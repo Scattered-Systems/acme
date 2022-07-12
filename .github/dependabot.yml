@@ -9,22 +9,14 @@ updates:
     schedule:
       interval: daily
   - package-ecosystem: cargo
-    directory: /bin/acme-api
-    schedule:
-      interval: daily
-  - package-ecosystem: cargo
-    directory: /bin/acme-cli
-    schedule:
-      interval: daily
-  - package-ecosystem: cargo
-    directory: /lib/acme
-    schedule:
-      interval: daily
-  - package-ecosystem: cargo
     directory: /lib/derive
     schedule:
       interval: daily
   - package-ecosystem: cargo
     directory: /lib/macros
+    schedule:
+      interval: daily
+  - package-ecosystem: cargo
+    directory: /lib/sdk
     schedule:
       interval: daily
