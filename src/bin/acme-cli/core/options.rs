@@ -19,11 +19,11 @@ pub enum Subcommands {
     },
     Cluster {
         #[clap(
-            default_value = "",
-            forbid_empty_values = false,
-            long,
-            short,
-            value_parser
+        default_value = "",
+        forbid_empty_values = false,
+        long,
+        short,
+        value_parser
         )]
         secret: String,
     },
