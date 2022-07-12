@@ -8,3 +8,10 @@
 pub use accounts::*;
 
 mod accounts;
+
+pub trait Model<Act, Cnf, Cnt, Dt> {
+    fn constructor(&self, config: Cnf) -> Result<Self, config::Error> where Self: Sized;
+}
+
+
+pub trait AsyncModel {}

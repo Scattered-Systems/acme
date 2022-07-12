@@ -6,26 +6,10 @@
        ... Summary ...
 */
 pub use common::*;
+pub use configurations::*;
+pub use utils::*;
 
-pub mod configurations;
+mod common;
+mod configurations;
 
-mod common {
-    mod constants {}
-
-    mod types {
-        use bson;
-        use chrono;
-        use std::collections::HashMap;
-
-        pub type LocalTime = chrono::Local;
-        pub type Dict<T = Vec<String>> = HashMap<String, T>;
-
-        pub enum Ids {
-            Alien(String),
-            Objects(bson::oid::ObjectId),
-            Standard(u64),
-        }
-    }
-
-    mod variants {}
-}
+mod utils {}
