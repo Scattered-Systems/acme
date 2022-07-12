@@ -32,7 +32,7 @@ mod utils {
 
     pub async fn stream(ticker: String) {
         let stream = WSFeed::connect(WS_SANDBOX_URL,
-                                     &[ticker.into()], &[ChannelType::Heartbeat]).await.unwrap();
+                                     &[ticker.as_str()], &[ChannelType::Heartbeat]).await.unwrap();
 
         stream
             .take(10)

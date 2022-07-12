@@ -4,6 +4,8 @@ default-members = [
 ]
 
 members = [
+    "bin/acme-api",
+    "bin/acme-cli",
     "lib/acme",
     "lib/derive",
     "lib/macros"

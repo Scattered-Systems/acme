@@ -12,14 +12,6 @@ readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
 version = "0.1.40" # TODO - Update cargo package version
 
-[[bin]]
-name = "acme-api"
-path = "../../bin/acme-api"
-
-[[bin]]
-name = "acme-cli"
-path = "../../bin/acme-cli"
-
 [features]
 default = []
 derive = ["acme-derive"]
