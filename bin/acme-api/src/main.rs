@@ -14,11 +14,8 @@ mod data;
 
 pub type AsyncError = Box<dyn std::error::Error + Send + Sync + 'static>;
 
-use acme;
-
 #[tokio::main]
 async fn main() -> Result<(), AsyncError> {
-    acme::get_cb_time();
     let mut interface = Interface::new();
     println!("{}", &interface);
     interface.run().await;
