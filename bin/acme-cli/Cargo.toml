@@ -25,7 +25,7 @@ serde = { features = ["derive"], version = "1.0.138" }
 serde_json = "1.0.82"
 
 
-[dependencies.acme-sdk]
+[dependencies.acme]
 features = ["full"]
 optional = true
-version = ">=0.1.35"
+version = ">=0.1.36"

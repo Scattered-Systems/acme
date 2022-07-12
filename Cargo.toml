@@ -1,12 +1,9 @@
 [workspace]
 default-members = [
-    "lib/acme",
-    "bin/acme-api"
+    "lib/acme"
 ]
 
 members = [
-    "bin/acme-api",
-    "bin/acme-cli",
     "lib/acme",
     "lib/derive",
     "lib/macros"
