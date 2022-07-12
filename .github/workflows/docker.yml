@@ -34,7 +34,7 @@ jobs:
         id: prepare
         run: |
           DOCKER_IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/acme
-          DOCKER_PLATFORMS=linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/386,linux/ppc64le,linux/s390x
+          DOCKER_PLATFORMS=linux/amd64,linux/arm64
           VERSION=latest
 
           if [[ $GITHUB_REF == refs/tags/* ]]; then
@@ -55,7 +55,7 @@ jobs:
             --build-arg VERSION=${VERSION} \
             --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
             --build-arg VCS_REF=${GITHUB_SHA::8} \
-            ${TAGS} --file ./Dockerfile ./rust
+            ${TAGS} --file ./Dockerfile .
       -
         name: Set up Docker Buildx
         uses: crazy-max/ghaction-docker-buildx@v3
