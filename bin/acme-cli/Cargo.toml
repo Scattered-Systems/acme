@@ -9,7 +9,7 @@ name = "acme-cli"
 publish = true
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.35" # TODO - Update cargo package version
+version = "0.1.41" # TODO - Update cargo package version
 
 
 [dependencies]
@@ -29,4 +29,4 @@ serde_json = "1.0.82"
 features = ["full"]
 optional = true
 path = "../../lib/acme"
-version = ">=0.1.40"
+version = ">=0.1.41"

@@ -10,7 +10,7 @@ name = "acme"
 publish = true
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.40" # TODO - Update cargo package version
+version = "0.1.41" # TODO - Update cargo package version
 
 [features]
 default = []
@@ -37,9 +37,9 @@ serde_json = "1.0.82"
 [dependencies.acme-derive]
 optional = true
 path = "../derive"
-version = ">=0.1.40"
+version = ">=0.1.41"
 
 [dependencies.acme-macros]
 optional = true
 path = "../macros"
-version = ">=0.1.40"
+version = ">=0.1.41"
