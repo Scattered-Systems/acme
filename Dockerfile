@@ -1,4 +1,4 @@
-FROM jo3mccain/rusty as builder
+FROM rust as builder
 
 ADD . /project
 WORKDIR /project
