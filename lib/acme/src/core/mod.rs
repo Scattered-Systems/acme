@@ -23,7 +23,7 @@ mod common {
 
         pub enum Ids {
             Alien(String),
-            Objects(bson::oid),
+            Objects(bson::oid::ObjectId),
             Standard(u64),
         }
     }
