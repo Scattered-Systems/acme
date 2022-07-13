@@ -5,32 +5,10 @@
    Description:
        ... Summary ...
 */
-#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
-pub struct AppSettings {
-    pub mode: String,
-    pub name: String,
-    pub version: String,
-}
-
-impl AppSettings {
-    pub fn constructor(mode: String, name: String, version: String) -> Self {
-        Self {
-            mode,
-            name,
-            version,
-        }
-    }
-    pub fn new(mode: String, name: String, version: String) -> Self {
-        Self::constructor(mode, name, version)
-    }
-    pub fn from(mode: &str, name: &str, version: &str) -> Self {
-        Self::constructor(mode.to_string(), name.to_string(), version.to_string())
-    }
-}
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub enum StandardConfigurations {
-    Application(AppSettings),
+    Application(crate::AppParams),
     Database { name: String, uri: String },
     Logger { level: String },
 }
@@ -41,7 +19,7 @@ mod tests {
 
     #[test]
     fn test_config() {
-        let a = AppSettings::from("dev", "acme", "0.1.0");
+        let a = crate::AppParams::from("dev", "acme");
         let app_settings = StandardConfigurations::Application(a.clone());
         assert_eq!(
             app_settings.clone(),

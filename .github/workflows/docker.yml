@@ -2,10 +2,19 @@ name: Docker
 
 on:
   push:
-    branches: [ "master" ]
-    tags: [ "latest" ]
+    branches:
+      - master
+    branches-ignore:
+      - dev
+    tags:
+      - latest
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
+    branches-ignore:
+      - dev
+    tags:
+      - latest
 
 jobs:
   login:
@@ -35,7 +44,7 @@ jobs:
         run: |
           DOCKER_IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/acme
           DOCKER_PLATFORMS=linux/amd64,linux/arm64
-          VERSION=latest
+          VERSION=0.1.42
 
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/v}

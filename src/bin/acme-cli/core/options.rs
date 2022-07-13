@@ -5,43 +5,39 @@
    Description:
        ... Summary ...
 */
+
+#[derive(clap::ArgEnum, Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
+pub enum BaseArgs {
+    Generate,
+    Manage,
+    Update,
+}
+
 #[derive(clap::Subcommand, Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 pub enum Subcommands {
-    Block {
-        #[clap(long, required = false, short, parse(from_occurrences))]
-        generate: i8,
-        #[clap(default_value = "", long, short, value_parser)]
-        data: String,
+    Account {
+        #[clap(long, short, required = false, parse(from_occurrences))]
+        login: i8,
     },
-    Chain {
-        #[clap(long, required = false, short, parse(from_occurrences))]
-        scaffold: i8,
-    },
-    Cluster {
-        #[clap(
-        default_value = "",
-        forbid_empty_values = false,
-        long,
-        short,
-        value_parser
-        )]
-        secret: String,
-    },
-    Wallet {
-        #[clap(default_value = "", long, short, value_parser)]
-        account: String,
+    Store {
+        #[clap(flatten)]
+        data: DataArgs,
     },
 }
 
 #[derive(clap::Args, Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct DataArgs {
     #[clap(default_value = "key", long, required = false, short, value_parser)]
-    key: String,
+    pub key: String,
+    #[clap(default_value = "value", long, required = false, short, value_parser)]
+    pub value: String,
 }
 
 #[derive(clap::Parser, Clone, Debug, PartialEq, serde::Deserialize, serde::Serialize)]
 #[clap(about, version)]
 pub struct Opts<S: clap::Subcommand = Subcommands> {
+    #[clap(arg_enum)]
+    pub args: BaseArgs,
     #[clap(subcommand)]
     pub context: S,
 }

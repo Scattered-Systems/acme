@@ -4,7 +4,7 @@
 
 Welcome to the source code,
 
-Acme is a collection of useful clients for building data-centric Rust based applications
+Acme is designed to be your last profile
 
 ## Developers
 

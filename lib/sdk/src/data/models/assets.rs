@@ -1,25 +1,30 @@
 /*
-   Appellation: interfaces
+   Appellation: assets
    Context:
    Creator: FL03 <jo3mccain@icloud.com>
    Description:
        ... Summary ...
 */
-#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
-pub enum Information {
-    KeyValue,
+
+pub trait FungibleTokenSpec<Context = String, Data = usize> {
+    fn fetch_symbol(&self) -> Context
+        where
+            Self: Sized;
+    fn fetch_supply(&self) -> Data
+        where
+            Self: Sized;
 }
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
-pub struct InterfaceStore {
-    pub id: crate::Ids,
-    pub data: Vec<Information>,
-    pub timestamp: i64,
+pub enum AssetClass {
+    Fungible,
+    NonFungible,
+    Standard(Asset),
 }
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
-pub struct Interface {
-    pub name: String,
+pub struct Asset {
+    pub data: Vec<String>,
 }
 
 #[cfg(test)]
