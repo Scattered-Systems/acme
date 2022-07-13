@@ -4,11 +4,17 @@ on:
   push:
     branches:
       - master
+    branches-ignore:
+      - dev
     tags:
       - latest
   pull_request:
     branches:
       - master
+    branches-ignore:
+      - dev
+    tags:
+      - latest
 
 jobs:
   login:
