@@ -19,6 +19,7 @@ mod types {
 }
 
 mod variants {
+    #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
     pub enum Ids {
         Alien(String),
         Objects(bson::oid::ObjectId),

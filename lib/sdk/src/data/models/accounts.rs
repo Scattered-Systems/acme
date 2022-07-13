@@ -23,11 +23,8 @@ impl Account {
     pub fn new(address: String) -> Self {
         Self::constructor(address)
     }
-    pub fn from<T>(address: &T) -> Self {
-        match address.try_into() {
-            Ok(v) => Self::constructor(v),
-            Err(e) => panic!("{}", e),
-        }
+    pub fn from(address: &str) -> Self {
+        Self::constructor(String::from(address))
     }
 }
 

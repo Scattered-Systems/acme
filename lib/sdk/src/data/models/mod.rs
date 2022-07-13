@@ -13,7 +13,7 @@ mod accounts;
 mod assets;
 
 pub trait Model<Act, Cnf, Cnt, Dt> {
-    fn constructor(&self, config: Cnf) -> Result<Self, config::Error>
+    fn constructor(&self, config: Cnf) -> Result<Self, config::ConfigError>
         where
             Self: Sized;
 }

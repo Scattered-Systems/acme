@@ -22,6 +22,10 @@ bench = false
 name = "acme-cli"
 test = false
 
+[features]
+default = ["acme-sdk/default"]
+full = ["acme-sdk/full"]
+
 [lib]
 name = "acme"
 test = true
@@ -44,6 +48,11 @@ tower = "0.4.13"
 tower-http = { features = ["compression-br", "propagate-header", "sensitive-headers", "trace"], version = "0.3.4" }
 tracing = "0.1.35"
 tracing-subscriber = "0.3.14"
+
+[dependencies.acme-sdk]
+optional = true
+path = "lib/sdk"
+version = ">=0.1.42"
 
 
 [workspace]

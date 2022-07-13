@@ -9,7 +9,7 @@ pub use utils::*;
 
 pub mod interfaces;
 
-pub trait ActorSpec<Data> {
+pub trait ActorSpec<Cnf, Data> {
     fn configure(&self, config: Cnf) -> Self
         where
             Self: Sized;

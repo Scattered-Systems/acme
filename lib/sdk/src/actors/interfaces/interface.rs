@@ -5,7 +5,7 @@
    Description:
        ... Summary ...
 */
-
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub enum Information {
     KeyValue,
 }

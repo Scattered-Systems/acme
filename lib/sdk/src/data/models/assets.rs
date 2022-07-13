@@ -17,7 +17,7 @@ pub trait FungibleTokenSpec<Context = String, Data = usize> {
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub enum AssetClass {
-    Fungible(dyn FungibleTokenSpec),
+    Fungible,
     NonFungible,
     Standard(Asset),
 }
