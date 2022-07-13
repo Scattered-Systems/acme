@@ -6,8 +6,11 @@
        ... Summary ...
 */
 
+pub use crate::core::config::*;
+pub use context::*;
+pub use options::*;
+
 mod config;
 mod context;
 mod options;
 
-pub use crate::core::{config::*, context::*, options::*};
