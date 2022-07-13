@@ -5,8 +5,8 @@
    Description:
        ... Summary ...
 */
+use acme::{ConfigBuilderDS, collect_config_files};
 pub use components::*;
-pub use utils::*;
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Configuration {
@@ -106,26 +106,5 @@ mod components {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             write!(f, "Logger(level={})", self.level)
         }
-    }
-}
-
-mod utils {
-    pub type ConfigBuilderDS = config::ConfigBuilder<config::builder::DefaultState>;
-    pub type ConfigFromFileVec = Vec<config::File<config::FileSourceFile, config::FileFormat>>;
-
-    pub fn collect_config_files(pattern: &str) -> ConfigFromFileVec {
-        glob::glob(pattern)
-            .unwrap()
-            .map(|path| config::File::from(path.unwrap()).required(false))
-            .collect::<Vec<_>>()
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn test() {
-        let f = |x: usize| x.pow(x.try_into().unwrap());
-        assert_eq!(f(2), 4)
     }
 }

@@ -5,45 +5,30 @@
    Description:
        ... Summary ...
 */
-use clap::Parser;
+// use clap::Parser;
 
-pub enum Apps {
-    Api,
-    Cli,
-    Gui,
-}
-
-pub trait CommandLineInterface {
-    type Application;
-    type Config;
-    type Context;
-    type Data;
-
-    fn client(&self) -> Self::Data;
-}
-
-pub trait CLI {
-    type Commands;
-
-    fn call(&self) -> Self::Commands;
-}
-
-#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
-pub struct App {
+#[derive(clap::Parser, Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct Interface {
     pub development: bool,
     pub name: String,
 }
 
-impl App {
-    pub fn new(development: bool, name: String) -> Self {
+impl Interface {
+    fn configure<T: Clone + std::str::FromStr>(&self, data: Vec<T>) -> Result<Self, config::ConfigError> {
+        let mut builder = config::Config::builder();
+        builder = builder
+            .set_default("development", true)?
+            .set_default("name", "acme")?;
+        builder.build()?.try_deserialize()
+    }
+    fn constructor(development: bool, name: String) -> Self {
         Self { development, name }
     }
-}
-
-impl CLI for App {
-    type Commands = crate::Opts;
-
-    fn call(&self) -> Self::Commands {
-        Self::Commands::parse()
+    pub fn new(development: bool, name: String) -> Self {
+        Self::constructor(development, name)
+    }
+    pub fn run(&self) -> crate::Opts {
+        let args = crate::Opts::parse();
+        args
     }
 }

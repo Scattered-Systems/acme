@@ -11,6 +11,6 @@ mod core;
 mod interface;
 
 fn main() {
-    let app = App::new(false, "acme".to_string());
-    println!("{:#?}", &app.call())
+    let app = Interface::new(false, "acme".to_string());
+    println!("{:#?}", &app.run())
 }
