@@ -13,10 +13,9 @@ mod client;
 mod utils {
     use coinbase_pro_rs::structs::wsfeed::*;
     use coinbase_pro_rs::{CBError, WSFeed, WS_SANDBOX_URL};
-    use futures::{Future, Stream, StreamExt, TryStreamExt};
+    use futures::StreamExt;
 
     use coinbase_pro_rs::{ASync, Public, SANDBOX_URL};
-    use futures::TryFutureExt;
 
     pub async fn get_cb_time() {
         let client: Public<ASync> = Public::new_with_keep_alive(SANDBOX_URL, false);
