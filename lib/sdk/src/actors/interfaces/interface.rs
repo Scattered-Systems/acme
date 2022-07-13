@@ -6,25 +6,20 @@
        ... Summary ...
 */
 
-pub trait Interfacable {
-    type Actor;
-    type Client;
-    type Config;
-    type Data;
-
-    fn activate(&self) -> Self;
-    fn configure(&self, config: Self::Config) -> Result<Self::Config, config::ConfigError>;
-    fn constructor(&self) -> Self;
+pub enum Information {
+    KeyValue
 }
 
-pub struct Client {
-    pub context: String,
-    pub data: Vec<String>,
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct InterfaceStore {
+    pub id: crate::Ids,
+    pub data: Vec<Information>,
+    pub timestamp: i64,
 }
 
-pub enum Interfaces {
-    Application,
-    Client,
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub struct Interface {
+    pub name: String,
 }
 
 #[cfg(test)]

@@ -5,25 +5,24 @@
     Description:
         ... Summary ...
  */
+pub use constants::*;
+pub use types::*;
+pub use variants::*;
 
 mod constants {}
 
 mod types {
-    use bson;
-    use chrono;
-    use std::collections::HashMap;
-
     pub type LocalTime = chrono::Local;
-    pub type Dict<T = Vec<String>> = HashMap<String, T>;
+    pub type Dict<T = Vec<String>> = std::collections::HashMap<String, T>;
+}
 
+mod variants {
     pub enum Ids {
         Alien(String),
         Objects(bson::oid::ObjectId),
         Standard(u64),
     }
 }
-
-mod variants {}
 
 #[cfg(test)]
 mod tests {

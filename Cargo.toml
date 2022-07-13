@@ -4,7 +4,7 @@ categories = []
 description = "Acme is a sandbox library for Scattered-Systems"
 edition = "2021"
 homepage = "https://fl03.github.io/acme"
-keywords = ["blockchain", "scsys", "toolkit"]
+keywords = ["scsys", "toolkit"]
 license = "MIT"
 name = "acme"
 publish = true
@@ -15,10 +15,16 @@ version = "0.1.42" # TODO - Update cargo package version
 [[bin]]
 bench = false
 name = "acme-api"
+test = false
 
 [[bin]]
 bench = false
 name = "acme-cli"
+test = false
+
+[lib]
+name = "acme"
+test = true
 
 [dependencies]
 async-trait = "0.1.56"
