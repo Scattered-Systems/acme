@@ -40,7 +40,7 @@ jobs:
         run: |
           DOCKER_IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/acme
           DOCKER_PLATFORMS=linux/amd64,linux/arm64
-          VERSION=0.1.42
+          VERSION=latest
 
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/v}
