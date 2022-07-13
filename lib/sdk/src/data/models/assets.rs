@@ -22,7 +22,7 @@ pub enum AssetClass {
     Standard(Asset),
 }
 
-#[derive(C)]
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Asset {
     pub data: Vec<String>,
 }
