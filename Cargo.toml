@@ -10,7 +10,7 @@ name = "acme"
 publish = true
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.43" # TODO - Update cargo package version
+version = "0.1.44" # TODO - Update cargo package version
 
 [[bin]]
 bench = false
