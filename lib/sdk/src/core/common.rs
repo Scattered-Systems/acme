@@ -1,10 +1,10 @@
 /*
-    Appellation: common
-    Context: module
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: common
+   Context: module
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 pub use constants::*;
 pub use types::*;
 pub use variants::*;
@@ -12,6 +12,8 @@ pub use variants::*;
 mod constants {}
 
 mod types {
+    pub type ConfigBuilderDS = config::ConfigBuilder<config::builder::DefaultState>;
+
     pub type LocalTime = chrono::Local;
     pub type Dict<T = Vec<String>> = std::collections::HashMap<String, T>;
 }

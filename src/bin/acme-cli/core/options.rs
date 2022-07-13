@@ -17,11 +17,11 @@ pub enum BaseArgs {
 pub enum Subcommands {
     Account {
         #[clap(long, short, required = false, parse(from_occurrences))]
-        login: i8
+        login: i8,
     },
     Store {
         #[clap(flatten)]
-        data: DataArgs
+        data: DataArgs,
     },
 }
 

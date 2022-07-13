@@ -7,7 +7,7 @@
 */
 
 pub enum Information {
-    KeyValue
+    KeyValue,
 }
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]

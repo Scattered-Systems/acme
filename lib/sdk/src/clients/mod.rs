@@ -9,5 +9,4 @@ pub use utils::*;
 
 pub mod coinbase;
 
-
 mod utils {}

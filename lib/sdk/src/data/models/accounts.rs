@@ -6,10 +6,9 @@
        ... Summary ...
 */
 
-
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub enum Accounts {
-    Acct(Account)
+    Acct(Account),
 }
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -27,7 +26,7 @@ impl Account {
     pub fn from<T>(address: &T) -> Self {
         match address.try_into() {
             Ok(v) => Self::constructor(v),
-            Err(e) => panic!("{}", e)
+            Err(e) => panic!("{}", e),
         }
     }
 }

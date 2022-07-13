@@ -9,10 +9,13 @@ pub use utils::*;
 
 pub mod interfaces;
 
-
 pub trait ActorSpec<Data> {
-    fn configure(&self, config: Cnf) -> Self where Self: Sized;
-    fn constructor(&self, data: Vec<Data>) -> Self where Self: Sized;
+    fn configure(&self, config: Cnf) -> Self
+        where
+            Self: Sized;
+    fn constructor(&self, data: Vec<Data>) -> Self
+        where
+            Self: Sized;
 }
 
 pub struct Actor {
