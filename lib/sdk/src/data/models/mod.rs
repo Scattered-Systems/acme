@@ -19,7 +19,9 @@ pub trait Model<Act, Cnf, Cnt, Dt> {
     fn configure(&self, config: Cnf) -> Result<Self, config::ConfigError>
         where
             Self: Sized;
-    fn create(&self, data: Vec<Dt>) -> Result<Self, Box<dyn std::error::Error>> where Self: Sized;
+    fn create(&self, data: Vec<Dt>) -> Result<Self, Box<dyn std::error::Error>>
+        where
+            Self: Sized;
 }
 
 /// Outlines an asynchronous standard data model

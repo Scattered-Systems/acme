@@ -37,7 +37,10 @@ impl CoinbaseClient {
         todo!()
     }
     fn create(credentials: CoinbaseCredentials, endpoint: String) -> Result<Self, CBClientError> {
-        Ok(Self { credentials, endpoint })
+        Ok(Self {
+            credentials,
+            endpoint,
+        })
     }
     fn destroy() {
         todo!()

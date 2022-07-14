@@ -37,7 +37,13 @@ mod common {
                     Self: Sized;
         }
 
-        pub trait Shape<Actor, Conf, Cont, Data> {
+        pub trait Malleable<Actor, Conf, Cont, Data> {
+            fn action(&self, actor: Actor) -> Self
+                where
+                    Self: Sized;
+            fn configure(&self) -> Result<Self, config::ConfigError>
+                where
+                    Self: Sized;
             fn create(&self, actor: Actor, config: Conf) -> Self
                 where
                     Self: Sized;
@@ -190,7 +196,8 @@ mod common {
         pub type StandardError = Box<dyn std::error::Error>;
 
         pub type DefaultConfigBuilder = config::ConfigBuilder<config::builder::DefaultState>;
-        pub type ConfigFileCollection = Vec<config::File<config::FileSourceFile, config::FileFormat>>;
+        pub type ConfigFileCollection =
+        Vec<config::File<config::FileSourceFile, config::FileFormat>>;
     }
 }
 
