@@ -38,7 +38,9 @@ mod common {
         }
 
         pub trait Shape<Actor, Conf, Cont, Data> {
-            fn create(&self, actor: Actor, config: Conf) -> Self where Self: Sized;
+            fn create(&self, actor: Actor, config: Conf) -> Self
+                where
+                    Self: Sized;
         }
 
         #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -60,13 +62,7 @@ mod common {
         }
 
         impl<T> Transaction<T> {
-            fn create(
-                id: u64,
-                hash: String,
-                key: String,
-                timestamp: i64,
-                data: Vec<T>,
-            ) -> Self {
+            fn create(id: u64, hash: String, key: String, timestamp: i64, data: Vec<T>) -> Self {
                 Self {
                     id,
                     hash,
@@ -146,7 +142,7 @@ mod common {
                 state: String,
 
                 zip_code: String,
-            }
+            },
         }
 
         #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
@@ -172,11 +168,21 @@ mod common {
         }
 
         #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
-        pub struct Descriptor {}
+        pub struct Descriptor {
+            pub id: u64,
+            pub hash: String,
+            pub key: String,
+            pub title: String,
+            pub audience: String,
+            pub content: String,
+            pub data: Vec<String>,
+        }
 
         /// Destined to control the named objects with characteristics found in Descriptor
         #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
-        pub enum Descriptors {}
+        pub enum Descriptors {
+            Basic(Descriptor),
+        }
     }
 
     mod types {
@@ -186,11 +192,14 @@ mod common {
 }
 
 mod utils {
-    pub fn collect_config_files(pattern: &str) -> crate::ConfigFromFileVec {
-        glob::glob(pattern)
-            .unwrap()
-            .map(|path| config::File::from(path.unwrap()).required(false))
-            .collect::<Vec<_>>()
+    pub fn collect_config_files(pattern: &str, required: bool) -> crate::ConfigFromFileVec {
+        let f = |pat: &str, opt: bool| {
+            glob::glob(pat)
+                .unwrap()
+                .map(|path| config::File::from(path.unwrap()).required(opt))
+                .collect::<Vec<_>>()
+        };
+        f(pattern, required)
     }
 }
 

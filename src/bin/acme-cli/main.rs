@@ -1,14 +1,13 @@
 /*
-   Appellation: acme-api
+   Appellation: acme-cli
    Context:
    Creator: FL03 <jo3mccain@icloud.com>
    Description:
        ... Summary ...
 */
-pub use crate::{app::*, core::*};
+pub use app::*;
 
 mod app;
-mod core;
 
 fn main() {
     let app = Interface::new(false, "acme".to_string());

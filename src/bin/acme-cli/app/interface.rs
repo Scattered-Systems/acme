@@ -24,11 +24,11 @@ impl Interface {
             .set_default("name", "acme")?;
         builder.build()?.try_deserialize()
     }
-    fn constructor(development: bool, name: String) -> Self {
+    fn create(development: bool, name: String) -> Self {
         Self { development, name }
     }
     pub fn new(development: bool, name: String) -> Self {
-        Self::constructor(development, name)
+        Self::create(development, name)
     }
     pub fn run(&self) -> crate::Opts {
         let args = crate::Opts::parse();

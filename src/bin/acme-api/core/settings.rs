@@ -5,8 +5,10 @@
    Description:
        ... Summary ...
 */
-use acme::{collect_config_files, ConfigBuilderDS};
+use acme::collect_config_files;
 pub use components::*;
+
+type ConfigBuilderDS = config::ConfigBuilder<config::builder::DefaultState>;
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Configuration {
@@ -20,7 +22,7 @@ impl Configuration {
     pub fn constructor() -> Result<ConfigBuilderDS, config::ConfigError> {
         let mut builder = config::Config::builder()
             .set_default("application.mode", "development")?
-            .set_default("application.name", "maximus")?
+            .set_default("application.name", "acme")?
             .set_default("database.name", "postgres")?
             .set_default(
                 "database.uri",
@@ -30,7 +32,7 @@ impl Configuration {
             .set_default("server.host", "[0, 0, 0, 0]")?
             .set_default("server.port", 8080)?;
 
-        builder = builder.add_source(collect_config_files("**/*.config.*"));
+        builder = builder.add_source(collect_config_files("**/*.config.*", false));
         builder = builder.add_source(config::Environment::default().separator("__"));
         Ok(builder)
     }
