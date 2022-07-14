@@ -186,13 +186,12 @@ mod common {
     }
 
     mod types {
-        pub type ConfigBuilderDS = config::ConfigBuilder<config::builder::DefaultState>;
-        pub type ConfigFromFileVec = Vec<config::File<config::FileSourceFile, config::FileFormat>>;
+        pub type BoxedError = Box<dyn std::error::Error>;
     }
 }
 
 mod utils {
-    pub fn collect_config_files(pattern: &str, required: bool) -> crate::ConfigFromFileVec {
+    pub fn collect_config_files(pattern: &str, required: bool) -> acme_sdk::ConfigFromFileVec {
         let f = |pat: &str, opt: bool| {
             glob::glob(pat)
                 .unwrap()
