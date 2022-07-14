@@ -30,9 +30,11 @@ pub trait Model<Act, Cnf, Cnt, Dt> {
 pub trait AsyncModel {}
 
 mod utils {
+    use std::str::Bytes;
+
     /// TODO: Finish implementing the hasher with the proper level of cryptography
-    pub fn create_hashed_password(password: &str) -> Vec<u8> {
+    pub fn create_hashed_password(password: &str) -> Bytes<'_> {
         let hashed_password = "";
-        hashed_password.to_bytes()
+        hashed_password.bytes()
     }
 }

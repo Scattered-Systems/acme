@@ -4,7 +4,7 @@ categories = []
 description = "Acme is a sandbox library for Scattered-Systems"
 edition = "2021"
 homepage = "https://fl03.github.io/acme"
-keywords = ["scsys", "toolkit"]
+keywords = []
 license = "MIT"
 name = "acme"
 publish = true
@@ -53,7 +53,7 @@ tracing-subscriber = "0.3.14"
 features = ["full"]
 optional = true
 path = "lib/sdk"
-version = ">=0.1.42"
+version = ">=0.1.44"
 
 
 [workspace]
@@ -62,6 +62,7 @@ default-members = [
 ]
 
 members = [
+    ".",
     "lib/derive",
     "lib/macros",
     "lib/sdk"

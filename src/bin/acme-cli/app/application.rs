@@ -30,8 +30,10 @@ impl Interface {
     pub fn new(development: bool, name: String) -> Self {
         Self::create(development, name)
     }
-    pub fn run(&self) -> crate::Opts {
-        let args = crate::Opts::parse();
-        args
+    pub fn run(&self) -> Result<crate::CommandCenter, acme::StandardError> {
+        let args = crate::CommandCenter::parse();
+        println!("{:#?}", &args);
+
+        Ok(args.clone())
     }
 }

@@ -5,12 +5,8 @@
    Description:
        ... Summary ...
 */
-pub use context::*;
-pub use interface::*;
-pub use options::*;
-pub use settings::*;
+pub use application::*;
+pub use controls::*;
 
-mod context;
-mod interface;
-mod options;
-mod settings;
+mod application;
+mod controls;

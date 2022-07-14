@@ -9,7 +9,8 @@ pub use app::*;
 
 mod app;
 
-fn main() {
+fn main() -> Result<(), acme::StandardError> {
     let app = Interface::new(false, "acme".to_string());
-    println!("{:#?}", &app.run())
+    app.run().ok().unwrap();
+    Ok(())
 }

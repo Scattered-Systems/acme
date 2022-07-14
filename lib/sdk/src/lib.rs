@@ -7,8 +7,7 @@
 
 */
 #[doc(inline)]
-#[cfg(feature = "default")]
-pub use crate::{actors::*, clients::*, core::*, data::*};
+pub use crate::{actors::*, core::*, data::*};
 
 #[doc(inline)]
 #[cfg(feature = "derive")]
@@ -18,6 +17,5 @@ pub use acme_derive::*;
 pub use acme_macros::*;
 
 mod actors;
-mod clients;
 mod core;
 mod data;
