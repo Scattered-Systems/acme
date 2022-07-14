@@ -186,12 +186,16 @@ mod common {
     }
 
     mod types {
-        pub type BoxedError = Box<dyn std::error::Error>;
+        pub type AsyncError = Box<dyn std::error::Error + Send + Sync + 'static>;
+        pub type StandardError = Box<dyn std::error::Error>;
+
+        pub type DefaultConfigBuilder = config::ConfigBuilder<config::builder::DefaultState>;
+        pub type ConfigFileCollection = Vec<config::File<config::FileSourceFile, config::FileFormat>>;
     }
 }
 
 mod utils {
-    pub fn collect_config_files(pattern: &str, required: bool) -> acme_sdk::ConfigFromFileVec {
+    pub fn collect_config_files(pattern: &str, required: bool) -> crate::ConfigFileCollection {
         let f = |pat: &str, opt: bool| {
             glob::glob(pat)
                 .unwrap()
