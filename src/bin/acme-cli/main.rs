@@ -1,16 +1,16 @@
 /*
-   Appellation: acme
+   Appellation: acme-cli
    Context:
    Creator: FL03 <jo3mccain@icloud.com>
    Description:
        ... Summary ...
 */
-pub use crate::{core::*, interface::*};
+pub use app::*;
 
-mod core;
-mod interface;
+mod app;
 
-fn main() {
-    let app = App::new(false, "acme".to_string());
-    println!("{:#?}", &app.call())
+fn main() -> Result<(), acme::StandardError> {
+    let app = Interface::new(false, "acme".to_string());
+    app.run().ok().unwrap();
+    Ok(())
 }

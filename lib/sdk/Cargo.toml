@@ -10,12 +10,15 @@ name = "acme-sdk"
 publish = true
 readme = "README.md"
 repository = "https://github.com/FL03/acme.git"
-version = "0.1.42" # TODO - Update cargo package version
+version = "0.1.44" # TODO - Update cargo package version
 
 [features]
+# Standard feature flags
 default = []
+full = ["derive", "macros"]
+
+# Custom feature flags and crate tagging
 derive = ["acme-derive"]
-full = ["default", "derive", "macros"]
 macros = ["acme-macros"]
 
 [lib]

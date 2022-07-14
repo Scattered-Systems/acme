@@ -5,8 +5,10 @@
    Description:
        ... Summary ...
 */
+use acme::collect_config_files;
 pub use components::*;
-pub use utils::*;
+
+type ConfigBuilderDS = config::ConfigBuilder<config::builder::DefaultState>;
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Configuration {
@@ -20,7 +22,7 @@ impl Configuration {
     pub fn constructor() -> Result<ConfigBuilderDS, config::ConfigError> {
         let mut builder = config::Config::builder()
             .set_default("application.mode", "development")?
-            .set_default("application.name", "maximus")?
+            .set_default("application.name", "acme")?
             .set_default("database.name", "postgres")?
             .set_default(
                 "database.uri",
@@ -30,7 +32,7 @@ impl Configuration {
             .set_default("server.host", "[0, 0, 0, 0]")?
             .set_default("server.port", 8080)?;
 
-        builder = builder.add_source(collect_config_files("**/*.config.*"));
+        builder = builder.add_source(collect_config_files("**/*.config.*", false));
         builder = builder.add_source(config::Environment::default().separator("__"));
         Ok(builder)
     }
@@ -106,26 +108,5 @@ mod components {
         fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
             write!(f, "Logger(level={})", self.level)
         }
-    }
-}
-
-mod utils {
-    pub type ConfigBuilderDS = config::ConfigBuilder<config::builder::DefaultState>;
-    pub type ConfigFromFileVec = Vec<config::File<config::FileSourceFile, config::FileFormat>>;
-
-    pub fn collect_config_files(pattern: &str) -> ConfigFromFileVec {
-        glob::glob(pattern)
-            .unwrap()
-            .map(|path| config::File::from(path.unwrap()).required(false))
-            .collect::<Vec<_>>()
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn test() {
-        let f = |x: usize| x.pow(x.try_into().unwrap());
-        assert_eq!(f(2), 4)
     }
 }

@@ -1,20 +1,14 @@
 /*
-   Appellation: acme
+   Appellation: portfolios
    Context:
    Creator: FL03 <jo3mccain@icloud.com>
    Description:
        ... Summary ...
 */
-pub use primitives::*;
 
-mod primitives;
-
-#[doc(inline)]
-#[cfg(feature = "default")]
-pub use acme_sdk::*;
-#[doc(inline)]
-#[cfg(feature = "full")]
-pub use acme_sdk::*;
+pub struct Portfolios {
+    pub id: crate::Ids,
+}
 
 #[cfg(test)]
 mod tests {

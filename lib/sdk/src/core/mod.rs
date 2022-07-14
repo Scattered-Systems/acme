@@ -5,11 +5,11 @@
    Description:
        ... Summary ...
 */
-pub use common::*;
-pub use configurations::*;
-pub use utils::*;
+pub use clients::*;
+pub use components::*;
+pub use primitives::*;
 
-mod common;
-mod configurations;
+mod clients;
+mod components;
 
-mod utils {}
+mod primitives;
