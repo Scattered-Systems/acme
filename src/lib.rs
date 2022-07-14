@@ -16,7 +16,6 @@ pub use acme_sdk::*;
 #[cfg(feature = "full")]
 pub use acme_sdk::*;
 
-
 #[cfg(test)]
 mod tests {
     #[test]

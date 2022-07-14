@@ -1,10 +1,10 @@
 /*
-    Appellation: primitives
-    Context:
-    Creator: FL03 <jo3mccain@icloud.com>
-    Description:
-        ... Summary ...
- */
+   Appellation: primitives
+   Context:
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
+*/
 pub use common::*;
 pub use utils::*;
 
