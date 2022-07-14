@@ -5,16 +5,19 @@
    Description:
        ... Summary ...
 */
-// use clap::Parser;
+use clap::Parser;
 
-#[derive(clap::Parser, Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Interface {
     pub development: bool,
     pub name: String,
 }
 
 impl Interface {
-    fn configure<T: Clone + std::str::FromStr>(&self, data: Vec<T>) -> Result<Self, config::ConfigError> {
+    fn configure<T: Clone + std::str::FromStr>(
+        &self,
+        data: Vec<T>,
+    ) -> Result<Self, config::ConfigError> {
         let mut builder = config::Config::builder();
         builder = builder
             .set_default("development", true)?
