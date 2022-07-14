@@ -5,8 +5,10 @@
    Description:
        ... Summary ...
 */
+pub use client::*;
 pub use utils::*;
 
+mod client;
 pub mod coinbase;
 
 mod utils {}

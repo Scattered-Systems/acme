@@ -19,9 +19,14 @@ mod common {
     pub use controllers::*;
     pub use types::*;
 
-    mod constants {}
+    mod constants {
+        pub const COINBASE_API_ENDPOINT: &str = "https://coinbase.com/api/v2";
+        pub const COINBASE_PRO_ENDPOINT: &str = "https://pro.coinbase.com/api";
+        pub const STANDARD_OAUTH_TOKEN_PATH: &str = "oauth/token";
+    }
 
     mod controllers {
+        /// Outlines the required functionality of an Exchangeable item
         pub trait Exchangeable<Act, Conf, Cont, Data> {
             fn actor(&self, context: Cont) -> Act
                 where
@@ -37,6 +42,8 @@ mod common {
                     Self: Sized;
         }
 
+        /// Outlines the required functionality of a malleable item
+        /// def. Malleable is defined as the characteristic of being allowed to make alterations
         pub trait Malleable<Actor, Conf, Cont, Data> {
             fn action(&self, actor: Actor) -> Self
                 where
@@ -192,16 +199,20 @@ mod common {
     }
 
     mod types {
+        /// Describes a boxed dynamic error with Send, Sync and 'static tags enabled
         pub type AsyncError = Box<dyn std::error::Error + Send + Sync + 'static>;
+        /// Describes a boxed dynamic error
         pub type StandardError = Box<dyn std::error::Error>;
-
+        /// Describes a configuration builder in their default state
         pub type DefaultConfigBuilder = config::ConfigBuilder<config::builder::DefaultState>;
+        /// Describes the result of a collection of configuration files
         pub type ConfigFileCollection =
         Vec<config::File<config::FileSourceFile, config::FileFormat>>;
     }
 }
 
 mod utils {
+    /// Creates a collection of configuration files found within the working directory and following the provided pattern
     pub fn collect_config_files(pattern: &str, required: bool) -> crate::ConfigFileCollection {
         let f = |pat: &str, opt: bool| {
             glob::glob(pat)

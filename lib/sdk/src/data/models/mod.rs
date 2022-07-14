@@ -7,11 +7,13 @@
 */
 pub use accounts::*;
 pub use assets::*;
+pub use portfolios::*;
 pub use users::*;
 pub use utils::*;
 
 mod accounts;
 mod assets;
+mod portfolios;
 mod users;
 
 /// Outlines a standard data model
@@ -27,4 +29,10 @@ pub trait Model<Act, Cnf, Cnt, Dt> {
 /// Outlines an asynchronous standard data model
 pub trait AsyncModel {}
 
-mod utils {}
+mod utils {
+    /// TODO: Finish implementing the hasher with the proper level of cryptography
+    pub fn create_hashed_password(password: &str) -> Vec<u8> {
+        let hashed_password = "";
+        hashed_password.to_bytes()
+    }
+}
