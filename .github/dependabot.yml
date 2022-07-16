@@ -16,7 +16,3 @@ updates:
     directory: /lib/macros
     schedule:
       interval: daily
-  - package-ecosystem: cargo
-    directory: /lib/sdk
-    schedule:
-      interval: daily

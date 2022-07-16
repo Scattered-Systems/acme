@@ -1,14 +1,15 @@
 [package]
 authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
+categories = []
 description = "Procedural macros created to support Acme, an all-in-one blockchain toolkit"
 edition = "2021"
-homepage = "https://FL03.github.io/acme"
+homepage = "https://scattered-systems.github.io/acme"
 keywords = ["proc-macros", "scsys"]
 license = "MIT"
 name = "acme-macros"
 readme = "README.md"
-repository = "https://github.com/FL03/acme"
-version = "0.1.44" # TODO - Update cargo package version
+repository = "https://scattered-systems.com/FL03/acme"
+version = "0.1.45" # TODO - Update cargo package version
 
 [lib]
 proc-macro = true
