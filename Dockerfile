@@ -1,7 +1,7 @@
 FROM ubuntu as builder-base
 
-RUN apt-get update -y && \
-    apt-get upgrade -y
+RUN apt-get update -y
+RUN apt-get upgrade -y
 
 RUN apt-get install -y \
     apt-utils \
@@ -31,12 +31,12 @@ RUN cargo fmt --all && \
 
 FROM debian:buster-slim as application-base
 
-RUN apt-get update -y && \
-    apt-get upgrade -y
+RUN apt-get update -y
+RUN apt-get upgrade -y
 
 FROM application-base as application
 
-ENV MODE="development" \
+ENV MODE="production" \
     PORT=8080 \
     RUST_LOG="info"
 
