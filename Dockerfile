@@ -1,27 +1,48 @@
-FROM jo3mccain/rusty as builder
+FROM ubuntu as builder-base
 
-RUN rustup default stable && rustup update
+RUN apt-get update -y && \
+    apt-get upgrade -y
 
-ADD . /app
-WORKDIR /app
+RUN apt-get install -y \
+    apt-utils \
+    build-essential  \
+    cmake \
+    curl \
+    pkg-config
+
+FROM builder-base as environment
+
+RUN apt-get install -y \
+    libpcsclite1
+
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+FROM environment as project
+
+ADD . /project
+WORKDIR /project
 
 COPY . .
-RUN cargo build --release --verbose --color always
+RUN cargo fmt --all && \
+    cargo build --workspace --release --verbose --color always && \
+    cargo test --all-features --verbose --color always
 
-FROM debian:buster-slim as base
+FROM debian:buster-slim as application-base
 
-ENV DEV_MODE=false \
-    CLUSTER_PORT=9090 \
-    ETHEREUM_PORT=8545 \
-    SERVER_PORT=8080
+RUN apt-get update -y && \
+    apt-get upgrade -y
 
-COPY --from=builder /app/target/release/acme-cli /acme-cli
-COPY --from=builder /app/target/release/acme-api /acme-api
+FROM application-base as application
 
-EXPOSE $CLUSTER_PORT/udp
-EXPOSE $ETHEREUM_PORT/tcp
-EXPOSE $SERVER_PORT/tcp
-EXPOSE $SERVER_PORT/udp
+ENV MODE="development" \
+    PORT=8080 \
+    RUST_LOG="info"
 
-ENTRYPOINT ["./acme-cli"]
-CMD ["./acme-api"]
+COPY --from=project /project/release/acme /acme
+
+EXPOSE ${PORT}/tcp
+EXPOSE ${PORT}/udp
+
+ENTRYPOINT ["./acme"]
