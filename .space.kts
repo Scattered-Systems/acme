@@ -21,9 +21,9 @@ job("(ACME) Build and Push Docker") {
             """
         }
         build {
-            context = ".docker"
+            context = "."
             customPlatform = "linux/arm64"
-            file = ".docker/Dockerfile"
+            file = "./Dockerfile"
             labels["vendor"] = "scattered-systems"
         }
         push("jo3mccain/acme") {
