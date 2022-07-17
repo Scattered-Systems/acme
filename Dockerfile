@@ -16,7 +16,7 @@ ENV MODE="production" \
     PORT=8080 \
     RUST_LOG="info"
 
-COPY --from=project /project/release/acme /acme
+COPY --from=project /project/target/release/acme /acme
 
 EXPOSE ${PORT}/tcp
 EXPOSE ${PORT}/udp
