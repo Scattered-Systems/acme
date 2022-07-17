@@ -10,7 +10,7 @@ name = "acme-sdk"
 publish = true
 readme = "README.md"
 repository = "https://github.com/scattered-systems/acme.git"
-version = "0.1.45" # TODO - Update cargo package version
+version = "0.1.46" # TODO - Update cargo package version
 
 [[bin]]
 bench = false
