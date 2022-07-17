@@ -1,20 +1,12 @@
-FROM ubuntu as builder-base
+FROM photon as container
 
-RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
-	&& localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-ENV LANG en_US.utf8
-
-RUN apt-get install -y \
+RUN yum install -y \
     apt-utils \
     build-essential  \
     cmake \
-    curl \
     pkg-config
 
-FROM builder-base as environment
-
-RUN apt-get install -y \
-    libpcsclite1
+FROM container as environment
 
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 
@@ -30,12 +22,7 @@ RUN cargo fmt --all && \
     cargo build --workspace --release --verbose --color always && \
     cargo test --all-features --verbose --color always
 
-FROM debian:buster-slim as application-base
-
-RUN apt-get update -y
-RUN apt-get upgrade -y
-
-FROM application-base as application
+FROM photon as app
 
 ENV MODE="production" \
     PORT=8080 \
