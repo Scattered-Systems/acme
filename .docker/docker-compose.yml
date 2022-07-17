@@ -6,20 +6,18 @@ services:
       dockerfile: Dockerfile
     container_name: app
     depends_on:
-      - cache
       - database
     ports:
       - "8080:8080"
-      - "9090:9090"
     restart: always
     volumes:
       - /data:/data
 
-  cache:
-    container_name: cache
-    image: redis
+  context:
+    container_name: context
+    image: photon
     ports:
-      - "6379:6379"
+      - "8080:8080"
     restart: always
 
   database:

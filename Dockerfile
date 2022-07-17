@@ -1,18 +1,6 @@
-FROM photon as container
+FROM rust as project
 
-RUN yum install -y \
-    apt-utils \
-    build-essential  \
-    cmake \
-    pkg-config
-
-FROM container as environment
-
-RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
-
-ENV PATH="/root/.cargo/bin:${PATH}"
-
-FROM environment as project
+RUN rustup component add rustfmt
 
 ADD . /project
 WORKDIR /project

@@ -8,7 +8,7 @@
     "uri": "postgres://postgres:example@localhost:5432/postgres"
   },
   "logger": {
-    "level": "debug"
+    "level": "trace"
   },
   "server": {
     "port": 8080
