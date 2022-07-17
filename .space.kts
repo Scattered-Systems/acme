@@ -9,11 +9,8 @@ job("(ACME) Build and Push Docker") {
         }
     }
     docker {
-        // get auth data from secrets and put it to env vars
         env["DOCKERHUB_USER"] = Secrets("dockerhub_user")
         env["DOCKERHUB_TOKEN"] = Secrets("dockerhub_token")
-
-        // put auth data to Docker config
         beforeBuildScript {
             content = """
                 B64_AUTH=${'$'}(echo -n ${'$'}DOCKERHUB_USER:${'$'}DOCKERHUB_TOKEN | base64 -w 0)
@@ -22,7 +19,7 @@ job("(ACME) Build and Push Docker") {
         }
         build {
             context = "."
-            customPlatform = "linux/arm64"
+            customPlatform = "linux/arm64/v8"
             file = "./Dockerfile"
             labels["vendor"] = "scattered-systems"
         }

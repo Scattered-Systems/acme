@@ -1,9 +1,11 @@
-FROM rust as project
+FROM rust as builder-base
 
 RUN rustup component add rustfmt
 
-ADD . /project
-WORKDIR /project
+FROM builder-base as builder
+
+ADD . /bin
+WORKDIR /bin
 
 COPY . .
 RUN cargo fmt --all && \
@@ -16,7 +18,7 @@ ENV MODE="production" \
     PORT=8080 \
     RUST_LOG="info"
 
-COPY --from=project /project/target/release/acme /acme
+COPY --from=builder /bin/target/release/acme /acme
 
 EXPOSE ${PORT}/tcp
 EXPOSE ${PORT}/udp
