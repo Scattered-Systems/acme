@@ -7,8 +7,8 @@ WORKDIR /project
 
 COPY . .
 RUN cargo fmt --all && \
-    cargo build --workspace --release --verbose --color always && \
-    cargo test --all-features --verbose --color always
+    cargo build --workspace --release && \
+    cargo test --all-features
 
 FROM photon as app
 
