@@ -5,14 +5,14 @@ updates:
     schedule:
       interval: daily
   - package-ecosystem: cargo
-    directory: /
+    directory: /acme
     schedule:
       interval: daily
   - package-ecosystem: cargo
-    directory: /lib/derive
+    directory: /derive
     schedule:
       interval: daily
   - package-ecosystem: cargo
-    directory: /lib/macros
+    directory: /macros
     schedule:
       interval: daily
