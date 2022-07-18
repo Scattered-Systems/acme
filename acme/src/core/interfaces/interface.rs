@@ -4,18 +4,19 @@
     Description:
         ... Summary ...
 */
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub enum InterfaceFeed {
+    KV {
+        key: String,
+        value: String
+    }
+}
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Interface {
-    pub hash: String,
     pub id: u64,
     pub key: String,
-
-    pub mode: String,
-    pub name: String,
-    pub operations: Vec<String>,
-    pub secret: String,
-    pub timestamp: i64,
+    pub mode: String
 }
 
 #[cfg(test)]
