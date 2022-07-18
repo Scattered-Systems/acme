@@ -1,77 +1,12 @@
-[package]
-authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
-categories = ["network-programming"]
-description = "Acme is a complete application toolkit for creating enterprise-grade application within Rust."
-edition = "2021"
-homepage = "https://scattered-systems.github.io/acme"
-keywords = ["api", "async", "cli"]
-license = "MIT"
-name = "acme-sdk"
-publish = true
-readme = "README.md"
-repository = "https://github.com/scattered-systems/acme.git"
-version = "0.1.47" # TODO - Update cargo package version
-
-[[bin]]
-bench = false
-name = "acme"
-
-[lib]
-crate-type = ["cdylib", "rlib"]
-test = true
-
-[features]
-default = []
-full = [
-    "derive",
-    "macros"
-]
-derive = [
-    "acme-derive"
-]
-macros = [
-    "acme-macros"
-]
-
-[dependencies]
-async-trait = "0.1.56"
-axum = { features = ["headers"], version = "0.5.11" }
-bson = { features = ["chrono-0_4", "serde_with"], version = "2.3.0" }
-chrono = "0.4.19"
-clap = { features = ["derive"], version = "3.2.8" }
-config = "0.13.1"
-glob = "0.3.0"
-http = "0.2.8"
-hyper = { features = ["full"], version = "0.14.19" }
-reqwest = "0.11.11"
-serde = { features = ["derive"], version = "1.0.138" }
-serde_json = "1.0.82"
-tokio = { features = ["full"], version = "1.19.2" }
-tower = "0.4.13"
-tower-http = { features = ["compression-br", "propagate-header", "sensitive-headers", "trace"], version = "0.3.4" }
-tracing = "0.1.35"
-tracing-subscriber = "0.3.14"
-
-[dependencies.acme-derive]
-optional = true
-path = "lib/derive"
-version = "0.1.45"
-
-[dependencies.acme-macros]
-optional = true
-path = "lib/macros"
-version = "0.1.45"
-
-
 [workspace]
 default-members = [
-    "."
+    "acme"
 ]
 
 members = [
-    ".",
-    "lib/derive",
-    "lib/macros",
+    "acme",
+    "derive",
+    "macros",
 ]
 
 [profile.dev]
