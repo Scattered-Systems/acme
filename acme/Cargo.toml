@@ -4,13 +4,13 @@ categories = ["network-programming"]
 description = "A client library for the Scattered Systems Ecosystem"
 edition = "2021"
 homepage = "https://scattered-systems.github.io/acme"
-keywords = ["async", "client", "blockchain","scsys"]
+keywords = ["async", "client", "blockchain", "scsys"]
 license = "MIT"
 name = "acme"
 publish = true
 readme = "README.md"
 repository = "https://github.com/scattered-systems/acme.git"
-version = "0.1.48" # TODO - Update cargo package version
+version = "0.1.49" # TODO - Update cargo package version
 
 [lib]
 crate-type = ["cdylib", "rlib"]

@@ -1,15 +1,12 @@
 /*
-    Appellation: mod
-    Context:
+    Appellation: actors <module>
+    Creator: FL03 <jo3mccain@icloud.com>
     Description:
         ... Summary ...
 */
-pub use aggregate::*;
-pub use capture::*;
-pub use control::*;
-pub use discover::*;
+pub use actor::*;
+pub use utils::*;
 
-mod aggregate;
-mod capture;
-mod control;
-mod discover;
+mod actor;
+
+mod utils {}
