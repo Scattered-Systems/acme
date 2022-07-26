@@ -1,14 +1,13 @@
 /*
     Appellation: components <module>
+    Creator: FL03 <jo3mccain@icloud.com>
     Description:
         ... Summary ...
 */
-pub use databases::*;
-pub use loggers::*;
+pub use database::*;
+pub use logger::*;
 pub use network::*;
-pub use oracles::*;
 
-mod databases;
-mod loggers;
-mod network;
-mod oracles;
+pub mod database;
+pub mod logger;
+pub mod network;

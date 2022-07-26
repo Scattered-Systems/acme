@@ -1,7 +1,6 @@
 /*
-   Appellation: acme
-   Context:
-   Creator: FL03 <jo3mccain@icloud.com>
+   Appellation: acme <module>
+    Creator: FL03 <jo3mccain@icloud.com>
    Description:
        ... Summary ...
 */

@@ -7,9 +7,8 @@ homepage = "https://scattered-systems.github.io/acme"
 keywords = ["proc-macros", "scsys"]
 license = "MIT"
 name = "acme-macros"
-readme = "README.md"
 repository = "https://scattered-systems.com/FL03/acme"
-version = "0.1.46" # TODO - Update cargo package version
+version = "0.1.47" # TODO - Update cargo package version
 
 [lib]
 proc-macro = true

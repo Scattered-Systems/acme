@@ -1,7 +1,6 @@
 # acme
 
 [![Code Analysis](https://github.com/FL03/acme/actions/workflows/rust-clippy.yml/badge.svg)](https://github.com/FL03/acme/actions/workflows/rust-clippy.yml)
-[![Docker](https://github.com/FL03/acme/actions/workflows/docker.yml/badge.svg)](https://github.com/FL03/acme/actions/workflows/docker.yml)
 [![Rust](https://github.com/FL03/acme/actions/workflows/rust.yml/badge.svg)](https://github.com/FL03/acme/actions/workflows/rust.yml)
 
 Acme was created to be a collection of useful clients, interfaces, and mission-critical application scaffolding for
