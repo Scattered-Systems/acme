@@ -6,17 +6,14 @@
 */
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub enum InterfaceFeed {
-    KV {
-        key: String,
-        value: String
-    }
+    KV { key: String, value: String },
 }
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Interface {
     pub id: u64,
     pub key: String,
-    pub mode: String
+    pub mode: String,
 }
 
 #[cfg(test)]

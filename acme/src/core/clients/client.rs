@@ -13,6 +13,13 @@ pub enum ClientState {
 }
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+pub enum ClientAuthentication {
+    Authorized,
+    Authorizing,
+    UnAuthorized,
+}
+
+#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Client {
     pub name: String,
     pub slug: String,

@@ -5,9 +5,7 @@
         ... Summary ...
 */
 pub use clients::*;
-pub use interfaces::*;
 pub use primitives::*;
 
 mod clients;
-mod interfaces;
 mod primitives;

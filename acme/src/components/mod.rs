@@ -9,5 +9,6 @@ pub use logger::*;
 pub use network::*;
 
 pub mod database;
+pub mod interface;
 pub mod logger;
 pub mod network;

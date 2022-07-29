@@ -12,8 +12,8 @@ mod proxy;
 mod router;
 mod server;
 
-/// Outlines the standard framework for creating network actors
-pub trait NetworkActor {
+/// Implements a trait enabling networking components to be addressable
+pub trait Addressable {
     fn host(&self) -> [u8; 4]
         where
             Self: Sized;
