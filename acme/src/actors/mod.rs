@@ -4,16 +4,7 @@
     Description:
         ... Summary ...
 */
-pub use actor::*;
-pub use utils::*;
-
-mod actor;
-
-/// Implement an abstract actor
-pub trait Act<Cnf, Cnt, Dt> {
-    fn access(address: String) -> bool
-        where
-            Self: Sized;
-}
-
-mod utils {}
+pub mod connect;
+pub mod create;
+pub mod update;
+pub mod verify;

@@ -1,5 +1,5 @@
 /*
-    Appellation: logger <module>
+    Appellation: loggers <module>
     Description:
         ... Summary ...
 */

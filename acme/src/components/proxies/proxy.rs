@@ -1,8 +1,8 @@
 /*
-    Appellation: proxies
-    Context:
-    Description:
-        ... Summary ...
+   Appellation: proxy <module>
+   Creator: FL03 <jo3mccain@icloud.com>
+   Description:
+       ... Summary ...
 */
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
