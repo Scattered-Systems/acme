@@ -10,7 +10,7 @@ name = "acme"
 publish = true
 readme = "README.md"
 repository = "https://github.com/scattered-systems/acme.git"
-version = "0.1.50" # TODO - Update cargo package version
+version = "0.1.51" # TODO - Update cargo package version
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -48,12 +48,17 @@ tower-http = { features = ["compression-br", "propagate-header", "sensitive-head
 tracing = "0.1.35"
 tracing-subscriber = "0.3.14"
 
+[dependencies.scsys]
+features = ["full"]
+optional = false
+version = "0.1.7"
+
 [dependencies.acme-derive]
 optional = true
 path = "../derive"
-version = "0.1.48"
+version = "0.1.49"
 
 [dependencies.acme-macros]
 optional = true
 path = "../macros"
-version = "0.1.48"
+version = "0.1.49"
