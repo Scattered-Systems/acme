@@ -4,42 +4,31 @@
     Description:
         ... Summary ...
 */
-pub use flavors::*;
 pub use interface::*;
 
 mod interface;
 
-mod flavors {
+pub mod flavors {
     use async_trait::async_trait;
 
+    /// Describe a standard api specification to implement on compatible structures
     #[async_trait]
-    pub trait API {
-        async fn client() -> Result<Self, crate::AsyncError>
+    pub trait APISpec<App> {
+        async fn client() -> Result<Self, scsys::BoxError>
             where
                 Self: Sized;
-        async fn router() -> Result<axum::Router, crate::AsyncError>
+        async fn router() -> Result<axum::Router, scsys::BoxError>
+            where
+                Self: Sized;
+        async fn app(&self) -> Result<App, scsys::BoxError>
             where
                 Self: Sized;
     }
 
-    pub trait CLI
-        where
-            Self: clap::Parser,
-    {
-        fn configure(&self) -> Result<crate::DefaultConfigBuilder, config::ConfigError>
+    /// Describe a standard cli specification to implement on compatible structures
+    pub trait CLISpec<App: clap::Parser> {
+        fn app(&self) -> Result<(), scsys::BoxError>
             where
                 Self: Sized;
-        fn constructor(&self) -> Result<Self, crate::StandardError>
-            where
-                Self: Sized;
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn test() {
-        let f = |x: usize, y: usize| x + y;
-        assert_eq!(f(4, 2), 6)
     }
 }

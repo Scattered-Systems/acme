@@ -81,6 +81,10 @@ impl DatabaseConnection {
     }
 }
 
+pub struct Database {
+    pub appellation: (String, String, String),
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
