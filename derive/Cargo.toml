@@ -8,7 +8,7 @@ keywords = ["derive", "proc-macro", "scsys"]
 license = "MIT"
 name = "acme-derive"
 repository = "https://github.com/scattered-systems/acme"
-version = "0.1.49" # TODO - Update cargo package version
+version = "0.1.50" # TODO - Update cargo package version
 
 [lib]
 proc-macro = true

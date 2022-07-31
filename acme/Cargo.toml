@@ -10,7 +10,7 @@ name = "acme"
 publish = true
 readme = "README.md"
 repository = "https://github.com/scattered-systems/acme.git"
-version = "0.1.51" # TODO - Update cargo package version
+version = "0.1.52" # TODO - Update cargo package version
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -56,9 +56,9 @@ version = "0.1.7"
 [dependencies.acme-derive]
 optional = true
 path = "../derive"
-version = "0.1.49"
+version = "0.1.50"
 
 [dependencies.acme-macros]
 optional = true
 path = "../macros"
-version = "0.1.49"
+version = "0.1.50"
