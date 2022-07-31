@@ -16,19 +16,22 @@ pub trait Malleable<Act, Cnf, Cnt> {
 }
 
 pub mod flavors {
-    use crate::async_trait;
+    use crate::{async_trait, AxumServer};
 
     /// Describe a standard api specification to implement on compatible structures
     #[async_trait]
-    pub trait APISpec<App> {
-        async fn run(&self) -> Result<App, scsys::BoxError>
+    pub trait APISpec<App = AxumServer> {
+        async fn run(&self) -> Result<(), scsys::BoxError>
             where
-                Self: Sized;
+                Self: Sized + Sync;
     }
 
     /// Describe a standard cli specification to implement on compatible structures
     pub trait CLISpec<App: clap::Parser> {
-        fn run(&self) -> Result<App, scsys::BoxError>
+        fn build() -> Result<App, scsys::BoxError> {
+            Ok(App::parse())
+        }
+        fn run(&self) -> Result<(), scsys::BoxError>
             where
                 Self: Sized;
     }
