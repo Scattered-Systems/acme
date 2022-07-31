@@ -13,6 +13,7 @@ mod constants {
 }
 
 mod types {
+    pub use async_trait::async_trait;
     use axum::routing::IntoMakeService;
     pub use hyper::server::conn::AddrIncoming;
 
