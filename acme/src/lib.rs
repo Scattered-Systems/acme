@@ -21,9 +21,9 @@ mod data;
 
 pub mod prelude {
     pub use super::{
-        clients::*, connect::*, core::*, create::*, databases::*, interfaces::*, loggers::*,
+        clients::*, connect::*, core::*, create::*, databases::*, loggers::*,
         models::*, update::*, verify::*,
     };
     #[cfg(feature = "network")]
-    pub use acme_network::prelude::*;
+    pub use super::network::prelude::*;
 }
