@@ -20,10 +20,10 @@ mod core;
 mod data;
 
 pub mod prelude {
-    #[cfg(feature = "network")]
-    pub use acme_network::prelude::*;
     pub use super::{
         clients::*, connect::*, core::*, create::*, databases::*, interfaces::*, loggers::*,
-        models::*, proxies::*, routers::*, servers::*, update::*, verify::*,
+        models::*, update::*, verify::*,
     };
+    #[cfg(feature = "network")]
+    pub use acme_network::prelude::*;
 }

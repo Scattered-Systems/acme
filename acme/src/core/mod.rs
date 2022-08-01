@@ -4,6 +4,8 @@
     Description:
         ... Summary ...
 */
+pub use cli::*;
 pub use primitives::*;
 
-mod primitives;
+pub(crate) mod cli;
+pub(crate) mod primitives;
