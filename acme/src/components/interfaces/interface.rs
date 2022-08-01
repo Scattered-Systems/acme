@@ -5,19 +5,19 @@
         ... Summary ...
 */
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
-pub enum AppState {
+pub enum IState {
     Start,
     Stop,
 }
 
-impl Default for AppState {
+impl Default for IState {
     fn default() -> Self {
         Self::Stop
     }
 }
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
-pub struct AppConfig {
+pub struct InterfaceConfiguration {
     pub author: String,
     pub description: String,
     pub license: String,
@@ -27,7 +27,7 @@ pub struct AppConfig {
     pub version: String,
 }
 
-impl AppConfig {
+impl InterfaceConfiguration {
     fn constructor(
         author: String,
         description: String,
@@ -67,7 +67,7 @@ impl AppConfig {
     }
 }
 
-impl Default for AppConfig {
+impl Default for InterfaceConfiguration {
     fn default() -> Self {
         Self::new(
             String::new(),
@@ -86,8 +86,8 @@ mod tests {
 
     #[test]
     fn test_app_config() {
-        let actual = AppConfig::default();
+        let actual = InterfaceConfiguration::default();
         let expected = actual.clone();
-        assert_eq!(&actual, &expected)
+        assert_eq!(actual, expected)
     }
 }

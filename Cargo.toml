@@ -7,6 +7,7 @@ members = [
     "acme",
     "derive",
     "macros",
+    "network"
 ]
 
 [profile.dev]
@@ -22,7 +23,7 @@ codegen-units = 256
 rpath = false
 
 [profile.release]
-opt-level = "s"
+opt-level = "z"
 debug = false
 split-debuginfo = '...'  # Platform-specific.
 debug-assertions = false

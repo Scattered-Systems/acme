@@ -1,20 +1,29 @@
 /*
-   Appellation: acme <module>
+    Appellation: acme <module>
     Creator: FL03 <jo3mccain@icloud.com>
-   Description:
-       ... Summary ...
+    Description:
+        Acme is designed to simplify the creation of agile, data-centric application within Rust
+        leveraging popular frameworks such as axum, clap, and tokio
 */
 #[doc(inline)]
-#[cfg(feature = "default")]
 pub use crate::{actors::*, components::*, core::*, data::*};
-#[doc(inline)]
 #[cfg(feature = "derive")]
 pub use acme_derive::*;
-#[doc(inline)]
 #[cfg(feature = "macros")]
 pub use acme_macros::*;
+#[cfg(feature = "network")]
+pub use acme_network as network;
 
 mod actors;
 mod components;
 mod core;
 mod data;
+
+pub mod prelude {
+    #[cfg(feature = "network")]
+    pub use acme_network::prelude::*;
+    pub use super::{
+        clients::*, connect::*, core::*, create::*, databases::*, interfaces::*, loggers::*,
+        models::*, proxies::*, routers::*, servers::*, update::*, verify::*,
+    };
+}
