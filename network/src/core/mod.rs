@@ -4,6 +4,8 @@
     Description:
         ... Summary ...
 */
+pub use api::*;
 pub use primitives::*;
 
-mod primitives;
+pub(crate) mod api;
+pub(crate) mod primitives;

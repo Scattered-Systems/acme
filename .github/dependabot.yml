@@ -16,3 +16,7 @@ updates:
     directory: /macros
     schedule:
       interval: daily
+  - package-ecosystem: cargo
+    directory: /network
+    schedule:
+      interval: daily

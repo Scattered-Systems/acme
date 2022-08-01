@@ -6,9 +6,8 @@ edition = "2021"
 homepage = "https://scattered-systems.github.io/acme"
 keywords = ["async", "client", "blockchain", "scsys"]
 license = "MIT"
-name = "acme"
+name = "acme-network"
 publish = true
-readme = "README.md"
 repository = "https://github.com/scattered-systems/acme.git"
 version = "0.2.0" # TODO - Update cargo package version
 
@@ -16,23 +15,11 @@ version = "0.2.0" # TODO - Update cargo package version
 crate-type = ["cdylib", "rlib"]
 test = true
 
-[features]
-default = ["network"]
-full = [
-    "derive",
-    "macros",
-    "network"
-]
-derive = ["acme-derive"]
-macros = ["acme-macros"]
-network = ["acme-network"]
-
 [dependencies]
 async-trait = "0.1.56"
-axum = { features = ["headers"], version = "0.5.11" }
+axum = { features = ["headers"], version = "0.5.13" }
 bson = { features = ["chrono-0_4", "serde_with"], version = "2.3.0" }
 chrono = "0.4.19"
-clap = { features = ["derive"], version = "3.2.8" }
 config = "0.13.1"
 glob = "0.3.0"
 http = "0.2.8"
@@ -50,18 +37,3 @@ tracing-subscriber = "0.3.14"
 features = ["full"]
 optional = false
 version = "0.1.9"
-
-[dependencies.acme-derive]
-optional = true
-path = "../derive"
-version = "0.2.0"
-
-[dependencies.acme-macros]
-optional = true
-path = "../macros"
-version = "0.2.0"
-
-[dependencies.acme-network]
-optional = true
-path = "../network"
-version = "0.2.0"
