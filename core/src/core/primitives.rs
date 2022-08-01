@@ -9,6 +9,4 @@ pub use types::*;
 
 mod constants {}
 
-mod types {
-    pub use async_trait::async_trait;
-}
+mod types {}

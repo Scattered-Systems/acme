@@ -8,7 +8,7 @@ keywords = ["proc-macros", "scsys"]
 license = "MIT"
 name = "acme-macros"
 repository = "https://scattered-systems.com/FL03/acme"
-version = "0.2.0" # TODO - Update cargo package version
+version = "0.2.1" # TODO - Update cargo package version
 
 [lib]
 proc-macro = true

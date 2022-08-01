@@ -1,8 +1,15 @@
 # acme
 
-Acme is intended to serve the Scattered-Systems Ecosystem as a collection of useful clients, application frameworks, and other tools for creating enterprise-grade application written in Rust.
+Acme enables developers to design data-centric, cloud-native applications within Rust wrapping popular frameworks
+such as Axum, Clap, and Tokio into a single import.
 
 ## Getting Started
+
+### Building from the source
+
+    git clone https://github.com/scattered-systems/acme
+    cargo build && cargo build --release
+    cargo test --all-features --color always --release --verbose --workspace
 
 ### Examples
 

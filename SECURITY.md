@@ -7,11 +7,14 @@ currently being supported with security updates.
 
 | Package      | Current | Supported |
 |--------------|---------|-----------|
-| acme         | 0.1.22  | <=0.1.21  |
-| acme-core    | 0.1.8   | <=0.1.7   |
-| acme-macros  | 0.1.8   | <=0.1.7   |
-| acme-network | 0.1.8   | <=0.1.7   |
+| acme         | 0.2.1   | <=0.2.0   |
 
 ## Reporting a Vulnerability
 
-[Website](https://pzzld.eth.link/)
+If you discover a bug, have more questions, or wish to submit an idea feel free to email me at j3mccain@gmail.com
+or visit the company [website](https://scattered-systems.com) for more information.
+
+### Quick Links
+
+* [Crate](https://crates.io/crates/acme)
+* [Docs](https://docs.rs/acme)
