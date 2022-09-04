@@ -1,14 +1,14 @@
 [package]
-authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
+authors = ["FL03 <jo3mccain@icloud.com> (https://gitlab.com)"]
 categories = []
 description = "A client library for the Scattered Systems Ecosystem"
 edition = "2021"
-homepage = "https://scattered-systems.github.io/acme"
+homepage = "https://gitlab.com/FL03/acme/#README"
 keywords = ["async", "scsys"]
 license = "MIT"
 name = "acme"
 publish = true
-readme = "README.md"
+readme = "https://gitlab.com/FL03/acme/#README"
 repository = "https://github.com/scattered-systems/acme.git"
 version = "0.2.1" # TODO - Update cargo package version
 
@@ -17,35 +17,44 @@ crate-type = ["cdylib", "rlib"]
 test = true
 
 [features]
-default = ["core", "network"]
-full = [
-    "core",
-    "derive",
-    "macros",
-    "network"
-]
+default = ["core", "net"]
+full = ["core", "derive", "macros", "net"]
 
-core = ["acme-core"]
+core = ["external", "net"]
 derive = ["acme-derive"]
 macros = ["acme-macros"]
-network = ["acme-network"]
+net = []
 
-[dependencies.acme-core]
-optional = true
-path = "../core"
-version = "0.2.1"
+external = ["extras", "web"]
 
-[dependencies.acme-derive]
-optional = true
-path = "../derive"
-version = "0.2.1"
+extras = ["tower/default", "tower-http/full", "tracing/default", "tracing-subscriber/default"]
+web = ["axum/default", "axum/headers", "futures/default", "http", "hyper/full", "reqwest/default", "tokio/full"]
 
-[dependencies.acme-macros]
-optional = true
-path = "../macros"
-version = "0.2.1"
+[dependencies]
+axum = { features = ["headers"], optional = true, version = "0.5.15"}
+futures = { optional = true, version = "0.3.23" }
+http = { optional = true, version = "0.2.8" }
+hyper = { features = ["full"], optional = true, version = "0.14.20" }
+jsonwebkey = "0.3.5"
+log = { optional = true, version = "0.4.17" }
+openidconnect = "2.3.2"
+reqwest = { optional = true, version = "0.11.11" }
+scsys = { features = ["full"], version = "0.1.14" }
+serde = { features = ["derive"], version = "1.0.144" }
+serde_json = "1.0.85"
+tokio = { features = ["full"], optional = true, version = "1.21.0" }
+tokio-stream = { optional = true, version = "0.1.9" }
+tower = { optional = true, version = "0.4.13" }
+tower-http = { features = ["full"], optional = true, version = "0.3.4" }
+tracing = { optional = true, version = "0.1.35" }
+tracing-subscriber = { optional = true, version = "0.3.14" }
 
-[dependencies.acme-network]
-optional = true
-path = "../network"
-version = "0.2.1"
+# Features
+acme-derive = { optional=true, path="../derive", version="0.2.1" }
+acme-macros = { optional=true, path="../macros", version="0.2.1" }
+
+[build-dependencies]
+acme-derive = { optional=true, path="../derive", version="0.2.1" }
+acme-macros = { optional=true, path="../macros", version="0.2.1" }
+
+[profile.meta.description]
