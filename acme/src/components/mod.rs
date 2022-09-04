@@ -4,10 +4,7 @@
     Description:
         ... Summary ...
 */
-#[doc(inline)]
-#[cfg(feature = "networking")]
-pub use self::{proxies::*, routers::*, servers::*};
 
-mod proxies;
-mod routers;
-mod servers;
+pub mod proxies;
+pub mod routers;
+pub mod servers;

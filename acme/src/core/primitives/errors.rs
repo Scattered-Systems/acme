@@ -4,3 +4,10 @@
     Description:
         ... Summary ...
 */
+
+pub type BaseError = scsys::BoxError;
+
+
+pub enum Errors {
+
+}

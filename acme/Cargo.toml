@@ -26,9 +26,12 @@ macros = ["acme-macros"]
 net = []
 
 external = ["extras", "web"]
-
 extras = ["tower/default", "tower-http/full", "tracing/default", "tracing-subscriber/default"]
 web = ["axum/default", "axum/headers", "futures/default", "http", "hyper/full", "reqwest/default", "tokio/full"]
+
+[build-dependencies]
+acme-derive = { path="../derive", version="0.2.1" }
+acme-macros = { path="../macros", version="0.2.1" }
 
 [dependencies]
 axum = { features = ["headers"], optional = true, version = "0.5.15"}
@@ -53,8 +56,5 @@ tracing-subscriber = { optional = true, version = "0.3.14" }
 acme-derive = { optional=true, path="../derive", version="0.2.1" }
 acme-macros = { optional=true, path="../macros", version="0.2.1" }
 
-[build-dependencies]
-acme-derive = { optional=true, path="../derive", version="0.2.1" }
-acme-macros = { optional=true, path="../macros", version="0.2.1" }
 
-[profile.meta.description]
+

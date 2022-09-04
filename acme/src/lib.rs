@@ -6,22 +6,43 @@
         leveraging popular frameworks such as axum, clap, and tokio
 */
 #[doc(inline)]
+pub use self::{actors::*, components::*, core::*, data::*};
 
-pub mod actors;
-pub mod components;
-pub mod core;
-pub mod data;
+mod actors;
+mod components;
+mod core;
+mod data;
 
 #[cfg(feature = "derive")]
 pub use acme_derive::*;
 #[cfg(feature = "macros")]
 pub use acme_macros::*;
-#[cfg(feature = "network")]
-pub use acme_network as network;
 
 pub mod prelude {
-    #[cfg(feature = "network")]
-    pub use super::network::prelude::*;
+    pub use crate::{
+        actors::handlers::*,
+        components::{proxies::*, routers::*, servers::*},
+        core::{api::*, errors::*, types::*},
+        data::*
+    };
+
+    #[cfg(feature = "web")]
+    pub use axum;
+    #[cfg(feature = "web")]
+    pub use hyper;
+    #[cfg(feature = "web")]
+    pub use tokio;
+    #[cfg(feature = "extras")]
+    pub use tower;
+    #[cfg(feature = "extras")]
+    pub use tower_http;
+    #[cfg(feature = "extras")]
+    pub use tracing;
+    #[cfg(feature = "extras")]
+    pub use tracing_subscriber;
+
+
+    
     #[cfg(feature = "derive")]
     pub use acme_derive::*;
     #[cfg(feature = "macros")]
