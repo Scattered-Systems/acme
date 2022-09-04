@@ -22,15 +22,12 @@ pub mod prelude {
     pub use crate::{
         actors::handlers::*,
         components::{proxies::*, routers::*, servers::*},
-        core::{api::*, errors::*, types::*},
+        core::api::*,
         data::*
     };
 
-    #[cfg(feature = "web")]
     pub use axum;
-    #[cfg(feature = "web")]
     pub use hyper;
-    #[cfg(feature = "web")]
     pub use tokio;
     #[cfg(feature = "extras")]
     pub use tower;

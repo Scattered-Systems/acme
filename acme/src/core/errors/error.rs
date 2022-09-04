@@ -1,9 +1,13 @@
 /*
-    Appellation: primitives <acme::core::primitives>
+    Appellation: errors <primitives>
     Contributors: FL03 <jo3mccain@icloud.com> (https://gitlab.com/FL03)
     Description:
         ... Summary ...
 */
 
-pub mod errors;
-pub mod types;
+pub type Error = scsys::BoxError;
+
+
+pub enum Errors {
+    Generic(Error)
+}

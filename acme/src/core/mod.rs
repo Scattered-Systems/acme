@@ -5,7 +5,7 @@
         ... Summary ...
 */
 #[doc(inline)]
-pub use self::{primitives::{errors, types}, states::*, utils::*};
+pub use self::{primitives::*, states::*, utils::*};
 
 pub mod api;
 mod primitives;

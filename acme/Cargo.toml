@@ -34,6 +34,7 @@ acme-derive = { path="../derive", version="0.2.1" }
 acme-macros = { path="../macros", version="0.2.1" }
 
 [dependencies]
+async-trait = "0.1.57"
 axum = { features = ["headers"], optional = true, version = "0.5.15"}
 futures = { optional = true, version = "0.3.23" }
 http = { optional = true, version = "0.2.8" }
