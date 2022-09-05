@@ -5,32 +5,30 @@ default-members = [
 
 members = [
     "acme",
-    "core",
     "derive",
-    "macros",
-    "network"
+    "macros"
 ]
 
 [profile.dev]
-opt-level = 0
+codegen-units = 256
 debug = true
-split-debuginfo = '...'  # Platform-specific.
 debug-assertions = true
-overflow-checks = true
+incremental = true
 lto = false
 panic = 'unwind'
-incremental = true
-codegen-units = 256
 rpath = false
+opt-level = 0
+overflow-checks = true
+split-debuginfo = '...' # Platform specific
 
 [profile.release]
-opt-level = "z"
+codegen-units = 16
 debug = false
-split-debuginfo = '...'  # Platform-specific.
 debug-assertions = false
-overflow-checks = false
+incremental = false
 lto = false
 panic = 'unwind'
-incremental = false
-codegen-units = 16
 rpath = false
+opt-level = 'z'
+overflow-checks = false
+split-debuginfo = '...' # Platform specific

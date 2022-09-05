@@ -1,0 +1,5 @@
+tasks:
+  - init: cargo build --workspace
+    command: cargo watch -x test -q
+
+
