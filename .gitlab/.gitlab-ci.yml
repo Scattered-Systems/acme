@@ -1,0 +1,15 @@
+.cargo_test_template: &cargo_test
+  stage: test
+  script:
+    - cargo test --all-features --release --verbose --jobs 1
+
+
+stages:
+  - test
+  - deploy
+
+
+
+stable:cargo:
+  image: rustdocker/rust:stable
+  <<: *cargo_test

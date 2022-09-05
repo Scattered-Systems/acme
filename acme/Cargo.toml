@@ -17,17 +17,21 @@ crate-type = ["cdylib", "rlib"]
 test = true
 
 [features]
-default = ["core", "net"]
-full = ["core", "derive", "macros", "net"]
+default = ["core"]
+full = ["core", "derive", "macros", "p2p", "wasm"]
 
-core = ["external", "net"]
+core = ["net"]
 derive = ["acme-derive"]
 macros = ["acme-macros"]
-net = []
+net = ["api", "async", "extras"]
 
-external = ["extras", "web"]
+api = ["axum/default", "axum/headers"]
+async = ["futures/default", "http", "hyper/full", "reqwest/default", "tokio/full"]
 extras = ["tower/default", "tower-http/full", "tracing/default", "tracing-subscriber/default"]
-web = ["axum/default", "axum/headers", "futures/default", "http", "hyper/full", "reqwest/default", "tokio/full"]
+
+p2p = ["libp2p/dns-tokio", "libp2p/tcp-tokio"]
+
+wasm = ["libp2p/wasm-ext", "libp2p/wasm-bindgen"]
 
 [build-dependencies]
 acme-derive = { path="../derive", version="0.2.1" }
@@ -40,6 +44,7 @@ futures = { optional = true, version = "0.3.23" }
 http = { optional = true, version = "0.2.8" }
 hyper = { features = ["full"], optional = true, version = "0.14.20" }
 jsonwebkey = "0.3.5"
+libp2p = { features = ["dns-tokio", "tcp-tokio", "wasm-bindgen"], optional = true, version = "0.47.0" }
 log = { optional = true, version = "0.4.17" }
 openidconnect = "2.3.2"
 reqwest = { optional = true, version = "0.11.11" }
