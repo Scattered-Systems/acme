@@ -2,10 +2,9 @@
   stage: testing
   script:
     - cargo test --all-features --release --verbose --jobs 1
-
+  
 stages:
   - testing
-  - deploy
 
 stable:cargo:
   image: rustdocker/rust:stable
