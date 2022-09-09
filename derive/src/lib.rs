@@ -5,5 +5,3 @@
        This library is dedicated towards creating derive macros for the acme in support of the
        Scattered-Systems ecosystem.
 */
-
-

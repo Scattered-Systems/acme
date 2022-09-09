@@ -23,23 +23,31 @@ pub mod prelude {
         actors::handlers::*,
         components::{proxies::*, routers::*, servers::*},
         core::api::*,
-        data::*
+        data::*,
     };
-
+    #[cfg(feature = "api")]
     pub use axum;
+    #[cfg(feature = "web")]
+    pub use http;
+    #[cfg(feature = "api")]
     pub use hyper;
+    #[cfg(feature = "web")]
+    pub use reqwest;
+    #[cfg(feature = "api")]
     pub use tokio;
-    #[cfg(feature = "extras")]
+    #[cfg(feature = "api")]
+    pub use tokio_stream;
+    #[cfg(feature = "api")]
     pub use tower;
-    #[cfg(feature = "extras")]
+    #[cfg(feature = "api")]
+    pub use tower_cookies;
+    #[cfg(feature = "api")]
     pub use tower_http;
-    #[cfg(feature = "extras")]
+    #[cfg(feature = "api")]
     pub use tracing;
-    #[cfg(feature = "extras")]
+    #[cfg(feature = "api")]
     pub use tracing_subscriber;
 
-
-    
     #[cfg(feature = "derive")]
     pub use acme_derive::*;
     #[cfg(feature = "macros")]

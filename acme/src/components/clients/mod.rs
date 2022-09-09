@@ -8,8 +8,10 @@
 pub mod authenticated;
 pub mod public;
 
-use reqwest::{header::{HeaderMap, HeaderName, HeaderValue}, Method, RequestBuilder};
-
+use reqwest::{
+    header::{HeaderMap, HeaderName, HeaderValue},
+    Method, RequestBuilder,
+};
 
 pub trait WebClient: Clone + std::fmt::Debug {
     fn client(&mut self) -> reqwest::Client {
@@ -21,12 +23,16 @@ pub trait WebClient: Clone + std::fmt::Debug {
         format!("{}/{}", self.endpoint(), path)
     }
     fn quick_headers(&self, data: Vec<(&'static str, &'static str)>) -> HeaderMap {
-        HeaderMap::from_iter(data.iter().map(|i| (HeaderName::from_static(i.0), HeaderValue::from_static(i.1))).collect::<Vec<_>>())
+        HeaderMap::from_iter(
+            data.iter()
+                .map(|i| (HeaderName::from_static(i.0), HeaderValue::from_static(i.1)))
+                .collect::<Vec<_>>(),
+        )
     }
     fn new_request(&mut self, method: Method, path: Option<&str>) -> RequestBuilder {
         let url = match path {
             Some(v) => self.extend_path(v),
-            None => self.endpoint()
+            None => self.endpoint(),
         };
         self.client().request(method, url.as_str())
     }

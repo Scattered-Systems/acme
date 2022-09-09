@@ -13,4 +13,3 @@ pub enum ProxyParam {
     Dest(std::net::SocketAddr),
     Link(SocketAddr),
 }
-

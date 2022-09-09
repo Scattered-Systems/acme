@@ -4,6 +4,3 @@
    Description:
        Procedural macros created for acme
 */
-
-
-

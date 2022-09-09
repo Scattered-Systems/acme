@@ -1,16 +1,13 @@
 # acme
 
-[![Code Analysis](https://github.com/scattered-systems/acme/actions/workflows/rust-clippy.yml/badge.svg)](https://github.com/scattered-systems/acme/actions/workflows/rust-clippy.yml)
-[![Rust](https://github.com/scattered-systems/acme/actions/workflows/rust.yml/badge.svg)](https://github.com/scattered-systems/acme/actions/workflows/rust.yml)
-
-Acme is a sandbox library
+Acme was originally reserved as a sandbox environment before morphing into a complete networking solution for creating
+effective applications in Rust.
 
 ## Developers
 
 ### Getting Started
 
-    git clone https://github.com/scattered-systems/acme.git
+    git clone https://gitlab.com/FL03/acme
 
-    cargo build
-    cargo build --workspace
+    cargo build --color always --release --workspace
     cargo test --all-features --color always --release --verbose --workspace

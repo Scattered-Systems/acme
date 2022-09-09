@@ -6,11 +6,9 @@
 */
 use std::{net::SocketAddr, str::FromStr};
 
-
-
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Proxy {
-    pub address: SocketAddr
+    pub address: SocketAddr,
 }
 
 impl Proxy {
@@ -20,7 +18,7 @@ impl Proxy {
     pub fn addr_from_str(addr: &str) -> SocketAddr {
         match SocketAddr::from_str(addr) {
             Ok(v) => v,
-            Err(e) => panic!("Conversion Error: {}", e)
+            Err(e) => panic!("Conversion Error: {}", e),
         }
     }
     pub fn from_str(addr: &str) -> Self {

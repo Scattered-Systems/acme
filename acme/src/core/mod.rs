@@ -11,6 +11,4 @@ pub mod api;
 mod primitives;
 mod states;
 
-mod utils {
-    
-}
+mod utils {}

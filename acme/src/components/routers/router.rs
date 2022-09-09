@@ -7,7 +7,7 @@
 
 #[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 pub struct Router {
-    pub path: String
+    pub path: String,
 }
 
 impl Router {

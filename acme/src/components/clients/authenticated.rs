@@ -5,30 +5,40 @@
         ... Summary ...
 */
 
-#[derive(Clone, Debug, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
+#[derive(
+    Clone,
+    Debug,
+    Hash,
+    PartialEq,
+    serde::Deserialize,
+    serde::Serialize,
+    strum::EnumString,
+    strum::EnumVariantNames,
+)]
+#[strum(serialize_all = "title_case")]
 pub enum AuthClient {
     Basic {
         username: String,
-        password: String
+        password: String,
     },
     OAuth {
         access_token: String,
         username: String,
-        hashed_password: String
-    }
+        hashed_password: String,
+    },
 }
-
 
 #[cfg(test)]
 mod tests {
     use super::AuthClient;
 
-
     #[test]
     fn test_auth_client_default() {
-        let a = AuthClient::Basic { username: "".to_string(), password: "".to_string() };
+        let a = AuthClient::Basic {
+            username: "".to_string(),
+            password: "".to_string(),
+        };
         let b = a.clone();
         assert_eq!(a, b)
     }
-
 }

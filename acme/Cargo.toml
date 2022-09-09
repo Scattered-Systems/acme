@@ -20,35 +20,25 @@ test = true
 default = ["core"]
 full = ["core", "derive", "macros"]
 
-core = ["api", "async", "tower", "tracing", "web"]
+core = ["api", "web"]
 derive = ["acme-derive"]
 macros = ["acme-macros"]
 
 api = [
     "axum/default", 
-    "axum/headers"
-]
-
-async = [
-    "futures/default", 
-    "tokio/full", 
-    "tokio-stream/default"
-]
-
-tower = [
-    "tower/default", 
+    "axum/headers",
+    "hyper/full",
+    "tokio/full",
+    "tokio-stream/default",
+    "tower/default",
     "tower-cookies/default",
-    "tower-http/full"
-]
-
-tracing = [
-    "tracing/default", 
+    "tower-http/full",
+    "tracing/default",
     "tracing-subscriber/default"
 ]
 
 web = [
-    "http", 
-    "hyper/full", 
+    "http",
     "reqwest/default"
 ]
 
