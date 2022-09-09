@@ -9,5 +9,6 @@ stages:
 stable:cargo:
   image: rustdocker/rust:stable
   rules:
-    - if: '$CI_COMMIT_BRANCH =~ latest | $CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/'
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/'
+    - if: '$CI_COMMIT_BRANCH == latest'
   <<: *cargo_test
