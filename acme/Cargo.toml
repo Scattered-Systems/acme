@@ -18,20 +18,39 @@ test = true
 
 [features]
 default = ["core"]
-full = ["core", "derive", "macros", "p2p", "wasm"]
+full = ["core", "derive", "macros"]
 
-core = ["net"]
+core = ["api", "async", "tower", "tracing", "web"]
 derive = ["acme-derive"]
 macros = ["acme-macros"]
-net = ["api", "async", "extras"]
 
-api = ["axum/default", "axum/headers"]
-async = ["futures/default", "http", "hyper/full", "reqwest/default", "tokio/full"]
-extras = ["tower/default", "tower-http/full", "tracing/default", "tracing-subscriber/default"]
+api = [
+    "axum/default", 
+    "axum/headers"
+]
 
-p2p = ["libp2p/dns-tokio", "libp2p/tcp-tokio"]
+async = [
+    "futures/default", 
+    "tokio/full", 
+    "tokio-stream/default"
+]
 
-wasm = ["libp2p/wasm-ext", "libp2p/wasm-bindgen"]
+tower = [
+    "tower/default", 
+    "tower-cookies/default",
+    "tower-http/full"
+]
+
+tracing = [
+    "tracing/default", 
+    "tracing-subscriber/default"
+]
+
+web = [
+    "http", 
+    "hyper/full", 
+    "reqwest/default"
+]
 
 [build-dependencies]
 acme-derive = { path="../derive", version="0.2.1" }
@@ -44,16 +63,17 @@ futures = { optional = true, version = "0.3.23" }
 http = { optional = true, version = "0.2.8" }
 hyper = { features = ["full"], optional = true, version = "0.14.20" }
 jsonwebkey = "0.3.5"
-libp2p = { features = ["dns-tokio", "tcp-tokio", "wasm-bindgen"], optional = true, version = "0.47.0" }
 log = { optional = true, version = "0.4.17" }
 openidconnect = "2.3.2"
 reqwest = { optional = true, version = "0.11.11" }
 scsys = { features = ["full"], version = "0.1.14" }
 serde = { features = ["derive"], version = "1.0.144" }
 serde_json = "1.0.85"
+strum = { features = ["derive"], version = "0.24.1" }
 tokio = { features = ["full"], optional = true, version = "1.21.0" }
 tokio-stream = { optional = true, version = "0.1.9" }
 tower = { optional = true, version = "0.4.13" }
+tower-cookies = { optional = true, version = "0.7.0" }
 tower-http = { features = ["full"], optional = true, version = "0.3.4" }
 tracing = { optional = true, version = "0.1.35" }
 tracing-subscriber = { optional = true, version = "0.3.14" }

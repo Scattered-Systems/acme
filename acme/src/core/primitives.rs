@@ -7,6 +7,8 @@
 pub use self::{constants::*, types::*, variants::*};
 
 mod constants {
+    pub const ACCEPT_APP_JSON: &str = "application/json";
+    pub const ME_USER_AGENT: &str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Edg/91.0.864.59";
 
 }
 
@@ -15,7 +17,6 @@ mod types {
     pub type AxumJson<T = JsonVal> = axum::Json<T>;
     /// type alias for [axum::Router]
     pub type AxumRouter = axum::Router;
-
     /// Type alias for [serde_json::Value]
     pub type JsonVal = serde_json::Value;
 

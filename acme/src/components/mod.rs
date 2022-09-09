@@ -5,6 +5,7 @@
         ... Summary ...
 */
 
+pub mod clients;
 pub mod proxies;
 pub mod routers;
 pub mod servers;
