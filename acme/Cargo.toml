@@ -3,7 +3,7 @@ authors = ["FL03 <jo3mccain@icloud.com> (https://gitlab.com)"]
 categories = []
 description = "A client library for the Scattered Systems Ecosystem"
 edition = "2021"
-homepage = "https://gitlab.com/FL03/acme/#README"
+homepage = "https://gitlab.com/FL03/acme/-/wikis/home"
 keywords = ["async", "scsys"]
 license = "MIT"
 name = "acme"
@@ -20,57 +20,41 @@ test = true
 default = ["core"]
 full = ["core", "derive", "macros"]
 
-core = ["api", "web"]
+core = []
 derive = ["acme-derive"]
 macros = ["acme-macros"]
 
-api = [
-    "axum/default", 
-    "axum/headers",
-    "hyper/full",
-    "tokio/full",
-    "tokio-stream/default",
-    "tower/default",
-    "tower-cookies/default",
-    "tower-http/full",
-    "tracing/default",
-    "tracing-subscriber/default"
-]
-
-web = [
-    "http",
-    "reqwest/default"
-]
-
 [build-dependencies]
-acme-derive = { path="../derive", version="0.2.1" }
-acme-macros = { path="../macros", version="0.2.1" }
 
 [dependencies]
 async-trait = "0.1.57"
-axum = { features = ["headers"], optional = true, version = "0.5.15"}
-futures = { optional = true, version = "0.3.23" }
-http = { optional = true, version = "0.2.8" }
-hyper = { features = ["full"], optional = true, version = "0.14.20" }
+axum = { features = ["headers"], version = "0.5.15" }
+axum-server-dual-protocol = "0.2.0"
+axum-macros = "0.3.0-rc.1"
+axum-openapi = "0.0.0"
+axum-sessions = "0.3.1"
+axum-streams = "0.7.0"
+futures = "0.3.23"
+http = "0.2.8"
+hyper = { features = ["full"], version = "0.14.20" }
 jsonwebkey = "0.3.5"
-log = { optional = true, version = "0.4.17" }
 openidconnect = "2.3.2"
-reqwest = { optional = true, version = "0.11.11" }
+reqwest = "0.11.11"
 scsys = { features = ["full"], version = "0.1.14" }
 serde = { features = ["derive"], version = "1.0.144" }
 serde_json = "1.0.85"
 strum = { features = ["derive"], version = "0.24.1" }
-tokio = { features = ["full"], optional = true, version = "1.21.0" }
-tokio-stream = { optional = true, version = "0.1.9" }
-tower = { optional = true, version = "0.4.13" }
-tower-cookies = { optional = true, version = "0.7.0" }
-tower-http = { features = ["full"], optional = true, version = "0.3.4" }
-tracing = { optional = true, version = "0.1.35" }
-tracing-subscriber = { optional = true, version = "0.3.14" }
+tokio = { features = ["full"], version = "1.21.0" }
+tokio-stream = "0.1.9"
+tower = "0.4.13"
+tower-cookies = "0.7.0"
+tower-http = { features = ["full"], version = "0.3.4" }
+tracing = "0.1.35"
+tracing-subscriber = "0.3.14"
 
 # Features
-acme-derive = { optional=true, path="../derive", version="0.2.1" }
-acme-macros = { optional=true, path="../macros", version="0.2.1" }
+acme-derive = { optional = true, path = "../derive", version = "0.2.1" }
+acme-macros = { optional = true, path = "../macros", version = "0.2.1" }
 
 
 

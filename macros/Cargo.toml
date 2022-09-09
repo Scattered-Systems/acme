@@ -1,13 +1,14 @@
 [package]
-authors = ["FL03 <jo3mccain@icloud.com>", "Joe McCain III <jo3mccain@scattered-systems.com>"]
+authors = ["FL03 <jo3mccain@icloud.com> (https://gitlab.com)"]
 categories = []
 description = "Procedural macros created to support Acme, a client library created for the Scattered-Systems Ecosystem"
 edition = "2021"
-homepage = "https://scattered-systems.github.io/acme"
+homepage = "https://gitlab.com/FL03/acme/-/wikis/home"
 keywords = ["proc-macros", "scsys"]
 license = "MIT"
 name = "acme-macros"
-repository = "https://scattered-systems.com/FL03/acme"
+readme = "https://gitlab.com/FL03/acme/#README"
+repository = "https://gitlab.com/FL03/acme"
 version = "0.2.1" # TODO - Update cargo package version
 
 [lib]
@@ -17,3 +18,6 @@ crate-type = ["cdylib", "rlib"]
 proc-macro2 = "1.0.43"
 quote = "1.0.21"
 syn = { features = ["full"], version = "1.0.99" }
+
+[dev-dependencies.acme]
+path = "../acme"
