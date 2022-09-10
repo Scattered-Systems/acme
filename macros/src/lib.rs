@@ -13,7 +13,7 @@ macro_rules! netaddr {
         {
             let mut tmp = Vec::new();
             $(
-                tmp.push(std::net::SocketAddr::from(($x, $y)));
+                tmp.push(SocketAddr::from(($x, $y)));
             )*
             tmp
         }
