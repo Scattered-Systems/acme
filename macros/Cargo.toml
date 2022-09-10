@@ -7,7 +7,6 @@ homepage = "https://gitlab.com/FL03/acme/-/wikis/home"
 keywords = ["proc-macros", "scsys"]
 license = "MIT"
 name = "acme-macros"
-readme = "https://gitlab.com/FL03/acme/#README"
 repository = "https://gitlab.com/FL03/acme"
 version = "0.2.1" # TODO - Update cargo package version
 

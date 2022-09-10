@@ -8,7 +8,7 @@ keywords = ["async", "scsys"]
 license = "MIT"
 name = "acme"
 publish = true
-readme = "https://gitlab.com/FL03/acme/#README"
+readme = "README.md"
 repository = "https://github.com/scattered-systems/acme.git"
 version = "0.2.1" # TODO - Update cargo package version
 
