@@ -1,9 +1,20 @@
+variables:
+  CARGO_REGISTRY_TOKEN: $CARGO_REGISTRY_TOKEN
+
+.cargo_deploy_template: &cargo-deploy
+  script:
+    - cargo login $CARGO_REGISTRY_TOKEN
+    - cargo publish -p acme-derive -v
+    - cargo publish -p acme-macros -v
+    - cargo publish --all-features -p acme  -v
+  
 .cargo_test_template: &cargo_test
   stage: testing
   script:
     - cargo test --all-features --release --verbose --jobs 1
   
 stages:
+  - deploy
   - testing
 
 stable:cargo:
@@ -11,3 +22,4 @@ stable:cargo:
   rules:
     - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+$/'
   <<: *cargo_test
+  <<: *cargo-deploy
