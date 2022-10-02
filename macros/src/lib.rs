@@ -19,14 +19,3 @@ macro_rules! netaddr {
         }
     };
 }
-
-#[cfg(test)]
-mod tests {
-
-    #[test]
-    fn test_netaddr() {
-        let a = netaddr![([0, 0, 0, 0], 8080)];
-        let b = vec![std::net::SocketAddr::from([0, 0, 0, 0], 8080)];
-        assert_eq!(a, b)
-    }
-}

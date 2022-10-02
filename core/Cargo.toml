@@ -1,0 +1,23 @@
+[package]
+authors = ["FL03 <jo3mccain@icloud.com> (https://gitlab.com)"]
+categories = []
+description = "Core primitives forming the foundation of acme, a complete peer-to-peer networking utility"
+edition = "2021"
+homepage = "https://gitlab.com/FL03/acme/-/wikis/home"
+keywords = ["async", "scsys"]
+license = "MIT"
+name = "acme-core"
+repository = "https://github.com/scattered-systems/acme.git"
+version = "0.2.1" # TODO - Update cargo package version
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+test = true
+
+[build-dependencies]
+
+[dependencies]
+async-trait = "0.1.57"
+futures = "0.3.23"
+mio = "0.8.4"
+tokio = "1.21.2"

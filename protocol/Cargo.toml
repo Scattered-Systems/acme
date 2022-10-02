@@ -6,7 +6,7 @@ edition = "2021"
 homepage = "https://gitlab.com/FL03/acme/-/wikis/home"
 keywords = ["async", "scsys"]
 license = "MIT"
-name = "acme"
+name = "acme-protocol"
 publish = true
 readme = "README.md"
 repository = "https://github.com/scattered-systems/acme.git"
@@ -16,24 +16,10 @@ version = "0.2.1" # TODO - Update cargo package version
 crate-type = ["cdylib", "rlib"]
 test = true
 
-[features]
-default = ["core", "protocol"]
-full = ["core", "derive", "macros", "protocol"]
-
-core = ["acme-core"]
-derive = ["acme-derive"]
-macros = ["acme-macros"]
-protocol = ["acme-protocol"]
 
 [build-dependencies]
 
 [dependencies]
-
-
-acme-core = { optional = true, path = "../core", version = "0.2.1"}
-acme-derive = { optional = true, path = "../derive", version = "0.2.1" }
-acme-macros = { optional = true, path = "../macros", version = "0.2.1" }
-acme-protocol = { optional = true, path = "../protocol", version = "0.2.1"}
-
-
-
+mio = "0.8.4"
+serde = { default-features = false, features = ["derive"], version = "1.0.145" }
+tokio = { features = [], version = "1.21.2" }

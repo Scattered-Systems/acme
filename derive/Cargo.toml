@@ -14,9 +14,9 @@ version = "0.2.1" # TODO - Update cargo package version
 proc-macro = true
 
 [dependencies]
-proc-macro2 = "1.0.43"
+proc-macro2 = "1.0.46"
 quote = "1.0.21"
-syn = { features = ["full"], version = "1.0.99" }
+syn = { features = ["full"], version = "1.0.101" }
 
 [dev-dependencies.acme]
 path = "../acme"

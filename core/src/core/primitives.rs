@@ -12,12 +12,7 @@ mod constants {
 }
 
 mod types {
-    /// type alias for [axum::Json]
-    pub type AxumJson<T = JsonVal> = axum::Json<T>;
-    /// type alias for [axum::Router]
-    pub type AxumRouter = axum::Router;
-    /// Type alias for [serde_json::Value]
-    pub type JsonVal = serde_json::Value;
+    
 }
 
 mod variants {}
