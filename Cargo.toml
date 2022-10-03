@@ -7,7 +7,7 @@ members = [
     "acme",
     "derive",
     "macros",
-    "protocol"
+    "minis"
 ]
 
 [profile.dev]

@@ -7,7 +7,6 @@
 #[doc(inline)]
 pub use self::{actors::*, contexts::*, core::*, data::*};
 
-
 mod actors;
 mod contexts;
 mod core;

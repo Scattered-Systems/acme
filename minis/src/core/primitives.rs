@@ -6,14 +6,10 @@
 */
 pub use self::{constants::*, statics::*, types::*, variants::*};
 
-mod constants {
-}
+mod constants {}
 
 mod statics {}
 
-mod types {
-    
-}
+mod types {}
 
 mod variants {}
-

@@ -17,13 +17,13 @@ crate-type = ["cdylib", "rlib"]
 test = true
 
 [features]
-default = ["core", "protocol"]
-full = ["core", "derive", "macros", "protocol"]
+default = ["core", "minis"]
+full = ["core", "derive", "macros", "minis"]
 
 core = ["acme-core"]
 derive = ["acme-derive"]
 macros = ["acme-macros"]
-protocol = ["acme-protocol"]
+minis = ["acme-minis"]
 
 [build-dependencies]
 
@@ -33,7 +33,7 @@ protocol = ["acme-protocol"]
 acme-core = { optional = true, path = "../core", version = "0.2.1"}
 acme-derive = { optional = true, path = "../derive", version = "0.2.1" }
 acme-macros = { optional = true, path = "../macros", version = "0.2.1" }
-acme-protocol = { optional = true, path = "../protocol", version = "0.2.1"}
+acme-minis = { optional = true, path = "../minis", version = "0.2.1"}
 
 
 
