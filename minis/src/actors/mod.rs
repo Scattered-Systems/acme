@@ -4,7 +4,9 @@
     Description:
         ... Summary ...
 */
+pub use self::agency::*;
 
+pub(crate) mod agency;
 pub mod block_fetch;
 pub mod chain_sync;
 pub mod n2n;

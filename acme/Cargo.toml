@@ -3,13 +3,13 @@ authors = ["FL03 <jo3mccain@icloud.com> (https://gitlab.com)"]
 categories = []
 description = "A client library for the Scattered Systems Ecosystem"
 edition = "2021"
-homepage = "https://gitlab.com/FL03/acme/-/wikis/home"
+homepage = "https://gitlab.com/scsys/lib/crates/acme/-/wikis/home"
 keywords = ["async", "scsys"]
 license = "MIT"
 name = "acme"
 publish = true
 readme = "README.md"
-repository = "https://github.com/scattered-systems/acme.git"
+repository = "https://gitlab.com/scsys/lib/crates/acme"
 version = "0.2.1" # TODO - Update cargo package version
 
 [lib]

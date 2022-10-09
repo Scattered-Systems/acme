@@ -3,11 +3,11 @@ authors = ["FL03 <jo3mccain@icloud.com> (https://gitlab.com)"]
 categories = []
 description = "Procedural macros created to support Acme, a client library created for the Scattered-Systems Ecosystem"
 edition = "2021"
-homepage = "https://gitlab.com/FL03/acme/-/wikis/home"
+homepage = "https://gitlab.com/scsys/lib/crates/acme/-/wikis/home"
 keywords = ["proc-macros", "scsys"]
 license = "MIT"
 name = "acme-macros"
-repository = "https://gitlab.com/FL03/acme"
+repository = "https://gitlab.com/scsys/lib/crates/acme"
 version = "0.2.1" # TODO - Update cargo package version
 
 [lib]
