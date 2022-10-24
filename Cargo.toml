@@ -6,7 +6,8 @@ default-members = [
 members = [
     "acme",
     "derive",
-    "macros"
+    "macros",
+    "minis"
 ]
 
 [profile.dev]
@@ -19,7 +20,6 @@ panic = 'unwind'
 rpath = false
 opt-level = 0
 overflow-checks = true
-split-debuginfo = '...' # Platform specific
 
 [profile.release]
 codegen-units = 16
@@ -31,4 +31,3 @@ panic = 'unwind'
 rpath = false
 opt-level = 'z'
 overflow-checks = false
-split-debuginfo = '...' # Platform specific

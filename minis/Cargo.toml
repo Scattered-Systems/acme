@@ -1,0 +1,27 @@
+[package]
+authors = ["FL03 <jo3mccain@icloud.com> (https://gitlab.com)"]
+categories = []
+description = "A client library for the Scattered Systems Ecosystem"
+edition = "2021"
+homepage = "https://gitlab.com/scsys/lib/crates/acme/-/wiki/"
+keywords = ["async", "scsys"]
+license = "MIT"
+name = "acme-minis"
+publish = true
+readme = "README.md"
+repository = "https://gitlab.com/scsys/lib/crates/acme"
+version = "0.2.1" # TODO - Update cargo package version
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+test = true
+
+
+[build-dependencies]
+
+[dependencies]
+mio = "0.8.4"
+scsys = { features = ["full"], version = "0.1.19" }
+serde = { features = ["derive"], version = "1.0.145" }
+strum = { features = ["derive"], version = "0.24.1" }
+tokio = { features = [], version = "1.21.2" }

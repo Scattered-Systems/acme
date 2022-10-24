@@ -1,22 +1,22 @@
 [package]
 authors = ["FL03 <jo3mccain@icloud.com> (https://gitlab.com)"]
 categories = []
-description = "Procedural macros created to support Acme, a client library created for the Scattered-Systems Ecosystem"
+description = "Core primitives forming the foundation of acme, a complete peer-to-peer networking utility"
 edition = "2021"
 homepage = "https://gitlab.com/scsys/lib/crates/acme/-/wikis/home"
-keywords = ["proc-macros", "scsys"]
+keywords = ["async", "scsys"]
 license = "MIT"
-name = "acme-macros"
+name = "acme-core"
 repository = "https://gitlab.com/scsys/lib/crates/acme"
 version = "0.2.1" # TODO - Update cargo package version
 
 [lib]
 crate-type = ["cdylib", "rlib"]
+test = true
+
+[build-dependencies]
 
 [dependencies]
-proc-macro2 = "1.0.46"
-quote = "1.0.21"
-syn = { features = ["full"], version = "1.0.101" }
+serde = { features = ["derive"], version = "1.0.145" }
+strum = { features = ["derive"], version = "0.24.1" }
 
-[dev-dependencies.acme]
-path = "../acme"

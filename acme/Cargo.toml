@@ -3,13 +3,13 @@ authors = ["FL03 <jo3mccain@icloud.com> (https://gitlab.com)"]
 categories = []
 description = "A client library for the Scattered Systems Ecosystem"
 edition = "2021"
-homepage = "https://gitlab.com/FL03/acme/-/wikis/home"
+homepage = "https://gitlab.com/scsys/lib/crates/acme/-/wikis/home"
 keywords = ["async", "scsys"]
 license = "MIT"
 name = "acme"
 publish = true
 readme = "README.md"
-repository = "https://github.com/scattered-systems/acme.git"
+repository = "https://gitlab.com/scsys/lib/crates/acme"
 version = "0.2.1" # TODO - Update cargo package version
 
 [lib]
@@ -17,44 +17,23 @@ crate-type = ["cdylib", "rlib"]
 test = true
 
 [features]
-default = ["core"]
-full = ["core", "derive", "macros"]
+default = ["core", "minis"]
+full = ["core", "derive", "macros", "minis"]
 
-core = []
+core = ["acme-core"]
 derive = ["acme-derive"]
 macros = ["acme-macros"]
+minis = ["acme-minis"]
 
 [build-dependencies]
 
 [dependencies]
-async-trait = "0.1.57"
-axum = { features = ["headers"], version = "0.5.15" }
-axum-server-dual-protocol = "0.2.0"
-axum-macros = "0.3.0-rc.1"
-axum-openapi = "0.0.0"
-axum-sessions = "0.3.1"
-axum-streams = "0.7.0"
-futures = "0.3.23"
-http = "0.2.8"
-hyper = { features = ["full"], version = "0.14.20" }
-jsonwebkey = "0.3.5"
-openidconnect = "2.3.2"
-reqwest = { features = ["cookies", "json", "socks", "stream"], version = "0.11.11" }
-scsys = { features = ["full"], git = "https://github.com/scattered-systems/scsys", version = "0.1.14" }
-serde = { features = ["derive"], version = "1.0.144" }
-serde_json = "1.0.85"
-strum = { features = ["derive"], version = "0.24.1" }
-tokio = { features = ["full"], version = "1.21.0" }
-tokio-stream = "0.1.9"
-tower = "0.4.13"
-tower-cookies = "0.7.0"
-tower-http = { features = ["full"], version = "0.3.4" }
-tracing = "0.1.35"
-tracing-subscriber = "0.3.14"
 
-# Features
+
+acme-core = { optional = true, path = "../core", version = "0.2.1"}
 acme-derive = { optional = true, path = "../derive", version = "0.2.1" }
 acme-macros = { optional = true, path = "../macros", version = "0.2.1" }
+acme-minis = { optional = true, path = "../minis", version = "0.2.1"}
 
 
 
