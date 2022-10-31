@@ -5,11 +5,11 @@
         Acme is designed to simplify the creation of agile web applications written in Rust
 */
 #[doc(inline)]
-#[cfg(feature = "core")]
-pub use acme_core as core;
-#[cfg(feature = "derive")]
-pub use acme_derive::*;
-#[cfg(feature = "macros")]
-pub use acme_macros::*;
+pub use self::core::*;
+
+pub(crate) mod core;
+
+#[cfg(feature = "minis")]
+pub use acme_minis as minis;
 
 pub mod prelude {}

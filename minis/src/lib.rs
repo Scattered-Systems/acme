@@ -1,13 +1,13 @@
 /*
-    Appellation: acme <module>
-    Contributors: FL03 <jo3mccain@icloud.com> (https://gitlab.com/FL03)
-    Description:
-        Acme is designed to simplify the creation of agile web applications written in Rust
+    Appellation: acme-minis <library>
+    Contrib: FL03 <jo3mccain@icloud.com>
+    Description: ... Summary ...
 */
+
 #[doc(inline)]
-pub use self::{actors::*, contexts::*, core::*, data::*};
+pub use self::{actors::*, components::*, core::*, data::*};
 
 mod actors;
-mod contexts;
+mod components;
 mod core;
 mod data;
