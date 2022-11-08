@@ -1,5 +1,5 @@
 tasks:
-  - init: cargo build --workspace
+  - init: sh scripts/setup.sh
     command: cargo watch -x test -q
 
 

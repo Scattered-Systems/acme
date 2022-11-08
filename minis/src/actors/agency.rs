@@ -7,9 +7,23 @@
 use serde::{Deserialize, Serialize};
 use strum::{EnumString, EnumVariantNames};
 
-#[derive(Clone, Copy, Debug, Default, Deserialize, EnumString, EnumVariantNames, Eq, Hash, Ord, PartialEq, PartialOrd, Serialize)]
+#[derive(
+    Clone,
+    Copy,
+    Debug,
+    Default,
+    Deserialize,
+    EnumString,
+    EnumVariantNames,
+    Eq,
+    Hash,
+    Ord,
+    PartialEq,
+    PartialOrd,
+    Serialize,
+)]
 pub enum Agency {
     #[default]
     Client,
-    Server
+    Server,
 }

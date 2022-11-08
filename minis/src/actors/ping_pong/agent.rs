@@ -4,12 +4,12 @@
     Description:
         ... Summary ...
 */
-use serde::{Deserialize, Serialize};
 use super::PingPongState;
+use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, Eq, Hash, PartialEq, Serialize)]
 pub struct PingPong {
-    pub state: PingPongState
+    pub state: PingPongState,
 }
 
 impl PingPong {

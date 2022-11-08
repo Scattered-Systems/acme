@@ -17,7 +17,6 @@ pub(crate) mod state {
         Done,
         Ping,
         Pong,
-        Start
+        Start,
     }
-
 }
