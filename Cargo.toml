@@ -5,6 +5,7 @@ default-members = [
 
 members = [
     "acme",
+    "clusters",
     "minis"
 ]
 
