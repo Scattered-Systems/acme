@@ -17,17 +17,28 @@ crate-type = ["cdylib", "rlib"]
 test = true
 
 [features]
-default = ["core"]
-full = ["core"]
+default = ["core", "wasm"]
+full = ["core", "extras", "wasm"]
 
-core = ["minis"]
+core = [
+    "minis"
+]
+extras = []
+
 minis = ["acme-minis"]
+
+wasm = [
+    "wasm-ext"
+]
+wasm-ext = []
 
 [build-dependencies]
 
 [dependencies]
+acme-minis = { optional = true, path = "../minis", version = "0.2.2" }
 
-[dependencies.acme-minis]
-optional = true
-path = "../minis"
-version = "0.2.2"
+[package.metadata.docs.rs]
+all-features = true
+rustc-args = ["--cfg", "docsrs"]
+
+[target.wasm32-unknown-unknown]

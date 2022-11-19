@@ -12,17 +12,30 @@ readme = "README.md"
 repository = "https://gitlab.com/scsys/lib/crates/acme"
 version = "0.2.2" # TODO - Update cargo package version
 
+[features]
+default = ["core", "extras", "wasm"]
+full = ["core", "extras", "wasm"]
+
+core = []
+extras = []
+wasm = ["wasm-ext"]
+wasm-ext = []
+
 [lib]
 crate-type = ["cdylib", "rlib"]
 test = true
-
 
 [build-dependencies]
 
 [dependencies]
 mio = "0.8.4"
-scsys = { features = ["wasm"], git = "https://github.com/scattered-systems/scsys", branch = "dev-v0.1.28", version = "0.1.28" }
+scsys = { features = ["wasm"], git = "https://github.com/scattered-systems/scsys", branch = "v0.1.28", version = "0.1.28" }
 serde = { features = ["derive"], version = "1.0.147" }
 serde_json = "1.0.87"
 strum = { features = ["derive"], version = "0.24.1" }
 tokio = { features = ["macros"], version = "1.21.2" }
+
+[dev-dependencies]
+acme = { path = "../acme" }
+
+[target.wasm32-unknown-unknown]
