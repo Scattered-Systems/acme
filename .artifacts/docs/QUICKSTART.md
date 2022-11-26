@@ -1,9 +1,6 @@
-# acme
+# Quickstart
 
-## About
-
-Acme advances the scsys crate by carefully implementing a number of useful networking utilities designed to eventually
-mimic libraries like Python's FastAPI, enabling developers to quickly spin up cloud-native applications written in Rust. 
+Welcome to acme
 
 ## Getting Started
 
@@ -17,3 +14,13 @@ mimic libraries like Python's FastAPI, enabling developers to quickly spin up cl
 
     cargo build --color always --release --workspace
     cargo test --all-features --color always --release --verbose --workspace
+
+## Examples
+
+    use acme;
+
+    #[tokio]
+    async fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
+
+        Ok(())
+    }
