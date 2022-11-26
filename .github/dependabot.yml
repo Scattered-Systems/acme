@@ -9,6 +9,14 @@ updates:
     schedule:
       interval: daily
   - package-ecosystem: cargo
+    directory: /clusters
+    schedule:
+      interval: daily
+  - package-ecosystem: cargo
+    directory: /conduits
+    schedule:
+      interval: daily
+  - package-ecosystem: cargo
     directory: /minis
     schedule:
       interval: daily

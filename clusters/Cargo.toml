@@ -1,12 +1,12 @@
 [package]
 authors = ["FL03 <jo3mccain@icloud.com> (https://github.com)"]
 categories = []
-description = "acme-minis"
+description = "acme-clusters"
 edition = "2021"
 homepage = "https://github.com/scattered-systems/acme/wiki/"
 keywords = ["async", "scsys"]
 license = "MIT"
-name = "acme-minis"
+name = "acme-clusters"
 publish = true
 readme = "README.md"
 repository = "https://github.com/scattered-systems/acme"
