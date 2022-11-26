@@ -8,7 +8,7 @@ Welcome to acme
 
 #### Clone the repository
 
-    git clone https://gitlab.com/FL03/acme
+    git clone https://github.com/scattered-systems/acme
 
 #### Crate
 

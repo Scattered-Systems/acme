@@ -1,14 +1,12 @@
 /*
-    Appellation: acme <module>
-    Contrib: FL03 <jo3mccain@icloud.com>
+    Appellation: acme <library>
+    Contrib: FL03 <jo3mccain@icloud.com> (https://gitlab.com/FL03)
     Description:
-        Acme was built to facilitate the creation of secure peer-to-peer applications written natively in WebAssembley
-        
+        Acme was inspired by projects like Python's FastAPI, seeking to simplify the creation of powerful Rust-native applications targeting WebAssembly runtime's.
+        Additionally, Acme services the ecosystem by forming the basis of our composable runtime environment facilitated by the tandem between Proton, Flow, and Reaction.
 */
-#[doc(inline)]
-pub use self::core::*;
-
-pub(crate) mod core;
+#[cfg(feature = "core")]
+pub use acme_core::*;
 #[cfg(feature = "clusters")]
 pub use acme_clusters as clusters;
 #[cfg(feature = "conduits")]

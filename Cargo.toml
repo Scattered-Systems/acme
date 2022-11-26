@@ -6,6 +6,8 @@ default-members = [
 members = [
     "acme",
     "clusters",
+    "conduits",
+    "core",
     "minis"
 ]
 
