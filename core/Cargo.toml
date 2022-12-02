@@ -24,7 +24,7 @@ test = true
 
 [dependencies]
 async-trait = "0.1.58"
-scsys = { features = ["full"], version = "0.1.33" }
+scsys = { features = ["full"], version = "0.1.35" }
 serde = { features = ["derive"], version = "1.0.147" }
 serde_json = "1.0.89"
 strum = { features = ["derive"], version = "0.24.1" }

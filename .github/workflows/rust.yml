@@ -1,29 +1,50 @@
 name: Rust
 
-on:
-  push:
-    branches-ignore: ["dev", "next"]
-  schedule:
-    - cron: '30 9 * * 5'
-  workflow_dispatch:
-
 env:
   CARGO_TERM_COLOR: always
-  CARGO_REGISTRY_TOKEN: ${CARGO_REGISTRY_TOKEN}
+
+on:
+  push:
+    branches: [ "main" ]
+    tags: [ "v*.*.*" ]
+  schedule:
+    - cron: "30 9 * * 5"
+  workflow_dispatch:
+    inputs:
+      publish:
+        default: true
+        description: 'Publish'
+        required: true
+        type: boolean
 
 jobs:
-  login:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Login
-      run: cargo login ${CARGO_REGISTRY_TOKEN}
   build:
+    name: Build and Test
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain:
+          - stable
+          - nightly
     steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: cargo build --release --verbose --workspace
-    - name: Test
-      run: cargo test --all-features --release --verbose
-
+      - uses: actions/checkout@v3
+      - run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
+      - run: cargo build -v
+      - run: cargo test --all --all-features -v
+  
+  publish:
+    if: ${{ github.event.inputs.publish == true }}
+    name: Publish
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          - acme-clusters
+          - acme-conduits
+          - acme-core
+          - acme-minis
+          - acme
+    steps:
+      - uses: actions/checkout@v3
+      - name: Publish (${{matrix.package}})
+        run: cargo publish --all-features --package ${{ matrix.package }} --jobs 1 --verbose --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
