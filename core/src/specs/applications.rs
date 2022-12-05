@@ -7,7 +7,7 @@ use super::AsyncSpawable;
 use scsys::{prelude::Logger, BoxResult};
 
 /// Implements the base interface for creating compatible platform applications
-pub trait ApplicationSpec {
+pub trait ApplicationSpec: Default {
     type Cnf: Clone;
     type Ctx;
     type Msg;
@@ -42,4 +42,6 @@ pub trait AsyncApplicationSpawner: AsyncSpawable {
     }
 }
 
-pub trait CommandLineInterface {}
+#[cfg(feature = "cli")]
+#[cfg(not(feature = "wasm"))]
+pub trait CommandLineInterface: clap::Parser {}
