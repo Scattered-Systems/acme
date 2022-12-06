@@ -3,20 +3,18 @@
     Contrib: FL03 <jo3mccain@icloud.com>
     Description: ... summary ...
 */
-
 use scsys::prelude::{Event, Timestamp};
 use serde::{Deserialize, Serialize};
 use std::convert::From;
 
-#[derive(Clone, Debug, Default, Deserialize, Eq, Hash, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, Hash, PartialEq, Serialize)]
 pub struct Session {
     pub events: Vec<Event>,
     pub timestamp: i64,
 }
 
 impl Session {
-    pub fn new(events: Vec<Event>) -> Self {
-        let timestamp = Timestamp::default().into();
+    pub fn new(events: Vec<Event>, timestamp: i64) -> Self {
         Self { events, timestamp }
     }
 }
@@ -24,6 +22,18 @@ impl Session {
 impl From<&Session> for Session {
     fn from(data: &Session) -> Self {
         data.clone()
+    }
+}
+
+impl From<Vec<Event>> for Session {
+    fn from(data: Vec<Event>) -> Self {
+        Self::new(data, Timestamp::default().into())
+    }
+}
+
+impl Default for Session {
+    fn default() -> Self {
+        Self::new(Vec::new(), Timestamp::default().into())
     }
 }
 

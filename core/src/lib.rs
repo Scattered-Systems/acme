@@ -4,11 +4,10 @@
     Description: ... summary ...
 */
 #[doc(inline)]
-pub use self::{primitives::*, specs::*, utils::*};
+pub use self::{primitives::*, specs::*};
 
 pub(crate) mod primitives;
 pub(crate) mod specs;
-pub(crate) mod utils;
 
 
 pub mod sessions;

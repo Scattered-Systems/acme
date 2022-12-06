@@ -28,7 +28,7 @@ test = true
 
 [dependencies]
 async-trait = "0.1.58"
-clap = { features = ["derive"], optional = true, verison = "4.0.29" }
+clap = { features = ["derive"], optional = true, version = "4.0.29" }
 futures = "0.3.25"
 hyper = { features = ["full"], version = "0.14.23" }
 scsys = { features = ["full"], version = "0.1.36" }
@@ -36,6 +36,7 @@ serde = { features = ["derive"], version = "1.0.149" }
 serde_json = "1.0.89"
 strum = { features = ["derive"], version = "0.24.1" }
 tokio = { features = ["full"], version = "1.22.0" }
+tower = "0.4.13"
 tracing = "0.1.37"
 tracing-subscriber = { features = [], version = "0.3.16" }
 
