@@ -42,12 +42,10 @@ jobs:
           - acme-clusters
           - acme-conduits
           - acme-core
-          - acme-minis
-          - acme
     steps:
       - uses: actions/checkout@v3
       - name: Publish (${{matrix.package}})
-        run: cargo publish --all-features --package ${{ matrix.package }} --jobs 1 --verbose --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: cargo publish --all-features --package ${{ matrix.package }} --verbose --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
   publish:
     if: ${{ github.event.inputs.publish }}
     name: Publish
@@ -56,8 +54,8 @@ jobs:
     strategy:
       matrix:
         package:
-          - scsys
+          - acme
     steps:
       - uses: actions/checkout@v3
       - name: Publish (${{matrix.package}})
-        run: cargo publish --all-features --package ${{ matrix.package }} --jobs 1 --verbose --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: cargo publish --all-features --package ${{ matrix.package }} --verbose --token ${{ secrets.CARGO_REGISTRY_TOKEN }}

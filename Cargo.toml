@@ -7,8 +7,7 @@ members = [
     "acme",
     "clusters",
     "conduits",
-    "core",
-    "minis"
+    "core"
 ]
 
 [profile.dev]

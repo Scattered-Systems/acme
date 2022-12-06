@@ -20,7 +20,3 @@ updates:
     directory: /core
     schedule:
       interval: daily
-  - package-ecosystem: cargo
-    directory: /minis
-    schedule:
-      interval: daily

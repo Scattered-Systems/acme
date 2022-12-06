@@ -17,7 +17,7 @@ crate-type = ["cdylib", "rlib"]
 test = true
 
 [features]
-default = ["clusters", "conduits", "core", "minis"]
+default = ["clusters", "conduits", "core"]
 full = ["core", "extras", "wasm"]
 
 core = ["acme-core"]
@@ -25,7 +25,6 @@ extras = []
 
 clusters = ["acme-clusters"]
 conduits = ["acme-conduits"]
-minis = ["acme-minis"]
 
 wasm = [
     "wasm-ext"
@@ -38,7 +37,6 @@ wasm-ext = []
 acme-clusters = { features = [], optional = true, path = "../clusters", version = "0.2.2" }
 acme-conduits = { features = [], optional = true, path = "../conduits", version = "0.2.2" }
 acme-core = { features = [], optional = true, path = "../core", version = "0.2.2" }
-acme-minis = { features = [], optional = true, path = "../minis", version = "0.2.2" }
 
 [package.metadata.docs.rs]
 all-features = true
