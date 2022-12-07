@@ -13,5 +13,5 @@ pub trait Spawnable {
 
 #[async_trait::async_trait]
 pub trait AsyncSpawable {
-    async fn spawn(&mut self) -> scsys::BoxResult<&Self>;
+    async fn spawn(&mut self) -> scsys::AsyncResult<&Self>;
 }

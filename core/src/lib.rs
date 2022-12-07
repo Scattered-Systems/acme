@@ -9,5 +9,5 @@ pub use self::{primitives::*, specs::*};
 pub(crate) mod primitives;
 pub(crate) mod specs;
 
-
+pub mod middleware;
 pub mod sessions;
