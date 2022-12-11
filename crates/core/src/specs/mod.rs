@@ -25,7 +25,6 @@ pub trait AsyncSpawable {
     async fn spawn(&mut self) -> scsys::AsyncResult<&Self>;
 }
 
-
 pub trait BaseObject {
     fn count(&self) -> usize;
     fn name(&self) -> String;
@@ -62,4 +61,3 @@ pub trait Versionable {
     fn update(&mut self) -> Result<(), Box<Self::Error>>;
     fn version(&self) -> String;
 }
-

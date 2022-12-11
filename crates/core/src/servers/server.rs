@@ -63,7 +63,7 @@ mod tests {
     #[tokio::test]
     async fn test_server() {
         let server = Server::default();
-        assert_eq!(server.clone().host, [127, 0, 0, 1]);
-        assert_eq!(server.clone().port, 8080);
+        assert_eq!(server.host, [127, 0, 0, 1]);
+        assert_eq!(server.port, 8080);
     }
 }

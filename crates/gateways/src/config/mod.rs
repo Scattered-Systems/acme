@@ -98,7 +98,7 @@ pub(crate) mod settings {
             let cred = GatewayCreds::default();
             Self::new(
                 cred.access_key.clone(),
-                cred.secret_key.clone(),
+                cred.secret_key,
                 data.endpoint(),
                 data.region(),
             )

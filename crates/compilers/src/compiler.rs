@@ -4,10 +4,9 @@
    Description: ... Summary ...
 */
 use crate::states::CompilerState;
-use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 
-#[derive(Clone, Debug, Deserialize, Eq, Hash, PartialEq, Serialize)]
+#[derive(Clone, Debug, Eq, Hash, PartialEq)]
 pub struct Compiler {
     state: Arc<CompilerState>,
 }

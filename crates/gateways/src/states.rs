@@ -25,7 +25,7 @@ impl State {
         self.clone().into()
     }
     pub fn boxed(&self) -> Box<&Self> {
-        Box::new(&self)
+        Box::new(self)
     }
     pub fn shared(&self) -> Arc<Self> {
         Arc::new(self.clone())
