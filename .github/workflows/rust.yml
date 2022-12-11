@@ -5,8 +5,8 @@ env:
 
 on:
   push:
-    branches: [ "main" ]
-    tags: [ "v*.*.*" ]
+    branches: [ "main", "master", "prod" ]
+    tags: [ "nightly-*", "prod-*", "v*.*.*" ]
   schedule:
     - cron: "30 9 * * 5"
   workflow_dispatch:
