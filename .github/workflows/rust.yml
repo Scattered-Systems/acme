@@ -29,9 +29,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: rustup update ${{ matrix.toolchain }} && rustup default ${{ matrix.toolchain }}
-      - run: cargo build -v
-      - run: cargo test --all --all-features -v
-  
+      - run: cargo build --release -v --workspace
+      - run: cargo test --all --all-features --release -v
   features:
     if: ${{ github.event.inputs.publish }}
     name: Publish
@@ -40,22 +39,21 @@ jobs:
       matrix:
         package:
           - acme-clusters
+          - acme-compilers
           - acme-conduits
           - acme-core
+          - acme-gateways
+          - acme-pipelines
     steps:
       - uses: actions/checkout@v3
       - name: Publish (${{matrix.package}})
-        run: cargo publish --all-features --package ${{ matrix.package }} --verbose --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: cargo publish --all-features -v -p ${{ matrix.package }} --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
   publish:
     if: ${{ github.event.inputs.publish }}
     name: Publish
     needs: features
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        package:
-          - acme
     steps:
       - uses: actions/checkout@v3
-      - name: Publish (${{matrix.package}})
-        run: cargo publish --all-features --package ${{ matrix.package }} --verbose --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      - name: Publish (acme)
+        run: cargo publish --all-features -v -p acme --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
