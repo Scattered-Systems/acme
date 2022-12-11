@@ -1,7 +1,7 @@
 [package]
 authors = ["FL03 <jo3mccain@icloud.com> (https://github.com)"]
 categories = []
-description = "Acme is a complete networking toolkit for wasm enabling dvelopers to quickly build powerful p2p applications"
+description = "Acme is a complete development toolkit for extending platform functionality"
 edition = "2021"
 homepage = "https://github.com/scattered-systems/acme/wikis"
 keywords = ["async", "scsys"]
