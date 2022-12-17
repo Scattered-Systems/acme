@@ -1,14 +1,16 @@
 [workspace]
 default-members = [
-    "acme"
+    "crates/acme"
 ]
 
 members = [
-    "acme",
-    "clusters",
-    "conduits",
-    "core",
-    "minis"
+    "crates/acme",
+    "crates/clusters",
+    "crates/conduits",
+    "crates/compilers",
+    "crates/core",
+    "crates/gateways",
+    "crates/pipelines"
 ]
 
 [profile.dev]
