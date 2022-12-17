@@ -1,10 +1,14 @@
-name: rust-clippy analyze
+name: Clippy
 
 on:
+  pull_request:
+    branches: [ "main", "master", "prod" ]
+    tags: [ "nightly-*", "prod-*", "v*.*.*" ]
   push:
-    tags: ["v*.*.*"]
+    branches: [ "main", "master", "prod" ]
+    tags: [ "nightly-*", "prod-*", "v*.*.*" ]
   schedule:
-    - cron: '30 9 * * 5'
+    - cron: "30 9 * * 5"
   workflow_dispatch:
 
 jobs:
