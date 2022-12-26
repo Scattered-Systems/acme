@@ -4,21 +4,26 @@
     Description: ... summary ...
 */
 use super::AsyncSpawable;
-use scsys::{prelude::Logger, BoxResult};
+use scsys::prelude::{Locked, Logger, BoxResult};
 
 /// Implements the base interface for creating compatible platform applications
-pub trait ApplicationSpec: Default {
-    type Cnf: Clone;
-    type Ctx;
-    type Msg;
-
-    fn context(&self) -> &Self::Ctx;
-    fn messages(&self) -> &Vec<Self::Msg>;
-    fn settings(&self) -> &Self::Cnf;
+pub trait AppSpec: Default {
+type Cnf;
+type Ctx;
+type State;
+fn init() -> Self;
+fn context(&self) -> Self::Ctx;
+fn name(&self) -> String;
+fn settings(&self) -> Self::Cnf;
+fn setup(&mut self) -> BoxResult<&Self>;
+fn slug(&self) -> String {
+    self.name().to_ascii_lowercase()
+}
+fn state(&self) -> &Locked<Self::State>;
 }
 
 /// Extends the core interface to include logging capabilities
-pub trait ApplicationLoggerSpec: ApplicationSpec {
+pub trait ApplicationLoggerSpec: AppSpec {
     /// Creates a service handle for toggling the tracing systems implemented
     fn with_tracing(&self, level: Option<&str>) -> BoxResult<&Self> {
         // TODO: Introduce a more refined system of tracing logged events
