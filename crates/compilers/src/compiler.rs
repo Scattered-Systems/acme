@@ -3,26 +3,26 @@
    Contrib: FL03 <jo3mccain@icloud.com>
    Description: ... Summary ...
 */
-use crate::states::CompilerState;
+use crate::states::{CompilerState, CompilerStates};
 use std::sync::Arc;
 
-#[derive(Clone, Debug, Eq, Hash, PartialEq)]
+#[derive(Clone, Debug, Eq, PartialEq)]
 pub struct Compiler {
     state: Arc<CompilerState>,
 }
 
 impl Compiler {
-    pub fn set_state(&mut self, state: CompilerState) -> &Self {
-        self.state = Arc::new(state);
+    pub fn set_state(&mut self, state: CompilerStates) -> &Self {
+        self.state = Arc::new(CompilerState::new(None, None, Some(state)));
         self
     }
     pub fn init(&mut self) -> &Self {
-        self.set_state(CompilerState::init());
+        self.set_state(CompilerStates::init());
         self
     }
 
     pub fn read_input(&mut self) -> &Self {
-        self.set_state(CompilerState::read());
+        self.set_state(CompilerStates::read());
         // read the input WebAssembly code
         // ...
         // return the next state
@@ -30,7 +30,7 @@ impl Compiler {
     }
 
     pub fn compile(&mut self) -> &Self {
-        self.set_state(CompilerState::compile());
+        self.set_state(CompilerStates::compile());
         // compile the input WebAssembly code using Wasmer
         // ...
         // return the next state
@@ -38,7 +38,7 @@ impl Compiler {
     }
 
     pub fn write_output(&mut self) -> &Self {
-        self.set_state(CompilerState::write());
+        self.set_state(CompilerStates::write());
         // write the compiled WebAssembly code to the output
         // ...
         // return the next state
@@ -46,7 +46,7 @@ impl Compiler {
     }
 
     pub fn finish(&mut self) -> &Self {
-        self.set_state(CompilerState::complete());
+        self.set_state(CompilerStates::complete());
         // clean up and finalize the compilation process
         // ...
         // return the final state
