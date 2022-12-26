@@ -3,26 +3,17 @@
     Contrib: FL03 <jo3mccain@icloud.com>
     Description: ... summary ...
 */
-pub use self::applications::*;
+pub use self::apps::*;
 
-pub(crate) mod applications;
+pub(crate) mod apps;
 
-use std::sync::Arc;
+
 
 pub trait BaseApplication: BaseObject + Versionable {
     fn application(&self) -> &Self {
         self
     }
     fn namespace(&self) -> String;
-}
-
-pub trait Spawnable {
-    fn spawn(&mut self) -> scsys::Result<&Self>;
-}
-
-#[async_trait::async_trait]
-pub trait AsyncSpawable {
-    async fn spawn(&mut self) -> scsys::AsyncResult<&Self>;
 }
 
 pub trait BaseObject {
@@ -34,26 +25,16 @@ pub trait BaseObject {
     fn symbol(&self) -> String;
 }
 
-pub trait Stateful: Clone {
-    fn boxed(self: Box<Self>) -> Box<Self> {
-        self
-    }
-    fn state(self) -> Self
-    where
-        Self: Sized,
-    {
-        self
-    }
-    fn threaded(self: Arc<Self>) -> Arc<Self> {
-        self
-    }
+pub trait Spawnable {
+    fn spawn(&mut self) -> scsys::Result<&Self>;
 }
 
-pub trait StatefulExt: Stateful + Default {
-    fn constructor() -> Self
-    where
-        Self: Sized;
+#[async_trait::async_trait]
+pub trait AsyncSpawable {
+    async fn spawn(&mut self) -> scsys::AsyncResult<&Self>;
 }
+
+
 
 pub trait Versionable {
     type Error;

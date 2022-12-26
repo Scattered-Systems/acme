@@ -3,6 +3,7 @@
    Contrib: FL03 <jo3mccain@icloud.com>
    Description: ... Summary ...
 */
+use scsys::prelude::{fnl_remove, StatePack};
 use serde::{Deserialize, Serialize};
 use std::convert::From;
 use strum::{EnumString, EnumVariantNames};
@@ -11,7 +12,7 @@ use strum::{EnumString, EnumVariantNames};
     Clone, Copy, Debug, Deserialize, EnumString, EnumVariantNames, Eq, Hash, PartialEq, Serialize,
 )]
 #[strum(serialize_all = "snake_case")]
-pub enum CompilerState {
+pub enum CompilerStates {
     Idle = 0,
     Init = 1,
     Read = 2,
@@ -21,7 +22,7 @@ pub enum CompilerState {
     Invalid = 6,
 }
 
-impl CompilerState {
+impl CompilerStates {
     pub fn idle() -> Self {
         Self::Idle
     }
@@ -45,13 +46,25 @@ impl CompilerState {
     }
 }
 
-impl Default for CompilerState {
+impl StatePack for CompilerStates {}
+
+impl std::fmt::Display for CompilerStates {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{}",
+            fnl_remove(serde_json::to_string(self).unwrap()).to_ascii_lowercase()
+        )
+    }
+}
+
+impl Default for CompilerStates {
     fn default() -> Self {
         Self::Idle
     }
 }
 
-impl From<i64> for CompilerState {
+impl From<i64> for CompilerStates {
     fn from(data: i64) -> Self {
         match data {
             0 => Self::idle(),
@@ -65,16 +78,16 @@ impl From<i64> for CompilerState {
     }
 }
 
-impl From<CompilerState> for i64 {
-    fn from(data: CompilerState) -> Self {
+impl From<CompilerStates> for i64 {
+    fn from(data: CompilerStates) -> Self {
         match data {
-            CompilerState::Idle => 0,
-            CompilerState::Init => 1,
-            CompilerState::Read => 2,
-            CompilerState::Compile => 3,
-            CompilerState::Write => 4,
-            CompilerState::Complete => 5,
-            CompilerState::Invalid => 6,
+            CompilerStates::Idle => 0,
+            CompilerStates::Init => 1,
+            CompilerStates::Read => 2,
+            CompilerStates::Compile => 3,
+            CompilerStates::Write => 4,
+            CompilerStates::Complete => 5,
+            CompilerStates::Invalid => 6,
         }
     }
 }
@@ -85,11 +98,11 @@ mod tests {
 
     #[test]
     fn test_compiler_state() {
-        let a: i64 = CompilerState::default().into();
+        let a: i64 = CompilerStates::default().into();
         assert_eq!(a, 0i64);
         assert_eq!(
-            CompilerState::try_from("idle").ok().unwrap(),
-            CompilerState::from(a)
+            CompilerStates::try_from("idle").ok().unwrap(),
+            CompilerStates::from(a)
         )
     }
 }

@@ -6,3 +6,5 @@
 pub use self::compiler::*;
 
 pub(crate) mod compiler;
+
+pub type CompilerState = scsys::prelude::State<CompilerStates>;
