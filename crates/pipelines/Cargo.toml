@@ -8,7 +8,7 @@ keywords = ["scsys"]
 license = "Apache-2.0"
 name = "acme-pipelines"
 repository = "https://github.com/scattered-systems/acme"
-version = "0.2.3"
+version = "0.2.4"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

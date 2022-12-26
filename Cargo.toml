@@ -5,7 +5,7 @@ edition = "2021"
 homepage = "https://github.com/FL03/acme/wikis"
 license = "Apache-2.0"
 repository = "https://github.com/FL03/acme"
-version = "0.2.3" # TODO - Update cargo package version
+version = "0.2.4" # TODO - Update cargo package version
 
 [workspace]
 default-members = [
