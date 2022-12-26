@@ -3,11 +3,11 @@
     Contrib: FL03 <jo3mccain@icloud.com>
     Description: ... summary ...
 */
-pub use self::applications::*;
+pub use self::apps::*;
 
-pub(crate) mod applications;
+pub(crate) mod apps;
 
-use std::sync::Arc;
+
 
 pub trait BaseApplication: BaseObject + Versionable {
     fn application(&self) -> &Self {
@@ -32,27 +32,6 @@ pub trait BaseObject {
         self.name().to_ascii_lowercase()
     }
     fn symbol(&self) -> String;
-}
-
-pub trait Stateful: Clone {
-    fn boxed(self: Box<Self>) -> Box<Self> {
-        self
-    }
-    fn state(self) -> Self
-    where
-        Self: Sized,
-    {
-        self
-    }
-    fn threaded(self: Arc<Self>) -> Arc<Self> {
-        self
-    }
-}
-
-pub trait StatefulExt: Stateful + Default {
-    fn constructor() -> Self
-    where
-        Self: Sized;
 }
 
 pub trait Versionable {
