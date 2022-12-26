@@ -18,7 +18,15 @@ test = true
 
 [features]
 default = ["clusters", "conduits", "core"]
-full = ["clusters", "conduits", "core", "compilers", "extras", "gateways", "pipelines",]
+full = [
+    "clusters",
+    "compilers", 
+    "conduits", 
+    "core", 
+    "extras", 
+    "gateways", 
+    "pipelines",
+]
 
 core = ["acme-core"]
 extras = []

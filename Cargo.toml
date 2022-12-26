@@ -14,12 +14,7 @@ default-members = [
 exclude = [ "xtask" ]
 members = [
     "crates/acme",
-    "crates/clusters",
-    "crates/conduits",
-    "crates/compilers",
-    "crates/core",
-    "crates/gateways",
-    "crates/pipelines"
+    "crates/*",
 ]
 
 [profile.dev]

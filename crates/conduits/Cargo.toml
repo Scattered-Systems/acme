@@ -1,23 +1,14 @@
 [package]
-authors = ["FL03 <jo3mccain@icloud.com> (https://github.com)"]
+authors = ["FL03 <jo3mccain@icloud.com> (https://github.com/FL03)"]
 categories = []
-description = "acme-conduits"
+description = "acme"
 edition = "2021"
-homepage = "https://github.com/scattered-systems/acme/wiki/"
-keywords = ["async", "scsys"]
+homepage = "https://github.com/FL03/acme/wiki"
+keywords = ["scsys"]
 license = "Apache-2.0"
 name = "acme-conduits"
-repository = "https://github.com/scattered-systems/acme"
-version = "0.2.4" # TODO - Update cargo package version
-
-[features]
-default = ["core", "extras", "wasm"]
-full = ["core", "extras", "wasm"]
-
-core = []
-extras = []
-wasm = ["wasm-ext"]
-wasm-ext = []
+repository = "https://github.com/FL03/acme"
+version = "0.2.4"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
