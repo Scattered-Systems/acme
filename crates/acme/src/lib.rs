@@ -19,18 +19,17 @@ pub use acme_gateways as gateways;
 pub use acme_pipelines as pipelines;
 
 pub mod prelude {
-    pub use super::*;
     #[cfg(feature = "clusters")]
     pub use super::clusters::*;
     #[cfg(feature = "compilers")]
     pub use super::compilers::*;
     #[cfg(feature = "conduits")]
     pub use super::conduits::*;
-    #[cfg(feature = "core")]
-    pub use super::{clients::*, events::*};
     #[cfg(feature = "gateways")]
     pub use super::gateways::*;
     #[cfg(feature = "pipelines")]
     pub use super::pipelines::*;
-
+    pub use super::*;
+    #[cfg(feature = "core")]
+    pub use super::{clients::*, events::*};
 }

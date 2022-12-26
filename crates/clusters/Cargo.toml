@@ -1,5 +1,5 @@
 [package]
-authors = ["FL03 <jo3mccain@icloud.com> (https://github.com)"]
+authors = ["FL03 <jo3mccain@icloud.com> (https://github.com/FL03)"]
 categories = []
 description = "acme-clusters"
 edition = "2021"
@@ -7,8 +7,6 @@ homepage = "https://github.com/scattered-systems/acme/wiki/"
 keywords = ["async", "scsys"]
 license = "Apache-2.0"
 name = "acme-clusters"
-publish = true
-readme = "README.md"
 repository = "https://github.com/scattered-systems/acme"
 version = "0.2.3" # TODO - Update cargo package version
 
@@ -29,11 +27,11 @@ test = true
 
 [dependencies]
 mio = "0.8.4"
-scsys = { features = ["full"], version = "0.1.36" }
-serde = { features = ["derive"], version = "1.0.149" }
-serde_json = "1.0.89"
+scsys = { features = ["full"], version = "0.1.38" }
+serde = { features = ["derive"], version = "1" }
+serde_json = "1"
 strum = { features = ["derive"], version = "0.24.1" }
-tokio = { features = ["macros"], version = "1.21.2" }
+tokio = { features = [ "macros" ], version = "1.23.0" }
 
 [dev-dependencies]
 acme = { path = "../acme" }

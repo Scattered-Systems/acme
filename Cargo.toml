@@ -1,8 +1,17 @@
+[workspace.package]
+authors = ["FL03 <jo3mccain@icloud.com> (https://github.com/FL03)"]
+description = "Acme is a complete development toolkit for extending platform functionality"
+edition = "2021"
+homepage = "https://github.com/FL03/acme/wikis"
+license = "Apache-2.0"
+repository = "https://github.com/FL03/acme"
+version = "0.2.3" # TODO - Update cargo package version
+
 [workspace]
 default-members = [
     "crates/acme"
 ]
-
+exclude = [ "xtask" ]
 members = [
     "crates/acme",
     "crates/clusters",
@@ -19,7 +28,7 @@ debug = true
 debug-assertions = true
 incremental = true
 lto = false
-panic = 'unwind'
+panic = "unwind"
 rpath = false
 opt-level = 0
 overflow-checks = true
@@ -30,7 +39,7 @@ debug = false
 debug-assertions = false
 incremental = false
 lto = false
-panic = 'unwind'
+panic = "unwind"
 rpath = false
-opt-level = 'z'
+opt-level = "z"
 overflow-checks = false
