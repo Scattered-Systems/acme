@@ -46,7 +46,3 @@ pub trait AsyncApplicationSpawner: AsyncSpawable {
         tracing::info!("Terminating the application and connected services...");
     }
 }
-
-#[cfg(feature = "cli")]
-#[cfg(not(feature = "wasm"))]
-pub trait CommandLineInterface: clap::Parser {}
