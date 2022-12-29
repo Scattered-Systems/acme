@@ -1,14 +1,14 @@
 [package]
-authors = ["FL03 <jo3mccain@icloud.com> (https://github.com/FL03)", "Scattered-Systems (https://github.com/scattered-systems)"]
+authors = ["FL03 <jo3mccain@icloud.com> (https://github.com/FL03)"]
 categories = []
 description = "acme"
 edition = "2021"
-homepage = "https://github.com/scattered-systems/acme/wiki"
+homepage = "https://github.com/FL03/acme/wiki"
 keywords = ["scsys"]
 license = "Apache-2.0"
 name = "acme-pipelines"
-repository = "https://github.com/scattered-systems/acme"
-version = "0.2.3"
+repository = "https://github.com/FL03/acme"
+version = "0.2.4"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

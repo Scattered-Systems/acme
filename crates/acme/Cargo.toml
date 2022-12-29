@@ -10,7 +10,7 @@ name = "acme"
 publish = true
 readme = "README.md"
 repository = "https://github.com/scattered-systems/acme"
-version = "0.2.3" # TODO - Update cargo package version
+version = "0.2.4" # TODO - Update cargo package version
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -19,6 +19,7 @@ test = true
 [features]
 default = ["core"]
 full = ["clusters", "conduits", "core", "compilers", "extras", "gateways", "pipelines",]
+
 
 core = ["acme-core"]
 extras = []
@@ -32,12 +33,12 @@ pipelines = ["acme-pipelines"]
 [build-dependencies]
 
 [dependencies]
-acme-clusters = { features = [], optional = true, path = "../clusters", version = "0.2.3" }
-acme-conduits = { features = [], optional = true, path = "../conduits", version = "0.2.3" }
-acme-core = { features = [], optional = true, path = "../core", version = "0.2.3" }
-acme-compilers = { features = [], optional = true, path = "../compilers", version = "0.2.3" }
-acme-gateways = { features = [], optional = true, path = "../gateways", version = "0.2.3" }
-acme-pipelines = { features = [], optional = true, path = "../pipelines", version = "0.2.3" }
+acme-clusters = { features = [], optional = true, path = "../clusters", version = "0.2.4" }
+acme-conduits = { features = [], optional = true, path = "../conduits", version = "0.2.4" }
+acme-core = { features = [], optional = true, path = "../core", version = "0.2.4" }
+acme-compilers = { features = [], optional = true, path = "../compilers", version = "0.2.4" }
+acme-gateways = { features = [], optional = true, path = "../gateways", version = "0.2.4" }
+acme-pipelines = { features = [], optional = true, path = "../pipelines", version = "0.2.4" }
 
 [package.metadata.docs.rs]
 all-features = true

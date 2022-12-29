@@ -1,14 +1,20 @@
 [package]
-authors = ["FL03 <jo3mccain@icloud.com> (https://github.com/FL03)", "Scattered-Systems (https://github.com/scattered-systems)"]
+authors = ["FL03 <jo3mccain@icloud.com> (https://github.com/FL03)"]
 categories = []
 description = "acme"
 edition = "2021"
-homepage = "https://github.com/scattered-systems/acme/wiki"
+homepage = "https://github.com/FL03/acme/wiki"
 keywords = ["scsys"]
 license = "Apache-2.0"
 name = "acme-core"
-repository = "https://github.com/scattered-systems/acme"
-version = "0.2.3"
+repository = "https://github.com/FL03/acme"
+version = "0.2.4"
+
+[features]
+default = [ "cli"]
+full = [ "cli" ]
+
+cli = [ "clap/cargo", "clap/derive", "clap/default", "clap/env"]
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -19,9 +25,10 @@ test = true
 [dev-dependencies]
 
 [dependencies]
-async-trait = "0.1.59"
+async-trait = "0.1.60"
 axum = "0.6.1"
-clap = { features = ["derive"], version = "4.0.29" }
+axum-core = "0.3.0"
+clap = { features = ["cargo", "derive", "env"], optional = true, version = "4.0.29" }
 hyper = { features = ["full"], version = "0.14.23" }
 http = "0.2.8"
 http-body = "0.4.5"
