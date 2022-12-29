@@ -7,8 +7,6 @@ pub use self::apps::*;
 
 pub(crate) mod apps;
 
-
-
 pub trait BaseApplication: BaseObject + Versionable {
     fn application(&self) -> &Self {
         self
@@ -33,8 +31,6 @@ pub trait Spawnable {
 pub trait AsyncSpawable {
     async fn spawn(&mut self) -> scsys::AsyncResult<&Self>;
 }
-
-
 
 pub trait Versionable {
     type Error;

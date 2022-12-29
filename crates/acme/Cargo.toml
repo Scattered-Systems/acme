@@ -17,7 +17,7 @@ crate-type = ["cdylib", "rlib"]
 test = true
 
 [features]
-default = ["clusters", "conduits", "core"]
+default = ["core"]
 full = ["clusters", "conduits", "core", "compilers", "extras", "gateways", "pipelines",]
 
 core = ["acme-core"]
