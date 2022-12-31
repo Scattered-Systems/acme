@@ -34,6 +34,6 @@ tracing = { features = [], version = "0.1.37" }
 tracing-subscriber = { features = [], version = "0.3.16" }
 
 [dev-dependencies]
-acme = { path = "../acme" }
+acme-core = { path = "../core" }
 
 [target.wasm32-unknown-unknown]

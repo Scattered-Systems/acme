@@ -28,12 +28,13 @@ test = true
 async-trait = "0.1.60"
 axum-core = "0.3.0"
 clap = { features = ["cargo", "derive", "env"], optional = true, version = "4.0.29" }
-
+config = "0.13.3"
+futures = "0.3.25"
 scsys = { features = ["full"], version = "0.1.38" }
 serde = { features = ["derive"], version = "1" }
 serde_json = "1"
 strum = { features = ["derive"], version = "0.24.1" }
-tokio = { features = ["macros", "signal"], version = "1.23.0" }
+tokio = { features = ["full"], version = "1.23.0" }
 tracing-subscriber = "0.3.16"
 
 [package.metadata.docs.rs]

@@ -8,64 +8,57 @@ use scsys::prelude::Message;
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
-pub enum Events {
-    Await(Event),
-    Generic(Event),
-    Startup(Event),
-}
-
-impl Eventful for Events {
-    type Event = Event;
-
-    fn event(&self) -> Self::Event {
-        self.into()
-    }
-}
-
-impl Default for Events {
-    fn default() -> Self {
-        Self::Generic(Default::default())
-    }
-}
-
-impl std::convert::From<&Events> for Event {
-    fn from(data: &Events) -> Event {
-        match data.clone() {
-            Events::Await(v) => v,
-            Events::Generic(v) => v,
-            Events::Startup(v) => v,
-        }
-    }
-}
-
-#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
-pub struct Event {
+pub struct Event<E: ToString = super::Events> {
+    pub event: E,
     pub message: Message,
 }
 
-impl Event {
-    pub fn new(message: Option<Message>) -> Self {
+impl<E: ToString> Event<E> {
+    pub fn new(event: E, message: Option<Message>) -> Self {
         Self {
+            event,
             message: message.unwrap_or_default(),
         }
     }
 }
 
-impl Default for Event {
-    fn default() -> Self {
-        Self::new(None)
+impl<E: ToString> std::fmt::Display for Event<E>
+where
+    E: Serialize,
+{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{}",
+            scsys::fnl_remove(serde_json::to_string(&self).unwrap())
+        )
     }
 }
 
-impl Eventful for Event {
-    type Event = Self;
+impl<E: ToString> Default for Event<E>
+where
+    E: Default,
+{
+    fn default() -> Self {
+        Self::new(Default::default(), None)
+    }
+}
+
+impl<E: ToString> Eventful for Event<E>
+where
+    E: Clone,
+{
+    type Event = E;
 
     fn event(&self) -> Self::Event {
-        self.clone()
+        self.event.clone()
     }
 }
 
-impl EventSpec for Event {
+impl<E: ToString> EventSpec for Event<E>
+where
+    E: Clone,
+{
     type Data = serde_json::Value;
 
     fn message(&self) -> &scsys::prelude::Message<Self::Data> {
@@ -73,14 +66,20 @@ impl EventSpec for Event {
     }
 }
 
+impl<E: ToString> From<E> for Event<E> {
+    fn from(data: E) -> Self {
+        Self::new(data, None)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::events::Events;
 
     #[test]
     fn test_events_default() {
-        let a = Events::default();
-        let b = Events::Startup(Default::default());
-        assert_ne!(&a, &b);
+        let a = Event::<Events>::default();
+        assert_eq!(a.event(), crate::events::Events::None);
     }
 }

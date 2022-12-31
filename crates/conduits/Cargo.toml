@@ -25,6 +25,6 @@ strum = { features = ["derive"], version = "0.24.1" }
 tokio = { features = ["macros"], version = "1.21.2" }
 
 [dev-dependencies]
-acme = { path = "../acme" }
+acme-core = { path = "../core" }
 
 [target.wasm32-unknown-unknown]

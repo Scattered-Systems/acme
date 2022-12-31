@@ -15,7 +15,7 @@ crate-type = ["cdylib", "rlib"]
 test = true
 
 [dependencies]
-async-trait = "0.1.59"
+async-trait = "0.1"
 axum = { features =["headers", "http2", "macros", "ws"], version = "0.6.0" }
 clap = { features = ["derive"], version = "4.0.29" }
 http = "0.2.8"
