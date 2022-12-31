@@ -30,8 +30,6 @@ pub trait ApplicationLoggerSpec: AppSpec {
         let mut logger = Logger::new(level.unwrap_or("info").to_string());
         logger.setup(None);
         tracing_subscriber::fmt::init();
-
-        tracing::info!("Successfully initiated the tracing protocol...");
         Ok(self)
     }
 }

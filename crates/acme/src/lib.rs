@@ -24,6 +24,8 @@ pub mod prelude {
     pub use super::compilers::*;
     #[cfg(feature = "conduits")]
     pub use super::conduits::*;
+    #[cfg(feature = "core")]
+    pub use super::{events::*, sessions::*};
     #[cfg(feature = "gateways")]
     pub use super::gateways::*;
     #[cfg(feature = "net")]
@@ -31,6 +33,4 @@ pub mod prelude {
     #[cfg(feature = "pipelines")]
     pub use super::pipelines::*;
     pub use super::*;
-    #[cfg(feature = "core")]
-    pub use super::{clients::*, events::*};
 }
