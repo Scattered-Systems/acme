@@ -5,21 +5,16 @@ edition = "2021"
 homepage = "https://github.com/FL03/acme/wikis"
 license = "Apache-2.0"
 repository = "https://github.com/FL03/acme"
-version = "0.2.3" # TODO - Update cargo package version
+version = "0.2.4" # TODO - Update cargo package version
 
 [workspace]
 default-members = [
-    "crates/acme"
+    "acme"
 ]
 exclude = [ "xtask" ]
 members = [
-    "crates/acme",
-    "crates/clusters",
-    "crates/conduits",
-    "crates/compilers",
-    "crates/core",
-    "crates/gateways",
-    "crates/pipelines"
+    "acme",
+    "crates/*",
 ]
 
 [profile.dev]

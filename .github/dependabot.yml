@@ -9,11 +9,7 @@ updates:
     schedule:
       interval: daily
   - package-ecosystem: cargo
-    directory: /crates/acme
-    schedule:
-      interval: daily
-  - package-ecosystem: cargo
-    directory: /crates/clusters
+    directory: /acme
     schedule:
       interval: daily
   - package-ecosystem: cargo
@@ -30,6 +26,10 @@ updates:
       interval: daily
   - package-ecosystem: cargo
     directory: /crates/gateways
+    schedule:
+      interval: daily
+  - package-ecosystem: cargo
+    directory: /crates/net
     schedule:
       interval: daily
   - package-ecosystem: cargo

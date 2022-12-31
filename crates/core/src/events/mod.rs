@@ -3,9 +3,10 @@
    Contrib: FL03 <jo3mccain@icloud.com>
    Description: ... Summary ...
 */
-pub use self::{event::*, specs::*};
+pub use self::{event::*, opts::*, specs::*};
 
 pub(crate) mod event;
+pub(crate) mod opts;
 
 pub(crate) mod specs {
     use scsys::prelude::{Message, Timestamp};
@@ -13,6 +14,7 @@ pub(crate) mod specs {
     /// Describes the most basic supported implementation of an event
     pub trait Eventful {
         type Event;
+
         fn event(&self) -> Self::Event;
     }
 
