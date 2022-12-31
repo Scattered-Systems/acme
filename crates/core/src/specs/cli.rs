@@ -3,33 +3,31 @@
     Contrib: FL03 <jo3mccain@icloud.com>
     Description: ... summary ...
 */
-use super::{Handler, AsyncHandler};
-use scsys::AsyncResult;
+use super::{AsyncHandler, Handler};
+use clap::{Parser, Subcommand};
 
-///
-pub trait CLISpec: clap::Parser + Handler {
-    type Cmds: Handler + clap::Subcommand;
+pub trait Commands: Clone + Default + Subcommand {
+    fn command(&self) -> Self
+    where
+        Self: Sized,
+    {
+        self.clone()
+    }
+}
+
+pub trait AsyncCommands: Commands + AsyncHandler {}
+
+pub trait CliSpec: Parser {
+    type Cmds: Commands;
+
     fn new() -> Self {
         Self::parse()
     }
     fn command(&self) -> Option<Self::Cmds>
     where
         Self: Sized;
-    fn handler(&self) -> scsys::Result<&Self>
-    where
-        Self: Sized;
 }
-///
-#[async_trait::async_trait]
-pub trait AsyncCLISpec: clap::Parser + AsyncHandler {
-    type Cmds: AsyncHandler + clap::Subcommand;
-    fn new() -> Self {
-        Self::parse()
-    }
-    fn command(&self) -> Option<Self::Cmds>
-    where
-        Self: Sized;
-    async fn handler(&self) -> AsyncResult<&Self>
-    where
-        Self: Sized;
-}
+
+pub trait CliSpecExt: CliSpec + Handler {}
+
+pub trait AsyncCliSpec: CliSpec + AsyncHandler {}

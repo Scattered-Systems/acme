@@ -4,22 +4,22 @@
     Description: ... summary ...
 */
 use super::AsyncSpawable;
-use scsys::prelude::{Locked, Logger, BoxResult};
+use scsys::prelude::{BoxResult, Locked, Logger};
 
 /// Implements the base interface for creating compatible platform applications
-pub trait AppSpec: Default {
-type Cnf;
-type Ctx;
-type State;
-fn init() -> Self;
-fn context(&self) -> Self::Ctx;
-fn name(&self) -> String;
-fn settings(&self) -> Self::Cnf;
-fn setup(&mut self) -> BoxResult<&Self>;
-fn slug(&self) -> String {
-    self.name().to_ascii_lowercase()
-}
-fn state(&self) -> &Locked<Self::State>;
+pub trait AppSpec: Default + AsyncSpawable {
+    type Cnf;
+    type Ctx;
+    type State;
+    fn init() -> Self;
+    fn context(&self) -> Self::Ctx;
+    fn name(&self) -> String;
+    fn settings(&self) -> Self::Cnf;
+    fn setup(&mut self) -> BoxResult<&Self>;
+    fn slug(&self) -> String {
+        self.name().to_ascii_lowercase()
+    }
+    fn state(&self) -> &Locked<Self::State>;
 }
 
 /// Extends the core interface to include logging capabilities
@@ -35,4 +35,3 @@ pub trait ApplicationLoggerSpec: AppSpec {
         Ok(self)
     }
 }
-

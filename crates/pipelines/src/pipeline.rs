@@ -9,7 +9,6 @@ use crate::PipelineStage;
 
 use scsys::prelude::{Message, Timestamp};
 use serde::{Deserialize, Serialize};
-use std::sync::Arc;
 
 #[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct Pipeline {

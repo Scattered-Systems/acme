@@ -41,11 +41,11 @@ jobs:
     strategy:
       matrix:
         package:
-          - acme-clusters
           - acme-compilers
           - acme-conduits
           - acme-core
           - acme-gateways
+          - acme-net
           - acme-pipelines
     steps:
       - uses: actions/checkout@v3

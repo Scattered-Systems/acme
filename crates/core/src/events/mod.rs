@@ -13,6 +13,7 @@ pub(crate) mod specs {
     /// Describes the most basic supported implementation of an event
     pub trait Eventful {
         type Event;
+
         fn event(&self) -> Self::Event;
     }
 
