@@ -8,7 +8,7 @@ keywords = ["scsys"]
 license = "Apache-2.0"
 name = "acme-gateways"
 repository = "https://github.com/FL03/acme"
-version = "0.2.4"
+version = "0.2.5"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -20,7 +20,7 @@ axum = { features =["headers", "http2", "macros", "ws"], version = "0.6.0" }
 clap = { features = ["derive"], version = "4.0.29" }
 http = "0.2.8"
 hyper = { features = ["full"], version = "0.14.23" }
-lru = "0.8.1"
+lru = "0.9"
 rust-s3 = {features = ["with-tokio"], version = "0.32.3" }
 scsys = { features = ["full"], version = "0.1.38" }
 serde = { features = ["derive"], version = "1" }
