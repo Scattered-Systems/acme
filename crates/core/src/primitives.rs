@@ -17,7 +17,6 @@ pub(crate) mod constants {
 pub(crate) mod types {
     ///
     pub type ChannelPackStd<T> = (std::sync::mpsc::Sender<T>, std::sync::mpsc::Receiver<T>);
-
     ///
     pub type Host = [u8; 4];
     ///

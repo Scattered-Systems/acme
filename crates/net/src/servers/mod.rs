@@ -8,6 +8,7 @@ pub use self::{server::*, specs::*};
 pub(crate) mod server;
 
 pub(crate) mod specs {
+    use crate::signals::shutdown::shutdown;
     use hyper::server::{conn::AddrIncoming, Builder};
     use scsys::AsyncResult;
     use std::net::SocketAddr;
@@ -33,7 +34,7 @@ pub(crate) mod specs {
             tracing::info!("Starting the server...");
             self.builder()
                 .serve(client.into_make_service())
-                .with_graceful_shutdown(crate::signals::shutdown::shutdown())
+                .with_graceful_shutdown(shutdown())
                 .await?;
             Ok(())
         }
