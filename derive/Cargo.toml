@@ -1,0 +1,34 @@
+[package]
+authors = ["FL03 <jo3mccain@icloud.com> (https://github.com/FL03)"]
+categories = []
+description = "Acme is a complete development toolkit for extending platform functionality"
+edition = "2021"
+homepage = "https://github.com/FL03/acme/wikis"
+keywords = ["async", "proc-macros", "scsys"]
+license = "Apache-2.0"
+name = "acme-derive"
+repository = "https://github.com/FL03/acme"
+version = "0.2.5" # TODO - Update cargo package version
+
+[features]
+default = []
+
+[lib]
+proc-macro = true
+test = true
+
+[build-dependencies]
+
+[dependencies]
+syn = { features = [], version = "1" }
+proc-macro2 = "1.0.49"
+
+[dev-dependencies]
+
+[package.metadata.docs.rs]
+all-features = true
+rustc-args = ["--cfg", "docsrs"]
+
+[target.wasm32-unknown-unknown]
+
+[target.wasm32-wasi]

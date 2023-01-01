@@ -10,7 +10,7 @@ name = "acme"
 publish = true
 readme = "README.md"
 repository = "https://github.com/scattered-systems/acme"
-version = "0.2.4" # TODO - Update cargo package version
+version = "0.2.5" # TODO - Update cargo package version
 
 [lib]
 crate-type = ["cdylib", "rlib"]
@@ -18,9 +18,21 @@ test = true
 
 [features]
 default = ["core"]
-full = ["conduits", "core", "compilers", "extras", "gateways", "net", "pipelines",]
+full = [
+    "conduits", 
+    "core", 
+    "compilers",
+    "derive",
+    "extras", 
+    "gateways",
+    "macros",
+    "net", 
+    "pipelines",
+]
 
 core = ["acme-core"]
+derive = ["acme-derive/default"]
+macros = ["acme-macros/default"]
 extras = []
 
 net = ["acme-net"]
@@ -33,9 +45,11 @@ pipelines = ["acme-pipelines"]
 
 [dependencies]
 acme-conduits = { features = [], optional = true, path = "../crates/conduits", version = "0.2.5" }
-acme-core = { features = [], optional = true, path = "../crates/core", version = "0.2.5" }
+acme-core = { features = [], optional = true, path = "../core", version = "0.2.5" }
 acme-compilers = { features = [], optional = true, path = "../crates/compilers", version = "0.2.5" }
+acme-derive = { features = [], optional = true, path = "../derive", version = "0.2.5" }
 acme-gateways = { features = [], optional = true, path = "../crates/gateways", version = "0.2.5" }
+acme-macros = { features = [], optional = true, path = "../macros", version = "0.2.5" }
 acme-net = { features = [], optional = true, path = "../crates/net", version = "0.2.5" }
 acme-pipelines = { features = [], optional = true, path = "../crates/pipelines", version = "0.2.5" }
 

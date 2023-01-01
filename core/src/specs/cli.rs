@@ -3,9 +3,13 @@
     Contrib: FL03 <jo3mccain@icloud.com>
     Description: ... summary ...
 */
-use super::{AsyncHandler, Handler};
 use clap::{Parser, Subcommand};
 
+pub trait CLIAction {
+    type Action: clap::FromArgMatches;
+}
+
+///
 pub trait Commands: Clone + Default + Subcommand {
     fn command(&self) -> Self
     where
@@ -15,9 +19,8 @@ pub trait Commands: Clone + Default + Subcommand {
     }
 }
 
-pub trait AsyncCommands: Commands + AsyncHandler {}
-
-pub trait CliSpec: Parser {
+///
+pub trait CLISpec: Parser {
     type Cmds: Commands;
 
     fn new() -> Self {
@@ -28,6 +31,3 @@ pub trait CliSpec: Parser {
         Self: Sized;
 }
 
-pub trait CliSpecExt: CliSpec + Handler {}
-
-pub trait AsyncCliSpec: CliSpec + AsyncHandler {}

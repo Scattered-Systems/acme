@@ -3,11 +3,12 @@
     Contrib: FL03 <jo3mccain@icloud.com>
     Description: ... summary ...
 */
-use scsys::prelude::{Event, Timestamp};
+use crate::events::Event;
+use scsys::prelude::Timestamp;
 use serde::{Deserialize, Serialize};
 use std::convert::From;
 
-#[derive(Clone, Debug, Deserialize, Eq, Hash, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
 pub struct Session {
     pub events: Vec<Event>,
     pub timestamp: i64,

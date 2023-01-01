@@ -37,6 +37,7 @@ jobs:
   features:
     if: ${{ github.event.inputs.publish }}
     name: Publish
+    needs: [ build ]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -44,7 +45,9 @@ jobs:
           - acme-compilers
           - acme-conduits
           - acme-core
+          - acme-derive
           - acme-gateways
+          - acme-macros
           - acme-net
           - acme-pipelines
     steps:

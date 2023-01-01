@@ -21,6 +21,12 @@ fn main() -> anyhow::Result<()> {
     Ok(())
 }
 
+pub fn cli() -> anyhow::Result<()> {
+    let matches = clap::builder::Command::new("app");
+
+    Ok(())
+}
+
 ///
 pub type Bundle<T = String> = std::collections::HashMap<T, Vec<Vec<T>>>;
 

@@ -11,14 +11,19 @@ pub use acme_compilers as compilers;
 pub use acme_conduits as conduits;
 #[cfg(feature = "core")]
 pub use acme_core::*;
+#[cfg(feature = "derive")]
+pub use acme_derive::*;
 #[cfg(feature = "gateways")]
 pub use acme_gateways as gateways;
+#[cfg(feature = "macros")]
+pub use acme_macros::*;
 #[cfg(feature = "net")]
 pub use acme_net as net;
 #[cfg(feature = "pipelines")]
 pub use acme_pipelines as pipelines;
 
 pub mod prelude {
+    pub use super::*;
 
     #[cfg(feature = "compilers")]
     pub use super::compilers::*;
@@ -30,7 +35,6 @@ pub mod prelude {
     pub use super::net::*;
     #[cfg(feature = "pipelines")]
     pub use super::pipelines::*;
-    pub use super::*;
     #[cfg(feature = "core")]
     pub use super::{events::*, sessions::*};
 }

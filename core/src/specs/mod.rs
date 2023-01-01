@@ -9,17 +9,10 @@ pub(crate) mod apps;
 #[cfg(feature = "cli")]
 pub(crate) mod cli;
 
+
+
 use async_trait::async_trait;
 
-///
-#[async_trait]
-pub trait AsyncHandler: Clone + Send + Sync {
-    type Error: std::error::Error + Send + Sync + 'static;
-
-    async fn handler(&self) -> Result<&Self, Self::Error>
-    where
-        Self: Sized;
-}
 ///
 #[async_trait]
 pub trait AsyncSpawable {
@@ -42,13 +35,7 @@ pub trait BaseObject {
     fn symbol(&self) -> String;
 }
 ///
-pub trait Handler: Clone {
-    type Error: std::error::Error + 'static;
 
-    fn handler(&self) -> Result<&Self, Self::Error>
-    where
-        Self: Sized;
-}
 ///
 pub trait Spawnable {
     fn spawn(&mut self) -> scsys::Result<&Self>;
