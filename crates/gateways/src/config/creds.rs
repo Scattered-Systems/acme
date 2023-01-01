@@ -23,7 +23,7 @@ impl GatewayCreds {
         &mut self,
         access_key: Option<&str>,
         secret_key: Option<&str>,
-    ) -> scsys::BoxResult<&Self> {
+    ) -> scsys::AsyncResult<&Self> {
         self.access_key = std::env::var(access_key.unwrap_or("S3_ACCESS_KEY"))?;
         self.secret_key = std::env::var(secret_key.unwrap_or("S3_SECRET_KEY"))?;
         Ok(self)

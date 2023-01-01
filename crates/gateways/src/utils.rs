@@ -5,7 +5,7 @@
 */
 use crate::Gateway;
 use s3::{creds::Credentials, serde_types::ListBucketResult, Region};
-use scsys::prelude::{BoxResult, S3Credential};
+use scsys::prelude::{AsyncResult, S3Credential};
 
 ///
 pub fn convert_credentials(cred: S3Credential) -> Credentials {
@@ -42,11 +42,11 @@ pub async fn fetch_bucket_contents(
     bucket: s3::Bucket,
     prefix: &str,
     delim: Option<String>,
-) -> BoxResult<Vec<ListBucketResult>> {
+) -> AsyncResult<Vec<ListBucketResult>> {
     let res = bucket.list(prefix.to_string(), delim).await?;
     Ok(res)
 }
 ///
-pub async fn fetch_bucket(gateway: &Gateway, name: &str) -> BoxResult<s3::Bucket> {
+pub async fn fetch_bucket(gateway: &Gateway, name: &str) -> AsyncResult<s3::Bucket> {
     Ok(gateway.bucket(name)?)
 }

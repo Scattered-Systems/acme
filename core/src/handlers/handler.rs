@@ -5,7 +5,6 @@
 */
 use serde::{Deserialize, Serialize};
 
-
 pub type TransitionFunction<S, T> = dyn Fn(S) -> T;
 
 pub trait Transition<S> {

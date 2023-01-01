@@ -30,4 +30,3 @@ pub trait CLISpec: Parser {
     where
         Self: Sized;
 }
-

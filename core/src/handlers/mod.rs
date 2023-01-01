@@ -9,7 +9,7 @@ pub(crate) mod handler;
 
 pub(crate) mod specs {
     use async_trait::async_trait;
-    
+
     ///
     #[async_trait]
     pub trait AsyncHandle: Clone + Send + Sync {
@@ -22,7 +22,7 @@ pub(crate) mod specs {
     ///
     pub trait Handle: Clone {
         type Error: std::error::Error + 'static;
-    
+
         fn handler(&self) -> Result<&Self, Self::Error>
         where
             Self: Sized;
