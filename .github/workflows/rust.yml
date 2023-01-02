@@ -46,7 +46,6 @@ jobs:
           - acme-conduits
           - acme-core
           - acme-derive
-          - acme-gateways
           - acme-macros
           - acme-net
           - acme-pipelines

@@ -13,8 +13,6 @@ pub use acme_conduits as conduits;
 pub use acme_core::*;
 #[cfg(feature = "derive")]
 pub use acme_derive::*;
-#[cfg(feature = "gateways")]
-pub use acme_gateways as gateways;
 #[cfg(feature = "macros")]
 pub use acme_macros::*;
 #[cfg(feature = "net")]
@@ -29,8 +27,6 @@ pub mod prelude {
     pub use super::compilers::*;
     #[cfg(feature = "conduits")]
     pub use super::conduits::*;
-    #[cfg(feature = "gateways")]
-    pub use super::gateways::*;
     #[cfg(feature = "net")]
     pub use super::net::*;
     #[cfg(feature = "pipelines")]
