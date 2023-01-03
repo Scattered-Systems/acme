@@ -3,11 +3,11 @@
     Contrib: FL03 <jo3mccain@icloud.com>
     Description: ... summary ...
 */
-use crate::AsyncSpawable;
+use crate::AsyncSpawnable;
 use scsys::prelude::{AsyncResult, Configurable, Contextual, Locked};
 
 /// Implements the base interface for creating compatible platform applications
-pub trait AppSpec<Cnf: Configurable>: Default + AsyncSpawable {
+pub trait AppSpec<Cnf: Configurable>: Default + AsyncSpawnable {
     type Ctx: Contextual;
     type State;
     fn init() -> Self;
