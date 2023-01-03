@@ -14,6 +14,7 @@ pub(crate) mod utils;
 
 pub(crate) mod specs;
 
+pub use crate::events::specs::*;
 pub use crate::handlers::specs::*;
 
 use async_trait::async_trait;

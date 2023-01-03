@@ -3,7 +3,7 @@
    Contrib: FL03 <jo3mccain@icloud.com>
    Description: ... Summary ...
 */
-use super::{EventSpec, Eventful};
+use crate::{EventSpec, Eventful};
 use scsys::prelude::Message;
 use serde::{Deserialize, Serialize};
 
