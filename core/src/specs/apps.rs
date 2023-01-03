@@ -20,3 +20,11 @@ pub trait AppSpec<Cnf: Configurable>: Default + AsyncSpawnable {
     }
     fn state(&self) -> &Locked<Self::State>;
 }
+
+pub struct Application<Ctx: Contextual + Default>(Ctx);
+
+impl<Ctx: Contextual + Default> Application<Ctx> {
+    pub fn new() -> Self {
+        Self(Default::default())
+    }
+}
