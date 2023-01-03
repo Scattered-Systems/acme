@@ -19,17 +19,17 @@ test = true
 [dev-dependencies]
 
 [dependencies]
-async-trait = "0.1.59"
-axum = "0.6.1"
-hyper = { features = ["full"], version = "0.14.23" }
-http = "0.2.8"
-http-body = "0.4.5"
-scsys = { features = ["full"], version = "0.1.39" }
+async-trait = "0.1"
+axum-core = "0.3"
+hyper = { features = ["full"], version = "0.14" }
+http = "0.2"
+http-body = "0.4"
+scsys = { features = ["full"], version = "0.1.40" }
 serde = { features = ["derive"], version = "1" }
 serde_json = "1"
-strum = { features = ["derive"], version = "0.24.1" }
-tokio = { features = ["macros"], version = "1.23.0" }
-tracing = { features = [], version = "0.1.37" }
+strum = { features = ["derive"], version = "0.24" }
+tokio = { features = ["macros", "process", "signal", "sync"], version = "1" }
+tracing = { features = [], version = "0.1" }
 
 
 [package.metadata.docs.rs]

@@ -21,7 +21,7 @@ test = true
 
 [dependencies]
 syn = { features = [], version = "1" }
-proc-macro2 = "1.0.49"
+proc-macro2 = "1"
 
 [dev-dependencies]
 

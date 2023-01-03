@@ -18,7 +18,7 @@ test = true
 
 [dependencies]
 mio = "0.8.4"
-scsys = { features = ["full"], version = "0.1.39" }
+scsys = { features = ["full"], version = "0.1.40" }
 serde = { features = ["derive"], version = "1" }
 serde_json = "1"
 strum = { features = ["derive"], version = "0.24.1" }
