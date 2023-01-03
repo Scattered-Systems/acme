@@ -22,7 +22,7 @@ use scsys::prelude::{AsyncResult, Logger, Result};
 
 ///
 #[async_trait]
-pub trait AsyncSpawable {
+pub trait AsyncSpawnable {
     async fn spawn(&mut self) -> AsyncResult<&Self>;
 }
 ///
