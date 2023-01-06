@@ -10,4 +10,3 @@ use std::net::SocketAddr;
 pub fn socket_address(host: Host, port: Port) -> SocketAddr {
     SocketAddr::from((host, port))
 }
-

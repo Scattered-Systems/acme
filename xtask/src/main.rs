@@ -23,7 +23,7 @@ fn main() -> anyhow::Result<()> {
 
 pub fn cli() -> anyhow::Result<()> {
     let matches = clap::builder::Command::new("app");
-
+    
     Ok(())
 }
 

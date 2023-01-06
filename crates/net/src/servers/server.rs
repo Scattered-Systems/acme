@@ -16,7 +16,7 @@ pub struct Server {
 impl Server {
     pub fn new(host: Option<[u8; 4]>, port: Option<u16>) -> Self {
         Self {
-            host: host.unwrap_or([127, 0, 0, 1]),
+            host: host.unwrap_or([0, 0, 0, 0]),
             port: port.unwrap_or(8080),
         }
     }
@@ -40,7 +40,7 @@ impl ServerSpec for Server {
 
 impl Default for Server {
     fn default() -> Self {
-        Self::new(Some([127, 0, 0, 1]), Some(8080))
+        Self::new(Some([0, 0, 0, 0]), Some(8080))
     }
 }
 
@@ -63,7 +63,7 @@ mod tests {
     #[tokio::test]
     async fn test_server() {
         let server = Server::default();
-        assert_eq!(server.host, [127, 0, 0, 1]);
+        assert_eq!(server.host, [0, 0, 0, 0]);
         assert_eq!(server.port, 8080);
     }
 }

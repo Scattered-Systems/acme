@@ -4,20 +4,23 @@
    Description: ... Summary ...
 */
 use crate::{EventSpec, Eventful};
-use scsys::prelude::Message;
+use scsys::prelude::{Hash, Hashable, Message, Timestamp};
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Deserialize, Eq, PartialEq, Serialize)]
+#[derive(Clone, Debug, Deserialize, Eq, Hash, PartialEq, Serialize)]
 pub struct Event<E: ToString = super::Events> {
     pub event: E,
     pub message: Message,
+    pub timestamp: i64,
 }
 
 impl<E: ToString> Event<E> {
     pub fn new(event: E, message: Option<Message>) -> Self {
+        let timestamp = Timestamp::default().into();
         Self {
             event,
             message: message.unwrap_or_default(),
+            timestamp,
         }
     }
 }
@@ -80,6 +83,7 @@ mod tests {
     #[test]
     fn test_events_default() {
         let a = Event::<Events>::default();
+        a.hash();
         assert_eq!(a.event(), crate::events::Events::None);
     }
 }
